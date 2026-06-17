@@ -3,303 +3,447 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠키혼레이저 - 산업용 레이저 솔루션의 베테랑</title>
+    <title>쿠키혼레이저 - 산업용 레이저 마킹·가공 솔루션</title>
+    <meta name="description" content="쿠키혼레이저는 30년 현장 경험을 기반으로 파이버, CO2, UV, 3D, 비전 레이저 마킹·가공 솔루션을 제공합니다.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Noto Sans KR', sans-serif; background-color: #121212; color: #e5e7eb; }
         .nav-item:hover .dropdown { display: block; }
-        .dropdown { display: none; position: absolute; background-color: #1f1f1f; min-width: 160px; z-index: 50; border-top: 2px solid #3b82f6; }
-        .dropdown a { display: block; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #333; }
+        .dropdown { display: none; position: absolute; background-color: #1f1f1f; min-width: 190px; z-index: 50; border-top: 2px solid #3b82f6; }
+        .dropdown a { display: block; padding: 12px 16px; font-size: 14px; border-bottom: 1px solid #333; white-space: nowrap; }
         .dropdown a:hover { background-color: #333; color: #3b82f6; }
-        .content-section { display: none; padding-top: 100px; min-height: 80vh; }
+        .content-section { display: none; padding-top: 105px; min-height: 78vh; }
         .content-section.active { display: block; }
         .bg-card { background-color: #1f1f1f; border: 1px solid #333; }
         .blue-accent { color: #3b82f6; }
-        .history-grid { display: grid; grid-template-columns: 100px 1fr; gap: 10px; border-bottom: 1px solid #333; padding: 10px 0; }
+        .blue-border { border-color: #3b82f6; }
+        .history-grid { display: grid; grid-template-columns: 100px 1fr; gap: 10px; border-bottom: 1px solid #333; padding: 12px 0; }
         footer { background-color: #0a0a0a; border-top: 1px solid #222; }
         .tab-btn.active { border-bottom: 2px solid #3b82f6; color: #3b82f6; }
+        .application-card:hover { transform: translateY(-4px); border-color: #3b82f6; }
+        .application-card { transition: all .2s ease; }
+        @media (max-width: 900px) {
+            header nav { display: none; }
+            .mobile-note { display: block; }
+            .hero-title { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <header class="fixed w-full top-0 z-50 bg-[#121212] bg-opacity-90 border-bottom border-[#333]">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter cursor-pointer" onclick="showSection('home')">
-                KOOKYHON <span class="blue-accent">LASER</span>
-            </div>
-            <nav class="flex space-x-10">
-                <div class="relative nav-item group">
-                    <button class="hover:text-blue-500 font-medium py-2">회사소개</button>
-                    <div class="dropdown shadow-xl">
-                        <a href="#" onclick="showSection('greeting')">인사말</a>
-                        <a href="#" onclick="showSection('about')">회사개요</a>
-                        <a href="#" onclick="showSection('history')">연혁</a>
-                        <a href="#" onclick="showSection('map')">오시는길</a>
-                    </div>
-                </div>
-                <div class="relative nav-item group">
-                    <button class="hover:text-blue-500 font-medium py-2">아이템 소개</button>
-                    <div class="dropdown shadow-xl">
-                        <a href="#" onclick="showItem('fiber')">파이버레이저</a>
-                        <a href="#" onclick="showItem('bpd')">BPD 레이저</a>
-                        <a href="#" onclick="showItem('co2')">CO2 레이저</a>
-                        <a href="#" onclick="showItem('uv')">UV 레이저</a>
-                        <a href="#" onclick="showItem('3d')">3D 마킹</a>
-                        <a href="#" onclick="showItem('vision')">비젼시스템</a>
-                    </div>
-                </div>
-                <div class="relative">
-                    <button onclick="showSection('guide')" class="hover:text-blue-500 font-medium py-2">레이저선택가이드</button>
-                </div>
-                <div class="relative">
-                    <button onclick="showSection('contact')" class="hover:text-blue-500 font-medium py-2">고객문의</button>
-                </div>
-            </nav>
+<header class="fixed w-full top-0 z-50 bg-[#121212] bg-opacity-95 border-b border-[#333]">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-black tracking-tighter cursor-pointer" onclick="showSection('home')">
+            KOOKYHON <span class="blue-accent">LASER</span>
         </div>
-    </header>
-
-    <main class="container mx-auto px-6">
-        
-        <section id="home" class="content-section active relative overflow-hidden h-[90vh] flex items-center">
-    <div class="absolute inset-0 z-0">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-50">
-            <source src="hero.mp4" type="video/mp4">
-        </video>
-
-        <div class="absolute inset-0 bg-gradient-to-r from-[#121212] via-transparent to-transparent"></div>
+        <nav class="flex space-x-8">
+            <div class="relative nav-item group">
+                <button class="hover:text-blue-500 font-medium py-2">회사소개</button>
+                <div class="dropdown shadow-xl">
+                    <a href="#" onclick="showSection('greeting')">인사말</a>
+                    <a href="#" onclick="showSection('about')">회사개요</a>
+                    <a href="#" onclick="showSection('history')">연혁</a>
+                    <a href="#" onclick="showSection('map')">오시는길</a>
+                </div>
+            </div>
+            <div class="relative nav-item group">
+                <button class="hover:text-blue-500 font-medium py-2">제품소개</button>
+                <div class="dropdown shadow-xl">
+                    <a href="#" onclick="showItem('fiber')">파이버 레이저</a>
+                    <a href="#" onclick="showItem('co2')">CO2 레이저</a>
+                    <a href="#" onclick="showItem('uv')">UV 레이저</a>
+                    <a href="#" onclick="showItem('bpd')">BPD / Dual Head</a>
+                    <a href="#" onclick="showItem('3d')">3D 마킹</a>
+                    <a href="#" onclick="showItem('vision')">비전 시스템</a>
+                </div>
+            </div>
+            <div class="relative nav-item group">
+                <button class="hover:text-blue-500 font-medium py-2">레이저 응용</button>
+                <div class="dropdown shadow-xl">
+                    <a href="#" onclick="showApplication('metal')">금속 마킹</a>
+                    <a href="#" onclick="showApplication('plastic')">플라스틱/필름</a>
+                    <a href="#" onclick="showApplication('trace')">QR·시리얼 추적</a>
+                    <a href="#" onclick="showApplication('automation')">자동화/검사</a>
+                </div>
+            </div>
+            <button onclick="showSection('guide')" class="hover:text-blue-500 font-medium py-2">선택가이드</button>
+            <button onclick="showSection('contact')" class="hover:text-blue-500 font-medium py-2">고객문의</button>
+        </nav>
     </div>
+</header>
 
-    <div class="container mx-auto px-6 relative z-10">
-        <div class="max-w-3xl">
-            <span class="inline-block px-4 py-1 mb-4 text-sm font-bold tracking-widest text-blue-500 border border-blue-500 rounded-full">
-                LEADER IN LASER TECHNOLOGY
+<main class="container mx-auto px-6">
+    <section id="home" class="content-section active relative overflow-hidden h-[92vh] flex items-center">
+        <div class="absolute inset-0 z-0">
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-40">
+                <source src="hero.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-r from-[#121212] via-[#121212]/80 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-4xl">
+            <span class="inline-block px-4 py-1 mb-5 text-sm font-bold tracking-widest text-blue-500 border border-blue-500 rounded-full">
+                INDUSTRIAL LASER MARKING & PROCESS SOLUTION
             </span>
-            <h2 class="text-6xl font-bold mb-6 leading-tight">
-                30년의 시간과 함께한 역량.<br>
-                수천개의 프로젝트 경험과 <span class="blue-accent">함께 공정을 완성시켜 드리겠습니다.</span>
-            </h2>
-            <p class="text-xl text-zinc-400 mb-10 leading-relaxed">
-                쿠키혼레이저㈜는 30년의 축적된 노하우와 독보적인 광학 설계 역량으로<br>
-                대한민국 제조 산업의 자동화와 혁신을 함께합니다.
+            <h1 class="hero-title text-6xl font-black mb-6 leading-tight">
+                현장에서 검증된 레이저 기술로<br>
+                <span class="blue-accent">제품·공정에 맞는 솔루션</span>을 제안합니다.
+            </h1>
+            <p class="text-xl text-zinc-300 mb-10 leading-relaxed">
+                1996년부터 축적된 산업용 레이저 경험과 쿠키혼레이저의 전문성을 바탕으로<br>
+                금속, 플라스틱, 필름, 전장부품, 자동화 라인의 마킹·가공 공정을 함께 완성합니다.
             </p>
-            <div class="flex space-x-4">
-                <button onclick="showItem('fiber')" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg font-bold transition flex items-center">
-                    제품 라인업 보기
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="9 5l7 7-7 7" />
-                    </svg>
-                </button>
-                <button onclick="showSection('guide')" class="bg-zinc-800 hover:bg-zinc-700 px-8 py-4 rounded-lg font-bold transition">
-                    선택 가이드
-                </button>
+            <div class="flex flex-wrap gap-4">
+                <button onclick="showItem('fiber')" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg font-bold transition">제품 라인업 보기</button>
+                <button onclick="showSection('applications')" class="bg-zinc-800 hover:bg-zinc-700 px-8 py-4 rounded-lg font-bold transition">레이저 응용 사례</button>
+                <button onclick="showSection('contact')" class="border border-zinc-600 hover:border-blue-500 px-8 py-4 rounded-lg font-bold transition">상담 문의</button>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-        <section id="about" class="content-section">
-            <h3 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">회사 소개</h3>
+    <section id="greeting" class="content-section">
+        <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">인사말</h2>
+        <div class="bg-card p-10 rounded-lg leading-relaxed">
+            <h3 class="text-2xl font-bold mb-6">고객의 공정을 이해하는 레이저 전문 기업</h3>
+            <p class="text-zinc-300 mb-5">쿠키혼레이저는 단순히 장비를 공급하는 회사가 아니라, 고객 제품의 소재와 생산 조건, 품질 기준을 함께 검토하여 가장 적합한 레이저 솔루션을 제안하는 현장 중심 기업입니다.</p>
+            <p class="text-zinc-300 mb-5">레이저 마킹, 각인, 커팅, 비전 검사, 자동화 연동까지 다양한 공정 경험을 기반으로 안정적인 품질과 빠른 대응을 목표로 합니다.</p>
+            <p class="text-zinc-400">앞으로도 축적된 기술과 경험을 바탕으로 고객사의 생산성 향상과 품질 안정화에 기여하겠습니다.</p>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">회사개요</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <div class="bg-card p-7 rounded-lg border-t-2 blue-border">
+                <p class="text-4xl font-black blue-accent mb-2">1996</p>
+                <p class="text-zinc-300">모회사 쿠키혼의 산업용 레이저 기술 개발 시작</p>
+            </div>
+            <div class="bg-card p-7 rounded-lg border-t-2 blue-border">
+                <p class="text-4xl font-black blue-accent mb-2">2018</p>
+                <p class="text-zinc-300">레이저 사업부 전문화를 위한 쿠키혼레이저㈜ 설립</p>
+            </div>
+            <div class="bg-card p-7 rounded-lg border-t-2 blue-border">
+                <p class="text-4xl font-black blue-accent mb-2">A/S</p>
+                <p class="text-zinc-300">납품 이후까지 고려한 유지보수와 현장 대응 체계</p>
+            </div>
+        </div>
+        <div class="bg-card p-10 rounded-lg">
+            <h3 class="text-2xl font-bold mb-6">30년의 기술이 만든 신뢰</h3>
+            <div class="space-y-5 text-zinc-300 leading-relaxed">
+                <p>모회사 ㈜쿠키혼은 1996년, 산업용 레이저가 국내 시장에 자리잡기 전부터 기술 개발과 현장 적용을 이끌어 온 선도 기업입니다.</p>
+                <p>2018년, 그 축적된 기술과 노하우를 계승해 설립된 쿠키혼레이저㈜는 전기전자·자동차 산업의 레이저 마킹 분야에서 수천 대의 납품 실적과 검증된 A/S 체계를 갖춘 전문 기업입니다.</p>
+                <p>Infinite Series와 Falcon Series는 국내 모바일 산업의 성장기를 함께하며 수많은 현장에서 신뢰성과 내구성을 증명했습니다. 현재는 파이버, CO2, UV, 3D, 비전 시스템을 기반으로 다양한 제조 현장에 맞춤형 레이저 솔루션을 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="history" class="content-section">
+        <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">연혁</h2>
+        <div class="bg-card p-8 rounded-lg max-w-4xl mx-auto">
+            <div class="history-grid"><span class="font-bold blue-accent">2018</span><span>쿠키혼레이저㈜ 설립, 레이저 사업부 전문화</span></div>
+            <div class="history-grid"><span class="font-bold">2016</span><span>비전 탑재 9.3㎛ CO2 Cutter - Power Blade II 출시</span></div>
+            <div class="history-grid"><span class="font-bold">2013</span><span>3D 마킹 시스템 MLPE, CB3D 개발</span></div>
+            <div class="history-grid"><span class="font-bold">2010</span><span>경기도 화성 본사 이전</span></div>
+            <div class="history-grid"><span class="font-bold">2004</span><span>상호변경 - ㈜쿠키혼 / 기업부설 레이저 연구소 설립</span></div>
+            <div class="history-grid"><span class="font-bold">2001</span><span>LPSSL Infinite Marker Series 개발 및 출시</span></div>
+            <div class="history-grid"><span class="font-bold">1996</span><span>쿠키비에스 설립</span></div>
+            <p class="text-sm text-zinc-500 mt-4">* 홈페이지용 주요 이력 요약</p>
+        </div>
+    </section>
+
+    <section id="map" class="content-section">
+        <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">오시는 길</h2>
+        <div class="bg-card p-10 rounded-lg">
+            <p class="text-xl mb-4">주소: 경기 화성시 만세구 송산면 화성로 316-42</p>
+            <p class="text-zinc-400 mb-6">방문 상담 또는 샘플 테스트가 필요한 경우 사전에 문의해 주세요.</p>
+            <div class="w-full h-96 bg-zinc-800 flex items-center justify-center rounded">
+                <p class="text-zinc-500">지도 서비스 연결 영역: Kakao Maps / Naver Maps / Google Maps</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="item_detail" class="content-section">
+        <h2 class="text-3xl font-bold mb-8 border-l-4 border-blue-600 pl-4">제품소개</h2>
+        <div class="flex flex-wrap border-b border-zinc-700 mb-8" id="item_tabs"></div>
+        <div id="item_content" class="bg-card p-8 rounded-lg leading-relaxed"></div>
+    </section>
+
+    <section id="applications" class="content-section">
+        <h2 class="text-3xl font-bold mb-4 border-l-4 border-blue-600 pl-4">레이저 응용</h2>
+        <p class="mb-8 text-zinc-400">소재와 목적에 따라 최적의 레이저, 광학계, 지그, 자동화 구성을 제안합니다.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mb-10">
+            <button onclick="showApplication('metal')" class="application-card text-left bg-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 blue-accent">금속 마킹</h3>
+                <p class="text-zinc-400 text-sm">SUS, Steel, Aluminum, Titanium 등 금속 부품의 로고, 시리얼, 2D 코드 마킹</p>
+            </button>
+            <button onclick="showApplication('plastic')" class="application-card text-left bg-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 blue-accent">플라스틱·필름</h3>
+                <p class="text-zinc-400 text-sm">ABS, PC, PET, PI Film 등 열 영향과 변색 품질을 고려한 정밀 마킹</p>
+            </button>
+            <button onclick="showApplication('trace')" class="application-card text-left bg-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 blue-accent">QR·시리얼 추적</h3>
+                <p class="text-zinc-400 text-sm">Data Matrix, Barcode, QR, Serial Number를 이용한 생산 이력 관리</p>
+            </button>
+            <button onclick="showApplication('automation')" class="application-card text-left bg-card p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 blue-accent">자동화·검사</h3>
+                <p class="text-zinc-400 text-sm">비전 위치 보정, 검사, OK/NG 판정, MES 연동 등 라인 자동화</p>
+            </button>
+        </div>
+        <div id="application_content" class="bg-card p-8 rounded-lg leading-relaxed"></div>
+    </section>
+
+    <section id="guide" class="content-section">
+        <h2 class="text-3xl font-bold mb-4 border-l-4 border-blue-600 pl-4">레이저 선택 가이드</h2>
+        <p class="mb-8 text-zinc-400">Material & Application Based Selection Guide</p>
+        <div class="space-y-10">
+            <div class="bg-card p-6 rounded-lg overflow-x-auto">
+                <h3 class="text-xl font-bold mb-4 blue-accent">1. 소재 기준 추천</h3>
+                <table class="w-full text-left border-collapse min-w-[760px]">
+                    <thead>
+                        <tr class="bg-zinc-800"><th class="p-3 border border-zinc-700">소재</th><th class="p-3 border border-zinc-700">추천 레이저</th><th class="p-3 border border-zinc-700">주요 목적</th><th class="p-3 border border-zinc-700">특징</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="p-3 border border-zinc-700">SUS, Steel, Ti</td><td class="p-3 border border-zinc-700">Fiber</td><td class="p-3 border border-zinc-700">각인, 흑/백 마킹, 2D 코드</td><td class="p-3 border border-zinc-700">고속, 내구성 우수, 깊이 가공 가능</td></tr>
+                        <tr class="bg-zinc-900/50"><td class="p-3 border border-zinc-700">Aluminum</td><td class="p-3 border border-zinc-700">Fiber / UV</td><td class="p-3 border border-zinc-700">로고, 시리얼, 부품 추적</td><td class="p-3 border border-zinc-700">소재 상태에 따라 출력·주파수 최적화 필요</td></tr>
+                        <tr><td class="p-3 border border-zinc-700">ABS, PC</td><td class="p-3 border border-zinc-700">CO2 / UV</td><td class="p-3 border border-zinc-700">외관 마킹, 변색 마킹</td><td class="p-3 border border-zinc-700">소재 배합에 따라 테스트 권장</td></tr>
+                        <tr class="bg-zinc-900/50"><td class="p-3 border border-zinc-700">PET, PI Film, FPCB</td><td class="p-3 border border-zinc-700">UV</td><td class="p-3 border border-zinc-700">정밀 마킹, 미세 가공</td><td class="p-3 border border-zinc-700">열 영향 최소화, 고해상도</td></tr>
+                        <tr><td class="p-3 border border-zinc-700">유리, 고무, 목재, 종이</td><td class="p-3 border border-zinc-700">CO2</td><td class="p-3 border border-zinc-700">표면 각인, 커팅</td><td class="p-3 border border-zinc-700">비금속 소재에 적합</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-card p-6 rounded-lg border-t-2 border-blue-500">
+                    <h3 class="font-bold mb-4">금속 + 깊이 + 속도</h3>
+                    <p class="text-zinc-300"><span class="blue-accent font-bold">Fiber</span>를 우선 검토합니다. 자동차, 전장, 공구, 금속 부품 추적에 적합합니다.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg border-t-2 border-blue-500">
+                    <h3 class="font-bold mb-4">비금속 + 일반 마킹</h3>
+                    <p class="text-zinc-300"><span class="blue-accent font-bold">CO2</span>를 우선 검토합니다. 플라스틱, 고무, 유리, 아크릴 등에 적용됩니다.</p>
+                </div>
+                <div class="bg-card p-6 rounded-lg border-t-2 border-blue-500">
+                    <h3 class="font-bold mb-4">정밀 + 열 민감 소재</h3>
+                    <p class="text-zinc-300"><span class="blue-accent font-bold">UV</span>를 우선 검토합니다. 필름, FPCB, 고해상도 코드 마킹에 적합합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <h2 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">고객문의</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div class="bg-card p-10 rounded-lg">
-                <h4 class="text-2xl font-bold mb-6">30년의 기술이 만든 신뢰</h4>
-                <div class="space-y-6 text-zinc-300 leading-relaxed">
-                    <p>모회사 ㈜쿠키혼은 1996년, 산업용 레이저가 국내 시장에 자리잡기 전부터 기술 개발과 현장 적용을 이끌어 온 선도 기업입니다.</p>
-                    <p>2018년, 그 축적된 기술과 노하우를 계승해 설립된 쿠키혼레이저㈜는 전기전자·자동차 산업의 레이저 마킹 분야에서 수천 대의 납품 실적과 검증된 A/S 체계를 갖춘 전문 기업입니다.</p>
-                    <p>Infinite Series와 Falcon Series는 국내 모바일 산업의 성장기를 함께하며 수많은 현장에서 그 신뢰성과 내구성을 증명했습니다. 지금 우리의 기술은, 그 경험 위에서 더욱 진화하고 있습니다.</p>
+                <h3 class="text-2xl font-bold mb-6">샘플 테스트 / 장비 상담</h3>
+                <p class="text-zinc-300 mb-6 leading-relaxed">소재, 마킹 목적, 생산 수량, 자동화 여부를 알려주시면 적합한 레이저 종류와 장비 구성을 검토해드립니다.</p>
+                <div class="space-y-3 text-zinc-300">
+                    <p><span class="text-zinc-500">TEL</span> : 031-355-3164</p>
+                    <p><span class="text-zinc-500">FAX</span> : 031-355-3129</p>
+                    <p><span class="text-zinc-500">E-mail</span> : owen@kooky.co.kr</p>
+                    <p><span class="text-zinc-500">Blog</span> : <a class="text-blue-500 underline" href="https://blog.naver.com/kookyhonlaser/221581169706" target="_blank" rel="noopener">네이버 블로그 응용 사례 보기</a></p>
                 </div>
             </div>
-        </section>
-
-        <section id="history" class="content-section">
-            <h3 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">연혁</h3>
-            <div class="bg-card p-8 rounded-lg max-w-4xl mx-auto">
-                <div class="history-grid"><span class="font-bold blue-accent">2018</span><span>쿠키혼레이저㈜ 설립 (레이저 사업부 분리)</span></div>
-                <div class="history-grid"><span class="font-bold">2016</span><span>비전 탑재 9.3um CO2 cutter - Power BladeII 출시</span></div>
-                <div class="history-grid"><span class="font-bold">2013</span><span>3D 마킹 시스템 "MLPE", "CB3D" 개발</span></div>
-                <div class="history-grid"><span class="font-bold">2010</span><span>경기도 화성 본사 이전</span></div>
-                <div class="history-grid"><span class="font-bold">2004</span><span>상호변경 - ㈜쿠키혼 / 기업부설 레이저 연구소 설립</span></div>
-                <div class="history-grid"><span class="font-bold">2001</span><span>LPSSL "Infinite" 마커 series 개발 출시</span></div>
-                <div class="history-grid"><span class="font-bold">1996</span><span>쿠키비에스 설립</span></div>
-                <p class="text-sm text-zinc-500 mt-4">* 주요 이력 요약</p>
-            </div>
-        </section>
-
-        <section id="map" class="content-section">
-            <h3 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">오시는 길</h3>
             <div class="bg-card p-10 rounded-lg">
-                <p class="text-xl mb-4">주소: 경기 화성시 만세구 송산면 화성로 316-42</p>
-                <div class="w-full h-96 bg-zinc-800 flex items-center justify-center rounded">
-                    <p class="text-zinc-500">지도 서비스 연결 영역 (Google Maps API / Kakao Maps)</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="item_detail" class="content-section">
-            <div class="flex border-b border-zinc-700 mb-8" id="item_tabs">
-                </div>
-            <div id="item_content" class="bg-card p-8 rounded-lg leading-relaxed">
-                </div>
-        </section>
-
-        <section id="guide" class="content-section">
-            <h3 class="text-3xl font-bold mb-4 border-l-4 border-blue-600 pl-4">레이저 선택 가이드</h3>
-            <p class="mb-8 text-zinc-400">Material & Application Based Selection Guide</p>
-            
-            <div class="space-y-10">
-                <div class="bg-card p-6 rounded-lg">
-                    <h4 class="text-xl font-bold mb-4 blue-accent">🔶 1. 소재 기준 추천</h4>
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-zinc-800"><th class="p-3 border border-zinc-700">소재</th><th class="p-3 border border-zinc-700">추천 레이저</th><th class="p-3 border border-zinc-700">특징</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="p-3 border border-zinc-700">SUS, Steel, Ti</td><td class="p-3 border border-zinc-700">Fiber</td><td class="p-3 border border-zinc-700">깊은 각인, 고속 마킹, 내구성 우수</td></tr>
-                            <tr class="bg-zinc-900/50"><td class="p-3 border border-zinc-700">Aluminum (Raw)</td><td class="p-3 border border-zinc-700">Fiber</td><td class="p-3 border border-zinc-700">선명한 마킹, 고속 처리</td></tr>
-                            <tr><td class="p-3 border border-zinc-700">Anodized Aluminum</td><td class="p-3 border border-zinc-700">Fiber / UV</td><td class="p-3 border border-zinc-700">Fiber: 고속 / UV: 고해상도</td></tr>
-                            <tr class="bg-zinc-900/50"><td class="p-3 border border-zinc-700">ABS, PC</td><td class="p-3 border border-zinc-700">CO2 / UV</td><td class="p-3 border border-zinc-700">CO2: 일반 / UV: 정밀</td></tr>
-                            <tr><td class="p-3 border border-zinc-700">PET, PI Film</td><td class="p-3 border border-zinc-700">UV</td><td class="p-3 border border-zinc-700">열 변형 없이 정밀 가공</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-card p-6 rounded-lg border-t-2 border-blue-500">
-                        <h4 class="font-bold mb-4">🔶 3. 선택 기준 한눈에 보기</h4>
-                        <ul class="space-y-2 text-zinc-300">
-                            <li>👉 금속 + 깊이 + 속도 → <span class="blue-accent font-bold">Fiber</span></li>
-                            <li>👉 플라스틱 / 유리 / 고무 → <span class="blue-accent font-bold">CO2</span></li>
-                            <li>👉 정밀 / 필름 / 민감 소재 → <span class="blue-accent font-bold">UV</span></li>
-                        </ul>
-                    </div>
-                    <div class="bg-card p-6 rounded-lg border-t-2 border-green-500">
-                        <h4 class="font-bold mb-4">🔶 4. 특수 옵션 추천</h4>
-                        <ul class="space-y-2 text-zinc-300">
-                            <li>곡면 / 단차 제품: <span class="font-bold">3D Marking Head</span></li>
-                            <li>자동화 라인: <span class="font-bold">Vision + MES Integration</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="content-section">
-            <h3 class="text-3xl font-bold mb-10 border-l-4 border-blue-600 pl-4">고객문의</h3>
-            <div class="bg-card p-10 rounded-lg max-w-2xl mx-auto">
                 <form class="space-y-4">
                     <input type="text" placeholder="업체명" class="w-full p-3 bg-zinc-800 rounded border border-zinc-700 focus:outline-none focus:border-blue-500">
                     <input type="text" placeholder="성함" class="w-full p-3 bg-zinc-800 rounded border border-zinc-700 focus:outline-none focus:border-blue-500">
-                    <input type="email" placeholder="이메일" class="w-full p-3 bg-zinc-800 rounded border border-zinc-700 focus:outline-none focus:border-blue-500">
-                    <textarea placeholder="문의내용" rows="5" class="w-full p-3 bg-zinc-800 rounded border border-zinc-700 focus:outline-none focus:border-blue-500"></textarea>
+                    <input type="email" placeholder="이메일 / 연락처" class="w-full p-3 bg-zinc-800 rounded border border-zinc-700 focus:outline-none focus:border-blue-500">
+                    <textarea placeholder="문의내용: 소재, 마킹 크기, 생산 조건, 자동화 필요 여부 등을 적어주세요." rows="6" class="w-full p-3 bg-zinc-800 rounded border border-zinc-700 focus:outline-none focus:border-blue-500"></textarea>
                     <button type="button" class="w-full py-4 bg-blue-600 font-bold rounded hover:bg-blue-700">문의하기</button>
                 </form>
             </div>
-        </section>
+        </div>
+    </section>
+</main>
 
-    </main>
-
-    <footer class="mt-20 py-12 text-sm text-zinc-500">
-        <div class="container mx-auto px-6">
-            <div class="mb-8">
-                <span class="text-lg font-bold text-zinc-300">KOOKYHON LASER</span>
+<footer class="mt-20 py-12 text-sm text-zinc-500">
+    <div class="container mx-auto px-6">
+        <div class="mb-8"><span class="text-lg font-bold text-zinc-300">KOOKYHON LASER</span></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-2">
+                <p>(주) 쿠키혼레이저 | 대표 : 전종욱 | 사업자등록번호 : 341-88-01043</p>
+                <p>본사 : 경기 화성시 만세구 송산면 화성로 316-42</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <p>(주) 쿠키혼레이저 | 대표 : 전종욱 | 사업자등록번호 : 341-88-01043</p>
-                    <p>본사 : 경기 화성시 만세구 송산면 화성로 316-42</p>
-                </div>
-                <div class="md:text-right space-y-2">
-                    <p>TEL : 010-7147-5454 | FAX : 000-000-0000</p>
-                    <p>E-mail : venic@kooky.co.kr</p>
-                </div>
-            </div>
-            <div class="mt-10 border-t border-zinc-900 pt-6">
-                <p>© 2026 Kookyhon Laser. All rights reserved.</p>
+            <div class="md:text-right space-y-2">
+                <p>TEL : 031-355-3164 | FAX : 031-355-3129</p>
+                <p>E-mail : owen@kooky.co.kr</p>
             </div>
         </div>
-    </footer>
+        <div class="mt-10 border-t border-zinc-900 pt-6"><p>© 2026 Kookyhon Laser. All rights reserved.</p></div>
+    </div>
+</footer>
 
-    <script>
-        const itemData = {
-            fiber: {
-                title: "파이버레이저",
-                desc: "강력한 출력과 정밀한 제어로 금속 가공의 기준을 새롭게 정의합니다",
-                content: `
-                    <div class='mb-6'>
-                        <h5 class='text-xl font-bold mb-2 blue-accent'>High Performance Fiber Laser Solution</h5>
-                        <p>스테인리스 스틸(SUS), 카본 스틸, 알루미늄(Al), 구리(Cu) 등 다양한 금속에 최적화되었습니다.</p>
+<script>
+    const itemData = {
+        fiber: {
+            title: "파이버 레이저",
+            desc: "금속 부품 마킹과 깊은 각인, 고속 2D 코드 마킹에 최적화된 산업용 솔루션",
+            content: `
+                <div class='grid grid-cols-1 md:grid-cols-2 gap-5 mb-6'>
+                    <div class='p-5 border border-zinc-700 rounded'>
+                        <h4 class='font-bold mb-3 blue-accent'>핵심 특징</h4>
+                        <ul class='text-zinc-400 space-y-2 text-sm'>
+                            <li>■ SUS, Steel, Aluminum, Titanium 등 금속 소재에 적합</li>
+                            <li>■ 로고, 시리얼 번호, QR, Data Matrix 고속 마킹</li>
+                            <li>■ 생산 라인 자동화와 이력 추적 시스템 연동 가능</li>
+                        </ul>
                     </div>
-                    <div class='grid grid-cols-1 md:grid-cols-2 gap-4 mb-6'>
-                        <div class='p-4 border border-zinc-700 rounded'>
-                            <h6 class='font-bold mb-2'>🔷 핵심 경쟁력</h6>
-                            <ul class='text-sm space-y-1 text-zinc-400'>
-                                <li>■ 금속 및 합금 최적화 성능</li>
-                                <li>■ 고에너지 밀도 기반 심층 가공</li>
-                                <li>■ 인라인 자동화 최적화</li>
-                            </ul>
-                        </div>
-                        <div class='p-4 border border-zinc-700 rounded'>
-                            <h6 class='font-bold mb-2'>🔷 적용 분야</h6>
-                            <ul class='text-sm space-y-1 text-zinc-400'>
-                                <li>• 자동차 및 항공 부품 이력 추적</li>
-                                <li>• 금속 Deep Engraving</li>
-                                <li>• 고속 2D 코드 및 Data Matrix</li>
-                            </ul>
-                        </div>
-                    </div>`
-            },
-            bpd: {
-                title: "BPD 레이저",
-                desc: "하나의 레이저로 두 배의 생산성, 생산 효율의 새로운 기준",
-                content: `<p>단일 레이저 소스를 두 개의 헤드로 분할하는 Dual Head 구조를 통해 공정 시간을 획기적으로 단축합니다.</p><h5 class='font-bold mt-4 mb-2 blue-accent'>🔥 생산성 혁신 (One Source Dual Head)</h5><p class='text-zinc-400'>특허등록 제10-2013-0036957 기반 기술 적용으로 동일한 빔 특성을 유지하며 처리량을 2배 향상시킵니다.</p>`
-            },
-            co2: {
-                title: "CO2 레이저",
-                desc: "플라스틱, 유리, 고무까지—소재에 최적화된 가장 효율적인 솔루션",
-                content: `<p>ABS, 아크릴, 유리 등 다양한 소재를 안정적으로 가공합니다. 열 영향 제어 기술을 통해 깨끗한 가공 품질을 확보합니다.</p><h5 class='font-bold mt-4 blue-accent'>🔷 적용 분야</h5><ul class='list-disc ml-5 text-zinc-400'><li>ABS, PC, PET 등 플라스틱 제품 마킹</li><li>PMMA(아크릴) 및 유리 각인</li><li>EPDM, NBR 등 고무 부품 마킹</li></ul>`
-            },
-            uv: {
-                title: "UV 레이저",
-                desc: "열 영향을 최소화한 초정밀 가공, 차원이 다른 마킹 품질",
-                content: `<p>광분해 기반 가공을 통해 열 영향 없이 소재를 직접 분해합니다. PET, FPCB, 유리 등 열에 민감한 소재에 최적입니다.</p>`
-            },
-            '3d': {
-                title: "3D 마킹",
-                desc: "곡면도 평면처럼, 형상 제약 없는 정밀 마킹",
-                content: `<p>동적 초점 제어를 통해 곡면, 단차에서도 일정한 품질을 유지합니다. 3축 대면적 시스템 옵션을 통해 작업 범위를 확장할 수 있습니다.</p>`
-            },
-            vision: {
-                title: "비젼시스템",
-                desc: "위치 보정부터 검사, 데이터 관리까지—완전 자동화의 시작",
-                content: `<p>비전 기반 위치 보정(Alignment) 및 마킹 후 자동 검사(Inspection)를 통합하여 OK/NG 자동 판정을 구현합니다. MES 연동이 가능합니다.</p>`
-            }
-        };
-
-        function showSection(id) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            window.scrollTo(0, 0);
+                    <div class='p-5 border border-zinc-700 rounded'>
+                        <h4 class='font-bold mb-3 blue-accent'>적용 분야</h4>
+                        <ul class='text-zinc-400 space-y-2 text-sm'>
+                            <li>• 자동차·전장 부품</li>
+                            <li>• 공구, 금형, 의료기기, 금속 명판</li>
+                            <li>• Deep Engraving 및 내구성 마킹</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class='text-zinc-300'>금속 표면의 상태와 요구 품질에 따라 출력, 주파수, 펄스 폭, 스캔 속도를 최적화하여 선명하고 안정적인 마킹 품질을 구현합니다.</p>`
+        },
+        co2: {
+            title: "CO2 레이저",
+            desc: "플라스틱, 유리, 고무, 아크릴 등 비금속 소재에 적합한 범용 마킹·가공 솔루션",
+            content: `
+                <p class='mb-5 text-zinc-300'>CO2 레이저는 비금속 소재 표면 가공에 강점이 있으며, 제품 외관 마킹과 커팅, 각인 공정에 폭넓게 적용됩니다.</p>
+                <div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>플라스틱</h4><p class='text-sm text-zinc-400'>ABS, PC, PET 등 표면 마킹</p></div>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>유리·아크릴</h4><p class='text-sm text-zinc-400'>각인, 로고, 패턴 가공</p></div>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>고무·포장재</h4><p class='text-sm text-zinc-400'>날짜, LOT, 식별 코드 마킹</p></div>
+                </div>`
+        },
+        uv: {
+            title: "UV 레이저",
+            desc: "열 영향이 민감한 소재와 고해상도 마킹에 적합한 초정밀 레이저 솔루션",
+            content: `
+                <p class='mb-5 text-zinc-300'>UV 레이저는 짧은 파장 특성으로 소재에 가해지는 열 영향을 줄이고, 미세한 문자와 코드 마킹에 유리합니다.</p>
+                <ul class='list-disc ml-6 text-zinc-400 space-y-2'>
+                    <li>PET, PI Film, FPCB 등 필름류 정밀 마킹</li>
+                    <li>미세 QR, Data Matrix, 고해상도 문자 마킹</li>
+                    <li>열 변형, 그을림, 번짐을 줄여야 하는 공정</li>
+                </ul>`
+        },
+        bpd: {
+            title: "BPD / Dual Head 레이저",
+            desc: "하나의 레이저 소스를 효율적으로 활용하여 생산성을 높이는 듀얼 헤드 솔루션",
+            content: `
+                <p class='mb-5 text-zinc-300'>BPD 구조는 단일 레이저 소스의 빔을 분기하여 2개의 헤드에서 작업하는 방식으로, 동일 공정 반복 제품이나 좌우 대칭 제품의 생산성 향상에 적합합니다.</p>
+                <div class='p-5 border border-zinc-700 rounded bg-zinc-900/50'>
+                    <h4 class='font-bold mb-2 blue-accent'>추천 적용</h4>
+                    <p class='text-zinc-400'>동일 제품 2개 동시 마킹, 좌/우 제품 동시 처리, 생산 Tact Time 단축이 필요한 자동화 라인</p>
+                </div>`
+        },
+        '3d': {
+            title: "3D 마킹",
+            desc: "곡면, 단차, 높이 변화가 있는 제품에도 일정한 품질을 구현하는 동적 초점 제어 솔루션",
+            content: `
+                <p class='text-zinc-300 mb-5'>3D 마킹은 평면뿐 아니라 곡면과 단차가 있는 제품에서도 초점을 보정하여 안정적인 마킹 품질을 유지합니다.</p>
+                <ul class='list-disc ml-6 text-zinc-400 space-y-2'>
+                    <li>곡면 금속 부품, 사출품, 케이스류</li>
+                    <li>높이 차이가 있는 지그 또는 대형 작업 영역</li>
+                    <li>3축 제어와 연동한 대면적 마킹</li>
+                </ul>`
+        },
+        vision: {
+            title: "비전 시스템",
+            desc: "위치 보정, 마킹 후 검사, OK/NG 판정까지 연동하는 자동화 솔루션",
+            content: `
+                <p class='text-zinc-300 mb-5'>비전 시스템은 제품 위치가 일정하지 않은 공정에서 자동으로 위치를 보정하고, 마킹 후 결과를 검사하여 품질 안정성을 높입니다.</p>
+                <div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>Alignment</h4><p class='text-sm text-zinc-400'>마킹 위치 자동 보정</p></div>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>Inspection</h4><p class='text-sm text-zinc-400'>마킹 품질 검사</p></div>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>MES</h4><p class='text-sm text-zinc-400'>이력 데이터 연동</p></div>
+                </div>`
         }
+    };
 
-        function showItem(key) {
-            showSection('item_detail');
-            const data = itemData[key];
-            const tabsContainer = document.getElementById('item_tabs');
-            tabsContainer.innerHTML = '';
-            
-            Object.keys(itemData).forEach(k => {
-                const btn = document.createElement('button');
-                btn.className = `tab-btn px-6 py-3 font-medium transition ${k === key ? 'active' : 'text-zinc-500'}`;
-                btn.innerText = itemData[k].title;
-                btn.onclick = () => showItem(k);
-                tabsContainer.appendChild(btn);
-            });
-
-            document.getElementById('item_content').innerHTML = `
-                <h4 class="text-2xl font-bold mb-2">${data.title}</h4>
-                <p class="text-blue-500 mb-6 font-medium">${data.desc}</p>
-                <div class="text-zinc-300">${data.content}</div>
-            `;
+    const applicationData = {
+        metal: {
+            title: "금속 부품 마킹",
+            desc: "내구성이 필요한 금속 표면의 문자, 로고, 시리얼, 2D 코드 마킹",
+            content: `
+                <p class='mb-5 text-zinc-300'>금속 마킹은 자동차, 전장, 산업 부품에서 가장 많이 사용되는 레이저 응용 분야입니다. 지워지지 않는 식별 정보와 추적 코드를 구현할 수 있습니다.</p>
+                <div class='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                    <div class='p-5 border border-zinc-700 rounded'><h4 class='font-bold mb-2 blue-accent'>추천 레이저</h4><p class='text-zinc-400'>Fiber Laser / 3D Head / Vision Option</p></div>
+                    <div class='p-5 border border-zinc-700 rounded'><h4 class='font-bold mb-2 blue-accent'>대표 공정</h4><p class='text-zinc-400'>SUS 각인, 알루미늄 마킹, 금속 명판, 공구 식별 마킹</p></div>
+                </div>`
+        },
+        plastic: {
+            title: "플라스틱·필름 마킹",
+            desc: "외관 품질과 열 변형을 고려한 플라스틱, 필름류 정밀 마킹",
+            content: `
+                <p class='mb-5 text-zinc-300'>플라스틱은 소재 배합과 색상에 따라 마킹 반응이 크게 달라지므로 샘플 테스트를 통해 최적 파장과 조건을 선정하는 것이 중요합니다.</p>
+                <div class='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                    <div class='p-5 border border-zinc-700 rounded'><h4 class='font-bold mb-2 blue-accent'>추천 레이저</h4><p class='text-zinc-400'>CO2 Laser / UV Laser</p></div>
+                    <div class='p-5 border border-zinc-700 rounded'><h4 class='font-bold mb-2 blue-accent'>대표 공정</h4><p class='text-zinc-400'>ABS·PC 외관 마킹, PET·PI Film 정밀 코드, FPCB 마킹</p></div>
+                </div>`
+        },
+        trace: {
+            title: "QR·Barcode·Serial 추적 마킹",
+            desc: "생산 이력 관리와 품질 추적을 위한 2D 코드 및 시리얼 마킹",
+            content: `
+                <p class='mb-5 text-zinc-300'>레이저 마킹은 잉크나 라벨 방식보다 내구성이 높아 장기 추적이 필요한 제품에 적합합니다. QR, Data Matrix, Barcode, LOT, 날짜, 연속 시리얼을 제품에 직접 마킹할 수 있습니다.</p>
+                <ul class='list-disc ml-6 text-zinc-400 space-y-2'>
+                    <li>자동 증가 시리얼, 날짜, LOT 번호 마킹</li>
+                    <li>MES/ERP 데이터와 연동한 코드 생성</li>
+                    <li>비전 검사로 코드 판독 여부 확인</li>
+                </ul>`
+        },
+        automation: {
+            title: "자동화 라인·비전 검사 연동",
+            desc: "지그, 컨베이어, 로봇, 비전 검사, MES 연동까지 포함한 공정형 솔루션",
+            content: `
+                <p class='mb-5 text-zinc-300'>단품 장비뿐 아니라 생산 라인에 들어가는 자동화형 레이저 시스템은 제품 공급, 위치 보정, 마킹, 검사, 데이터 저장까지 전체 흐름을 고려해야 합니다.</p>
+                <div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>투입/고정</h4><p class='text-sm text-zinc-400'>지그, 컨베이어, 로더 구성</p></div>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>마킹/검사</h4><p class='text-sm text-zinc-400'>레이저 조건, 비전 판정</p></div>
+                    <div class='p-4 border border-zinc-700 rounded'><h4 class='font-bold mb-2'>데이터</h4><p class='text-sm text-zinc-400'>결과 저장, MES 연동</p></div>
+                </div>`
         }
-    </script>
+    };
+
+    function showSection(id) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        const section = document.getElementById(id);
+        if (section) section.classList.add('active');
+        if (id === 'applications') showApplication('metal', false);
+        window.scrollTo(0, 0);
+    }
+
+    function showItem(key) {
+        showSection('item_detail');
+        const data = itemData[key];
+        const tabsContainer = document.getElementById('item_tabs');
+        tabsContainer.innerHTML = '';
+        Object.keys(itemData).forEach(k => {
+            const btn = document.createElement('button');
+            btn.className = `tab-btn px-5 py-3 font-medium transition ${k === key ? 'active' : 'text-zinc-500'}`;
+            btn.innerText = itemData[k].title;
+            btn.onclick = () => showItem(k);
+            tabsContainer.appendChild(btn);
+        });
+        document.getElementById('item_content').innerHTML = `
+            <h3 class="text-2xl font-bold mb-2">${data.title}</h3>
+            <p class="text-blue-500 mb-6 font-medium">${data.desc}</p>
+            <div class="text-zinc-300">${data.content}</div>
+        `;
+    }
+
+    function showApplication(key, scrollTop = true) {
+        showSectionOnly('applications');
+        const data = applicationData[key];
+        document.getElementById('application_content').innerHTML = `
+            <h3 class="text-2xl font-bold mb-2">${data.title}</h3>
+            <p class="text-blue-500 mb-6 font-medium">${data.desc}</p>
+            <div class="text-zinc-300">${data.content}</div>
+            <div class="mt-8 p-5 bg-zinc-900 rounded border border-zinc-700">
+                <p class="text-zinc-400 text-sm">관련 블로그 사례: <a class="text-blue-500 underline" href="https://blog.naver.com/kookyhonlaser/221581169706" target="_blank" rel="noopener">쿠키혼레이저 네이버 블로그 보기</a></p>
+            </div>
+        `;
+        if (scrollTop) window.scrollTo(0, 0);
+    }
+
+    function showSectionOnly(id) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        const section = document.getElementById(id);
+        if (section) section.classList.add('active');
+    }
+</script>
 </body>
 </html>
