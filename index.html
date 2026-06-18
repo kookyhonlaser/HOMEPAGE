@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v6 nickname private -->
     <!-- kookyhon v5 public board -->
     <!-- kookyhon v4 inquiry board -->
     <!-- kookyhon v3 admin link -->
@@ -151,7 +152,6 @@
                 <button class="nav-link" data-section="company" onclick="showSection('company')">회사소개</button>
                 <button class="nav-link" data-section="products" onclick="showSection('products')">제품소개</button>
                 <button class="nav-link" data-section="applications" onclick="showSection('applications')">레이저 응용</button>
-                <a href="admin.html" class="px-4 py-3 rounded-sm kh-btn-line inline-flex items-center gap-2" title="관리자 로그인">⌂ 관리자</a>
                 <button class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('inquiry_board')">상담문의</button>
             </nav>
         </div>
@@ -421,7 +421,6 @@
                         <div class="flex flex-wrap gap-3">
                             <button onclick="showSection('contact')" class="px-7 py-4 rounded-sm kh-btn-primary">내용입력</button>
                             <a href="inquiry-check.html" class="px-7 py-4 rounded-sm kh-btn-line">내 문의 답변 확인</a>
-                            <a href="admin.html" class="px-7 py-4 rounded-sm kh-btn-line">관리자 로그인</a>
                         </div>
                     </div>
 
@@ -436,7 +435,7 @@
                                     <tr>
                                         <th class="px-5 py-4">순번</th>
                                         <th class="px-5 py-4">접수일</th>
-                                        <th class="px-5 py-4">분류/업체</th>
+                                        <th class="px-5 py-4">닉네임</th>
                                         <th class="px-5 py-4">문의내용</th>
                                         <th class="px-5 py-4">답변상태</th>
                                     </tr>
@@ -452,7 +451,7 @@
                         <h4 class="text-xl font-black tracking-[-0.03em]">새 상담문의 작성</h4>
                         <p class="mt-3 text-slate-600 leading-7">
                             장비, 소재, 마킹 내용, 생산 조건을 남겨주시면 담당자가 확인 후 답변드립니다.
-                            비공개로 작성하면 목록에는 비공개 문의로 표시되고, 질문내용은 관리자만 확인합니다.
+                            목록에는 닉네임만 표시됩니다. 비공개로 작성하면 질문내용은 숨김 처리되고 관리자만 확인합니다.
                         </p>
                         <button onclick="showSection('contact')" class="mt-5 px-7 py-4 rounded-sm kh-btn-primary">내용입력으로 이동</button>
                     </div>
@@ -472,6 +471,7 @@
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
                         <form id="inquiryForm" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
+                            <input id="customerNickname" name="customerNickname" type="text" placeholder="닉네임 / 목록 표시명" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="companyName" name="companyName" type="text" placeholder="업체명" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="customerName" name="customerName" type="text" placeholder="성함" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="customerPhone" name="customerPhone" type="tel" placeholder="연락처" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
@@ -519,9 +519,6 @@
                             <p><span class="block text-white font-black">Address</span>경기 화성시 송산면 화성로 316-42</p>
                         </div>
                         <div class="mt-8 pt-6 border-t border-white/10">
-                            <a href="admin.html" class="inline-flex items-center gap-2 px-5 py-3 bg-white text-slate-950 font-black rounded-sm hover:bg-slate-100">
-                                ⌂ 관리자 로그인
-                            </a>
                             <p class="mt-3 text-xs text-slate-400 leading-5">관리자만 상담문의 전체 목록과 비공개 문의를 확인할 수 있습니다.</p>
                         </div>
                         <div class="mt-8 pt-6 border-t border-white/10 text-sm text-slate-400 leading-6">
@@ -553,8 +550,6 @@
                     <button class="footer-link" onclick="showSection('company')">회사소개</button>
                     <button class="footer-link" onclick="showSection('applications')">레이저 응용</button>
                     <button class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
-                    <a class="footer-link" href="admin.html">관리자 로그인</a>
-                    <a class="footer-link" href="admin.html">관리자</a>
                 </div>
             </div>
         </div>
@@ -580,6 +575,7 @@
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 
         async function submitInquiry() {
+            const nickname = document.getElementById('customerNickname').value.trim();
             const company = document.getElementById('companyName').value.trim();
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
@@ -589,12 +585,13 @@
             const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
             const resultBox = document.getElementById('inquiryResult');
 
-            if (!company || !name || !phone || !password || !message) {
-                alert('업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
+            if (!nickname || !company || !name || !phone || !password || !message) {
+                alert('닉네임, 업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
                 return;
             }
 
             const { data, error } = await supabaseClient.rpc('submit_inquiry', {
+                p_nickname: nickname,
                 p_company: company,
                 p_name: name,
                 p_phone: phone,
@@ -634,8 +631,6 @@
                 .replaceAll("'", '&#039;');
         }
 
-
-
         async function loadIndexPublicInquiries(forceReload = false) {
             const list = document.getElementById('indexPublicInquiryList');
             if (!list) return;
@@ -663,16 +658,17 @@
 
             list.innerHTML = data.map((item, index) => {
                 const isPrivate = item.visibility === 'private';
-                const messageText = isPrivate ? '비공개 문의입니다. 질문내용은 관리자만 확인할 수 있습니다.' : (item.message || '');
-                const companyText = item.company || '';
+                const messageText = isPrivate ? '비공개 문의입니다. 질문내용은 비밀번호 확인 후 본인과 관리자만 볼 수 있습니다.' : (item.message || '');
+                const nicknameText = item.nickname || '문의자';
                 const replyText = item.has_reply ? '<div class="mt-2 text-sm text-[var(--kh-blue)] font-bold">답변 등록됨</div>' : '<div class="mt-2 text-sm text-slate-400 font-bold">답변 대기</div>';
+                const checkUrl = `inquiry-check.html?code=${encodeURIComponent(item.public_code || '')}`;
 
                 return `
-                    <tr class="hover:bg-slate-50">
+                    <tr class="hover:bg-slate-50 cursor-pointer" onclick="location.href='${checkUrl}'">
                         <td class="px-5 py-4 font-black">${index + 1}</td>
                         <td class="px-5 py-4 whitespace-nowrap">${item.created_at ? new Date(item.created_at).toLocaleDateString('ko-KR') : ''}</td>
                         <td class="px-5 py-4 font-bold">
-                            <div>${escapeHtml(companyText)}</div>
+                            <div>${escapeHtml(nicknameText)}</div>
                             <span class="inline-block mt-2 px-2 py-1 text-xs font-black rounded-sm ${isPrivate ? 'bg-slate-900 text-white' : 'bg-blue-100 text-[var(--kh-blue)]'}">
                                 ${isPrivate ? '비공개' : '공개'}
                             </span>
@@ -680,6 +676,7 @@
                         <td class="px-5 py-4">
                             <div class="line-clamp-2 ${isPrivate ? 'text-slate-400' : 'text-slate-700'}">${escapeHtml(messageText)}</div>
                             ${replyText}
+                            <div class="mt-2 text-xs text-slate-400">클릭하면 비밀번호 확인 후 상세내용을 볼 수 있습니다.</div>
                         </td>
                         <td class="px-5 py-4 whitespace-nowrap">
                             <span class="px-3 py-1 text-xs font-black rounded-sm bg-slate-100 text-slate-700">

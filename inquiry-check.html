@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v6 check code prefill -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문의 답변 확인 - 쿠키혼레이저</title>
@@ -82,7 +83,7 @@ async function checkInquiry() {
             <span class="px-3 py-1 bg-slate-100 rounded-sm">${item.visibility === 'private' ? '비공개' : '공개'}</span>
             <span class="px-3 py-1 bg-slate-100 rounded-sm">${statusText(item.status)}</span>
         </div>
-        <h2 class="text-2xl font-black">${esc(item.company)} / ${esc(item.name)}</h2>
+        <h2 class="text-2xl font-black">${esc(item.nickname || item.company)} / ${esc(item.name)}</h2>
         <p class="mt-2 text-sm text-slate-500">접수일: ${new Date(item.created_at).toLocaleString('ko-KR')}</p>
 
         <div class="mt-6">
@@ -98,6 +99,20 @@ async function checkInquiry() {
         </div>
     `;
 }
+
+
+function prefillPublicCodeFromUrl() {
+    const params = new URLSearchParams(location.search);
+    const code = params.get('code');
+    if (code) {
+        const input = document.getElementById('publicCode');
+        if (input) input.value = code;
+        const pw = document.getElementById('customerPassword');
+        if (pw) pw.focus();
+    }
+}
+prefillPublicCodeFromUrl();
+
 </script>
 </body>
 </html>
