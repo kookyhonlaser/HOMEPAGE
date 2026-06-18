@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 상세 - 쿠키혼레이저</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        function esc(v) {
+            return String(v || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#039;");
+        }
+        function statusText(s) {
+            if (s === 'answered') return '답변완료';
+            if (s === 'closed') return '종결';
+            return '접수';
+        }
+        function visibilityText(v) {
+            return v === 'public' ? '공개' : '비공개';
+        }
+        function dateText(v) {
+            return v ? new Date(v).toLocaleString('ko-KR') : '';
+        }
+    </script>
+
+
+    <style>
+        :root { --kh-blue:#005bac; --kh-blue-dark:#003f7a; --kh-line:#e5e7eb; --kh-bg:#f5f7fa; }
+        body { font-family:'Malgun Gothic','Apple SD Gothic Neo','Segoe UI',Arial,sans-serif; background:var(--kh-bg); color:#111827; word-break: keep-all; }
+        .kh-card { background:#fff; border:1px solid var(--kh-line); box-shadow:0 16px 40px rgba(17,24,39,.06); }
+        .kh-btn-primary { background:var(--kh-blue); color:white; font-weight:800; }
+        .kh-btn-primary:hover { background:var(--kh-blue-dark); }
+        .kh-btn-line { border:1px solid #cbd5e1; background:white; font-weight:800; }
+        .kh-btn-line:hover { border-color:var(--kh-blue); color:var(--kh-blue); }
+        .badge-private { background:#111827; color:#fff; }
+        .badge-public { background:#dbeafe; color:var(--kh-blue); }
+        .badge-status { background:#f1f5f9; color:#334155; }
+        .row-hover:hover { background:#f8fafc; }
+        .icon-btn { width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border:1px solid #cbd5e1; background:#fff; border-radius:4px; font-weight:900; text-decoration:none; }
+        .icon-btn:hover { border-color:var(--kh-blue); color:var(--kh-blue); }
+    </style>
+
+</head>
+<body>
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="font-black text-xl tracking-[-0.04em]">KOOKYHON LASER</a>
+            <nav class="flex gap-3 text-sm font-bold items-center">
+                <a href="index.html" class="icon-btn" title="홈페이지로 이동">⌂</a>
+                <a href="admin.html" class="px-4 py-2 kh-btn-line rounded-sm">목록으로</a>
+                <button onclick="logout()" class="px-4 py-2 bg-slate-900 text-white rounded-sm">로그아웃</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <section id="loginNotice" class="hidden kh-card p-8 rounded-sm">
+            <h1 class="text-3xl font-black">관리자 로그인이 필요합니다.</h1>
+            <p class="mt-3 text-slate-600">상세 상담내용은 관리자만 확인할 수 있습니다.</p>
+            <a href="admin.html" class="inline-block mt-6 px-6 py-3 kh-btn-primary rounded-sm">관리자 로그인</a>
+        </section>
+
+        <section id="detailPanel" class="hidden">
+            <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                <div>
+                    <h1 class="text-4xl font-black tracking-[-0.05em]">상담문의 상세</h1>
+                    <p class="mt-3 text-slate-600">구체적인 상담내용 확인, 답글 저장, 공개승인을 이 화면에서 처리합니다.</p>
+                </div>
+                <a href="admin.html" class="px-5 py-3 kh-btn-line rounded-sm">← 목록으로 돌아가기</a>
+            </div>
+
+            <div id="detailBox" class="kh-card p-8 md:p-10 rounded-sm"></div>
+        </section>
+    </main>
+
+<script>
+const params = new URLSearchParams(location.search);
+const inquiryId = Number(params.get('id'));
+
+async function checkSessionAndLoad() {
+    const { data } = await supabaseClient.auth.getSession();
+    if (!data.session) {
+        document.getElementById('loginNotice').classList.remove('hidden');
+        return;
+    }
+    document.getElementById('detailPanel').classList.remove('hidden');
+    await loadDetail();
+}
+
+async function logout() {
+    await supabaseClient.auth.signOut();
+    location.href = 'admin.html';
+}
+
+async function loadDetail() {
+    if (!inquiryId) {
+        document.getElementById('detailBox').innerHTML = '<div class="text-red-600">문의 ID가 없습니다.</div>';
+        return;
+    }
+
+    const { data, error } = await supabaseClient
+        .from('inquiries')
+        .select('id, public_code, company, name, phone, email, visibility, message, admin_reply, status, is_public_approved, created_at, replied_at')
+        .eq('id', inquiryId)
+        .single();
+
+    if (error) {
+        document.getElementById('detailBox').innerHTML = `<div class="text-red-600">${esc(error.message)}</div>`;
+        return;
+    }
+
+    renderDetail(data);
+}
+
+function renderDetail(item) {
+    document.getElementById('detailBox').innerHTML = `
+        <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+            <div>
+                <div class="flex flex-wrap gap-2 mb-4 text-xs font-black">
+                    <span class="px-3 py-1 rounded-sm ${item.visibility === 'private' ? 'badge-private' : 'badge-public'}">${visibilityText(item.visibility)}</span>
+                    <span class="px-3 py-1 rounded-sm badge-status">${statusText(item.status)}</span>
+                    <span class="px-3 py-1 rounded-sm bg-slate-100">접수번호 ${esc(item.public_code)}</span>
+                    <span class="px-3 py-1 rounded-sm bg-slate-100">${dateText(item.created_at)}</span>
+                </div>
+                <h2 class="text-3xl font-black tracking-[-0.04em]">${esc(item.company)} / ${esc(item.name)}</h2>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <button onclick="toggleApprove(${item.id}, ${item.is_public_approved ? 'false' : 'true'})" class="px-5 py-3 kh-btn-line rounded-sm">
+                    ${item.is_public_approved ? '공개승인 해제' : '공개승인'}
+                </button>
+                <button onclick="deleteInquiry(${item.id})" class="px-5 py-3 text-red-600 font-bold rounded-sm border border-red-200">삭제</button>
+            </div>
+        </div>
+
+        <div class="mt-8 grid md:grid-cols-3 gap-5">
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>연락처</b><br>${esc(item.phone || '')}</div>
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>이메일</b><br>${esc(item.email || '미입력')}</div>
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>공개승인</b><br>${item.is_public_approved ? '승인됨' : '미승인'}</div>
+        </div>
+
+        <div class="mt-8">
+            <h3 class="text-xl font-black mb-3">상담내용</h3>
+            <div class="bg-slate-50 border border-slate-200 p-6 rounded-sm whitespace-pre-wrap leading-8">${esc(item.message)}</div>
+        </div>
+
+        <div class="mt-8">
+            <h3 class="text-xl font-black mb-3">관리자 답글</h3>
+            <textarea id="replyText" rows="8" class="w-full p-5 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]" placeholder="고객에게 보여질 답글을 입력하세요.">${esc(item.admin_reply || '')}</textarea>
+            <div class="mt-4 flex flex-wrap gap-3">
+                <button onclick="saveReply(${item.id})" class="px-7 py-4 kh-btn-primary rounded-sm">답글 저장</button>
+                <button onclick="updateStatus(${item.id}, 'closed')" class="px-7 py-4 kh-btn-line rounded-sm">종결 처리</button>
+                <button onclick="updateStatus(${item.id}, 'received')" class="px-7 py-4 kh-btn-line rounded-sm">접수로 변경</button>
+                <a href="admin.html" class="px-7 py-4 kh-btn-line rounded-sm">목록으로</a>
+            </div>
+        </div>
+    `;
+}
+
+async function saveReply(id) {
+    const reply = document.getElementById('replyText').value.trim();
+    const updateData = {
+        admin_reply: reply,
+        status: reply ? 'answered' : 'received',
+        replied_at: reply ? new Date().toISOString() : null
+    };
+    const { error } = await supabaseClient.from('inquiries').update(updateData).eq('id', id);
+    if (error) return alert(error.message);
+    alert('답글이 저장되었습니다.');
+    loadDetail();
+}
+
+async function updateStatus(id, status) {
+    const { error } = await supabaseClient.from('inquiries').update({ status }).eq('id', id);
+    if (error) return alert(error.message);
+    loadDetail();
+}
+
+async function toggleApprove(id, approved) {
+    const { error } = await supabaseClient.from('inquiries').update({ is_public_approved: approved }).eq('id', id);
+    if (error) return alert(error.message);
+    loadDetail();
+}
+
+async function deleteInquiry(id) {
+    if (!confirm('이 문의를 삭제하시겠습니까?')) return;
+    const { error } = await supabaseClient.from('inquiries').delete().eq('id', id);
+    if (error) return alert(error.message);
+    location.href = 'admin.html';
+}
+
+checkSessionAndLoad();
+</script>
+</body>
+</html>
