@@ -400,13 +400,42 @@
             <section class="py-24 bg-[var(--kh-bg)]">
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
-                        <form class="grid md:grid-cols-2 gap-5">
-                            <input type="text" placeholder="업체명" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input type="text" placeholder="성함" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input type="tel" placeholder="연락처" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input type="email" placeholder="이메일" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <textarea placeholder="문의내용" rows="7" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
-                            <button type="button" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">문의하기</button>
+                        <form id="inquiryForm" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
+                            <input id="companyName" name="companyName" type="text" placeholder="업체명" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                            <input id="customerName" name="customerName" type="text" placeholder="성함" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                            <input id="customerPhone" name="customerPhone" type="tel" placeholder="연락처" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                            <input id="customerEmail" name="customerEmail" type="email" placeholder="이메일" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                            <input id="customerPassword" name="customerPassword" type="password" placeholder="문의 확인용 비밀번호" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+
+                            <div class="md:col-span-2 border border-slate-300 rounded-sm p-5 bg-slate-50">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                                    <div>
+                                        <p class="font-black text-slate-900">문의 공개 여부</p>
+                                        <p class="mt-1 text-sm text-slate-500 leading-6">고객은 공개/비공개를 선택할 수 있고, 쿠키혼레이저 관리자는 모든 문의를 확인할 수 있습니다.</p>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <label class="flex items-center gap-2 px-4 py-3 bg-white border border-slate-300 rounded-sm cursor-pointer hover:border-[var(--kh-blue)]">
+                                            <input id="visibilityPublic" type="radio" name="visibility" value="public">
+                                            <span class="font-bold">공개</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 px-4 py-3 bg-white border border-slate-300 rounded-sm cursor-pointer hover:border-[var(--kh-blue)]">
+                                            <input id="visibilityPrivate" type="radio" name="visibility" value="private" checked>
+                                            <span class="font-bold">비공개</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <p class="mt-3 text-xs text-slate-500 leading-5">
+                                    ※ 공개 문의도 개인정보와 민감한 내용은 관리자 확인 후 노출하는 방식이 안전합니다.
+                                </p>
+                            </div>
+
+                            <textarea id="inquiryMessage" name="inquiryMessage" placeholder="문의내용" rows="7" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
+                            <button type="submit" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">문의 등록하기</button>
+                            <div id="inquiryResult" class="md:col-span-2 hidden p-5 bg-blue-50 border border-blue-100 rounded-sm text-slate-700 leading-7"></div>
+                            <div class="md:col-span-2 flex flex-wrap gap-3 text-sm font-bold">
+                                <a href="inquiry-check.html" class="text-[var(--kh-blue)] hover:underline">접수번호로 답변 확인하기 →</a>
+                                <a href="public-inquiries.html" class="text-slate-600 hover:text-[var(--kh-blue)] hover:underline">공개 문의 보기 →</a>
+                            </div>
                         </form>
                     </div>
                     <aside class="bg-slate-950 text-white p-8 md:p-10 rounded-sm">
@@ -416,6 +445,10 @@
                             <p><span class="block text-white font-black">FAX</span>031-355-3129</p>
                             <p><span class="block text-white font-black">E-mail</span>owen@kooky.co.kr</p>
                             <p><span class="block text-white font-black">Address</span>경기 화성시 송산면 화성로 316-42</p>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-white/10 text-sm text-slate-400 leading-6">
+                            <p class="font-bold text-white mb-2">관리자 확인 기준</p>
+                            <p>문의하기를 누르면 메일 프로그램이 열리고, 공개/비공개 선택값이 메일 제목과 본문에 함께 들어갑니다. 추후 관리자 페이지를 구축하면 모든 문의를 별도 관리할 수 있습니다.</p>
                         </div>
                     </aside>
                 </div>
@@ -442,11 +475,13 @@
                     <button class="footer-link" onclick="showSection('company')">회사소개</button>
                     <button class="footer-link" onclick="showSection('applications')">레이저 응용</button>
                     <button class="footer-link" onclick="showSection('contact')">상담문의</button>
+                    <a class="footer-link" href="admin.html">관리자</a>
                 </div>
             </div>
         </div>
     </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         function showSection(id) {
             document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
@@ -457,6 +492,66 @@
             });
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+        async function submitInquiry() {
+            const company = document.getElementById('companyName').value.trim();
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const email = document.getElementById('customerEmail').value.trim();
+            const password = document.getElementById('customerPassword').value.trim();
+            const message = document.getElementById('inquiryMessage').value.trim();
+            const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
+            const resultBox = document.getElementById('inquiryResult');
+
+            if (!company || !name || !phone || !password || !message) {
+                alert('업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
+                return;
+            }
+
+            const { data, error } = await supabaseClient.rpc('submit_inquiry', {
+                p_company: company,
+                p_name: name,
+                p_phone: phone,
+                p_email: email,
+                p_visibility: visibility,
+                p_customer_password: password,
+                p_message: message
+            });
+
+            if (error) {
+                alert(error.message || '문의 등록 중 오류가 발생했습니다.');
+                return;
+            }
+
+            const result = Array.isArray(data) ? data[0] : data;
+            const publicCode = result?.public_code || '';
+
+            resultBox.classList.remove('hidden');
+            resultBox.innerHTML = `
+                <b>문의가 등록되었습니다.</b><br>
+                접수번호: <b>${escapeHtml(publicCode)}</b><br>
+                답변 확인 시 접수번호와 문의 확인용 비밀번호가 필요합니다.
+                <div class="mt-3">
+                    <a href="inquiry-check.html" class="font-black text-[var(--kh-blue)]">답변 확인 페이지로 이동 →</a>
+                </div>
+            `;
+            document.getElementById('inquiryForm').reset();
+            document.getElementById('visibilityPrivate').checked = true;
+        }
+
+        function escapeHtml(value) {
+            return String(value || '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
     </script>
 </body>
 </html>

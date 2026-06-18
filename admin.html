@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 관리자 - 쿠키혼레이저</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+        function esc(v) {
+            return String(v || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+        }
+        function statusText(s) {
+            if (s === 'answered') return '답변완료';
+            if (s === 'closed') return '종결';
+            return '접수';
+        }
+    </script>
+    <style>
+        :root { --kh-blue:#005bac; --kh-blue-dark:#003f7a; --kh-line:#e5e7eb; --kh-bg:#f5f7fa; }
+        body { font-family:'Malgun Gothic','Apple SD Gothic Neo','Segoe UI',Arial,sans-serif; background:var(--kh-bg); color:#111827; word-break: keep-all; }
+        .kh-card { background:#fff; border:1px solid var(--kh-line); box-shadow:0 16px 40px rgba(17,24,39,.06); }
+        .kh-btn-primary { background:var(--kh-blue); color:white; font-weight:800; }
+        .kh-btn-primary:hover { background:var(--kh-blue-dark); }
+        .kh-btn-line { border:1px solid #cbd5e1; background:white; font-weight:800; }
+        .kh-btn-line:hover { border-color:var(--kh-blue); color:var(--kh-blue); }
+        .badge-private { background:#111827; color:#fff; }
+        .badge-public { background:#dbeafe; color:var(--kh-blue); }
+    </style>
+</head>
+<body>
+    <header class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="font-black text-xl tracking-[-0.04em]">KOOKYHON LASER</a>
+            <nav class="flex gap-5 text-sm font-bold">
+                <a href="index.html">홈페이지</a>
+                <a href="inquiry-check.html">고객 답변확인</a>
+                <a href="public-inquiries.html">공개 문의</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <section id="loginBox" class="kh-card p-8 md:p-10 rounded-sm max-w-xl">
+            <h1 class="text-3xl font-black tracking-[-0.04em]">관리자 로그인</h1>
+            <p class="mt-3 text-slate-600 leading-7">Supabase Auth 관리자 계정으로 로그인합니다.</p>
+            <form onsubmit="login(); return false;" class="mt-8 space-y-4">
+                <input id="adminEmail" type="email" placeholder="관리자 이메일" value="owen@kooky.co.kr" class="w-full p-4 border border-slate-300 rounded-sm">
+                <input id="adminPassword" type="password" placeholder="관리자 비밀번호" class="w-full p-4 border border-slate-300 rounded-sm">
+                <button type="submit" class="w-full py-4 kh-btn-primary rounded-sm">로그인</button>
+            </form>
+        </section>
+
+        <section id="panel" class="hidden">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+                <div>
+                    <h1 class="text-4xl font-black tracking-[-0.05em]">문의 관리자</h1>
+                    <p id="loginInfo" class="mt-3 text-slate-600"></p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="loadInquiries('all')" class="px-5 py-3 kh-btn-line rounded-sm">전체</button>
+                    <button onclick="loadInquiries('private')" class="px-5 py-3 kh-btn-line rounded-sm">비공개</button>
+                    <button onclick="loadInquiries('public')" class="px-5 py-3 kh-btn-line rounded-sm">공개</button>
+                    <button onclick="logout()" class="px-5 py-3 bg-slate-900 text-white font-bold rounded-sm">로그아웃</button>
+                </div>
+            </div>
+
+            <div class="kh-card p-6 rounded-sm mb-8">
+                <h2 class="text-xl font-black">관리자 비밀번호 변경</h2>
+                <form onsubmit="changePassword(); return false;" class="mt-5 grid md:grid-cols-[1fr_auto] gap-3">
+                    <input id="newPassword" type="password" placeholder="새 비밀번호, 8자 이상" class="p-4 border border-slate-300 rounded-sm">
+                    <button class="px-6 py-4 kh-btn-primary rounded-sm">변경</button>
+                </form>
+            </div>
+
+            <div id="list" class="space-y-5"></div>
+        </section>
+    </main>
+
+<script>
+let currentFilter = 'all';
+
+async function checkSession() {
+    const { data } = await supabaseClient.auth.getSession();
+    if (data.session) {
+        document.getElementById('loginBox').classList.add('hidden');
+        document.getElementById('panel').classList.remove('hidden');
+        document.getElementById('loginInfo').innerText = `${data.session.user.email} 계정으로 로그인 중`;
+        await loadInquiries('all');
+    }
+}
+
+async function login() {
+    const email = document.getElementById('adminEmail').value.trim();
+    const password = document.getElementById('adminPassword').value;
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    if (error) {
+        alert(error.message || '로그인에 실패했습니다.');
+        return;
+    }
+    document.getElementById('loginBox').classList.add('hidden');
+    document.getElementById('panel').classList.remove('hidden');
+    document.getElementById('loginInfo').innerText = `${data.user.email} 계정으로 로그인 중`;
+    await loadInquiries('all');
+}
+
+async function logout() {
+    await supabaseClient.auth.signOut();
+    location.reload();
+}
+
+async function loadInquiries(filter = currentFilter) {
+    currentFilter = filter;
+    let query = supabaseClient
+        .from('inquiries')
+        .select('id, public_code, company, name, phone, email, visibility, message, admin_reply, status, is_public_approved, created_at, replied_at')
+        .order('created_at', { ascending: false })
+        .limit(300);
+
+    if (filter === 'public' || filter === 'private') query = query.eq('visibility', filter);
+
+    const { data, error } = await query;
+    const list = document.getElementById('list');
+
+    if (error) {
+        list.innerHTML = `<div class="kh-card p-8 rounded-sm text-red-600">${esc(error.message)}</div>`;
+        return;
+    }
+
+    if (!data.length) {
+        list.innerHTML = '<div class="kh-card p-8 rounded-sm text-slate-600">표시할 문의가 없습니다.</div>';
+        return;
+    }
+
+    list.innerHTML = data.map(item => `
+        <article class="kh-card p-7 rounded-sm">
+            <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                <div>
+                    <div class="flex flex-wrap gap-2 mb-3 text-xs font-black">
+                        <span class="px-3 py-1 rounded-sm ${item.visibility === 'private' ? 'badge-private' : 'badge-public'}">${item.visibility === 'private' ? '비공개' : '공개'}</span>
+                        <span class="px-3 py-1 rounded-sm bg-slate-100">${statusText(item.status)}</span>
+                        <span class="px-3 py-1 rounded-sm bg-slate-100">접수번호 ${esc(item.public_code)}</span>
+                        <span class="px-3 py-1 rounded-sm bg-slate-100">${new Date(item.created_at).toLocaleString('ko-KR')}</span>
+                    </div>
+                    <h2 class="text-2xl font-black tracking-[-0.03em]">${esc(item.company)} / ${esc(item.name)}</h2>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="toggleApprove(${item.id}, ${item.is_public_approved ? 'false' : 'true'})" class="px-4 py-2 kh-btn-line rounded-sm text-sm">
+                        ${item.is_public_approved ? '공개승인 해제' : '공개승인'}
+                    </button>
+                    <button onclick="deleteInquiry(${item.id})" class="px-4 py-2 text-red-600 font-bold text-sm">삭제</button>
+                </div>
+            </div>
+
+            <div class="mt-5 grid md:grid-cols-3 gap-4 text-sm text-slate-600">
+                <p><b class="text-slate-900">연락처</b><br>${esc(item.phone)}</p>
+                <p><b class="text-slate-900">이메일</b><br>${esc(item.email || '미입력')}</p>
+                <p><b class="text-slate-900">공개승인</b><br>${item.is_public_approved ? '승인됨' : '미승인'}</p>
+            </div>
+
+            <div class="mt-5 bg-slate-50 border border-slate-200 p-5 rounded-sm whitespace-pre-wrap leading-7">${esc(item.message)}</div>
+
+            <div class="mt-5">
+                <label class="block font-black mb-2">답글</label>
+                <textarea id="reply-${item.id}" rows="4" class="w-full p-4 border border-slate-300 rounded-sm">${esc(item.admin_reply || '')}</textarea>
+                <div class="mt-3 flex flex-wrap gap-3">
+                    <button onclick="saveReply(${item.id})" class="px-6 py-3 kh-btn-primary rounded-sm">답글 저장</button>
+                    <button onclick="updateStatus(${item.id}, 'closed')" class="px-6 py-3 kh-btn-line rounded-sm">종결 처리</button>
+                    <button onclick="updateStatus(${item.id}, 'received')" class="px-6 py-3 kh-btn-line rounded-sm">접수로 변경</button>
+                </div>
+            </div>
+        </article>
+    `).join('');
+}
+
+async function saveReply(id) {
+    const reply = document.getElementById(`reply-${id}`).value.trim();
+    const updateData = {
+        admin_reply: reply,
+        status: reply ? 'answered' : 'received',
+        replied_at: reply ? new Date().toISOString() : null
+    };
+    const { error } = await supabaseClient.from('inquiries').update(updateData).eq('id', id);
+    if (error) return alert(error.message);
+    alert('답글이 저장되었습니다.');
+    loadInquiries();
+}
+
+async function updateStatus(id, status) {
+    const { error } = await supabaseClient.from('inquiries').update({ status }).eq('id', id);
+    if (error) return alert(error.message);
+    loadInquiries();
+}
+
+async function toggleApprove(id, approved) {
+    const { error } = await supabaseClient.from('inquiries').update({ is_public_approved: approved }).eq('id', id);
+    if (error) return alert(error.message);
+    loadInquiries();
+}
+
+async function deleteInquiry(id) {
+    if (!confirm('이 문의를 삭제하시겠습니까?')) return;
+    const { error } = await supabaseClient.from('inquiries').delete().eq('id', id);
+    if (error) return alert(error.message);
+    loadInquiries();
+}
+
+async function changePassword() {
+    const password = document.getElementById('newPassword').value;
+    if (password.length < 8) {
+        alert('새 비밀번호는 8자 이상으로 입력하세요.');
+        return;
+    }
+    const { error } = await supabaseClient.auth.updateUser({ password });
+    if (error) return alert(error.message);
+    document.getElementById('newPassword').value = '';
+    alert('관리자 비밀번호가 변경되었습니다.');
+}
+
+checkSession();
+</script>
+</body>
+</html>

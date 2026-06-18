@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공개 문의 - 쿠키혼레이저</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+        function esc(v) {
+            return String(v || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+        }
+        function statusText(s) {
+            if (s === 'answered') return '답변완료';
+            if (s === 'closed') return '종결';
+            return '접수';
+        }
+    </script>
+    <style>
+        :root { --kh-blue:#005bac; --kh-blue-dark:#003f7a; --kh-line:#e5e7eb; --kh-bg:#f5f7fa; }
+        body { font-family:'Malgun Gothic','Apple SD Gothic Neo','Segoe UI',Arial,sans-serif; background:var(--kh-bg); color:#111827; word-break: keep-all; }
+        .kh-card { background:#fff; border:1px solid var(--kh-line); box-shadow:0 16px 40px rgba(17,24,39,.06); }
+        .kh-btn-primary { background:var(--kh-blue); color:white; font-weight:800; }
+        .kh-btn-primary:hover { background:var(--kh-blue-dark); }
+        .kh-btn-line { border:1px solid #cbd5e1; background:white; font-weight:800; }
+        .kh-btn-line:hover { border-color:var(--kh-blue); color:var(--kh-blue); }
+        .badge-private { background:#111827; color:#fff; }
+        .badge-public { background:#dbeafe; color:var(--kh-blue); }
+    </style>
+</head>
+<body>
+<header class="bg-white border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+        <a href="index.html" class="font-black text-xl tracking-[-0.04em]">KOOKYHON LASER</a>
+        <a href="index.html" class="font-bold text-sm">홈으로</a>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-12">
+    <div class="mb-8">
+        <h1 class="text-4xl font-black tracking-[-0.05em]">공개 문의</h1>
+        <p class="mt-3 text-slate-600 leading-7">고객이 공개를 선택했고 관리자가 공개 승인한 문의만 표시됩니다.</p>
+    </div>
+    <div id="list" class="space-y-5"></div>
+</main>
+
+<script>
+async function loadPublic() {
+    const box = document.getElementById('list');
+    const { data, error } = await supabaseClient.rpc('get_public_inquiries');
+    if (error) {
+        box.innerHTML = `<div class="kh-card p-8 rounded-sm text-red-600">${esc(error.message)}</div>`;
+        return;
+    }
+
+    if (!data.length) {
+        box.innerHTML = '<div class="kh-card p-8 rounded-sm text-slate-600">공개 승인된 문의가 없습니다.</div>';
+        return;
+    }
+
+    box.innerHTML = data.map(item => `
+        <article class="kh-card p-7 rounded-sm">
+            <div class="flex flex-wrap gap-2 mb-3 text-xs font-black">
+                <span class="px-3 py-1 bg-blue-100 text-[var(--kh-blue)] rounded-sm">공개 문의</span>
+                <span class="px-3 py-1 bg-slate-100 rounded-sm">${new Date(item.created_at).toLocaleString('ko-KR')}</span>
+            </div>
+            <h2 class="text-2xl font-black tracking-[-0.03em]">${esc(item.company)}</h2>
+            <div class="mt-5 bg-slate-50 border border-slate-200 p-5 rounded-sm whitespace-pre-wrap leading-7">${esc(item.message)}</div>
+            <div class="mt-5">
+                <h3 class="font-black mb-2">답변</h3>
+                <div class="bg-blue-50 border border-blue-100 p-5 rounded-sm whitespace-pre-wrap leading-7">${item.admin_reply ? esc(item.admin_reply) : '답변 준비 중입니다.'}</div>
+            </div>
+        </article>
+    `).join('');
+}
+loadPublic();
+</script>
+</body>
+</html>

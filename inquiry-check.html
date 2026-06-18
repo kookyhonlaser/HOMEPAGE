@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의 답변 확인 - 쿠키혼레이저</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+        function esc(v) {
+            return String(v || '').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
+        }
+        function statusText(s) {
+            if (s === 'answered') return '답변완료';
+            if (s === 'closed') return '종결';
+            return '접수';
+        }
+    </script>
+    <style>
+        :root { --kh-blue:#005bac; --kh-blue-dark:#003f7a; --kh-line:#e5e7eb; --kh-bg:#f5f7fa; }
+        body { font-family:'Malgun Gothic','Apple SD Gothic Neo','Segoe UI',Arial,sans-serif; background:var(--kh-bg); color:#111827; word-break: keep-all; }
+        .kh-card { background:#fff; border:1px solid var(--kh-line); box-shadow:0 16px 40px rgba(17,24,39,.06); }
+        .kh-btn-primary { background:var(--kh-blue); color:white; font-weight:800; }
+        .kh-btn-primary:hover { background:var(--kh-blue-dark); }
+        .kh-btn-line { border:1px solid #cbd5e1; background:white; font-weight:800; }
+        .kh-btn-line:hover { border-color:var(--kh-blue); color:var(--kh-blue); }
+        .badge-private { background:#111827; color:#fff; }
+        .badge-public { background:#dbeafe; color:var(--kh-blue); }
+    </style>
+</head>
+<body>
+<header class="bg-white border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-6 h-20 flex justify-between items-center">
+        <a href="index.html" class="font-black text-xl tracking-[-0.04em]">KOOKYHON LASER</a>
+        <a href="index.html" class="font-bold text-sm">홈으로</a>
+    </div>
+</header>
+
+<main class="max-w-5xl mx-auto px-6 py-12">
+    <section class="kh-card p-8 md:p-10 rounded-sm">
+        <h1 class="text-3xl font-black tracking-[-0.04em]">문의 답변 확인</h1>
+        <p class="mt-3 text-slate-600 leading-7">문의 등록 시 발급된 접수번호와 직접 입력한 비밀번호를 입력하세요.</p>
+        <form onsubmit="checkInquiry(); return false;" class="mt-8 grid md:grid-cols-[1fr_1fr_auto] gap-3">
+            <input id="publicCode" type="text" placeholder="접수번호 예: KH260617-ABC123" class="p-4 border border-slate-300 rounded-sm">
+            <input id="customerPassword" type="password" placeholder="문의 확인용 비밀번호" class="p-4 border border-slate-300 rounded-sm">
+            <button class="px-7 py-4 kh-btn-primary rounded-sm">확인</button>
+        </form>
+    </section>
+    <section id="result" class="mt-8 hidden kh-card p-8 md:p-10 rounded-sm"></section>
+</main>
+
+<script>
+async function checkInquiry() {
+    const p_public_code = document.getElementById('publicCode').value.trim();
+    const p_customer_password = document.getElementById('customerPassword').value;
+    const box = document.getElementById('result');
+
+    const { data, error } = await supabaseClient.rpc('check_inquiry_reply', {
+        p_public_code,
+        p_customer_password
+    });
+
+    if (error) {
+        alert(error.message || '확인 중 오류가 발생했습니다.');
+        return;
+    }
+
+    const item = Array.isArray(data) ? data[0] : data;
+    if (!item) {
+        alert('접수번호 또는 비밀번호가 맞지 않습니다.');
+        return;
+    }
+
+    box.classList.remove('hidden');
+    box.innerHTML = `
+        <div class="flex flex-wrap gap-2 mb-4 text-xs font-black">
+            <span class="px-3 py-1 bg-slate-100 rounded-sm">${esc(item.public_code)}</span>
+            <span class="px-3 py-1 bg-slate-100 rounded-sm">${item.visibility === 'private' ? '비공개' : '공개'}</span>
+            <span class="px-3 py-1 bg-slate-100 rounded-sm">${statusText(item.status)}</span>
+        </div>
+        <h2 class="text-2xl font-black">${esc(item.company)} / ${esc(item.name)}</h2>
+        <p class="mt-2 text-sm text-slate-500">접수일: ${new Date(item.created_at).toLocaleString('ko-KR')}</p>
+
+        <div class="mt-6">
+            <h3 class="font-black mb-2">문의내용</h3>
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm whitespace-pre-wrap leading-7">${esc(item.message)}</div>
+        </div>
+
+        <div class="mt-6">
+            <h3 class="font-black mb-2">답변</h3>
+            <div class="bg-blue-50 border border-blue-100 p-5 rounded-sm whitespace-pre-wrap leading-7">
+                ${item.admin_reply ? esc(item.admin_reply) : '아직 답변이 등록되지 않았습니다.'}
+            </div>
+        </div>
+    `;
+}
+</script>
+</body>
+</html>
