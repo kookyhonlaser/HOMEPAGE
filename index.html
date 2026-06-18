@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v4 inquiry board -->
     <!-- kookyhon v3 admin link -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,6 +113,7 @@
         }
         .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid #e5e7eb; }
         .footer-link:hover { color: #fff; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         @media (max-width: 900px) {
             .desktop-nav { display: none; }
             .mobile-nav { display: grid; }
@@ -149,13 +151,13 @@
                 <button class="nav-link" data-section="products" onclick="showSection('products')">제품소개</button>
                 <button class="nav-link" data-section="applications" onclick="showSection('applications')">레이저 응용</button>
                 <a href="admin.html" class="px-4 py-3 rounded-sm kh-btn-line inline-flex items-center gap-2" title="관리자 로그인">⌂ 관리자</a>
-                <button class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('contact')">상담문의</button>
+                <button class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('inquiry_board')">상담문의</button>
             </nav>
         </div>
         <nav class="mobile-nav grid-cols-4 border-t border-slate-100 text-sm font-bold text-center bg-white">
             <button class="py-3" onclick="showSection('company')">회사소개</button>
             <button class="py-3" onclick="showSection('applications')">응용</button>
-            <button class="py-3 text-[var(--kh-blue)]" onclick="showSection('contact')">문의</button>
+            <button class="py-3 text-[var(--kh-blue)]" onclick="showSection('inquiry_board')">문의</button>
             <a class="py-3 border-t border-slate-100" href="admin.html">관리자</a>
         </nav>
     </header>
@@ -219,7 +221,7 @@
                             <p class="mt-3 text-slate-600 leading-7">마킹, 각인, 코드 추적, 비전 검사 등 적용 사례 중심으로 안내합니다.</p>
                             <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">응용 보기 →</span>
                         </button>
-                        <button onclick="showSection('contact')" class="group text-left p-8 md:p-10 hover:bg-slate-50">
+                        <button onclick="showSection('inquiry_board')" class="group text-left p-8 md:p-10 hover:bg-slate-50">
                             <span class="text-sm font-black text-[var(--kh-blue)]">03</span>
                             <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">상담문의</h3>
                             <p class="mt-3 text-slate-600 leading-7">소재, 제품, 생산 조건을 알려주시면 적합한 구성을 검토합니다.</p>
@@ -392,6 +394,70 @@
             </section>
         </section>
 
+
+        <section id="inquiry_board" class="page-section">
+            <section class="bg-slate-950 text-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="section-kicker mb-6">Inquiry Board</div>
+                    <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">상담문의 내용입력</h2>
+                    <p class="mt-6 max-w-3xl text-slate-300 leading-8 text-lg">
+                        공개 승인된 상담문의 목록을 확인할 수 있습니다. 새 문의를 남기려면 아래 내용입력 버튼을 눌러주세요.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-20 bg-[var(--kh-bg)]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
+                        <div>
+                            <div class="section-kicker mb-5">Consultation List</div>
+                            <h3 class="text-4xl font-black tracking-[-0.05em]">상담문의 리스트</h3>
+                            <p class="mt-3 text-slate-600 leading-7">
+                                비공개 문의는 관리자만 확인할 수 있으며, 이 화면에는 공개 선택 후 관리자가 승인한 문의만 표시됩니다.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="showSection('contact')" class="px-7 py-4 rounded-sm kh-btn-primary">내용입력</button>
+                            <a href="inquiry-check.html" class="px-7 py-4 rounded-sm kh-btn-line">내 문의 답변 확인</a>
+                            <a href="admin.html" class="px-7 py-4 rounded-sm kh-btn-line">관리자 로그인</a>
+                        </div>
+                    </div>
+
+                    <div class="kh-card rounded-sm overflow-hidden">
+                        <div class="px-6 py-4 border-b border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                            <div class="font-black">공개 상담문의</div>
+                            <button onclick="loadIndexPublicInquiries(true)" class="text-sm font-black text-[var(--kh-blue)] hover:underline">새로고침</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-[820px] text-left">
+                                <thead class="bg-slate-50 text-xs text-slate-500 uppercase tracking-wider">
+                                    <tr>
+                                        <th class="px-5 py-4">순번</th>
+                                        <th class="px-5 py-4">접수일</th>
+                                        <th class="px-5 py-4">업체명</th>
+                                        <th class="px-5 py-4">문의내용</th>
+                                        <th class="px-5 py-4">답변상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="indexPublicInquiryList" class="divide-y divide-slate-200">
+                                    <tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-white border border-slate-200 p-7 rounded-sm">
+                        <h4 class="text-xl font-black tracking-[-0.03em]">새 상담문의 작성</h4>
+                        <p class="mt-3 text-slate-600 leading-7">
+                            장비, 소재, 마킹 내용, 생산 조건을 남겨주시면 담당자가 확인 후 답변드립니다.
+                            비공개로 작성하면 홈페이지에는 노출되지 않고 관리자만 확인합니다.
+                        </p>
+                        <button onclick="showSection('contact')" class="mt-5 px-7 py-4 rounded-sm kh-btn-primary">내용입력으로 이동</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
         <section id="contact" class="page-section">
             <section class="bg-slate-950 text-white py-24">
                 <div class="max-w-7xl mx-auto px-6">
@@ -434,6 +500,7 @@
 
                             <textarea id="inquiryMessage" name="inquiryMessage" placeholder="문의내용" rows="7" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
                             <button type="submit" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">문의 등록하기</button>
+                            <button type="button" onclick="showSection('inquiry_board')" class="md:col-span-2 py-4 kh-btn-line rounded-sm">상담문의 리스트로 돌아가기</button>
                             <div id="inquiryResult" class="md:col-span-2 hidden p-5 bg-blue-50 border border-blue-100 rounded-sm text-slate-700 leading-7"></div>
                             <div class="md:col-span-2 flex flex-wrap gap-3 text-sm font-bold">
                                 <a href="inquiry-check.html" class="text-[var(--kh-blue)] hover:underline">접수번호로 답변 확인하기 →</a>
@@ -483,7 +550,7 @@
                 <div class="flex gap-5">
                     <button class="footer-link" onclick="showSection('company')">회사소개</button>
                     <button class="footer-link" onclick="showSection('applications')">레이저 응용</button>
-                    <button class="footer-link" onclick="showSection('contact')">상담문의</button>
+                    <button class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
                     <a class="footer-link" href="admin.html">관리자 로그인</a>
                     <a class="footer-link" href="admin.html">관리자</a>
                 </div>
@@ -500,6 +567,9 @@
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.toggle('active', link.dataset.section === id);
             });
+            if (id === 'inquiry_board') {
+                loadIndexPublicInquiries();
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
