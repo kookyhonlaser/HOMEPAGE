@@ -1,0 +1,11 @@
+file '/mnt/data/kookyhon_products_from_zip_v11/bpd_1.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/bpd_2.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/bpd_3.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/bpd_4.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/bpd_5.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/bpd_5.png'

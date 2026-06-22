@@ -1,0 +1,7 @@
+file '/mnt/data/kookyhon_products_from_zip_v11/prisa_e_1.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/prisa_e_2.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/prisa_e_3.png'
+duration 3
+file '/mnt/data/kookyhon_products_from_zip_v11/prisa_e_3.png'

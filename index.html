@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v12 restore original PRISA -->
+    <!-- kookyhon v11 products from zip -->
+    <!-- kookyhon v10 no attached preview -->
     <!-- kookyhon v9 product hierarchy -->
     <!-- kookyhon v8 prisa product -->
     <!-- kookyhon v7 admin button on board -->
@@ -158,6 +161,21 @@
         .product-panel.active { display: block; }
         .product-model-panel { display: none; }
         .product-model-panel.active { display: block; }
+
+    
+        .product-category-btn.active {
+            background: var(--kh-blue);
+            color: #fff;
+            border-color: var(--kh-blue);
+        }
+        .product-category-btn.active .product-category-desc { color: rgba(255,255,255,.82); }
+        .product-model-btn.active { background:#0f172a; color:#fff; border-color:#0f172a; }
+        .product-panel { display:none; }
+        .product-panel.active { display:block; }
+        .product-model-panel { display:none; }
+        .product-model-panel.active { display:block; }
+        .product-gallery-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:20px; }
+        @media (max-width: 768px) { .product-gallery-grid { grid-template-columns:1fr; } }
 
     </style>
 </head>
@@ -358,14 +376,15 @@
 
 
 
+
         <section id="products" class="page-section">
             <section class="bg-slate-950 text-white py-24">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="section-kicker mb-6">Products</div>
                     <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">제품소개</h2>
-                    <p class="mt-6 max-w-3xl text-slate-300 leading-8 text-lg">
-                        제품군을 먼저 선택하고, 각 제품군 안에서 세부 제품명을 확인할 수 있도록 구성했습니다.
-                        Fiber Laser 제품군에는 <b>PRISA</b>와 <b>BPD</b>를 구분했습니다.
+                    <p class="mt-6 max-w-4xl text-slate-300 leading-8 text-lg">
+                        첨부해주신 제품 자료를 기준으로 판매 제품군만 다시 정리했습니다.
+                        제품군을 먼저 선택한 뒤, 해당 제품명을 클릭하면 PRISA 제품 소개처럼 상세 내용을 확인할 수 있습니다.
                     </p>
                 </div>
             </section>
@@ -374,38 +393,25 @@
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="section-kicker mb-5">Product Categories</div>
                     <h3 class="text-4xl font-black tracking-[-0.05em]">제품군 선택</h3>
-                    <p class="mt-4 text-slate-600 leading-8">제품군을 클릭하면 아래에 해당 제품군의 모델 목록과 상세내용이 표시됩니다.</p>
+                    <p class="mt-4 text-slate-600 leading-8">
+                        판매 제품군 기준으로 Fiber Laser, UV Laser, CO2 Laser를 우선 구성했습니다.
+                    </p>
 
-                    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="mt-10 grid md:grid-cols-3 gap-5">
                         <button class="product-category-btn active kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('fiber')">
                             <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
                             <h4 class="mt-4 text-2xl font-black">Fiber Laser</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">금속 마킹, Deep Marking, QR/시리얼 마킹용 파이버 레이저 제품군</p>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">금속 마킹, Deep Marking, 코드 추적, 인라인 양산용 Fiber Laser 제품군</p>
                         </button>
                         <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('uv')">
                             <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
                             <h4 class="mt-4 text-2xl font-black">UV Laser</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">열 영향이 적은 정밀 마킹, 필름, 플라스틱, 민감 소재용 제품군</p>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">미세 마킹, 고품질 빔, 민감 소재 대응용 UV Laser 제품군</p>
                         </button>
                         <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('co2')">
                             <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
                             <h4 class="mt-4 text-2xl font-black">CO2 Laser</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">플라스틱, 고무, 유리, 아크릴 등 비금속 소재용 제품군</p>
-                        </button>
-                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('3d')">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
-                            <h4 class="mt-4 text-2xl font-black">3D Marking</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">곡면, 단차, 대면적 마킹을 위한 3D 제품군</p>
-                        </button>
-                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('vision')">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">05</div>
-                            <h4 class="mt-4 text-2xl font-black">Vision System</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">위치 보정, 검사, 판정 자동화 제품군</p>
-                        </button>
-                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('custom')">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">06</div>
-                            <h4 class="mt-4 text-2xl font-black">Custom Automation</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">고객 공정 맞춤 자동화 설비 구성</p>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">Plastic 등 비금속 소재 마킹용 CO2 Laser 제품군</p>
                         </button>
                     </div>
                 </div>
@@ -419,16 +425,16 @@
                             <div>
                                 <div class="section-kicker mb-5">Fiber Laser Line-up</div>
                                 <h3 class="text-4xl font-black tracking-[-0.05em]">Fiber Laser 제품군</h3>
-                                <p class="mt-4 text-slate-600 leading-8">
-                                    제품명을 선택하면 해당 장비의 상세 사양과 특징을 확인할 수 있습니다.
-                                </p>
+                                <p class="mt-4 text-slate-600 leading-8">제품명을 선택하면 상세 자료, 특징, 사양, 도면과 영상 내용을 확인할 수 있습니다. 기존 PRISA도 유지하고, PRISA-E와 BPD를 함께 구분했습니다.</p>
                             </div>
                             <div class="flex flex-wrap gap-3">
                                 <button class="product-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showFiberModel('prisa')">PRISA</button>
+                                <button class="product-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showFiberModel('prisa_e')">PRISA-E</button>
                                 <button class="product-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showFiberModel('bpd')">BPD</button>
                             </div>
                         </div>
 
+                        
                         <div id="fiber_model_prisa" class="product-model-panel active">
                             <div class="product-hero-grid items-stretch">
                                 <div class="kh-card p-8 md:p-10 rounded-sm">
@@ -436,8 +442,9 @@
                                     <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA Fiber Laser</h3>
                                     <p class="mt-5 text-slate-600 leading-8 text-lg">
                                         PRISA는 금속 및 다양한 산업 소재에 선명한 마킹 품질을 구현하고,
-                                        컴팩트한 설계와 자동화 연동성까지 고려한 Fiber Laser 마킹 시스템입니다.
+                                        컴팩트한 설계와 자동화 연동성까지 고려한 쿠키혼레이저의 대표 Fiber Laser 마킹 시스템입니다.
                                     </p>
+
                                     <div class="mt-8 flex flex-wrap gap-3">
                                         <span class="product-badge">Ultra Ytterbium Fiber Laser</span>
                                         <span class="product-badge">20W / 30W / 50W / 100W</span>
@@ -508,74 +515,106 @@
                                 </div>
                             </div>
 
-                            <div class="mt-16 grid lg:grid-cols-2 gap-8">
-                                <div class="kh-card p-7 rounded-sm">
-                                    <div class="section-kicker mb-4">Features</div>
-                                    <h3 class="text-3xl font-black product-section-title">PRISA 주요 특징</h3>
-                                    <div class="mt-6 grid gap-5">
-                                        <div class="kh-card-soft p-5 rounded-sm">
-                                            <h4 class="text-xl font-black">다양한 마킹 적용</h4>
-                                            <p class="mt-3 text-slate-600 leading-7">로고, 사진, 바코드, QR코드, Data Matrix 등 원하는 마킹을 쉽고 간편하게 구현할 수 있습니다.</p>
-                                        </div>
-                                        <div class="kh-card-soft p-5 rounded-sm">
-                                            <h4 class="text-xl font-black">소모품 부담 감소</h4>
-                                            <p class="mt-3 text-slate-600 leading-7">화학약품이나 물리적 충격을 사용하지 않으며, 한 번 마킹된 로고나 글씨는 쉽게 변하지 않고 영구적으로 보존됩니다.</p>
-                                        </div>
-                                        <div class="kh-card-soft p-5 rounded-sm">
-                                            <h4 class="text-xl font-black">정밀 표현</h4>
-                                            <p class="mt-3 text-slate-600 leading-7">탁월하고 안정적인 빔 품질로 정밀한 표현이 요구되는 다양한 분야에 적합합니다.</p>
-                                        </div>
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Features</div>
+                                <h3 class="text-3xl font-black product-section-title">PRISA 주요 특징</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">다양한 마킹 적용</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">로고, 사진, 바코드, QR코드, Data Matrix 등 원하는 마킹을 쉽고 간편하게 구현할 수 있습니다.</p>
                                     </div>
-                                </div>
-                                <div class="kh-card p-7 rounded-sm">
-                                    <div class="section-kicker mb-4">Attached Sheet</div>
-                                    <h3 class="text-3xl font-black product-section-title">첨부 자료 미리보기</h3>
-                                    <div class="mt-6 grid gap-5">
-                                        <img src="prisa_keypoints.png" alt="PRISA key points" class="w-full rounded-sm border border-slate-200">
-                                        <img src="prisa_features.png" alt="PRISA features" class="w-full rounded-sm border border-slate-200">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">소모품 부담 감소</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">화학약품이나 물리적 충격을 사용하지 않으며, 한 번 마킹된 로고나 글씨는 쉽게 변하지 않고 영구적으로 보존됩니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">정밀 표현</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">탁월하고 안정적인 빔 품질로 정밀한 표현이 요구되는 다양한 분야에 적합합니다.</p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="mt-16 kh-card p-8 rounded-sm">
-                                <div class="section-kicker mb-4">Applications</div>
-                                <h3 class="text-3xl font-black product-section-title">권장 적용 분야</h3>
-                                <div class="mt-6 grid md:grid-cols-2 gap-5 text-slate-600 leading-8">
-                                    <p><b class="text-slate-900">금속 제품 마킹</b><br>로고, 모델명, 규격, LOT, 시리얼 번호, 영문/한글 텍스트 마킹</p>
-                                    <p><b class="text-slate-900">코드 추적 관리</b><br>QR Code, 바코드, Data Matrix, 생산 이력 추적 마킹</p>
-                                    <p><b class="text-slate-900">Deep Marking</b><br>금속 명판, 공구, 산업 부품에 깊이감 있는 각인</p>
-                                    <p><b class="text-slate-900">자동화 라인 연동</b><br>검사 장치, 컨베이어, 비전 시스템과 결합한 인라인 시스템 구성</p>
+
+                        <div id="fiber_model_prisa_e" class="product-model-panel">
+                            <div class="product-hero-grid items-stretch">
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">PRISA-E Series</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA-E Fiber Laser</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        PRISA-E는 금속류 및 여러 재료에 폭넓게 적용 가능한 경제형 Fiber Laser 마킹 장비로,
+                                        Deep Marking과 인라인 시스템 적용에 적합한 컴팩트 모델입니다.
+                                    </p>
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Ultra Ytterbium Fiber Laser</span>
+                                        <span class="product-badge">Economic · Efficient</span>
+                                        <span class="product-badge">Deep Marking</span>
+                                        <span class="product-badge">Compact Design</span>
+                                    </div>
+                                    <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">경제적 운용</div><p class="mt-3 text-slate-600 leading-7">가격 대비 최고의 빔 품질과 높은 펄스 에너지 확보에 중점을 둔 모델입니다.</p></div>
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">마킹 품질</div><p class="mt-3 text-slate-600 leading-7">싱글모드 기반 우수한 빔 품질로 정밀 마킹과 양산성을 동시에 확보합니다.</p></div>
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">인라인 시스템</div><p class="mt-3 text-slate-600 leading-7">검증된 소스를 바탕으로 안정적인 인라인 양산 시스템에 적합합니다.</p></div>
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">범용 가공</div><p class="mt-3 text-slate-600 leading-7">금속류와 여러 재료에 폭넓게 적용 가능하며 공간 활용성이 높은 설계입니다.</p></div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-6">
+                                    <div class="product-media-box">
+                                        <video src="prisa_e_promo.mp4" autoplay muted loop playsinline controls class="w-full h-full object-cover"></video>
+                                    </div>
+                                    <div class="kh-card p-5 rounded-sm">
+                                        <img src="prisa_e_1.png" alt="PRISA-E Fiber Laser" class="w-full rounded-sm border border-slate-200 bg-white">
+                                        <p class="mini-note mt-3">PRISA-E 실물 장비 이미지</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">Specification</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">PRISA-E 자료</h3>
+                                <div class="product-gallery-grid">
+                                    <div class="kh-card p-5 rounded-sm"><img src="prisa_e_2.png" alt="PRISA-E benefits" class="w-full rounded-sm border border-slate-200"></div>
+                                    <div class="kh-card p-5 rounded-sm"><img src="prisa_e_3.png" alt="PRISA-E specification" class="w-full rounded-sm border border-slate-200"></div>
                                 </div>
                             </div>
                         </div>
 
                         <div id="fiber_model_bpd" class="product-model-panel">
-                            <div class="kh-card p-8 md:p-10 rounded-sm">
-                                <div class="section-kicker mb-5">BPD Series</div>
-                                <h3 class="text-4xl md:text-5xl font-black product-section-title">BPD Fiber Laser</h3>
-                                <p class="mt-5 text-slate-600 leading-8 text-lg">
-                                    BPD는 생산성 향상과 공정 효율을 고려한 Fiber Laser 제품군입니다.
-                                    상세 사양, 사진, 레이아웃 자료를 받으면 PRISA와 같은 상세 구성으로 확장할 수 있습니다.
-                                </p>
-                                <div class="mt-8 grid md:grid-cols-3 gap-5">
-                                    <div class="kh-card-soft p-6 rounded-sm">
-                                        <h4 class="text-xl font-black">Dual Head Concept</h4>
-                                        <p class="mt-3 text-slate-600 leading-7">복수 헤드 또는 분기 구조가 필요한 양산 공정 검토에 적합합니다.</p>
+                            <div class="product-hero-grid items-stretch">
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">BPD Series</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">BPD Fiber Laser</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        BPD는 다양한 펄스 반복 주파수 대응과 Long Life Time, No 소모품 구조를 기반으로,
+                                        생산성 향상과 안정적인 양산 공정을 위한 Fiber Laser 시스템입니다.
+                                    </p>
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Fiber Laser</span>
+                                        <span class="product-badge">Long Life Time</span>
+                                        <span class="product-badge">No 소모품</span>
+                                        <span class="product-badge">Customized Beam Delivery</span>
                                     </div>
-                                    <div class="kh-card-soft p-6 rounded-sm">
-                                        <h4 class="text-xl font-black">Productivity</h4>
-                                        <p class="mt-3 text-slate-600 leading-7">택타임 단축과 생산 효율 향상을 목표로 하는 라인에 적용 가능합니다.</p>
-                                    </div>
-                                    <div class="kh-card-soft p-6 rounded-sm">
-                                        <h4 class="text-xl font-black">Custom Layout</h4>
-                                        <p class="mt-3 text-slate-600 leading-7">공정, 제품 크기, 지그 구성에 맞춰 레이아웃을 검토합니다.</p>
+                                    <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">생산 효율</div><p class="mt-3 text-slate-600 leading-7">25년 전통의 우수한 기술을 바탕으로 산업용 Laser Marker에 적합합니다.</p></div>
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">유지보수 절감</div><p class="mt-3 text-slate-600 leading-7">기본형 동급 최상 펄스 에너지와 고품질 광원으로 높은 신뢰성을 제공합니다.</p></div>
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">Long Life Time</div><p class="mt-3 text-slate-600 leading-7">No 소모품 및 유지보수 특성으로 지속적 운용에 유리합니다.</p></div>
+                                        <div class="kh-card-soft p-5 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">맞춤형 공급</div><p class="mt-3 text-slate-600 leading-7">Customized Beam Delivery 구성으로 고객 공정 맞춤성이 높습니다.</p></div>
                                     </div>
                                 </div>
-                                <div class="mt-8 p-6 bg-slate-50 border border-slate-200 rounded-sm">
-                                    <h4 class="text-xl font-black">BPD 상세 자료 준비 중</h4>
-                                    <p class="mt-3 text-slate-600 leading-7">BPD 사양표, 제품 이미지, 도면 자료를 주시면 PRISA처럼 상세 페이지로 구성하겠습니다.</p>
-                                    <button onclick="showSection('contact')" class="mt-5 px-7 py-4 rounded-sm kh-btn-primary">BPD 상담문의</button>
+                                <div class="flex flex-col gap-6">
+                                    <div class="product-media-box">
+                                        <video src="bpd_promo.mp4" autoplay muted loop playsinline controls class="w-full h-full object-cover"></video>
+                                    </div>
+                                    <div class="kh-card p-5 rounded-sm">
+                                        <img src="bpd_1.png" alt="BPD Fiber Laser" class="w-full rounded-sm border border-slate-200 bg-white">
+                                        <p class="mini-note mt-3">BPD 실물 장비 이미지</p>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="mt-16 grid lg:grid-cols-2 gap-8">
+                                <div class="kh-card p-5 rounded-sm"><img src="bpd_2.png" alt="BPD benefits" class="w-full rounded-sm border border-slate-200"></div>
+                                <div class="kh-card p-5 rounded-sm"><img src="bpd_3.png" alt="BPD specification" class="w-full rounded-sm border border-slate-200"></div>
+                                <div class="kh-card p-5 rounded-sm"><img src="bpd_4.png" alt="BPD features" class="w-full rounded-sm border border-slate-200"></div>
+                                <div class="kh-card p-5 rounded-sm"><img src="bpd_5.png" alt="BPD layout" class="w-full rounded-sm border border-slate-200"></div>
                             </div>
                         </div>
                     </div>
@@ -583,47 +622,63 @@
                     <div id="product_panel_uv" class="product-panel">
                         <div class="kh-card p-8 md:p-10 rounded-sm">
                             <div class="section-kicker mb-5">UV Laser</div>
-                            <h3 class="text-4xl font-black tracking-[-0.05em]">UV Laser 제품군</h3>
-                            <p class="mt-5 text-slate-600 leading-8">열 영향이 적은 고정밀 마킹, 필름, 플라스틱, 유리, FPCB 등 민감 소재에 적합한 제품군입니다. 상세 제품 자료를 받으면 모델별로 구성하겠습니다.</p>
-                            <button onclick="showSection('contact')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">UV 상담문의</button>
+                            <h3 class="text-4xl font-black tracking-[-0.05em]">PRISA-UV Laser</h3>
+                            <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                PRISA-UV는 최고급 빔 품질과 미세 마킹에 적합한 UV Laser 장비로,
+                                Plastic, Crystal, Glass, 금속 및 각종 비철 소재에 경제적으로 적용할 수 있는 고정밀 모델입니다.
+                            </p>
+                            <div class="mt-8 flex flex-wrap gap-3">
+                                <span class="product-badge">UV Laser</span>
+                                <span class="product-badge">High Beam Quality</span>
+                                <span class="product-badge">Inline System</span>
+                                <span class="product-badge">Compact Design</span>
+                            </div>
+                            <div class="mt-10 product-hero-grid items-stretch">
+                                <div class="product-media-box">
+                                    <video src="prisa_uv_promo.mp4" autoplay muted loop playsinline controls class="w-full h-full object-cover"></video>
+                                </div>
+                                <div class="kh-card p-5 rounded-sm">
+                                    <img src="prisa_uv_1.png" alt="PRISA-UV Laser" class="w-full rounded-sm border border-slate-200 bg-white">
+                                    <p class="mini-note mt-3">PRISA-UV 실물 장비 이미지</p>
+                                </div>
+                            </div>
+                            <div class="mt-12 product-gallery-grid">
+                                <div class="kh-card p-5 rounded-sm"><img src="prisa_uv_2.png" alt="PRISA-UV benefits" class="w-full rounded-sm border border-slate-200"></div>
+                                <div class="kh-card p-5 rounded-sm"><img src="prisa_uv_3.png" alt="PRISA-UV specification" class="w-full rounded-sm border border-slate-200"></div>
+                            </div>
                         </div>
                     </div>
 
                     <div id="product_panel_co2" class="product-panel">
                         <div class="kh-card p-8 md:p-10 rounded-sm">
                             <div class="section-kicker mb-5">CO2 Laser</div>
-                            <h3 class="text-4xl font-black tracking-[-0.05em]">CO2 Laser 제품군</h3>
-                            <p class="mt-5 text-slate-600 leading-8">플라스틱, 고무, 유리, 아크릴, 포장재 등 비금속 소재 마킹과 커팅 공정에 적합한 제품군입니다. 상세 제품 자료를 받으면 모델별로 구성하겠습니다.</p>
-                            <button onclick="showSection('contact')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">CO2 상담문의</button>
+                            <h3 class="text-4xl font-black tracking-[-0.05em]">PRISA-C CO2 Laser</h3>
+                            <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                PRISA-C는 Plastic 재질에 최적화된 CO2 Laser 장비로,
+                                비금속 소재 마킹에 적합하며 범용성과 컴팩트한 설계를 갖춘 모델입니다.
+                            </p>
+                            <div class="mt-8 flex flex-wrap gap-3">
+                                <span class="product-badge">CO2 Laser</span>
+                                <span class="product-badge">Plastic 재질 최적화</span>
+                                <span class="product-badge">범용 가공</span>
+                                <span class="product-badge">Compact Design</span>
+                            </div>
+                            <div class="mt-10 product-hero-grid items-stretch">
+                                <div class="product-media-box">
+                                    <video src="prisa_c_promo.mp4" autoplay muted loop playsinline controls class="w-full h-full object-cover"></video>
+                                </div>
+                                <div class="kh-card p-5 rounded-sm">
+                                    <img src="prisa_c_1.png" alt="PRISA-C CO2 Laser" class="w-full rounded-sm border border-slate-200 bg-white">
+                                    <p class="mini-note mt-3">PRISA-C 실물 장비 이미지</p>
+                                </div>
+                            </div>
+                            <div class="mt-12 product-gallery-grid">
+                                <div class="kh-card p-5 rounded-sm"><img src="prisa_c_2.png" alt="PRISA-C benefits" class="w-full rounded-sm border border-slate-200"></div>
+                                <div class="kh-card p-5 rounded-sm"><img src="prisa_c_3.png" alt="PRISA-C specification" class="w-full rounded-sm border border-slate-200"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div id="product_panel_3d" class="product-panel">
-                        <div class="kh-card p-8 md:p-10 rounded-sm">
-                            <div class="section-kicker mb-5">3D Marking</div>
-                            <h3 class="text-4xl font-black tracking-[-0.05em]">3D Marking 제품군</h3>
-                            <p class="mt-5 text-slate-600 leading-8">곡면, 단차, 대면적 마킹을 위한 동적 초점 제어 시스템입니다. 제품 형상과 마킹 영역에 맞춰 구성을 검토합니다.</p>
-                            <button onclick="showSection('contact')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">3D 상담문의</button>
-                        </div>
-                    </div>
-
-                    <div id="product_panel_vision" class="product-panel">
-                        <div class="kh-card p-8 md:p-10 rounded-sm">
-                            <div class="section-kicker mb-5">Vision System</div>
-                            <h3 class="text-4xl font-black tracking-[-0.05em]">Vision System 제품군</h3>
-                            <p class="mt-5 text-slate-600 leading-8">위치 보정, 마킹 후 검사, OK/NG 판정, 생산 데이터 연동을 위한 비전 시스템입니다.</p>
-                            <button onclick="showSection('contact')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">비전 상담문의</button>
-                        </div>
-                    </div>
-
-                    <div id="product_panel_custom" class="product-panel">
-                        <div class="kh-card p-8 md:p-10 rounded-sm">
-                            <div class="section-kicker mb-5">Custom Automation</div>
-                            <h3 class="text-4xl font-black tracking-[-0.05em]">Custom Automation 제품군</h3>
-                            <p class="mt-5 text-slate-600 leading-8">고객 공정에 맞춘 지그, 공급/배출, 컨베이어, 검사 연동, MES 연동까지 공정 단위로 검토합니다.</p>
-                            <button onclick="showSection('contact')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">자동화 상담문의</button>
-                        </div>
-                    </div>
                 </div>
             </section>
         </section>
@@ -969,7 +1024,7 @@
 
         function showProductCategory(key) {
             document.querySelectorAll('.product-category-btn').forEach(btn => btn.classList.remove('active'));
-            const categoryOrder = ['fiber', 'uv', 'co2', '3d', 'vision', 'custom'];
+            const categoryOrder = ['fiber', 'uv', 'co2'];
             const index = categoryOrder.indexOf(key);
             if (index >= 0) {
                 const btn = document.querySelectorAll('.product-category-btn')[index];
@@ -987,12 +1042,17 @@
 
         function showFiberModel(key) {
             document.querySelectorAll('.product-model-btn').forEach(btn => btn.classList.remove('active'));
-            const modelOrder = ['prisa', 'bpd'];
+            const modelOrder = ['prisa', 'prisa_e', 'bpd'];
             const index = modelOrder.indexOf(key);
             if (index >= 0) {
                 const btn = document.querySelectorAll('.product-model-btn')[index];
                 if (btn) btn.classList.add('active');
             }
+
+            document.querySelectorAll('.product-model-panel').forEach(panel => panel.classList.remove('active'));
+            const panel = document.getElementById('fiber_model_' + key);
+            if (panel) panel.classList.add('active');
+        }
 
             document.querySelectorAll('.product-model-panel').forEach(panel => panel.classList.remove('active'));
             const panel = document.getElementById('fiber_model_' + key);
