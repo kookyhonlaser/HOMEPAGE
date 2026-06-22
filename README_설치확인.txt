@@ -1,19 +1,23 @@
-쿠키혼레이저 홈페이지 v19 - BPD 영상 이미지 대체
+쿠키혼레이저 홈페이지 v21 - BPD Layout/Product View 이미지 교체
 
 변경 내용
 ---------
-- BPD 제품 상세 영역의 동영상(bpd_promo.mp4)을 업로드하신 대표 이미지로 교체
-- 새 이미지 파일명: bpd_main_visual.png
-- 이미지 원본 크기: 1672x941
-- 기존 bpd_promo.mp4 파일은 더 이상 BPD 상세 영역에서 사용하지 않음
+- BPD 제품군의 'Layout / Product View' 이미지를 첨부된 도면 이미지로 교체
+- 새 파일명: bpd_layout.png
+- 이미지 크기: 753x474
+- BPD 설명 문구도 Layout 도면 기준으로 수정
 
 GitHub에 업로드할 파일
 --------------------
 - index.html
-- bpd_main_visual.png
+- bpd_layout.png
+
+참고
+----
+이전 v19에서 BPD 대표 이미지를 사용하던 화면 중 Layout/Product View 위치만 도면으로 교체했습니다.
 
 확인 주소
 ---------
-https://www.kooky.co.kr/?v=19
+https://www.kooky.co.kr/?v=21
 
 업로드 후 Ctrl + F5로 강제 새로고침하세요.
