@@ -1,28 +1,22 @@
-쿠키혼레이저 홈페이지 v16 - 제품영상/설명 통일 버전
+쿠키혼레이저 홈페이지 v17 - 제품소개 PRISA 스타일 통일
 
-변경 내용
+주요 변경
 ---------
-- PRISA / PRISA-E / BPD / PRISA-UV / PRISA-C 제품군 톤앤매너를 더 통일
-- PRISA-E / BPD / PRISA-UV / PRISA-C 홍보 영상을 PRISA 느낌의 브랜드형 구성으로 재제작
-  * Title
-  * Product Overview
-  * Key Benefits
-  * Specification / Detail
-  * Recommended Applications
-  * Outro
-- 각 제품 설명 페이지의 문구와 영상 설명도 좀 더 통일감 있게 보정
-- PRISA 원본 회전 영상(prisa_rotation.mp4)도 함께 포함
+- PRISA-E / BPD / PRISA-UV / PRISA-C를 PRISA 페이지 구조에 맞춰 재정리
+- 각 제품에 다음 공통 구조 적용
+  1) Hero 소개 영역
+  2) 핵심 배지
+  3) 강점 카드 4개
+  4) 제품 사양 표
+  5) 주요 특징 카드 3개
+  6) 자료 미리보기 2개
+- 기존 PRISA와 보다 유사한 레이아웃/통일성 유지
 
-GitHub 교체 권장 파일
---------------------
+GitHub에서 교체 권장 파일
+------------------------
 - index.html
-- prisa_rotation.mp4
-- prisa_e_promo.mp4
-- bpd_promo.mp4
-- prisa_uv_promo.mp4
-- prisa_c_promo.mp4
 
 확인 방법
 ---------
-- https://www.kooky.co.kr/?v=16
+- https://www.kooky.co.kr/?v=17
 - 업로드 후 Ctrl + F5 강제 새로고침
