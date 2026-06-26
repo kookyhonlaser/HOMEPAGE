@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v36 customized dual laser workstation -->
     <!-- kookyhon v35 customized vision product detail -->
     <!-- kookyhon v34 customized vision inspection -->
     <!-- kookyhon v33 customized product category -->
@@ -38,7 +39,7 @@
         function showCustomModel(key) {
             document.querySelectorAll('.custom-model-btn').forEach(btn => btn.classList.remove('active'));
 
-            const modelOrder = ['vision'];
+            const modelOrder = ['vision', 'dual_laser'];
             const index = modelOrder.indexOf(key);
             if (index >= 0) {
                 const btn = document.querySelectorAll('.custom-model-btn')[index];
@@ -1076,6 +1077,7 @@
                             </div>
                             <div class="flex flex-wrap gap-3">
                                 <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
                             </div>
                         </div>
 
@@ -1172,6 +1174,107 @@
                                     </div>
                                 </div>
                             </div>
+
+                        <div id="custom_model_dual_laser" class="custom-model-panel">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_dual_laser_system.png" alt="K-DUAL LASER WORKSTATION" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Dual Laser System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-DUAL LASER WORKSTATION</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-DUAL LASER WORKSTATION은 싱글 레이저 시스템 2대를 하나의 작업 테이블에 통합한 맞춤형 레이저 작업 장비입니다.
+                                        좌우 독립 레이저 헤드와 작업 영역을 구성하여 두 공정을 동시에 운용하거나, 작업 제품과 공정 조건에 맞춰 병렬 가공할 수 있습니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Dual Single Laser</span>
+                                        <span class="product-badge">Independent Work Area</span>
+                                        <span class="product-badge">Custom Table</span>
+                                        <span class="product-badge">Parallel Processing</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            하나의 테이블 위에 좌우 2개의 싱글 레이저 시스템을 배치한 구조입니다.
+                                            두 장비를 독립적으로 운용하면서도 작업자 동선과 설치 공간을 줄일 수 있어, 반복 생산이나 좌우 병렬 공정에 적합합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-5 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">싱글 레이저 2대 구성</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">독립 제어 가능한 싱글 레이저 2대를 하나의 테이블에 구성합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">동시 운용</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">좌우 작업 영역을 동시에 운용하여 생산성과 작업 효율을 높입니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">독립 작업 영역</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">좌우 스테이션을 분리하여 서로 다른 작업 조건을 적용할 수 있습니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">맞춤형 테이블</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">제품 크기와 작업 방식에 맞춰 지그, 스테이지, 테이블 구조를 설계합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">05</div>
+                                    <h4 class="mt-3 text-xl font-black">생산 효율 향상</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">셋업 시간 단축과 병렬 작업으로 반복 생산 공정에 효율적으로 대응합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">System Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-DUAL LASER WORKSTATION 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 듀얼 싱글 레이저 시스템</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-DUAL LASER WORKSTATION</td></tr>
+                                                <tr><th>장비 컨셉</th><td>싱글 레이저 시스템 2대를 하나의 테이블에 통합한 병렬 작업형 장비</td></tr>
+                                                <tr><th>구성 방식</th><td>좌우 독립 레이저 헤드, 모니터, 제어부, 작업 스테이지 구성</td></tr>
+                                                <tr><th>작업 방식</th><td>2개 스테이션 동시 운용 또는 독립 운용</td></tr>
+                                                <tr><th>적용 목적</th><td>생산성 향상, 작업 공간 절감, 반복 제품의 병렬 레이저 가공</td></tr>
+                                                <tr><th>맞춤 구성</th><td>제품 전용 지그, 작업 테이블 크기, 안전 커버, 제어 방식, 작업 동선 맞춤 설계</td></tr>
+                                                <tr><th>상담 필요 정보</th><td>제품 크기, 작업 수량, 레이저 종류, 마킹 위치, 좌우 작업 조건, 설치 공간</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Application</div>
+                                <h3 class="text-3xl font-black product-section-title">적용하기 좋은 공정</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">좌우 병렬 마킹</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">동일 제품을 좌우에서 동시에 마킹하여 생산 속도를 높이는 공정.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">다품종 작업 대응</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">좌우 스테이션을 다른 조건으로 세팅하여 작업 유연성을 확보하는 공정.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">공간 절약형 설비</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">두 장비를 별도 배치하기 어려운 현장에서 하나의 통합 테이블로 운용.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         </div>
                     </div>
 
