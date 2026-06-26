@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v35 customized vision product detail -->
     <!-- kookyhon v34 customized vision inspection -->
     <!-- kookyhon v33 customized product category -->
     <!-- kookyhon v30 PRISA-C image replacement -->
@@ -33,7 +34,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쿠키혼레이저 - 산업용 레이저 마킹·가공 솔루션</title>
     <meta name="description" content="쿠키혼레이저는 30년 현장 경험을 기반으로 산업용 레이저 마킹, 자동화, 비전 검사, 공정 맞춤 솔루션을 제공합니다.">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+        function showCustomModel(key) {
+            document.querySelectorAll('.custom-model-btn').forEach(btn => btn.classList.remove('active'));
+
+            const modelOrder = ['vision'];
+            const index = modelOrder.indexOf(key);
+            if (index >= 0) {
+                const btn = document.querySelectorAll('.custom-model-btn')[index];
+                if (btn) btn.classList.add('active');
+            }
+
+            document.querySelectorAll('.custom-model-panel').forEach(panel => panel.classList.remove('active'));
+            const panel = document.getElementById('custom_model_' + key);
+            if (panel) panel.classList.add('active');
+        }
+
+</script>
     <style>
         :root {
             --kh-blue: #005bac;
@@ -1047,97 +1064,112 @@
                     </div>
 
                     
+                    
                     <div id="product_panel_custom" class="product-panel">
-                        <div class="product-hero-grid items-stretch">
-                            <div class="kh-card p-8 md:p-10 rounded-sm">
-                                <div class="section-kicker mb-5">Customized Vision Inspection System</div>
-                                <h3 class="text-4xl md:text-5xl font-black product-section-title">맞춤형 비전 검증 장비</h3>
-                                <p class="mt-5 text-slate-600 leading-8 text-lg">
-                                    마킹 후 문자, 로고, 코드, 위치, 누락 여부와 마킹 품질을 자동으로 확인하는 맞춤형 비전 검사 시스템입니다.
-                                    고객의 제품 형상, 검사 항목, 생산 조건에 맞춰 전용 카메라, 렌즈, 조명, 지그, 안전 커버 구조를 설계합니다.
+                        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+                            <div>
+                                <div class="section-kicker mb-5">Customized Line-up</div>
+                                <h3 class="text-4xl font-black tracking-[-0.05em]">Customized 맞춤형 장비군</h3>
+                                <p class="mt-4 text-slate-600 leading-8">
+                                    정규 제품군이 아닌 고객 공정 맞춤형 장비입니다. 아래 장비명을 클릭하면 해당 맞춤형 장비의 컨셉과 적용 목적을 확인할 수 있습니다.
                                 </p>
-
-                                <div class="mt-8 flex flex-wrap gap-3">
-                                    <span class="product-badge">Marking Quality Check</span>
-                                    <span class="product-badge">Vision Camera</span>
-                                    <span class="product-badge">Safety Cover</span>
-                                    <span class="product-badge">Custom Fixture</span>
-                                </div>
-
-                                <div class="mt-10 grid sm:grid-cols-2 gap-4">
-                                    <div class="kh-card-soft p-5 rounded-sm">
-                                        <div class="text-sm font-black text-[var(--kh-blue)]">마킹 후 자동 검사</div>
-                                        <p class="mt-3 text-slate-600 leading-7">마킹 완료 후 문자, 로고, 코드, 누락, 위치 편차를 자동으로 확인하여 양품/불량 판정을 지원합니다.</p>
-                                    </div>
-                                    <div class="kh-card-soft p-5 rounded-sm">
-                                        <div class="text-sm font-black text-[var(--kh-blue)]">비전 카메라 기반</div>
-                                        <p class="mt-3 text-slate-600 leading-7">고해상도 카메라와 렌즈를 적용하여 작은 문자, 코드, 마킹 위치를 정밀하게 검사합니다.</p>
-                                    </div>
-                                    <div class="kh-card-soft p-5 rounded-sm">
-                                        <div class="text-sm font-black text-[var(--kh-blue)]">안전 커버형 구조</div>
-                                        <p class="mt-3 text-slate-600 leading-7">녹색 안전 윈도우와 커버형 구조로 작업 안정성과 검사 환경의 일관성을 높입니다.</p>
-                                    </div>
-                                    <div class="kh-card-soft p-5 rounded-sm">
-                                        <div class="text-sm font-black text-[var(--kh-blue)]">공정 맞춤 설계</div>
-                                        <p class="mt-3 text-slate-600 leading-7">제품 크기, 검사 위치, 작업 동선, 생산 수량에 맞춰 전용 스테이지와 지그를 구성할 수 있습니다.</p>
-                                    </div>
-                                </div>
                             </div>
+                            <div class="flex flex-wrap gap-3">
+                                <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
+                            </div>
+                        </div>
 
-                            <div class="flex flex-col gap-6">
-                                <div class="product-media-box">
-                                    <img src="customized_vision_inspection.png" alt="Customized Vision Inspection System" class="w-full h-full object-cover">
+                        <div id="custom_model_vision" class="custom-model-panel active">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_vision_inspection.png" alt="K-VISION CHECK CELL" class="w-full h-full object-cover">
                                 </div>
-                                <div class="kh-card p-5 rounded-sm">
-                                    <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Reference Concept</div>
-                                    <p class="mini-note leading-7">
-                                        첨부해주신 실제 장비 사진을 바탕으로 구성한 맞춤형 비전 검사 장비 컨셉입니다.
-                                        마킹 장비와 검사 카메라를 함께 구성하여 생산 현장에서 마킹 품질을 바로 확인할 수 있습니다.
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Vision Inspection System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-VISION CHECK CELL</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-VISION CHECK CELL은 레이저 마킹 후 문자, 로고, 코드, 위치, 누락 여부와 마킹 품질을 비전 카메라로 확인하는
+                                        맞춤형 검증 장비입니다. 제품 형상과 검사 기준에 맞춰 카메라, 렌즈, 조명, 지그, 안전 커버 구조를 전용 설계합니다.
                                     </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Marking Quality Check</span>
+                                        <span class="product-badge">Vision Camera</span>
+                                        <span class="product-badge">Safety Cover</span>
+                                        <span class="product-badge">Custom Jig</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            단순한 표준 모델이 아니라 고객 제품과 검사 항목에 맞춰 제작되는 Customized 군의 한 가지 예시입니다.
+                                            마킹 설비 뒤 공정 또는 장비 내부에 검사 구성을 연동하여 불량 유출을 줄이고 품질 확인을 자동화하는 방향으로 구성합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mt-16">
-                            <div class="section-kicker mb-5">Inspection Concept</div>
-                            <h3 class="text-4xl font-black product-section-title mb-8">마킹 품질 검증 구성</h3>
-                            <div class="kh-card rounded-sm overflow-hidden">
-                                <div class="overflow-x-auto">
-                                    <table class="w-full spec-table min-w-[820px]">
-                                        <tbody>
-                                            <tr><th>제품 구분</th><td>Customized Vision Inspection System</td></tr>
-                                            <tr><th>검사 목적</th><td>마킹 후 문자, 로고, 코드, 위치, 누락 여부 및 품질 확인</td></tr>
-                                            <tr><th>검사 방식</th><td>비전 카메라 + 렌즈 + 조명 + 검사 소프트웨어 기반 판정</td></tr>
-                                            <tr><th>검사 항목</th><td>문자 인식, 로고 확인, QR/Data Matrix/Barcode 판독, 위치 확인, 누락 검사</td></tr>
-                                            <tr><th>장비 구조</th><td>안전 커버형 구조 / 녹색 보호 윈도우 / 전용 스테이지 / 작업자 조작부</td></tr>
-                                            <tr><th>적용 공정</th><td>레이저 마킹 후 자동 검사, 생산 이력 추적, 불량 유출 방지</td></tr>
-                                            <tr><th>맞춤 옵션</th><td>전용 지그, 제품 위치 보정, 조명 조건, 검사 알고리즘, PLC/I/O 연동</td></tr>
-                                            <tr><th>상담 필요 정보</th><td>검사 대상, 제품 크기, 마킹 내용, 검사 속도, 양품/불량 기준, 자동화 필요 여부</td></tr>
-                                        </tbody>
-                                    </table>
+                            <div class="mt-16 grid md:grid-cols-4 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">마킹 후 자동 검사</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">마킹 완료 후 문자, 로고, 코드 상태를 자동 확인합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">위치 / 누락 확인</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">마킹 위치 편차와 누락 여부를 검사하여 불량을 판정합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">비전 카메라 기반</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">카메라, 렌즈, 조명 조건을 제품에 맞게 선정합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">안전 커버형 구조</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">녹색 보호 윈도우와 커버형 구조로 작업 안정성을 높입니다.</p>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="mt-16 kh-card p-7 rounded-sm">
-                            <div class="section-kicker mb-4">Key Features</div>
-                            <h3 class="text-3xl font-black product-section-title">맞춤형 비전 검사 장비 특징</h3>
-                            <div class="mt-6 grid md:grid-cols-4 gap-5">
-                                <div class="kh-card-soft p-5 rounded-sm">
-                                    <h4 class="text-xl font-black">마킹 상태 확인</h4>
-                                    <p class="mt-3 text-slate-600 leading-7">마킹 후 품질 상태를 즉시 확인하여 불량 유출을 줄입니다.</p>
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">Inspection Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-VISION CHECK CELL 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 비전 검증 장비</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-VISION CHECK CELL</td></tr>
+                                                <tr><th>검사 목적</th><td>레이저 마킹 후 문자, 로고, 코드, 위치, 누락 여부 및 마킹 품질 확인</td></tr>
+                                                <tr><th>검사 방식</th><td>비전 카메라 + 렌즈 + 조명 + 검사 소프트웨어 기반 양품/불량 판정</td></tr>
+                                                <tr><th>검사 항목</th><td>문자 확인, 로고 확인, QR/Data Matrix/Barcode 판독, 위치 확인, 누락 검사</td></tr>
+                                                <tr><th>장비 구조</th><td>안전 커버형 구조, 녹색 보호 윈도우, 전용 스테이지, 작업자 조작부 구성</td></tr>
+                                                <tr><th>맞춤 구성</th><td>전용 지그, 제품 위치 보정, 조명 조건, 검사 알고리즘, PLC/I/O 연동</td></tr>
+                                                <tr><th>적용 효과</th><td>마킹 불량 유출 방지, 생산 품질 안정화, 검사 이력 관리 및 자동 판정 지원</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div class="kh-card-soft p-5 rounded-sm">
-                                    <h4 class="text-xl font-black">코드 판독</h4>
-                                    <p class="mt-3 text-slate-600 leading-7">QR, Data Matrix, Barcode 등 추적 코드 판독에 대응합니다.</p>
-                                </div>
-                                <div class="kh-card-soft p-5 rounded-sm">
-                                    <h4 class="text-xl font-black">위치/누락 검사</h4>
-                                    <p class="mt-3 text-slate-600 leading-7">마킹 위치 편차와 마킹 누락 여부를 검사할 수 있습니다.</p>
-                                </div>
-                                <div class="kh-card-soft p-5 rounded-sm">
-                                    <h4 class="text-xl font-black">현장 맞춤 구조</h4>
-                                    <p class="mt-3 text-slate-600 leading-7">제품과 작업 방식에 맞춘 커버, 스테이지, 지그 구성이 가능합니다.</p>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Consultation Point</div>
+                                <h3 class="text-3xl font-black product-section-title">상담 시 확인하면 좋은 정보</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">검사 대상</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">제품 크기, 소재, 표면 상태, 마킹 위치와 검사할 내용을 확인합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">검사 기준</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">정상/불량 기준, 판독 코드 종류, 위치 허용오차, 누락 조건을 정리합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">생산 조건</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">검사 속도, 자동화 연동, 작업자 투입 방식, 설치 공간을 함께 검토합니다.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1513,6 +1545,10 @@
 
             if (key === 'fiber') {
                 showFiberModel('prisa');
+            }
+
+            if (key === 'custom') {
+                showCustomModel('vision');
             }
 
             if (doScroll) {
