@@ -1,6 +1,43 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v44 current index hero video visible -->
+    <!-- kookyhon v43 product category no auto scroll -->
+    <!-- kookyhon v41 customized vision marking inspection -->
+    <!-- kookyhon v40 customized no auto scroll -->
+    <!-- kookyhon v39 customized 3d laser marking -->
+    <!-- kookyhon v38 customized dual panel nesting fix -->
+    <!-- kookyhon v37 customized model tab fix -->
+    <!-- kookyhon v36 customized dual laser workstation -->
+    <!-- kookyhon v35 customized vision product detail -->
+    <!-- kookyhon v34 customized vision inspection -->
+    <!-- kookyhon v33 customized product category -->
+    <!-- kookyhon v30 PRISA-C image replacement -->
+    <!-- kookyhon v29 PRISA-UV spec and preview cleanup -->
+    <!-- kookyhon v28 PRISA-UV image update -->
+    <!-- kookyhon v27 PRISA-UV image replacement -->
+    <!-- kookyhon v26 PRISA-E preview removed -->
+    <!-- kookyhon v25 PRISA-E spec update -->
+    <!-- kookyhon v23 PRISA-E image replacement -->
+    <!-- kookyhon v22 BPD specification update -->
+    <!-- kookyhon v21 BPD layout replacement -->
+    <!-- kookyhon v20 home product card -->
+    <!-- kookyhon v19 BPD image replacement -->
+    <!-- kookyhon v17 PRISA style consistency -->
+    <!-- kookyhon v16 unified branding -->
+    <!-- kookyhon v15 refreshed product videos/pages -->
+    <!-- kookyhon v14 nav js syntax fix -->
+    <!-- kookyhon v13 nav fix -->
+    <!-- kookyhon v12 restore original PRISA -->
+    <!-- kookyhon v11 products from zip -->
+    <!-- kookyhon v10 no attached preview -->
+    <!-- kookyhon v9 product hierarchy -->
+    <!-- kookyhon v8 prisa product -->
+    <!-- kookyhon v7 admin button on board -->
+    <!-- kookyhon v6 nickname private -->
+    <!-- kookyhon v5 public board -->
+    <!-- kookyhon v4 inquiry board -->
+    <!-- kookyhon v3 admin link -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쿠키혼레이저 - 산업용 레이저 마킹·가공 솔루션</title>
@@ -52,11 +89,11 @@
         }
         .nav-link:hover::after { transform: scaleX(1); }
         .top-shadow { box-shadow: 0 1px 0 rgba(17,24,39,.08); }
-        .hero-video video { filter: saturate(.9) contrast(1.05); opacity: .50; }
+        .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
         .hero-overlay {
             background:
-                linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.84) 43%, rgba(255,255,255,.40) 100%),
-                linear-gradient(180deg, rgba(0,91,172,.08), rgba(255,255,255,.00));
+                linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.58) 43%, rgba(255,255,255,.18) 100%),
+                linear-gradient(180deg, rgba(0,91,172,.04), rgba(255,255,255,.00));
         }
         .section-kicker {
             display: inline-flex;
@@ -111,6 +148,7 @@
         }
         .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid #e5e7eb; }
         .footer-link:hover { color: #fff; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         @media (max-width: 900px) {
             .desktop-nav { display: none; }
             .mobile-nav { display: grid; }
@@ -119,10 +157,72 @@
         @media (min-width: 901px) {
             .mobile-nav { display: none; }
         }
+    
+        .product-hero-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: 28px; }
+        .product-media-box { background:#0f172a; border:1px solid rgba(255,255,255,.10); border-radius: 4px; overflow:hidden; }
+        .product-badge { display:inline-flex; align-items:center; padding:8px 14px; border-radius:999px; background:#eff6ff; color:var(--kh-blue); font-weight:800; font-size:13px; }
+        .spec-table th, .spec-table td { border-bottom:1px solid #e5e7eb; padding:14px 16px; vertical-align:top; }
+        .spec-table th { width:30%; color:#475569; font-weight:700; background:#f8fafc; }
+        .spec-table td { color:#0f172a; }
+        .product-section-title { letter-spacing:-.04em; }
+        .mini-note { color:#64748b; font-size: 14px; line-height: 1.7; }
+        @media (max-width: 1024px) {
+            .product-hero-grid { grid-template-columns: 1fr; }
+        }
+
+    
+        .product-category-btn.active {
+            background: var(--kh-blue);
+            color: #fff;
+            border-color: var(--kh-blue);
+        }
+        .product-category-btn.active .product-category-desc {
+            color: rgba(255,255,255,.82);
+        }
+        .product-model-btn.active {
+            background: #0f172a;
+            color: #fff;
+            border-color: #0f172a;
+        }
+        .product-panel { display: none; }
+        .product-panel.active { display: block; }
+        .product-model-panel { display: none; }
+        .product-model-panel.active { display: block; }
+
+        .custom-model-btn.active {
+            background: #0f172a;
+            color: #fff;
+            border-color: #0f172a;
+        }
+        .custom-model-panel { display: none; }
+        .custom-model-panel.active { display: block; }
+
+
+    
+        .product-category-btn.active {
+            background: var(--kh-blue);
+            color: #fff;
+            border-color: var(--kh-blue);
+        }
+        .product-category-btn.active .product-category-desc { color: rgba(255,255,255,.82); }
+        .product-model-btn.active { background:#0f172a; color:#fff; border-color:#0f172a; }
+        .product-panel { display:none; }
+        .product-panel.active { display:block; }
+        .product-model-panel { display:none; }
+        .product-model-panel.active { display:block; }
+        .product-gallery-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:20px; }
+        @media (max-width: 768px) { .product-gallery-grid { grid-template-columns:1fr; } }
+
+    
+        header { position: fixed; z-index: 9999 !important; pointer-events: auto !important; }
+        header * { pointer-events: auto !important; }
+        .desktop-nav button, .mobile-nav button { cursor: pointer; position: relative; z-index: 10000; }
+        .hero-video, .hero-video video, .hero-overlay { pointer-events: none; }
+
     </style>
 </head>
 <body>
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur top-shadow">
+    <header class="fixed top-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur top-shadow">
         <div class="hidden lg:block border-b border-slate-100 bg-slate-50 text-xs text-slate-500">
             <div class="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
                 <div>Industrial Laser Marking · Automation · Vision Solution</div>
@@ -134,7 +234,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <button onclick="showSection('home')" class="flex items-center gap-3 text-left" aria-label="홈으로 이동">
+            <button type="button" onclick="showSection('home')" class="flex items-center gap-3 text-left" aria-label="홈으로 이동">
                 <span class="w-11 h-11 rounded-md kh-logo-badge flex items-center justify-center font-black tracking-tight"><span class="kh-logo-text text-[18px]">KH</span></span>
                 <span>
                     <span class="block text-xl font-black tracking-[-0.04em]">KOOKYHON LASER</span>
@@ -143,17 +243,18 @@
             </button>
 
             <nav class="desktop-nav flex items-center gap-9 text-[15px] font-bold">
-                <button class="nav-link active" data-section="home" onclick="showSection('home')">홈</button>
-                <button class="nav-link" data-section="company" onclick="showSection('company')">회사소개</button>
-                <button class="nav-link" data-section="products" onclick="showSection('products')">제품소개</button>
-                <button class="nav-link" data-section="applications" onclick="showSection('applications')">레이저 응용</button>
-                <button class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('contact')">상담문의</button>
+                <button type="button" class="nav-link active" data-section="home" onclick="showSection('home')">홈</button>
+                <button type="button" class="nav-link" data-section="company" onclick="showSection('company')">회사소개</button>
+                <button type="button" class="nav-link" data-section="products" onclick="showSection('products')">제품소개</button>
+                <button type="button" class="nav-link" data-section="applications" onclick="showSection('applications')">레이저 응용</button>
+                <button type="button" class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('inquiry_board')">상담문의</button>
             </nav>
         </div>
-        <nav class="mobile-nav grid-cols-3 border-t border-slate-100 text-sm font-bold text-center bg-white">
-            <button class="py-3" onclick="showSection('company')">회사소개</button>
-            <button class="py-3" onclick="showSection('applications')">응용</button>
-            <button class="py-3 text-[var(--kh-blue)]" onclick="showSection('contact')">문의</button>
+        <nav class="mobile-nav grid-cols-4 border-t border-slate-100 text-sm font-bold text-center bg-white">
+            <button type="button" class="py-3" onclick="showSection('company')">회사소개</button>
+            <button type="button" class="py-3" onclick="showSection('applications')">응용</button>
+            <button type="button" class="py-3 text-[var(--kh-blue)]" onclick="showSection('inquiry_board')">문의</button>
+            <a class="py-3 border-t border-slate-100" href="admin.html">관리자</a>
         </nav>
     </header>
 
@@ -177,8 +278,8 @@
                             쿠키혼레이저는 레이저 마킹, 자동화, 비전 검사, 공정 맞춤 장비까지 제조 현장에 필요한 레이저 솔루션을 함께 설계합니다.
                         </p>
                         <div class="mt-10 flex flex-wrap gap-3">
-                            <button onclick="showSection('applications')" class="px-7 py-4 rounded-sm kh-btn-primary">응용 분야 보기</button>
-                            <button onclick="showSection('company')" class="px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
+                            <button type="button" onclick="showSection('applications')" class="px-7 py-4 rounded-sm kh-btn-primary">응용 분야 보기</button>
+                            <button type="button" onclick="showSection('company')" class="px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
                         </div>
                     </div>
                     <div class="kh-card p-7 rounded-sm bg-white/95 backdrop-blur">
@@ -203,21 +304,27 @@
 
             <section class="py-20 bg-white">
                 <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid md:grid-cols-3 border-y border-slate-200">
-                        <button onclick="showSection('company')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b md:border-b-0 md:border-r border-slate-200">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 border-y border-slate-200">
+                        <button type="button" onclick="showSection('company')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200">
                             <span class="text-sm font-black text-[var(--kh-blue)]">01</span>
                             <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">회사소개</h3>
                             <p class="mt-3 text-slate-600 leading-7">30년 현장 노하우와 레이저 장비 개발 이력을 확인하세요.</p>
                             <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">자세히 보기 →</span>
                         </button>
-                        <button onclick="showSection('applications')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b md:border-b-0 md:border-r border-slate-200">
+                        <button type="button" onclick="showSection('products')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200">
                             <span class="text-sm font-black text-[var(--kh-blue)]">02</span>
+                            <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">제품소개</h3>
+                            <p class="mt-3 text-slate-600 leading-7">PRISA, PRISA-E, BPD, PRISA-UV, PRISA-C 제품군을 확인하세요.</p>
+                            <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">제품 보기 →</span>
+                        </button>
+                        <button type="button" onclick="showSection('applications')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b md:border-b-0 lg:border-r border-slate-200">
+                            <span class="text-sm font-black text-[var(--kh-blue)]">03</span>
                             <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">레이저 응용</h3>
                             <p class="mt-3 text-slate-600 leading-7">마킹, 각인, 코드 추적, 비전 검사 등 적용 사례 중심으로 안내합니다.</p>
                             <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">응용 보기 →</span>
                         </button>
-                        <button onclick="showSection('contact')" class="group text-left p-8 md:p-10 hover:bg-slate-50">
-                            <span class="text-sm font-black text-[var(--kh-blue)]">03</span>
+                        <button type="button" onclick="showSection('inquiry_board')" class="group text-left p-8 md:p-10 hover:bg-slate-50">
+                            <span class="text-sm font-black text-[var(--kh-blue)]">04</span>
                             <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">상담문의</h3>
                             <p class="mt-3 text-slate-600 leading-7">소재, 제품, 생산 조건을 알려주시면 적합한 구성을 검토합니다.</p>
                             <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">문의하기 →</span>
@@ -315,33 +422,1058 @@
             </section>
         </section>
 
+
+
+
         <section id="products" class="page-section">
             <section class="bg-slate-950 text-white py-24">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="section-kicker mb-6">Products</div>
                     <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">제품소개</h2>
-                    <p class="mt-6 max-w-3xl text-slate-300 leading-8 text-lg">
-                        제품별 상세 사양, 사진, 모델 구성은 추후 업데이트 예정입니다. 현재는 메뉴 구조와 제품 카테고리 영역만 정리했습니다.
+                    <p class="mt-6 max-w-4xl text-slate-300 leading-8 text-lg">
+                        첨부해주신 제품 자료를 기준으로 판매 제품군만 다시 정리했습니다.
+                        제품군을 먼저 선택한 뒤, 해당 제품명을 클릭하면 PRISA 제품 소개처럼 상세 내용을 확인할 수 있습니다.
                     </p>
                 </div>
             </section>
-            <section class="py-24 bg-white">
+
+            <section class="py-20 bg-[var(--kh-bg)]">
                 <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div class="kh-card-soft p-8 rounded-sm"><h3 class="text-2xl font-black">Fiber Laser</h3><p class="mt-3 text-slate-500 leading-7">금속 마킹 및 각인 장비 상세 준비 중</p></div>
-                        <div class="kh-card-soft p-8 rounded-sm"><h3 class="text-2xl font-black">CO2 Laser</h3><p class="mt-3 text-slate-500 leading-7">플라스틱, 고무, 유리 계열 적용 장비 상세 준비 중</p></div>
-                        <div class="kh-card-soft p-8 rounded-sm"><h3 class="text-2xl font-black">UV Laser</h3><p class="mt-3 text-slate-500 leading-7">정밀 마킹 및 열 민감 소재 적용 장비 상세 준비 중</p></div>
-                        <div class="kh-card-soft p-8 rounded-sm"><h3 class="text-2xl font-black">3D Marking</h3><p class="mt-3 text-slate-500 leading-7">곡면, 단차, 대면적 마킹 시스템 상세 준비 중</p></div>
-                        <div class="kh-card-soft p-8 rounded-sm"><h3 class="text-2xl font-black">Vision System</h3><p class="mt-3 text-slate-500 leading-7">위치 보정, 검사, 판정 자동화 상세 준비 중</p></div>
-                        <div class="kh-card-soft p-8 rounded-sm"><h3 class="text-2xl font-black">Custom Automation</h3><p class="mt-3 text-slate-500 leading-7">고객 공정 맞춤 자동화 구성 상세 준비 중</p></div>
+                    <div class="section-kicker mb-5">Product Categories</div>
+                    <h3 class="text-4xl font-black tracking-[-0.05em]">제품군 선택</h3>
+                    <p class="mt-4 text-slate-600 leading-8">
+                        판매 제품군 기준으로 Fiber Laser, UV Laser, CO2 Laser와 비정규 맞춤형 장비(Customized)를 함께 구성했습니다.
+                    </p>
+
+                    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <button class="product-category-btn active kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('fiber')">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                            <h4 class="mt-4 text-2xl font-black">Fiber Laser</h4>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">금속 마킹, Deep Marking, 코드 추적, 인라인 양산용 Fiber Laser 제품군</p>
+                        </button>
+                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('uv')">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                            <h4 class="mt-4 text-2xl font-black">UV Laser</h4>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">미세 마킹, 고품질 빔, 민감 소재 대응용 UV Laser 제품군</p>
+                        </button>
+                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('co2')">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                            <h4 class="mt-4 text-2xl font-black">CO2 Laser</h4>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">Plastic 등 비금속 소재 마킹용 CO2 Laser 제품군</p>
+                        </button>
+                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('custom')">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                            <h4 class="mt-4 text-2xl font-black">Customized</h4>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">정규 제품군 외 고객 공정에 맞춘 회사 맞춤형 레이저 장비 솔루션</p>
+                        </button>
                     </div>
-                    <div class="mt-12 bg-slate-50 border border-slate-200 p-8 rounded-sm flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
-                        <div>
-                            <h3 class="text-2xl font-black tracking-[-0.03em]">제품 상세는 다음 단계에서 추가</h3>
-                            <p class="mt-2 text-slate-600">사진, 사양표, 옵션, 적용 소재, 샘플 이미지를 받으면 바로 상세 페이지 형태로 확장할 수 있습니다.</p>
+                </div>
+            </section>
+
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+
+                    <div id="product_panel_fiber" class="product-panel active">
+                        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+                            <div>
+                                <div class="section-kicker mb-5">Fiber Laser Line-up</div>
+                                <h3 class="text-4xl font-black tracking-[-0.05em]">Fiber Laser 제품군</h3>
+                                <p class="mt-4 text-slate-600 leading-8">제품명을 선택하면 상세 자료, 특징, 사양, 도면과 영상 내용을 확인할 수 있습니다. 기존 PRISA도 유지하고, PRISA-E와 BPD를 함께 구분했습니다.</p>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <button class="product-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showFiberModel('prisa')">PRISA</button>
+                                <button class="product-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showFiberModel('prisa_e')">PRISA-E</button>
+                                <button class="product-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showFiberModel('bpd')">BPD</button>
+                            </div>
                         </div>
-                        <button onclick="showSection('contact')" class="px-7 py-4 rounded-sm kh-btn-primary shrink-0">문의하기</button>
+
+                        
+                        <div id="fiber_model_prisa" class="product-model-panel active">
+                            <div class="product-hero-grid items-stretch">
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">PRISA Series</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA Fiber Laser</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        PRISA는 금속 및 다양한 산업 소재에 선명한 마킹 품질을 구현하고,
+                                        컴팩트한 설계와 자동화 연동성까지 고려한 쿠키혼레이저의 대표 Fiber Laser 마킹 시스템입니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Ultra Ytterbium Fiber Laser</span>
+                                        <span class="product-badge">20W / 30W / 50W / 100W</span>
+                                        <span class="product-badge">2~1000 kHz</span>
+                                        <span class="product-badge">1ns~350ns</span>
+                                    </div>
+
+                                    <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Economic · Efficient</div>
+                                            <p class="mt-3 text-slate-600 leading-7">최고의 빔 품질 구현 및 높은 펄스 에너지 확보로 안정적인 생산 효율을 기대할 수 있습니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Deep Marking</div>
+                                            <p class="mt-3 text-slate-600 leading-7">금속 Deep Marking 분야에 적합하며 우수한 빔 품질로 마킹 품질과 양산성을 확보합니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Inline System Ready</div>
+                                            <p class="mt-3 text-slate-600 leading-7">검증된 소스를 바탕으로 안정적인 인라인 양산 시스템에 적용하기 좋습니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Compact Design</div>
+                                            <p class="mt-3 text-slate-600 leading-7">작업 공간을 최소화하면서도 설치와 운용이 편리한 구조로 공간 활용도가 높습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-6">
+                                    <div class="product-media-box">
+                                        <video src="prisa_rotation.mp4" autoplay muted loop playsinline controls class="w-full h-full object-cover"></video>
+                                    </div>
+                                    <div class="kh-card p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Layout Drawing</div>
+                                        <img src="prisa_layout.png" alt="PRISA Fiber Laser layout drawing" class="w-full rounded-sm border border-slate-200">
+                                        <p class="mini-note mt-3">Laser Head와 Table Dimension 도면을 기준으로 설치 공간과 장비 레이아웃을 검토할 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">Specification</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">PRISA 제품 사양</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>모델</th><td>PRISA</td></tr>
+                                                <tr><th>Laser source</th><td>Ultra Ytterbium Fiber Laser</td></tr>
+                                                <tr><th>레이저 헤드</th><td>Single 헤드 구조</td></tr>
+                                                <tr><th>파장</th><td>1064nm</td></tr>
+                                                <tr><th>최대 평균 출력</th><td>20W / 30W / 50W / 100W</td></tr>
+                                                <tr><th>최대 펄스 출력</th><td>12.5kW</td></tr>
+                                                <tr><th>빔 품질(M²)</th><td>&lt;1.5</td></tr>
+                                                <tr><th>주파수</th><td>2~1000kHz</td></tr>
+                                                <tr><th>Pulse duration</th><td>1ns~350ns</td></tr>
+                                                <tr><th>안정성</th><td>2% (long term 8 hours, rms), 최대 5%</td></tr>
+                                                <tr><th>초점거리</th><td>349mm</td></tr>
+                                                <tr><th>마킹 영역(표준)</th><td>180mm × 180mm</td></tr>
+                                                <tr><th>마킹 선폭</th><td>50~150um (내부 빔 조절)</td></tr>
+                                                <tr><th>마킹 속도(CPS)</th><td>최대 3000 mm/s (640 CPS)</td></tr>
+                                                <tr><th>냉각 방식</th><td>Air Cooling</td></tr>
+                                                <tr><th>warm-up time</th><td>3분</td></tr>
+                                                <tr><th>가동환경</th><td>온도 0~40℃, 습도 10~95% (결로가 없을 시)</td></tr>
+                                                <tr><th>공급 전원</th><td>단상 220VAC, 60Hz, 2KVA, 최대 1KW</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Features</div>
+                                <h3 class="text-3xl font-black product-section-title">PRISA 주요 특징</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">다양한 마킹 적용</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">로고, 사진, 바코드, QR코드, Data Matrix 등 원하는 마킹을 쉽고 간편하게 구현할 수 있습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">소모품 부담 감소</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">화학약품이나 물리적 충격을 사용하지 않으며, 한 번 마킹된 로고나 글씨는 쉽게 변하지 않고 영구적으로 보존됩니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">정밀 표현</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">탁월하고 안정적인 빔 품질로 정밀한 표현이 요구되는 다양한 분야에 적합합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        <div id="fiber_model_prisa_e" class="product-model-panel">
+                            <div class="product-hero-grid items-stretch">
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">PRISA-E SERIES</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA-E Fiber Laser</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        PRISA-E는 경제성과 효율성을 동시에 고려한 Fiber Laser 마킹 시스템으로,
+                                        안정적인 생산성과 우수한 빔 품질, Deep Marking 대응력, 인라인 양산 적용성을 함께 고려한 모델입니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Economic · Efficient</span>
+                                        <span class="product-badge">Deep Marking</span>
+                                        <span class="product-badge">Inline System Ready</span>
+                                        <span class="product-badge">Compact Design</span>
+                                    </div>
+
+                                    <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Economic · Efficient</div>
+                                            <p class="mt-3 text-slate-600 leading-7">가격 경쟁력을 확보하면서도 생산 현장에서 요구되는 마킹 품질과 안정성을 동시에 고려한 구성입니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Deep Marking</div>
+                                            <p class="mt-3 text-slate-600 leading-7">금속 마킹과 깊이감 있는 각인 공정에 적합하며 다양한 산업 마킹 환경에서 활용할 수 있습니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Inline System Ready</div>
+                                            <p class="mt-3 text-slate-600 leading-7">검증된 광원 기반으로 자동화 라인 및 연속 생산 공정에 적용하기 좋은 산업용 구조를 갖추고 있습니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Compact Design</div>
+                                            <p class="mt-3 text-slate-600 leading-7">컴팩트한 설계로 작업 공간을 효율적으로 활용할 수 있으며 설치와 운용이 비교적 편리합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-6">
+                                    <div class="product-media-box">
+                                        <img src="prisa_e_main_visual.png" alt="PRISA-E Fiber Laser" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="kh-card p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Layout / Product View</div>
+                                        <img src="prisa_e_1.png" alt="PRISA-E Layout / Product View" class="w-full rounded-sm border border-slate-200 bg-white">
+                                        <p class="mini-note mt-3">첨부해주신 PRISA-E 치수 표기 이미지를 기준으로 Layout / Product View를 반영했습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">Specification</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">PRISA-E 제품 사양</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>모델명</th><td>PRISA-E</td></tr>
+                                                <tr><th>최대 출력</th><td>20W</td></tr>
+                                                <tr><th>파장</th><td>1064nm</td></tr>
+                                                <tr><th>편광</th><td>랜덤</td></tr>
+                                                <tr><th>주파수</th><td>30~60kHz</td></tr>
+                                                <tr><th>파워 안정성</th><td>&lt;3%</td></tr>
+                                                <tr><th>빔크기</th><td>6~8mm</td></tr>
+                                                <tr><th>마킹 속도</th><td>최대 6000 mm/s</td></tr>
+                                                <tr><th>레이저 빔(M²)</th><td>&lt;1.6</td></tr>
+                                                <tr><th>마킹 영역</th><td>110 × 110mm</td></tr>
+                                                <tr><th>운영체제</th><td>XP, Win7, 8, 10 (32bit, 64bit)</td></tr>
+                                                <tr><th>파일형식</th><td>AI, DXF, DST, PLT, BMP, JPG, etc</td></tr>
+                                                <tr><th>전원</th><td>AC220 60Hz 단상</td></tr>
+                                                <tr><th>소비전력</th><td>500W</td></tr>
+                                                <tr><th>냉각방식</th><td>공냉기</td></tr>
+                                                <tr><th>중량</th><td>30Kg</td></tr>
+                                                <tr><th>레이저 수명</th><td>10만 시간</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Features</div>
+                                <h3 class="text-3xl font-black product-section-title">PRISA-E 주요 특징</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">경제성과 효율</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">효율적인 장비 구성을 통해 합리적인 비용과 안정적인 생산 운용을 동시에 기대할 수 있습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">Deep Marking 대응</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">깊이감 있는 마킹과 선명한 각인을 요구하는 공정에 적합하며 산업용 적용 범위가 넓습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">양산 설비 적합</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">자동화 라인, 컨베이어 공정, 반복 생산 환경에서 활용하기 좋은 구조를 갖추고 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        
+                        <div id="fiber_model_bpd" class="product-model-panel">
+                            <div class="product-hero-grid items-stretch">
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">BPD SERIES</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">BPD Fiber Laser</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        BPD는 장수명 광원 구성과 폭넓은 주파수 대응, 고해상도 모션 제어,
+                                        Customized Beam Delivery를 바탕으로 생산성과 공정 유연성을 높인 Fiber Laser 시스템입니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Long Life Time</span>
+                                        <span class="product-badge">No Consumables</span>
+                                        <span class="product-badge">High Speed Control</span>
+                                        <span class="product-badge">Beam Delivery</span>
+                                    </div>
+
+                                    <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Long Life Time</div>
+                                            <p class="mt-3 text-slate-600 leading-7">장시간 운용 환경을 고려한 안정적인 구성으로 유지보수 부담을 낮추고 생산라인 활용도를 높입니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">High Speed Control</div>
+                                            <p class="mt-3 text-slate-600 leading-7">고해상도 스캔 제어와 빠른 응답성을 기반으로 생산 효율과 정밀한 마킹 품질을 동시에 기대할 수 있습니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Wide Process Flexibility</div>
+                                            <p class="mt-3 text-slate-600 leading-7">넓은 주파수 및 펄스 조건 대응으로 다양한 고객 공정과 소재 요구에 유연하게 대응할 수 있습니다.</p>
+                                        </div>
+                                        <div class="kh-card-soft p-5 rounded-sm">
+                                            <div class="text-sm font-black text-[var(--kh-blue)]">Customized Beam Delivery</div>
+                                            <p class="mt-3 text-slate-600 leading-7">특수 공정 및 사용자 환경에 맞춘 Beam Delivery 개념으로 응용성을 높일 수 있습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-6">
+                                    <div class="product-media-box">
+                                        <img src="bpd_main_visual.png" alt="BPD Fiber Laser" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="kh-card p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Layout / Product View</div>
+                                        <img src="bpd_layout.png" alt="BPD Layout Drawing" class="w-full rounded-sm border border-slate-200 bg-white">
+                                        <p class="mini-note mt-3">BPD의 레이저 헤드, 듀얼 헤드 구성, 테이블 치수 도면을 확인할 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">Specification</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">BPD 제품 사양</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr>
+                                                    <th>모델</th>
+                                                    <td class="font-bold text-[var(--kh-blue)]">Bleu Prestige Single</td>
+                                                    <td class="font-bold text-[var(--kh-blue)]">Bleu Prestige Duo</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>레이저 매질</th>
+                                                    <td colspan="2">Ultra Ytterbium Fiber Laser</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>레이저 헤드</th>
+                                                    <td>Single 헤드 구조</td>
+                                                    <td>Dual 헤드 구조</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>파장</th>
+                                                    <td colspan="2">1064nm</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>최대 평균 출력</th>
+                                                    <td colspan="2">20W</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>최대 펄스 출력</th>
+                                                    <td colspan="2">12.5kW</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>빔 품질(M²)</th>
+                                                    <td colspan="2">&lt;1.5</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>주파수</th>
+                                                    <td colspan="2">2~1000kHz</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Pulse duration</th>
+                                                    <td colspan="2">1ns~350ns</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>안정성</th>
+                                                    <td colspan="2">2% (long term 8 hours, rms), 최대 5%</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>마킹 선폭</th>
+                                                    <td colspan="2">50~150um (내부 빔 조절)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>마킹 영역(표준)</th>
+                                                    <td colspan="2">120mm × 120mm, 180mm × 180mm, 230mm × 230mm</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>마킹 속도(mm/s)</th>
+                                                    <td colspan="2">최대 3000mm/s</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>마킹 속도(CPS)</th>
+                                                    <td>1100 characters/sec</td>
+                                                    <td>2200 characters/sec</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>냉각 방식</th>
+                                                    <td colspan="2">Air Cooling</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>warm-up time</th>
+                                                    <td colspan="2">3분</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>가동환경</th>
+                                                    <td colspan="2">온도 0~40℃, 습도 10~95% (결로가 없을 시)</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>공급 전원</th>
+                                                    <td colspan="2">단상 220VAC, 60Hz, 2KVA, 최대 1KW</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Features</div>
+                                <h3 class="text-3xl font-black product-section-title">BPD 주요 특징</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">고속 생산 대응</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">빠른 제어 성능과 반복 안정성을 바탕으로 양산 공정에서 높은 생산성을 기대할 수 있습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">정밀 제어</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">문자, 로고, 코드, 정밀 패턴 등 고해상도 표현이 필요한 산업 분야에 적합합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">공정 유연성</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">다양한 고객 환경과 응용 공정을 고려한 빔 전달 및 세부 조건 확장이 가능합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid lg:grid-cols-2 gap-8">
+                                <div class="kh-card p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)] mb-3">자료 미리보기</div>
+                                    <img src="bpd_2.png" alt="BPD preview" class="w-full rounded-sm border border-slate-200">
+                                </div>
+                                <div class="kh-card p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)] mb-3">추가 자료</div>
+                                    <img src="bpd_4.png" alt="BPD detail" class="w-full rounded-sm border border-slate-200">
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    
+                    <div id="product_panel_uv" class="product-panel">
+                        <div class="product-hero-grid items-stretch">
+                            <div class="kh-card p-8 md:p-10 rounded-sm">
+                                <div class="section-kicker mb-5">PRISA-UV SERIES</div>
+                                <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA-UV Laser</h3>
+                                <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                    PRISA-UV는 고정밀 미세 마킹에 적합한 UV Laser 시스템으로,
+                                    Plastic, Crystal, Glass 등 민감한 소재에도 선명한 품질을 구현할 수 있도록 설계된 모델입니다.
+                                </p>
+
+                                <div class="mt-8 flex flex-wrap gap-3">
+                                    <span class="product-badge">High Beam Quality</span>
+                                    <span class="product-badge">Precision Marking</span>
+                                    <span class="product-badge">Inline System Ready</span>
+                                    <span class="product-badge">Compact Design</span>
+                                </div>
+
+                                <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">High Beam Quality</div>
+                                        <p class="mt-3 text-slate-600 leading-7">정밀 마킹에 적합한 빔 품질로 미세 문자와 고해상도 로고, 섬세한 패턴 구현에 유리합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Precision Marking</div>
+                                        <p class="mt-3 text-slate-600 leading-7">열 영향이 민감한 소재에도 비교적 정교한 품질을 구현할 수 있어 세밀한 가공에 적합합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Inline System Ready</div>
+                                        <p class="mt-3 text-slate-600 leading-7">자동화 라인 및 정밀 생산 시스템과의 연동을 고려한 장비 구성으로 운용할 수 있습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Compact Design</div>
+                                        <p class="mt-3 text-slate-600 leading-7">공간 활용도를 높이는 구조를 바탕으로 정밀 가공 설비에 효율적으로 적용하기 좋습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="product-media-box">
+                                    <img src="prisa_uv_main_visual.png" alt="PRISA-UV Laser" class="w-full h-full object-cover">
+                                </div>
+                                <div class="kh-card p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Layout / Product View</div>
+                                    <img src="prisa_uv_1.png" alt="PRISA-UV Laser" class="w-full rounded-sm border border-slate-200 bg-white">
+                                    <p class="mini-note mt-3">PRISA-UV 대표 이미지와 장비 구성을 확인할 수 있습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-16">
+                            <div class="section-kicker mb-5">Specification</div>
+                            <h3 class="text-4xl font-black product-section-title mb-8">PRISA-UV 제품 사양</h3>
+                            <div class="kh-card rounded-sm overflow-hidden">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full spec-table min-w-[820px]">
+                                        <tbody>
+                                            <tr><th>모델</th><td>Prisa-UV</td></tr>
+                                            <tr><th>Laser source</th><td>UV Laser</td></tr>
+                                            <tr><th>레이저 헤드</th><td>Single 헤드 구조</td></tr>
+                                            <tr><th>파장</th><td>355nm</td></tr>
+                                            <tr><th>평균전력</th><td>&gt;5W@60kHz</td></tr>
+                                            <tr><th>펄스지속시간</th><td>&lt;10ns@60kHz</td></tr>
+                                            <tr><th>빔 품질(M²)</th><td>&lt;1.2</td></tr>
+                                            <tr><th>주파수</th><td>30kHz~200kHz</td></tr>
+                                            <tr><th>안정성</th><td>RMS≤3%@24hr</td></tr>
+                                            <tr><th>초점거리</th><td>200~350mm (렌즈별 상이)</td></tr>
+                                            <tr><th>마킹 영역(표준)</th><td>50mm × 50mm / 110mm × 110mm / 180mm × 180mm</td></tr>
+                                            <tr><th>마킹 선폭</th><td>35um</td></tr>
+                                            <tr><th>마킹 속도(CPS)</th><td>최대 6000 mm/s (6000 CPS)</td></tr>
+                                            <tr><th>파일 형식</th><td>AI, DXF, DST, PLT, BMP, JPG, etc</td></tr>
+                                            <tr><th>운영체제</th><td>XP, Win7, 8, 10 (32bit, 64bit)</td></tr>
+                                            <tr><th>냉각 방식</th><td>Air Cooling</td></tr>
+                                            <tr><th>평균 전력소비</th><td>350W</td></tr>
+                                            <tr><th>가동환경</th><td>온도 0~40℃, 습도 10~95% (결로가 없을 시)</td></tr>
+                                            <tr><th>공급 전원</th><td>단상 220VAC, 60Hz, 1KVA, 최대 1KW</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-16 kh-card p-7 rounded-sm">
+                            <div class="section-kicker mb-4">Features</div>
+                            <h3 class="text-3xl font-black product-section-title">PRISA-UV 주요 특징</h3>
+                            <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <h4 class="text-xl font-black">정밀 미세 마킹</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">아주 작은 문자, 정밀 로고, 세밀한 그래픽 등 고해상도 표기가 필요한 제품에 적합합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <h4 class="text-xl font-black">민감 소재 대응</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">Plastic, Crystal, Glass 등 열 영향이 민감한 소재에 비교적 안정적인 마킹 품질을 기대할 수 있습니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <h4 class="text-xl font-black">고급 제품 적용</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">프리미엄 외관과 정밀도가 중요한 전자부품, 의료부품, 소비재 등 다양한 분야에 활용 가능합니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                    <div id="product_panel_co2" class="product-panel">
+                        <div class="product-hero-grid items-stretch">
+                            <div class="kh-card p-8 md:p-10 rounded-sm">
+                                <div class="section-kicker mb-5">PRISA-C SERIES</div>
+                                <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA-C CO2 Laser</h3>
+                                <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                    PRISA-C는 Plastic 및 다양한 비금속 소재에 적합한 CO2 Laser 시스템으로,
+                                    포장재, 소비재 부품, 사출품 등의 표기 공정에 효율적으로 적용할 수 있는 범용 모델입니다.
+                                </p>
+
+                                <div class="mt-8 flex flex-wrap gap-3">
+                                    <span class="product-badge">Plastic Optimized</span>
+                                    <span class="product-badge">Versatile Processing</span>
+                                    <span class="product-badge">Inline System Ready</span>
+                                    <span class="product-badge">Compact Design</span>
+                                </div>
+
+                                <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Plastic Optimized</div>
+                                        <p class="mt-3 text-slate-600 leading-7">플라스틱 사출품과 다양한 비금속 제품 표기 공정에 적합한 CO2 Laser 기반 솔루션입니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Versatile Processing</div>
+                                        <p class="mt-3 text-slate-600 leading-7">포장재, 용기, 케이스, 라벨류 등 폭넓은 비금속 응용 분야에 활용할 수 있습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Inline System Ready</div>
+                                        <p class="mt-3 text-slate-600 leading-7">연속 생산과 자동화 라인 적용을 고려한 구조로 생산 환경에 유연하게 대응할 수 있습니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Compact Design</div>
+                                        <p class="mt-3 text-slate-600 leading-7">작업 공간을 효율적으로 활용할 수 있는 구조로 다양한 생산 설비와의 배치를 고려하기 좋습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="product-media-box">
+                                    <img src="prisa_c_main_visual.png" alt="PRISA-C CO2 Laser" class="w-full h-full object-cover">
+                                </div>
+                                <div class="kh-card p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Layout / Product View</div>
+                                    <img src="prisa_c_1.png" alt="PRISA-C CO2 Laser" class="w-full rounded-sm border border-slate-200 bg-white">
+                                    <p class="mini-note mt-3">PRISA-C 대표 이미지와 장비 구성을 확인할 수 있습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-16">
+                            <div class="section-kicker mb-5">Specification</div>
+                            <h3 class="text-4xl font-black product-section-title mb-8">PRISA-C 제품 사양</h3>
+                            <div class="kh-card rounded-sm overflow-hidden">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full spec-table min-w-[720px]">
+                                        <tbody>
+                                            <tr><th>모델</th><td>Prisa</td></tr>
+                                            <tr><th>Laser source</th><td>CO2 Laser</td></tr>
+                                            <tr><th>레이저 헤드</th><td>Single 헤드 구조</td></tr>
+                                            <tr><th>파장</th><td>9300nm / 10600nm</td></tr>
+                                            <tr><th>최대 평균 출력</th><td>30W / 60W / 100W / 200W</td></tr>
+                                            <tr><th>빔 품질(M²)</th><td>&lt;1.2</td></tr>
+                                            <tr><th>주파수</th><td>1~200kHz</td></tr>
+                                            <tr><th>안정성</th><td>2%(long term 8 hours, rms), 최대5%</td></tr>
+                                            <tr><th>초점거리</th><td>200~350mm(렌즈별 상이)</td></tr>
+                                            <tr><th>마킹 영역(표준)</th><td>50mm x 50mm / 110mm x 110mm /180mm x 180mm</td></tr>
+                                            <tr><th>마킹 선폭</th><td>150um</td></tr>
+                                            <tr><th>마킹 속도(CPS)</th><td>최대 3000 mm/s (640 CPS)</td></tr>
+                                            <tr><th>냉각 방식</th><td>Air Cooling</td></tr>
+                                            <tr><th>warm-up time</th><td>3분</td></tr>
+                                            <tr><th>가동환경</th><td>온도 0~40℃, 습도 10~95% (결로가 없을 시)</td></tr>
+                                            <tr><th>공급 전원</th><td>단상 220VAC, 60Hz, 1KVA, 최대1KW</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-16 kh-card p-7 rounded-sm">
+                            <div class="section-kicker mb-4">Features</div>
+                            <h3 class="text-3xl font-black product-section-title">PRISA-C 주요 특징</h3>
+                            <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <h4 class="text-xl font-black">비금속 소재 최적화</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">플라스틱과 비금속 제품에 적합한 표기 특성으로 폭넓은 소비재 및 산업 부품에 적용할 수 있습니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <h4 class="text-xl font-black">포장재 및 용기 응용</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">케이스, 포장재, 용기류, 라벨 및 각종 표면 표시 공정에서 활용하기 좋은 구조입니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <h4 class="text-xl font-black">범용 생산 시스템</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">양산 설비와 자동화 라인에 유연하게 대응할 수 있도록 운용성과 설치 편의성을 함께 고려하였습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    
+                    
+                    <div id="product_panel_custom" class="product-panel">
+                        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
+                            <div>
+                                <div class="section-kicker mb-5">Customized Line-up</div>
+                                <h3 class="text-4xl font-black tracking-[-0.05em]">Customized 맞춤형 장비군</h3>
+                                <p class="mt-4 text-slate-600 leading-8">
+                                    정규 제품군이 아닌 고객 공정 맞춤형 장비입니다. 아래 장비명을 클릭하면 선택한 장비의 상세 내용만 바로 표시됩니다.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d')">K-3D LASER MARKING SYSTEM</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision_marking')">K-VISION MARKING INSPECTION SYSTEM</button>
+                            </div>
+                        </div>
+
+                        <div id="custom_model_vision" class="custom-model-panel active">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_vision_inspection.png" alt="K-VISION CHECK CELL" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Vision Inspection System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-VISION CHECK CELL</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-VISION CHECK CELL은 레이저 마킹 후 문자, 로고, 코드, 위치, 누락 여부와 마킹 품질을 비전 카메라로 확인하는
+                                        맞춤형 검증 장비입니다. 제품 형상과 검사 기준에 맞춰 카메라, 렌즈, 조명, 지그, 안전 커버 구조를 전용 설계합니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Marking Quality Check</span>
+                                        <span class="product-badge">Vision Camera</span>
+                                        <span class="product-badge">Safety Cover</span>
+                                        <span class="product-badge">Custom Jig</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            단순한 표준 모델이 아니라 고객 제품과 검사 항목에 맞춰 제작되는 Customized 군의 한 가지 예시입니다.
+                                            마킹 설비 뒤 공정 또는 장비 내부에 검사 구성을 연동하여 불량 유출을 줄이고 품질 확인을 자동화하는 방향으로 구성합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-4 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">마킹 후 자동 검사</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">마킹 완료 후 문자, 로고, 코드 상태를 자동 확인합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">위치 / 누락 확인</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">마킹 위치 편차와 누락 여부를 검사하여 불량을 판정합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">비전 카메라 기반</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">카메라, 렌즈, 조명 조건을 제품에 맞게 선정합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">안전 커버형 구조</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">녹색 보호 윈도우와 커버형 구조로 작업 안정성을 높입니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">Inspection Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-VISION CHECK CELL 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 비전 검증 장비</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-VISION CHECK CELL</td></tr>
+                                                <tr><th>검사 목적</th><td>레이저 마킹 후 문자, 로고, 코드, 위치, 누락 여부 및 마킹 품질 확인</td></tr>
+                                                <tr><th>검사 방식</th><td>비전 카메라 + 렌즈 + 조명 + 검사 소프트웨어 기반 양품/불량 판정</td></tr>
+                                                <tr><th>검사 항목</th><td>문자 확인, 로고 확인, QR/Data Matrix/Barcode 판독, 위치 확인, 누락 검사</td></tr>
+                                                <tr><th>장비 구조</th><td>안전 커버형 구조, 녹색 보호 윈도우, 전용 스테이지, 작업자 조작부 구성</td></tr>
+                                                <tr><th>맞춤 구성</th><td>전용 지그, 제품 위치 보정, 조명 조건, 검사 알고리즘, PLC/I/O 연동</td></tr>
+                                                <tr><th>적용 효과</th><td>마킹 불량 유출 방지, 생산 품질 안정화, 검사 이력 관리 및 자동 판정 지원</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Consultation Point</div>
+                                <h3 class="text-3xl font-black product-section-title">상담 시 확인하면 좋은 정보</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">검사 대상</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">제품 크기, 소재, 표면 상태, 마킹 위치와 검사할 내용을 확인합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">검사 기준</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">정상/불량 기준, 판독 코드 종류, 위치 허용오차, 누락 조건을 정리합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">생산 조건</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">검사 속도, 자동화 연동, 작업자 투입 방식, 설치 공간을 함께 검토합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="custom_model_dual_laser" class="custom-model-panel">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_dual_laser_system.png" alt="K-DUAL LASER WORKSTATION" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Dual Laser System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-DUAL LASER WORKSTATION</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-DUAL LASER WORKSTATION은 싱글 레이저 시스템 2대를 하나의 작업 테이블에 통합한 맞춤형 레이저 작업 장비입니다.
+                                        좌우 독립 레이저 헤드와 작업 영역을 구성하여 두 공정을 동시에 운용하거나, 작업 제품과 공정 조건에 맞춰 병렬 가공할 수 있습니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Dual Single Laser</span>
+                                        <span class="product-badge">Independent Work Area</span>
+                                        <span class="product-badge">Custom Table</span>
+                                        <span class="product-badge">Parallel Processing</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            하나의 테이블 위에 좌우 2개의 싱글 레이저 시스템을 배치한 구조입니다.
+                                            두 장비를 독립적으로 운용하면서도 작업자 동선과 설치 공간을 줄일 수 있어, 반복 생산이나 좌우 병렬 공정에 적합합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-5 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">싱글 레이저 2대 구성</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">독립 제어 가능한 싱글 레이저 2대를 하나의 테이블에 구성합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">동시 운용</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">좌우 작업 영역을 동시에 운용하여 생산성과 작업 효율을 높입니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">독립 작업 영역</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">좌우 스테이션을 분리하여 서로 다른 작업 조건을 적용할 수 있습니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">맞춤형 테이블</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">제품 크기와 작업 방식에 맞춰 지그, 스테이지, 테이블 구조를 설계합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">05</div>
+                                    <h4 class="mt-3 text-xl font-black">생산 효율 향상</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">셋업 시간 단축과 병렬 작업으로 반복 생산 공정에 효율적으로 대응합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">System Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-DUAL LASER WORKSTATION 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 듀얼 싱글 레이저 시스템</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-DUAL LASER WORKSTATION</td></tr>
+                                                <tr><th>장비 컨셉</th><td>싱글 레이저 시스템 2대를 하나의 테이블에 통합한 병렬 작업형 장비</td></tr>
+                                                <tr><th>구성 방식</th><td>좌우 독립 레이저 헤드, 모니터, 제어부, 작업 스테이지 구성</td></tr>
+                                                <tr><th>작업 방식</th><td>2개 스테이션 동시 운용 또는 독립 운용</td></tr>
+                                                <tr><th>적용 목적</th><td>생산성 향상, 작업 공간 절감, 반복 제품의 병렬 레이저 가공</td></tr>
+                                                <tr><th>맞춤 구성</th><td>제품 전용 지그, 작업 테이블 크기, 안전 커버, 제어 방식, 작업 동선 맞춤 설계</td></tr>
+                                                <tr><th>상담 필요 정보</th><td>제품 크기, 작업 수량, 레이저 종류, 마킹 위치, 좌우 작업 조건, 설치 공간</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Application</div>
+                                <h3 class="text-3xl font-black product-section-title">적용하기 좋은 공정</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">좌우 병렬 마킹</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">동일 제품을 좌우에서 동시에 마킹하여 생산 속도를 높이는 공정.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">다품종 작업 대응</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">좌우 스테이션을 다른 조건으로 세팅하여 작업 유연성을 확보하는 공정.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">공간 절약형 설비</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">두 장비를 별도 배치하기 어려운 현장에서 하나의 통합 테이블로 운용.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="custom_model_laser_3d" class="custom-model-panel">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_3d_laser_marking_system.png" alt="K-3D LASER MARKING SYSTEM" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized 3D Laser Marking System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-3D LASER MARKING SYSTEM</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-3D LASER MARKING SYSTEM은 곡면, 단차, 입체 형상 부품에 대응하기 위한 맞춤형 3D 레이저 마킹 장비입니다.
+                                        제품 형상과 생산 공정에 맞춰 3D 레이저 헤드, 정밀 지그, 회전/이송 기구, 안전 커버와 조작부를 일체형으로 구성합니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">3D Marking</span>
+                                        <span class="product-badge">Custom Jig</span>
+                                        <span class="product-badge">Safety Cover</span>
+                                        <span class="product-badge">Automation Ready</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            평면 마킹만으로 대응하기 어려운 곡면, 원통형, 단차가 있는 제품에 균일한 마킹 품질을 구현하기 위한 Customized 장비입니다.
+                                            작업 제품에 맞춘 고정 지그와 회전/이송 구조를 적용하여 반복 생산과 자동화 공정에 적합하게 구성할 수 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-4 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">3D 곡면 마킹</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">곡면, 단차, 입체 형상 제품에도 선명하고 정밀한 마킹을 구현합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">맞춤 지그 설계</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">제품 형상과 위치 기준에 맞춰 전용 지그와 고정 구조를 설계합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">자동 이송/회전</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">회전 마킹, 자동 이송, 반복 위치결정 등 공정 조건에 맞게 구성합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">안전 커버 구조</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">투명 안전 커버와 작업자 조작부를 적용하여 안정적인 작업 환경을 제공합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">System Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-3D LASER MARKING SYSTEM 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 3D 레이저 마킹 시스템</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-3D LASER MARKING SYSTEM</td></tr>
+                                                <tr><th>장비 컨셉</th><td>곡면, 단차, 입체 형상 부품 마킹을 위한 맞춤형 자동 레이저 마킹 장비</td></tr>
+                                                <tr><th>주요 구성</th><td>3D 레이저 마킹 헤드, 정밀 지그, 회전/이송 기구, 안전 커버, 조작 패널, PC 제어부</td></tr>
+                                                <tr><th>적용 대상</th><td>곡면 부품, 원통형 부품, 단차가 있는 제품, 전용 지그 고정 제품</td></tr>
+                                                <tr><th>작업 방식</th><td>3D 초점 보정, 회전 마킹, 자동 이송, 위치 결정 후 반복 마킹</td></tr>
+                                                <tr><th>맞춤 구성</th><td>제품 형상별 지그, 회전축, 클램프, 안전 커버, 자동화 인터페이스, 검사/판독 옵션</td></tr>
+                                                <tr><th>상담 필요 정보</th><td>제품 형상, 마킹 위치, 마킹 범위, 생산 수량, 자동화 필요 여부, 설치 공간</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Application</div>
+                                <h3 class="text-3xl font-black product-section-title">적용하기 좋은 공정</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">곡면/입체 부품 마킹</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">평면이 아닌 곡면과 높이 차이가 있는 제품에 균일한 마킹 품질을 구현합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">회전 지그 연동</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">원통형 제품이나 회전이 필요한 부품을 정밀하게 고정하고 반복 마킹합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">자동화 공정 대응</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">이송, 클램프, 센서, I/O 연동 등 생산 공정에 맞춘 자동화 구성이 가능합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="custom_model_vision_marking" class="custom-model-panel">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_vision_marking_inspection_system.png" alt="K-VISION MARKING INSPECTION SYSTEM" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Vision Marking Inspection System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-VISION MARKING INSPECTION SYSTEM</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-VISION MARKING INSPECTION SYSTEM은 제품 위치와 형상을 먼저 비전으로 인식한 뒤,
+                                        정밀 레이저 마킹을 수행하고, 마킹 완료 후 다시 비전 검사로 결과를 판정하는
+                                        일체형 Customized 자동화 장비입니다. 비전 촬영 → 레이저 마킹 → 마킹 후 비전 검사 흐름을
+                                        하나의 시스템 안에서 연동하여 품질 안정화와 공정 자동화를 동시에 지원합니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Vision Capture</span>
+                                        <span class="product-badge">Laser Marking</span>
+                                        <span class="product-badge">Vision Inspection</span>
+                                        <span class="product-badge">Custom Automation</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            제품 투입 후 비전 카메라가 위치와 방향을 확인하고, 정밀 레이저 마킹을 수행한 다음,
+                                            마킹 결과를 다시 촬영하여 문자, 로고, 코드, 품질 상태를 검사하는 공정 통합형 시스템입니다.
+                                            작업물, 검사 기준, 치구, 조명, 카메라 배치, 자동 이송 구조까지 고객 공정에 맞추어 설계할 수 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-4 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">비전 선행 인식</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">제품 위치, 방향, 기준점을 촬영하여 마킹 전 정렬 조건을 확인합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">정밀 레이저 마킹</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">인식된 기준을 바탕으로 문자, 코드, 로고를 정밀하게 마킹합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">마킹 후 비전 검사</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">마킹 결과를 다시 촬영하여 판독, 누락, 위치, 품질 상태를 자동 판정합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">맞춤 자동화 연계</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">치구, 조명, 센서, 소프트웨어, 이송 구조를 공정에 맞추어 일체형으로 설계합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">System Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-VISION MARKING INSPECTION SYSTEM 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 비전 촬영 + 레이저 마킹 + 비전 검사 시스템</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-VISION MARKING INSPECTION SYSTEM</td></tr>
+                                                <tr><th>공정 흐름</th><td>비전 촬영 → 기준 위치 인식 → 레이저 마킹 → 마킹 후 비전 검사 → 양품/불량 판정</td></tr>
+                                                <tr><th>주요 구성</th><td>비전 카메라, 렌즈, 조명 모듈, 레이저 마킹 헤드, 검사 스테이지, 제어 소프트웨어, 자동화 구조</td></tr>
+                                                <tr><th>주요 기능</th><td>위치 보정, 정밀 마킹, 코드/문자 판독, 마킹 품질 확인, 누락/오마킹 검사</td></tr>
+                                                <tr><th>적용 대상</th><td>자동차 부품, 전장 부품, 금속/플라스틱 제품, 개별 식별이 필요한 산업 부품</td></tr>
+                                                <tr><th>맞춤 구성</th><td>전용 지그, 제품별 스테이지, 조명 방식, 카메라 배치, 검사 알고리즘, I/O 연동, 이력 관리</td></tr>
+                                                <tr><th>기대 효과</th><td>마킹 정밀도 향상, 검사 자동화, 불량 유출 방지, 공정 일체화, 품질 데이터 확보</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Application</div>
+                                <h3 class="text-3xl font-black product-section-title">적용하기 좋은 공정</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">식별 마킹 공정</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">시리얼, 로트, QR/Data Matrix, 로고 등 식별 정보가 필요한 제품에 적합합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">검사 일체형 생산라인</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">마킹 직후 검사까지 같은 장비에서 수행해야 하는 자동화 라인에 적합합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">품질 추적 관리</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">비전 판독과 검사 결과를 연계해 품질 이력과 생산 데이터를 관리할 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </section>
         </section>
@@ -389,6 +1521,71 @@
             </section>
         </section>
 
+
+
+        <section id="inquiry_board" class="page-section">
+            <section class="bg-slate-950 text-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="section-kicker mb-6">Inquiry Board</div>
+                    <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">상담문의 내용입력</h2>
+                    <p class="mt-6 max-w-3xl text-slate-300 leading-8 text-lg">
+                        상담문의 목록을 확인할 수 있습니다. 공개 문의는 내용이 표시되고, 비공개 문의는 질문내용이 숨김 처리됩니다. 새 문의를 남기려면 아래 내용입력 버튼을 눌러주세요.
+                    </p>
+                </div>
+            </section>
+
+            <section class="py-20 bg-[var(--kh-bg)]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
+                        <div>
+                            <div class="section-kicker mb-5">Consultation List</div>
+                            <h3 class="text-4xl font-black tracking-[-0.05em]">상담문의 리스트</h3>
+                            <p class="mt-3 text-slate-600 leading-7">
+                                답변 여부와 관계없이 상담문의가 차례대로 표시됩니다. 비공개 문의는 목록에는 표시되지만 질문내용은 보이지 않습니다.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-3">
+                            <button type="button" onclick="showSection('contact')" class="px-7 py-4 rounded-sm kh-btn-primary">내용입력</button>
+                            <a href="inquiry-check.html" class="px-7 py-4 rounded-sm kh-btn-line">내 문의 답변 확인</a>
+                            <a href="admin.html" class="px-7 py-4 rounded-sm kh-btn-line">관리자 로그인</a>
+                        </div>
+                    </div>
+
+                    <div class="kh-card rounded-sm overflow-hidden">
+                        <div class="px-6 py-4 border-b border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                            <div class="font-black">상담문의 목록</div>
+                            <button onclick="loadIndexPublicInquiries(true)" class="text-sm font-black text-[var(--kh-blue)] hover:underline">새로고침</button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-[820px] text-left">
+                                <thead class="bg-slate-50 text-xs text-slate-500 uppercase tracking-wider">
+                                    <tr>
+                                        <th class="px-5 py-4">순번</th>
+                                        <th class="px-5 py-4">접수일</th>
+                                        <th class="px-5 py-4">닉네임</th>
+                                        <th class="px-5 py-4">문의내용</th>
+                                        <th class="px-5 py-4">답변상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="indexPublicInquiryList" class="divide-y divide-slate-200">
+                                    <tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-white border border-slate-200 p-7 rounded-sm">
+                        <h4 class="text-xl font-black tracking-[-0.03em]">새 상담문의 작성</h4>
+                        <p class="mt-3 text-slate-600 leading-7">
+                            장비, 소재, 마킹 내용, 생산 조건을 남겨주시면 담당자가 확인 후 답변드립니다.
+                            목록에는 닉네임만 표시됩니다. 비공개로 작성하면 질문내용은 숨김 처리되고 관리자만 확인합니다.
+                        </p>
+                        <button type="button" onclick="showSection('contact')" class="mt-5 px-7 py-4 rounded-sm kh-btn-primary">내용입력으로 이동</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+
         <section id="contact" class="page-section">
             <section class="bg-slate-950 text-white py-24">
                 <div class="max-w-7xl mx-auto px-6">
@@ -400,11 +1597,13 @@
             <section class="py-24 bg-[var(--kh-bg)]">
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
-                        <form id="inquiryForm" class="grid md:grid-cols-2 gap-5" onsubmit="sendInquiryEmail(); return false;">
+                        <form id="inquiryForm" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
+                            <input id="customerNickname" name="customerNickname" type="text" placeholder="닉네임 / 목록 표시명" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="companyName" name="companyName" type="text" placeholder="업체명" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="customerName" name="customerName" type="text" placeholder="성함" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="customerPhone" name="customerPhone" type="tel" placeholder="연락처" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                             <input id="customerEmail" name="customerEmail" type="email" placeholder="이메일" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                            <input id="customerPassword" name="customerPassword" type="password" placeholder="문의 확인용 비밀번호" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
 
                             <div class="md:col-span-2 border border-slate-300 rounded-sm p-5 bg-slate-50">
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
@@ -429,7 +1628,13 @@
                             </div>
 
                             <textarea id="inquiryMessage" name="inquiryMessage" placeholder="문의내용" rows="7" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
-                            <button type="submit" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">메일로 문의하기</button>
+                            <button type="submit" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">문의 등록하기</button>
+                            <button type="button" onclick="showSection('inquiry_board')" class="md:col-span-2 py-4 kh-btn-line rounded-sm">상담문의 리스트로 돌아가기</button>
+                            <div id="inquiryResult" class="md:col-span-2 hidden p-5 bg-blue-50 border border-blue-100 rounded-sm text-slate-700 leading-7"></div>
+                            <div class="md:col-span-2 flex flex-wrap gap-3 text-sm font-bold">
+                                <a href="inquiry-check.html" class="text-[var(--kh-blue)] hover:underline">접수번호로 답변 확인하기 →</a>
+                                <a href="public-inquiries.html" class="text-slate-600 hover:text-[var(--kh-blue)] hover:underline">공개 문의 보기 →</a>
+                            </div>
                         </form>
                     </div>
                     <aside class="bg-slate-950 text-white p-8 md:p-10 rounded-sm">
@@ -439,6 +1644,9 @@
                             <p><span class="block text-white font-black">FAX</span>031-355-3129</p>
                             <p><span class="block text-white font-black">E-mail</span>owen@kooky.co.kr</p>
                             <p><span class="block text-white font-black">Address</span>경기 화성시 송산면 화성로 316-42</p>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <p class="mt-3 text-xs text-slate-400 leading-5">관리자만 상담문의 전체 목록과 비공개 문의를 확인할 수 있습니다.</p>
                         </div>
                         <div class="mt-8 pt-6 border-t border-white/10 text-sm text-slate-400 leading-6">
                             <p class="font-bold text-white mb-2">관리자 확인 기준</p>
@@ -466,58 +1674,216 @@
             <div class="mt-10 pt-6 border-t border-white/10 text-sm flex flex-col md:flex-row md:justify-between gap-3">
                 <p>© 2026 Kookyhon Laser. All rights reserved.</p>
                 <div class="flex gap-5">
-                    <button class="footer-link" onclick="showSection('company')">회사소개</button>
-                    <button class="footer-link" onclick="showSection('applications')">레이저 응용</button>
-                    <button class="footer-link" onclick="showSection('contact')">상담문의</button>
+                    <button type="button" class="footer-link" onclick="showSection('company')">회사소개</button>
+                    <button type="button" class="footer-link" onclick="showSection('applications')">레이저 응용</button>
+                    <button type="button" class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
                 </div>
             </div>
         </div>
     </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         function showSection(id) {
             document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
+
             const target = document.getElementById(id);
-            if (target) target.classList.add('active');
+            if (target) {
+                target.classList.add('active');
+            }
+
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.toggle('active', link.dataset.section === id);
             });
+
+            if (id === 'products') {
+                setTimeout(() => {
+                    if (typeof showProductCategory === 'function') showProductCategory('fiber');
+                }, 0);
+            }
+
+            if (id === 'inquiry_board' && typeof loadIndexPublicInquiries === 'function') {
+                loadIndexPublicInquiries();
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function sendInquiryEmail() {
+        const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
+        const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+        async function submitInquiry() {
+            const nickname = document.getElementById('customerNickname').value.trim();
             const company = document.getElementById('companyName').value.trim();
             const name = document.getElementById('customerName').value.trim();
             const phone = document.getElementById('customerPhone').value.trim();
             const email = document.getElementById('customerEmail').value.trim();
+            const password = document.getElementById('customerPassword').value.trim();
             const message = document.getElementById('inquiryMessage').value.trim();
-            const visibilityValue = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
-            const visibilityText = visibilityValue === 'public' ? '공개문의' : '비공개문의';
+            const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
+            const resultBox = document.getElementById('inquiryResult');
 
-            if (!company || !name || !phone || !message) {
-                alert('업체명, 성함, 연락처, 문의내용은 필수 입력 항목입니다.');
+            if (!nickname || !company || !name || !phone || !password || !message) {
+                alert('닉네임, 업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
                 return;
             }
 
-            const subject = `[${visibilityText}] 쿠키혼레이저 상담 문의 - ${company}`;
-            const body = [
-                '쿠키혼레이저 홈페이지 상담 문의입니다.',
-                '',
-                `문의 공개 여부: ${visibilityText}`,
-                `업체명: ${company}`,
-                `성함: ${name}`,
-                `연락처: ${phone}`,
-                `이메일: ${email || '미입력'}`,
-                '',
-                '문의내용:',
-                message,
-                '',
-                '※ 공개 문의를 선택했더라도 개인정보와 민감한 내용은 관리자 확인 후 노출하는 방식이 안전합니다.'
-            ].join('\n');
+            const { data, error } = await supabaseClient.rpc('submit_inquiry', {
+                p_nickname: nickname,
+                p_company: company,
+                p_name: name,
+                p_phone: phone,
+                p_email: email,
+                p_visibility: visibility,
+                p_customer_password: password,
+                p_message: message
+            });
 
-            const mailto = `mailto:owen@kooky.co.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailto;
+            if (error) {
+                alert(error.message || '문의 등록 중 오류가 발생했습니다.');
+                return;
+            }
+
+            const result = Array.isArray(data) ? data[0] : data;
+            const publicCode = result?.public_code || '';
+
+            resultBox.classList.remove('hidden');
+            resultBox.innerHTML = `
+                <b>문의가 등록되었습니다.</b><br>
+                접수번호: <b>${escapeHtml(publicCode)}</b><br>
+                답변 확인 시 접수번호와 문의 확인용 비밀번호가 필요합니다.
+                <div class="mt-3">
+                    <a href="inquiry-check.html" class="font-black text-[var(--kh-blue)]">답변 확인 페이지로 이동 →</a>
+                </div>
+            `;
+            document.getElementById('inquiryForm').reset();
+            document.getElementById('visibilityPrivate').checked = true;
         }
-    </script>
+
+        function escapeHtml(value) {
+            return String(value || '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        async function loadIndexPublicInquiries(forceReload = false) {
+            const list = document.getElementById('indexPublicInquiryList');
+            if (!list) return;
+
+            list.innerHTML = '<tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>';
+
+            const { data, error } = await supabaseClient.rpc('get_inquiry_board_items');
+
+            if (error) {
+                list.innerHTML = `<tr><td colspan="5" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담문의 목록을 불러오지 못했습니다.')}</td></tr>`;
+                return;
+            }
+
+            if (!data || !data.length) {
+                list.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-5 py-10 text-center text-slate-500">
+                            등록된 상담문의가 없습니다.<br>
+                            <button type="button" onclick="showSection('contact')" class="mt-5 px-6 py-3 rounded-sm kh-btn-primary">첫 상담문의 남기기</button>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            list.innerHTML = data.map((item, index) => {
+                const isPrivate = item.visibility === 'private';
+                const messageText = isPrivate ? '비공개 문의입니다. 질문내용은 비밀번호 확인 후 본인과 관리자만 볼 수 있습니다.' : (item.message || '');
+                const nicknameText = item.nickname || '문의자';
+                const replyText = item.has_reply ? '<div class="mt-2 text-sm text-[var(--kh-blue)] font-bold">답변 등록됨</div>' : '<div class="mt-2 text-sm text-slate-400 font-bold">답변 대기</div>';
+                const checkUrl = `inquiry-check.html?code=${encodeURIComponent(item.public_code || '')}`;
+
+                return `
+                    <tr class="hover:bg-slate-50 cursor-pointer" onclick="location.href='${checkUrl}'">
+                        <td class="px-5 py-4 font-black">${index + 1}</td>
+                        <td class="px-5 py-4 whitespace-nowrap">${item.created_at ? new Date(item.created_at).toLocaleDateString('ko-KR') : ''}</td>
+                        <td class="px-5 py-4 font-bold">
+                            <div>${escapeHtml(nicknameText)}</div>
+                            <span class="inline-block mt-2 px-2 py-1 text-xs font-black rounded-sm ${isPrivate ? 'bg-slate-900 text-white' : 'bg-blue-100 text-[var(--kh-blue)]'}">
+                                ${isPrivate ? '비공개' : '공개'}
+                            </span>
+                        </td>
+                        <td class="px-5 py-4">
+                            <div class="line-clamp-2 ${isPrivate ? 'text-slate-400' : 'text-slate-700'}">${escapeHtml(messageText)}</div>
+                            ${replyText}
+                            <div class="mt-2 text-xs text-slate-400">클릭하면 비밀번호 확인 후 상세내용을 볼 수 있습니다.</div>
+                        </td>
+                        <td class="px-5 py-4 whitespace-nowrap">
+                            <span class="px-3 py-1 text-xs font-black rounded-sm bg-slate-100 text-slate-700">
+                                ${item.status === 'answered' ? '답변완료' : '접수'}
+                            </span>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+    
+        function showProductCategory(key) {
+            document.querySelectorAll('.product-category-btn').forEach(btn => btn.classList.remove('active'));
+
+            const categoryOrder = ['fiber', 'uv', 'co2', 'custom'];
+            const index = categoryOrder.indexOf(key);
+            if (index >= 0) {
+                const btn = document.querySelectorAll('.product-category-btn')[index];
+                if (btn) btn.classList.add('active');
+            }
+
+            document.querySelectorAll('.product-panel').forEach(panel => panel.classList.remove('active'));
+            const panel = document.getElementById('product_panel_' + key);
+            if (panel) panel.classList.add('active');
+
+            if (key === 'fiber') {
+                showFiberModel('prisa');
+            }
+
+            if (key === 'custom') {
+                showCustomModel('vision');
+            }
+        }
+
+        function showFiberModel(key) {
+            document.querySelectorAll('.product-model-btn').forEach(btn => btn.classList.remove('active'));
+
+            const modelOrder = ['prisa', 'prisa_e', 'bpd'];
+            const index = modelOrder.indexOf(key);
+            if (index >= 0) {
+                const btn = document.querySelectorAll('.product-model-btn')[index];
+                if (btn) btn.classList.add('active');
+            }
+
+            document.querySelectorAll('.product-model-panel').forEach(panel => panel.classList.remove('active'));
+            const panel = document.getElementById('fiber_model_' + key);
+            if (panel) panel.classList.add('active');
+        }
+
+
+        function showCustomModel(key) {
+            document.querySelectorAll('.custom-model-btn').forEach(btn => btn.classList.remove('active'));
+
+            const modelOrder = ['vision', 'dual_laser', 'laser_3d'];
+            const index = modelOrder.indexOf(key);
+            if (index >= 0) {
+                const btn = document.querySelectorAll('.custom-model-btn')[index];
+                if (btn) btn.classList.add('active');
+            }
+
+            document.querySelectorAll('.custom-model-panel').forEach(panel => panel.classList.remove('active'));
+            const panel = document.getElementById('custom_model_' + key);
+            if (panel) {
+                panel.classList.add('active');
+            }
+        }
+
+</script>
 </body>
 </html>
