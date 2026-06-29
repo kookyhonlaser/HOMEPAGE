@@ -1,15 +1,19 @@
-기존 파일 교체:
-- index.html
-- admin.html
-- inquiry-check.html
-- inquiry-detail.html
+아래 파일만 업로드해도 이번 SEO 수정이 적용됩니다.
 
-새로 추가:
+교체 파일
+- index.html
+- inquiry-check.html
+- public-inquiries.html
+- robots.txt
+- README_SEO_UPDATE_20260629.txt
+
+제품 상세 페이지 5개가 서버에 없다면 함께 업로드
 - laser-marking-machine.html
 - fiber-laser-marking-machine.html
 - uv-laser-marking-machine.html
 - co2-laser-marking-machine.html
 - laser-marking-automation.html
-- robots.txt
+
+검색엔진 파일
 - sitemap.xml
-- README_SEO_UPDATE_20260629.txt
+- robots.txt
