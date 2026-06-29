@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v49 map visible render final -->
     <!-- kookyhon v48 hero and kakao map stable -->
     <!-- kookyhon v43 product category no auto scroll -->
     <!-- kookyhon v41 customized vision marking inspection -->
@@ -218,42 +219,58 @@
         header * { pointer-events: auto !important; }
         .desktop-nav button, .mobile-nav button { cursor: pointer; position: relative; z-index: 10000; }
         .hero-video, .hero-video video, .hero-overlay { pointer-events: none; }
+.kookyhon-map-shell .root_daum_roughmap {
+                margin: 0;
+            }
+        }
 
     
-        .kookyhon-map-shell {
+        .kookyhon-map-holder {
             position: relative;
             width: 100%;
             height: 360px;
             overflow: hidden;
             background: #eef2f7;
         }
-        .kookyhon-map-shell .root_daum_roughmap {
+        #kookyhonMapMount {
+            width: 100%;
+            height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        #kookyhonMapMount .root_daum_roughmap {
             width: 640px !important;
             height: 360px !important;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            flex: 0 0 640px;
         }
-        .kookyhon-map-shell .root_daum_roughmap .wrap_map {
+        #kookyhonMapMount .wrap_map {
             height: 360px !important;
         }
-        .kookyhon-map-fallback {
+        .kookyhon-map-loading {
             position: absolute;
             inset: 0;
+            z-index: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 24px;
-            z-index: 1;
+            background: #eef2f7;
+        }
+        #kookyhonMapMount .root_daum_roughmap {
+            position: relative;
+            z-index: 2;
+        }
+        #kookyhonMapMount .root_daum_roughmap + .kookyhon-map-loading,
+        .kookyhon-map-holder.map-ready .kookyhon-map-loading {
+            display: none;
         }
         @media (max-width: 720px) {
-            .kookyhon-map-shell {
-                height: 320px;
+            .kookyhon-map-holder {
                 overflow-x: auto;
             }
-            .kookyhon-map-shell .root_daum_roughmap {
-                margin: 0;
+            #kookyhonMapMount {
+                justify-content: flex-start;
             }
         }
 
@@ -454,12 +471,12 @@
                         </div>
                     </div>
                     <div class="kh-card overflow-hidden rounded-sm">
-                        <div class="kookyhon-map-shell">
-                            <div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>
-                            <div id="kookyhonMapFallback" class="kookyhon-map-fallback">
+                        <div class="kookyhon-map-holder">
+                            <div id="kookyhonMapMount"></div>
+                            <div id="kookyhonMapLoading" class="kookyhon-map-loading">
                                 <div>
-                                    <div class="font-black text-xl text-slate-700">쿠키혼레이저㈜ 위치</div>
-                                    <p class="mt-3 text-slate-500">지도가 표시되지 않으면 아래 버튼으로 확인하실 수 있습니다.</p>
+                                    <div class="font-black text-xl text-slate-700">지도 로딩 중</div>
+                                    <p class="mt-3 text-slate-500">지도가 보이지 않으면 아래 버튼으로 위치를 확인해 주세요.</p>
                                 </div>
                             </div>
                         </div>
@@ -484,6 +501,7 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </section>
@@ -1953,33 +1971,55 @@
 
 </script>
 
-    <!-- Kakao Map Embed -->
-    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
-    <script charset="UTF-8">
-        function renderKookyhonKakaoMapStable() {
-            const mapNode = document.getElementById('daumRoughmapContainer1782706995444');
-            if (!mapNode || mapNode.dataset.rendered === '1') return;
-            if (typeof daum === 'undefined' || !daum.roughmap) {
-                setTimeout(renderKookyhonKakaoMapStable, 300);
+
+    <!-- Kakao Map Embed: render only after company section is visible -->
+    <script>
+        let kookyhonKakaoMapLoaded = false;
+        let kookyhonKakaoMapRendered = false;
+
+        function loadKookyhonKakaoMapScript(callback) {
+            if (window.daum && daum.roughmap) {
+                callback();
                 return;
             }
 
-            new daum.roughmap.Lander({
-                "timestamp": "1782706995444",
-                "key": "py4sxvbjbog",
-                "mapWidth": "640",
-                "mapHeight": "360"
-            }).render();
+            if (kookyhonKakaoMapLoaded) {
+                setTimeout(function () { loadKookyhonKakaoMapScript(callback); }, 300);
+                return;
+            }
 
-            mapNode.dataset.rendered = '1';
+            kookyhonKakaoMapLoaded = true;
+            const script = document.createElement('script');
+            script.charset = 'UTF-8';
+            script.src = 'https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js';
+            script.onload = callback;
+            document.body.appendChild(script);
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(renderKookyhonKakaoMapStable, 500);
-        });
-        window.addEventListener('load', function () {
-            setTimeout(renderKookyhonKakaoMapStable, 500);
-        });
+        function renderKookyhonKakaoMapAfterVisible() {
+            const mount = document.getElementById('kookyhonMapMount');
+            const holder = document.querySelector('.kookyhon-map-holder');
+            if (!mount || kookyhonKakaoMapRendered) return;
+
+            loadKookyhonKakaoMapScript(function () {
+                if (!(window.daum && daum.roughmap)) {
+                    setTimeout(renderKookyhonKakaoMapAfterVisible, 300);
+                    return;
+                }
+
+                mount.innerHTML = '<div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>';
+
+                new daum.roughmap.Lander({
+                    "timestamp": "1782706995444",
+                    "key": "py4sxvbjbog",
+                    "mapWidth": "640",
+                    "mapHeight": "360"
+                }).render();
+
+                kookyhonKakaoMapRendered = true;
+                if (holder) holder.classList.add('map-ready');
+            });
+        }
     </script>
 
 </body>
