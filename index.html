@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v47 kakao map fixed original size -->
     <!-- kookyhon v46 kakao map rerender fix -->
     <!-- kookyhon v45 kakao map location -->
     <!-- kookyhon v43 product category no auto scroll -->
@@ -222,24 +223,18 @@
 
         .kakao-map-wrap {
             width: 100%;
-            min-height: 420px;
-            overflow: hidden;
+            min-height: 360px;
+            overflow-x: auto;
+            overflow-y: hidden;
             background: #eef2f7;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
         }
         #kookyhonKakaoMapBox {
-            width: 100%;
-            min-height: 420px;
-        }
-        #kookyhonKakaoMapBox .root_daum_roughmap {
-            width: 100% !important;
-            max-width: 100% !important;
-        }
-        #kookyhonKakaoMapBox .root_daum_roughmap .wrap_map {
-            width: 100% !important;
-            height: 420px !important;
-        }
-        #kookyhonKakaoMapBox .root_daum_roughmap .wrap_controllers {
-            width: 100% !important;
+            width: 640px;
+            min-width: 640px;
+            height: 360px;
         }
 
     </style>
@@ -465,6 +460,7 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
                     </div>
                     </div>
                 </div>
@@ -1939,9 +1935,11 @@
     <!-- Kakao Map Embed -->
     <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
     <script charset="UTF-8">
+        let kookyhonKakaoMapRendered = false;
+
         function renderKookyhonKakaoMap() {
             const box = document.getElementById('kookyhonKakaoMapBox');
-            if (!box || typeof daum === 'undefined' || !daum.roughmap) return;
+            if (!box || typeof daum === 'undefined' || !daum.roughmap || kookyhonKakaoMapRendered) return;
 
             box.innerHTML = '<div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>';
 
@@ -1949,13 +1947,11 @@
                 "timestamp": "1782706995444",
                 "key": "py4sxvbjbog",
                 "mapWidth": "640",
-                "mapHeight": "420"
+                "mapHeight": "360"
             }).render();
-        }
 
-        window.addEventListener('load', function () {
-            setTimeout(renderKookyhonKakaoMap, 500);
-        });
+            kookyhonKakaoMapRendered = true;
+        }
     </script>
 
 </body>
