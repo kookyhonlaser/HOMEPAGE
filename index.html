@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v46 kakao map rerender fix -->
     <!-- kookyhon v45 kakao map location -->
     <!-- kookyhon v43 product category no auto scroll -->
     <!-- kookyhon v41 customized vision marking inspection -->
@@ -219,20 +220,25 @@
         .desktop-nav button, .mobile-nav button { cursor: pointer; position: relative; z-index: 10000; }
         .hero-video, .hero-video video, .hero-overlay { pointer-events: none; }
 
-    
         .kakao-map-wrap {
             width: 100%;
-            min-height: 360px;
+            min-height: 420px;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #eef2f7;
         }
-        .kakao-map-wrap .root_daum_roughmap {
+        #kookyhonKakaoMapBox {
+            width: 100%;
+            min-height: 420px;
+        }
+        #kookyhonKakaoMapBox .root_daum_roughmap {
             width: 100% !important;
             max-width: 100% !important;
         }
-        .kakao-map-wrap .root_daum_roughmap .wrap_map {
+        #kookyhonKakaoMapBox .root_daum_roughmap .wrap_map {
+            width: 100% !important;
+            height: 420px !important;
+        }
+        #kookyhonKakaoMapBox .root_daum_roughmap .wrap_controllers {
             width: 100% !important;
         }
 
@@ -434,7 +440,9 @@
                     </div>
                     <div class="kh-card overflow-hidden rounded-sm">
                         <div class="kakao-map-wrap bg-slate-100">
-                            <div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                            <div id="kookyhonKakaoMapBox">
+                                <div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                            </div>
                         </div>
 
                         <div class="p-5 bg-white border-t border-slate-200">
@@ -457,6 +465,7 @@
                                 </a>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </section>
@@ -1926,15 +1935,27 @@
 
 </script>
 
+
     <!-- Kakao Map Embed -->
     <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
     <script charset="UTF-8">
-        new daum.roughmap.Lander({
-            "timestamp": "1782706995444",
-            "key": "py4sxvbjbog",
-            "mapWidth": "640",
-            "mapHeight": "360"
-        }).render();
+        function renderKookyhonKakaoMap() {
+            const box = document.getElementById('kookyhonKakaoMapBox');
+            if (!box || typeof daum === 'undefined' || !daum.roughmap) return;
+
+            box.innerHTML = '<div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>';
+
+            new daum.roughmap.Lander({
+                "timestamp": "1782706995444",
+                "key": "py4sxvbjbog",
+                "mapWidth": "640",
+                "mapHeight": "420"
+            }).render();
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(renderKookyhonKakaoMap, 500);
+        });
     </script>
 
 </body>
