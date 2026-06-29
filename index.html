@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v40 customized no auto scroll -->
     <!-- kookyhon v39 customized 3d laser marking -->
     <!-- kookyhon v38 customized dual panel nesting fix -->
     <!-- kookyhon v37 customized model tab fix -->
@@ -1072,9 +1073,9 @@
                                 </p>
                             </div>
                             <div class="flex flex-wrap gap-3">
-                                <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision', true)">K-VISION CHECK CELL</button>
-                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser', true)">K-DUAL LASER WORKSTATION</button>
-                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d', true)">K-3D LASER MARKING SYSTEM</button>
+                                <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d')">K-3D LASER MARKING SYSTEM</button>
                             </div>
                         </div>
 
@@ -1744,7 +1745,7 @@
             }
 
             if (key === 'custom') {
-                showCustomModel('vision', false);
+                showCustomModel('vision');
             }
 
             if (doScroll) {
@@ -1769,7 +1770,7 @@
         }
 
 
-        function showCustomModel(key, doScroll = false) {
+        function showCustomModel(key) {
             document.querySelectorAll('.custom-model-btn').forEach(btn => btn.classList.remove('active'));
 
             const modelOrder = ['vision', 'dual_laser', 'laser_3d'];
@@ -1783,9 +1784,6 @@
             const panel = document.getElementById('custom_model_' + key);
             if (panel) {
                 panel.classList.add('active');
-                if (doScroll) {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
             }
         }
 
