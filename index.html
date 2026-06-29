@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v54 application hero safe map -->
+    <!-- kookyhon v53 application cards hero fixed -->
     <!-- kookyhon v43 product category no auto scroll -->
     <!-- kookyhon v41 customized vision marking inspection -->
     <!-- kookyhon v40 customized no auto scroll -->
@@ -88,11 +90,11 @@
         }
         .nav-link:hover::after { transform: scaleX(1); }
         .top-shadow { box-shadow: 0 1px 0 rgba(17,24,39,.08); }
-        .hero-video video { filter: saturate(.9) contrast(1.05); }
+        .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
         .hero-overlay {
             background:
-                linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.84) 43%, rgba(255,255,255,.40) 100%),
-                linear-gradient(180deg, rgba(0,91,172,.08), rgba(255,255,255,.00));
+                linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.58) 43%, rgba(255,255,255,.18) 100%),
+                linear-gradient(180deg, rgba(0,91,172,.04), rgba(255,255,255,.00));
         }
         .section-kicker {
             display: inline-flex;
@@ -301,7 +303,7 @@
         <section id="home" class="page-section active">
             <div class="relative min-h-[680px] flex items-center overflow-hidden bg-slate-100">
                 <div class="hero-video absolute inset-0">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-75">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
                         <source src="hero.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 hero-overlay"></div>
@@ -321,7 +323,7 @@
                             <button type="button" onclick="showSection('company')" class="px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
                         </div>
                     </div>
-                    <div class="kh-card p-7 rounded-sm bg-white/95 backdrop-blur">
+                    <div class="kh-card p-7 rounded-sm bg-white/70 backdrop-blur-md border border-white/60 shadow-xl">
                         <div class="text-sm font-black text-[var(--kh-blue)] tracking-[0.12em] uppercase mb-4">Core Capability</div>
                         <div class="space-y-5">
                             <div class="border-b border-slate-100 pb-5">
@@ -454,8 +456,40 @@
                             <p><b>이메일</b> owen@kooky.co.kr</p>
                         </div>
                     </div>
-                    <div class="bg-slate-100 border border-slate-200 min-h-[320px] flex items-center justify-center text-slate-500 rounded-sm">
-                        지도 영역<br>카카오맵 또는 네이버지도 연동 가능
+                    <div class="kh-card overflow-hidden rounded-sm">
+                        <div class="map-safe-preview bg-slate-100 border-b border-slate-200 min-h-[320px] flex items-center justify-center text-center p-8">
+                            <div>
+                                <div class="section-kicker mb-5 justify-center">Location Map</div>
+                                <h4 class="text-3xl font-black tracking-[-0.04em]">쿠키혼레이저㈜ 위치</h4>
+                                <p class="mt-4 text-slate-600 leading-7">
+                                    경기 화성시 송산면 화성로 316-42
+                                </p>
+                                <p class="mt-3 text-sm text-slate-500 leading-6">
+                                    아래 버튼을 누르면 카카오맵 또는 네이버지도에서 정확한 위치를 확인할 수 있습니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-5 bg-white">
+                            <div class="font-black text-lg">쿠키혼레이저㈜</div>
+                            <p class="mt-2 text-slate-600 leading-7">
+                                경기 화성시 송산면 화성로 316-42
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-3">
+                                <a href="https://map.kakao.com/?q=경기 화성시 송산면 화성로 316-42"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="px-4 py-3 rounded-sm kh-btn-primary">
+                                    카카오맵 크게 보기
+                                </a>
+                                <a href="https://map.naver.com/p/search/경기 화성시 송산면 화성로 316-42"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="px-4 py-3 rounded-sm kh-btn-line">
+                                    네이버지도 보기
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
