@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- kookyhon v44 current index hero video visible -->
+    <!-- kookyhon v45 kakao map location -->
     <!-- kookyhon v43 product category no auto scroll -->
     <!-- kookyhon v41 customized vision marking inspection -->
     <!-- kookyhon v40 customized no auto scroll -->
@@ -89,11 +89,11 @@
         }
         .nav-link:hover::after { transform: scaleX(1); }
         .top-shadow { box-shadow: 0 1px 0 rgba(17,24,39,.08); }
-        .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
+        .hero-video video { filter: saturate(.9) contrast(1.05); }
         .hero-overlay {
             background:
-                linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.58) 43%, rgba(255,255,255,.18) 100%),
-                linear-gradient(180deg, rgba(0,91,172,.04), rgba(255,255,255,.00));
+                linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.84) 43%, rgba(255,255,255,.40) 100%),
+                linear-gradient(180deg, rgba(0,91,172,.08), rgba(255,255,255,.00));
         }
         .section-kicker {
             display: inline-flex;
@@ -219,6 +219,23 @@
         .desktop-nav button, .mobile-nav button { cursor: pointer; position: relative; z-index: 10000; }
         .hero-video, .hero-video video, .hero-overlay { pointer-events: none; }
 
+    
+        .kakao-map-wrap {
+            width: 100%;
+            min-height: 360px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .kakao-map-wrap .root_daum_roughmap {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        .kakao-map-wrap .root_daum_roughmap .wrap_map {
+            width: 100% !important;
+        }
+
     </style>
 </head>
 <body>
@@ -262,7 +279,7 @@
         <section id="home" class="page-section active">
             <div class="relative min-h-[680px] flex items-center overflow-hidden bg-slate-100">
                 <div class="hero-video absolute inset-0">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-75">
                         <source src="hero.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 hero-overlay"></div>
@@ -415,8 +432,31 @@
                             <p><b>이메일</b> owen@kooky.co.kr</p>
                         </div>
                     </div>
-                    <div class="bg-slate-100 border border-slate-200 min-h-[320px] flex items-center justify-center text-slate-500 rounded-sm">
-                        지도 영역<br>카카오맵 또는 네이버지도 연동 가능
+                    <div class="kh-card overflow-hidden rounded-sm">
+                        <div class="kakao-map-wrap bg-slate-100">
+                            <div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                        </div>
+
+                        <div class="p-5 bg-white border-t border-slate-200">
+                            <div class="font-black text-lg">쿠키혼레이저㈜</div>
+                            <p class="mt-2 text-slate-600 leading-7">
+                                경기 화성시 송산면 화성로 316-42
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-3">
+                                <a href="https://map.kakao.com/?q=경기 화성시 송산면 화성로 316-42"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="px-4 py-3 rounded-sm kh-btn-primary">
+                                    카카오맵 크게 보기
+                                </a>
+                                <a href="https://map.naver.com/p/search/경기 화성시 송산면 화성로 316-42"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="px-4 py-3 rounded-sm kh-btn-line">
+                                    네이버지도 보기
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1885,5 +1925,17 @@
         }
 
 </script>
+
+    <!-- Kakao Map Embed -->
+    <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+    <script charset="UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp": "1782706995444",
+            "key": "py4sxvbjbog",
+            "mapWidth": "640",
+            "mapHeight": "360"
+        }).render();
+    </script>
+
 </body>
 </html>
