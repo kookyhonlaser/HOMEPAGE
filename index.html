@@ -41,8 +41,46 @@
     <!-- kookyhon v3 admin link -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠키혼레이저 - 산업용 레이저 마킹·가공 솔루션</title>
-    <meta name="description" content="쿠키혼레이저는 30년 현장 경험을 기반으로 산업용 레이저 마킹, 자동화, 비전 검사, 공정 맞춤 솔루션을 제공합니다.">
+    <title>레이저 마킹기 전문업체 | 파이버·UV·CO2 마킹 자동화 - 쿠키혼레이저</title>
+    <meta name="description" content="쿠키혼레이저는 산업용 레이저 마킹기, 파이버 레이저 마킹기, UV 레이저 마킹기, CO2 레이저 마킹기, 비전 검사 및 자동화 마킹 시스템을 설계·제작합니다.">
+    <meta name="keywords" content="레이저 마킹기, 파이버 레이저 마킹기, UV 레이저 마킹기, CO2 레이저 마킹기, 금속 레이저 각인기, QR 코드 마킹, Data Matrix 마킹, 레이저 자동화, 쿠키혼레이저">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.kooky.co.kr/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="쿠키혼레이저">
+    <meta property="og:title" content="레이저 마킹기 전문업체 | 쿠키혼레이저">
+    <meta property="og:description" content="파이버·UV·CO2 레이저 마킹기와 비전 검사, 자동화 마킹 시스템을 공정 조건에 맞춰 설계·제작합니다.">
+    <meta property="og:url" content="https://www.kooky.co.kr/">
+    <meta property="og:image" content="https://www.kooky.co.kr/applications_metal_marking.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "쿠키혼레이저㈜",
+      "alternateName": "Kookyhon Laser",
+      "url": "https://www.kooky.co.kr/",
+      "image": "https://www.kooky.co.kr/applications_metal_marking.png",
+      "description": "산업용 레이저 마킹기, 파이버 레이저 마킹기, UV 레이저 마킹기, CO2 레이저 마킹기, 비전 검사 및 자동화 마킹 시스템 전문 기업",
+      "telephone": "031-355-3164",
+      "email": "owen@kooky.co.kr",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "송산면 화성로 316-42",
+        "addressLocality": "화성시",
+        "addressRegion": "경기도",
+        "addressCountry": "KR"
+      },
+      "areaServed": ["경기도", "화성시", "수원시", "안산시", "인천광역시", "대한민국"],
+      "sameAs": ["https://blog.naver.com/kookyhonlaser/221581169706"],
+      "makesOffer": [
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "파이버 레이저 마킹기"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "UV 레이저 마킹기"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "CO2 레이저 마킹기"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "비전 검사 자동화 마킹 시스템"}}
+      ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
@@ -189,6 +227,35 @@
         }
         .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid #e5e7eb; }
         .footer-link:hover { color: #fff; }
+        .seo-link-card {
+            display: block;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 12px 30px rgba(17,24,39,.05);
+            padding: 1.75rem;
+            border-radius: 3px;
+            height: 100%;
+        }
+        .seo-link-card:hover {
+            border-color: var(--kh-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 38px rgba(17,24,39,.09);
+        }
+        .seo-link-card h3 {
+            font-size: 1.35rem;
+            font-weight: 900;
+            letter-spacing: -.03em;
+        }
+        .seo-keyword-pill {
+            display: inline-flex;
+            padding: .45rem .75rem;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: var(--kh-blue);
+            font-size: .82rem;
+            font-weight: 800;
+        }
+
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         @media (max-width: 900px) {
             .desktop-nav { display: none; }
@@ -291,11 +358,12 @@
                 <button type="button" class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('inquiry_board')">상담문의</button>
             </nav>
         </div>
-        <nav class="mobile-nav grid-cols-4 border-t border-slate-100 text-sm font-bold text-center bg-white">
-            <button type="button" class="py-3" onclick="showSection('company')">회사소개</button>
+        <nav class="mobile-nav grid-cols-5 border-t border-slate-100 text-sm font-bold text-center bg-white">
+            <button type="button" class="py-3" onclick="showSection('home')">홈</button>
+            <button type="button" class="py-3" onclick="showSection('company')">회사</button>
+            <button type="button" class="py-3" onclick="showSection('products')">제품</button>
             <button type="button" class="py-3" onclick="showSection('applications')">응용</button>
             <button type="button" class="py-3 text-[var(--kh-blue)]" onclick="showSection('inquiry_board')">문의</button>
-            <a class="py-3 border-t border-slate-100" href="admin.html">관리자</a>
         </nav>
     </header>
 
@@ -313,14 +381,14 @@
                         <div class="section-kicker mb-8">Kookyhon Laser</div>
                         <h1 class="text-5xl md:text-7xl font-black leading-[1.05] tracking-[-0.06em] max-w-4xl">
                             현장 경험으로 완성하는<br>
-                            산업용 레이저 공정 솔루션
+                            산업용 레이저 마킹기 솔루션
                         </h1>
                         <p class="mt-8 text-lg md:text-xl leading-8 text-slate-700 max-w-2xl">
-                            쿠키혼레이저는 레이저 마킹, 자동화, 비전 검사, 공정 맞춤 장비까지 제조 현장에 필요한 레이저 솔루션을 함께 설계합니다.
+                            쿠키혼레이저는 파이버·UV·CO2 레이저 마킹기, 자동화, 비전 검사, 공정 맞춤 장비까지 제조 현장에 필요한 레이저 솔루션을 함께 설계합니다.
                         </p>
                         <div class="mt-10 flex flex-wrap gap-3">
-                            <button type="button" onclick="showSection('applications')" class="px-7 py-4 rounded-sm kh-btn-primary">응용 분야 보기</button>
-                            <button type="button" onclick="showSection('company')" class="px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
+                            <a href="laser-marking-machine.html" class="px-7 py-4 rounded-sm kh-btn-primary">레이저 마킹기 보기</a>
+                            <button type="button" onclick="showSection('applications')" class="px-7 py-4 rounded-sm kh-btn-line">응용 분야 보기</button>
                         </div>
                     </div>
                     <div class="kh-card p-7 rounded-sm bg-white/70 backdrop-blur-md border border-white/60 shadow-xl">
@@ -355,7 +423,7 @@
                         <button type="button" onclick="showSection('products')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b lg:border-b-0 lg:border-r border-slate-200">
                             <span class="text-sm font-black text-[var(--kh-blue)]">02</span>
                             <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">제품소개</h3>
-                            <p class="mt-3 text-slate-600 leading-7">PRISA, PRISA-E, BPD, PRISA-UV, PRISA-C 제품군을 확인하세요.</p>
+                            <p class="mt-3 text-slate-600 leading-7">파이버·UV·CO2 레이저 마킹기 제품군과 사양을 확인하세요.</p>
                             <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">제품 보기 →</span>
                         </button>
                         <button type="button" onclick="showSection('applications')" class="group text-left p-8 md:p-10 hover:bg-slate-50 border-b md:border-b-0 lg:border-r border-slate-200">
@@ -370,6 +438,58 @@
                             <p class="mt-3 text-slate-600 leading-7">소재, 제품, 생산 조건을 알려주시면 적합한 구성을 검토합니다.</p>
                             <span class="inline-block mt-5 font-bold group-hover:text-[var(--kh-blue)]">문의하기 →</span>
                         </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 bg-white border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+                        <div>
+                            <div class="section-kicker mb-5">Laser Marking Machine</div>
+                            <h2 class="text-4xl md:text-5xl font-black tracking-[-0.05em] leading-tight">검색엔진용 제품 상세 페이지</h2>
+                            <p class="mt-5 text-slate-600 leading-8 max-w-3xl">
+                                레이저 마킹기를 찾는 고객이 제품별 정보를 바로 확인할 수 있도록 파이버, UV, CO2, 자동화 마킹 시스템 페이지를 별도 URL로 구성했습니다.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="seo-keyword-pill">레이저 마킹기</span>
+                            <span class="seo-keyword-pill">금속 각인</span>
+                            <span class="seo-keyword-pill">QR·Data Matrix</span>
+                            <span class="seo-keyword-pill">자동화</span>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
+                        <a class="seo-link-card" href="laser-marking-machine.html">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                            <h3 class="mt-4">레이저 마킹기</h3>
+                            <p class="mt-3 text-slate-600 leading-7">산업용 레이저 마킹기 전체 구성과 적용 소재 안내</p>
+                            <span class="inline-block mt-5 font-black text-[var(--kh-blue)]">자세히 보기 →</span>
+                        </a>
+                        <a class="seo-link-card" href="fiber-laser-marking-machine.html">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                            <h3 class="mt-4">파이버 레이저 마킹기</h3>
+                            <p class="mt-3 text-slate-600 leading-7">SUS, 알루미늄, 스틸 등 금속 부품 마킹</p>
+                            <span class="inline-block mt-5 font-black text-[var(--kh-blue)]">자세히 보기 →</span>
+                        </a>
+                        <a class="seo-link-card" href="uv-laser-marking-machine.html">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                            <h3 class="mt-4">UV 레이저 마킹기</h3>
+                            <p class="mt-3 text-slate-600 leading-7">플라스틱, 필름, 유리 등 민감 소재 정밀 마킹</p>
+                            <span class="inline-block mt-5 font-black text-[var(--kh-blue)]">자세히 보기 →</span>
+                        </a>
+                        <a class="seo-link-card" href="co2-laser-marking-machine.html">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                            <h3 class="mt-4">CO2 레이저 마킹기</h3>
+                            <p class="mt-3 text-slate-600 leading-7">비금속, 포장재, 플라스틱 표기 공정</p>
+                            <span class="inline-block mt-5 font-black text-[var(--kh-blue)]">자세히 보기 →</span>
+                        </a>
+                        <a class="seo-link-card" href="laser-marking-automation.html">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">05</div>
+                            <h3 class="mt-4">레이저 마킹 자동화</h3>
+                            <p class="mt-3 text-slate-600 leading-7">비전 보정, 검사, 데이터 연동 자동화 시스템</p>
+                            <span class="inline-block mt-5 font-black text-[var(--kh-blue)]">자세히 보기 →</span>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -1606,9 +1726,30 @@
                 </div>
                 <div class="max-w-7xl mx-auto px-6 mt-10">
                     <div class="bg-white border border-slate-200 p-8 rounded-sm">
-                        <h3 class="text-2xl font-black tracking-[-0.03em]">블로그 응용 사례 연결</h3>
-                        <p class="mt-3 text-slate-600 leading-7">기존 네이버 블로그의 적용 사례와 사진은 이 영역에 카드 형태로 연결하면 좋습니다.</p>
-                        <a href="https://blog.naver.com/kookyhonlaser/221581169706" target="_blank" rel="noopener" class="inline-block mt-5 font-black text-[var(--kh-blue)]">블로그 사례 보기 →</a>
+                        <div class="section-kicker mb-4">Case Study Content</div>
+                        <h3 class="text-3xl font-black tracking-[-0.04em]">네이버 블로그 사례와 홈페이지 제품 페이지 연결</h3>
+                        <p class="mt-3 text-slate-600 leading-7">
+                            실제 마킹 테스트 사진과 적용 사례는 블로그에 꾸준히 작성하고, 홈페이지의 제품 상세 페이지로 연결하면 검색엔진과 고객 모두가 제품 정보를 더 쉽게 찾을 수 있습니다.
+                        </p>
+                        <div class="mt-7 grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <a class="kh-card-soft p-5 rounded-sm hover:border-[var(--kh-blue)]" href="fiber-laser-marking-machine.html">
+                                <div class="font-black">금속 레이저 마킹 사례</div>
+                                <p class="mt-2 text-sm text-slate-600 leading-6">SUS, 알루미늄, 스틸 부품의 로고·시리얼·QR 마킹</p>
+                            </a>
+                            <a class="kh-card-soft p-5 rounded-sm hover:border-[var(--kh-blue)]" href="uv-laser-marking-machine.html">
+                                <div class="font-black">UV 정밀 마킹 사례</div>
+                                <p class="mt-2 text-sm text-slate-600 leading-6">플라스틱, 필름, 유리 등 열 영향이 민감한 소재 대응</p>
+                            </a>
+                            <a class="kh-card-soft p-5 rounded-sm hover:border-[var(--kh-blue)]" href="laser-marking-machine.html">
+                                <div class="font-black">QR·Data Matrix 마킹</div>
+                                <p class="mt-2 text-sm text-slate-600 leading-6">제품 추적 관리용 2D 코드와 가변 데이터 마킹</p>
+                            </a>
+                            <a class="kh-card-soft p-5 rounded-sm hover:border-[var(--kh-blue)]" href="laser-marking-automation.html">
+                                <div class="font-black">자동화 마킹 시스템</div>
+                                <p class="mt-2 text-sm text-slate-600 leading-6">비전 위치 보정, 검사, MES 연동 공정 구성</p>
+                            </a>
+                        </div>
+                        <a href="https://blog.naver.com/kookyhonlaser/221581169706" target="_blank" rel="noopener" class="inline-block mt-7 font-black text-[var(--kh-blue)]">네이버 블로그 사례 보기 →</a>
                     </div>
                 </div>
             </section>
@@ -1766,8 +1907,13 @@
             </div>
             <div class="mt-10 pt-6 border-t border-white/10 text-sm flex flex-col md:flex-row md:justify-between gap-3">
                 <p>© 2026 Kookyhon Laser. All rights reserved.</p>
-                <div class="flex gap-5">
+                <div class="flex flex-wrap gap-5">
                     <button type="button" class="footer-link" onclick="showSection('company')">회사소개</button>
+                    <a class="footer-link" href="laser-marking-machine.html">레이저 마킹기</a>
+                    <a class="footer-link" href="fiber-laser-marking-machine.html">파이버 마킹기</a>
+                    <a class="footer-link" href="uv-laser-marking-machine.html">UV 마킹기</a>
+                    <a class="footer-link" href="co2-laser-marking-machine.html">CO2 마킹기</a>
+                    <a class="footer-link" href="laser-marking-automation.html">자동화</a>
                     <button type="button" class="footer-link" onclick="showSection('applications')">레이저 응용</button>
                     <button type="button" class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
                 </div>
@@ -1976,6 +2122,14 @@
                 panel.classList.add('active');
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sectionFromHash = (window.location.hash || '').replace('#', '');
+            const availableSections = ['home', 'company', 'products', 'applications', 'inquiry_board', 'contact'];
+            if (availableSections.includes(sectionFromHash)) {
+                showSection(sectionFromHash);
+            }
+        });
 
 </script>
 </body>

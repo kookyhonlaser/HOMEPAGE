@@ -1,0 +1,15 @@
+기존 파일 교체:
+- index.html
+- admin.html
+- inquiry-check.html
+- inquiry-detail.html
+
+새로 추가:
+- laser-marking-machine.html
+- fiber-laser-marking-machine.html
+- uv-laser-marking-machine.html
+- co2-laser-marking-machine.html
+- laser-marking-automation.html
+- robots.txt
+- sitemap.xml
+- README_SEO_UPDATE_20260629.txt
