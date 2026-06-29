@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <!-- kookyhon v47 kakao map fixed original size -->
-    <!-- kookyhon v46 kakao map rerender fix -->
-    <!-- kookyhon v45 kakao map location -->
+    <!-- kookyhon v48 hero and kakao map stable -->
     <!-- kookyhon v43 product category no auto scroll -->
     <!-- kookyhon v41 customized vision marking inspection -->
     <!-- kookyhon v40 customized no auto scroll -->
@@ -91,11 +89,11 @@
         }
         .nav-link:hover::after { transform: scaleX(1); }
         .top-shadow { box-shadow: 0 1px 0 rgba(17,24,39,.08); }
-        .hero-video video { filter: saturate(.9) contrast(1.05); }
+        .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
         .hero-overlay {
             background:
-                linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.84) 43%, rgba(255,255,255,.40) 100%),
-                linear-gradient(180deg, rgba(0,91,172,.08), rgba(255,255,255,.00));
+                linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.58) 43%, rgba(255,255,255,.18) 100%),
+                linear-gradient(180deg, rgba(0,91,172,.04), rgba(255,255,255,.00));
         }
         .section-kicker {
             display: inline-flex;
@@ -221,20 +219,42 @@
         .desktop-nav button, .mobile-nav button { cursor: pointer; position: relative; z-index: 10000; }
         .hero-video, .hero-video video, .hero-overlay { pointer-events: none; }
 
-        .kakao-map-wrap {
+    
+        .kookyhon-map-shell {
+            position: relative;
             width: 100%;
-            min-height: 360px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            background: #eef2f7;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        #kookyhonKakaoMapBox {
-            width: 640px;
-            min-width: 640px;
             height: 360px;
+            overflow: hidden;
+            background: #eef2f7;
+        }
+        .kookyhon-map-shell .root_daum_roughmap {
+            width: 640px !important;
+            height: 360px !important;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .kookyhon-map-shell .root_daum_roughmap .wrap_map {
+            height: 360px !important;
+        }
+        .kookyhon-map-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            z-index: 1;
+        }
+        @media (max-width: 720px) {
+            .kookyhon-map-shell {
+                height: 320px;
+                overflow-x: auto;
+            }
+            .kookyhon-map-shell .root_daum_roughmap {
+                margin: 0;
+            }
         }
 
     </style>
@@ -280,7 +300,7 @@
         <section id="home" class="page-section active">
             <div class="relative min-h-[680px] flex items-center overflow-hidden bg-slate-100">
                 <div class="hero-video absolute inset-0">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-75">
+                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
                         <source src="hero.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 hero-overlay"></div>
@@ -434,9 +454,13 @@
                         </div>
                     </div>
                     <div class="kh-card overflow-hidden rounded-sm">
-                        <div class="kakao-map-wrap bg-slate-100">
-                            <div id="kookyhonKakaoMapBox">
-                                <div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                        <div class="kookyhon-map-shell">
+                            <div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                            <div id="kookyhonMapFallback" class="kookyhon-map-fallback">
+                                <div>
+                                    <div class="font-black text-xl text-slate-700">쿠키혼레이저㈜ 위치</div>
+                                    <p class="mt-3 text-slate-500">지도가 표시되지 않으면 아래 버튼으로 확인하실 수 있습니다.</p>
+                                </div>
                             </div>
                         </div>
 
@@ -460,8 +484,6 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
-                    </div>
                     </div>
                 </div>
             </section>
@@ -1931,17 +1953,16 @@
 
 </script>
 
-
     <!-- Kakao Map Embed -->
     <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
     <script charset="UTF-8">
-        let kookyhonKakaoMapRendered = false;
-
-        function renderKookyhonKakaoMap() {
-            const box = document.getElementById('kookyhonKakaoMapBox');
-            if (!box || typeof daum === 'undefined' || !daum.roughmap || kookyhonKakaoMapRendered) return;
-
-            box.innerHTML = '<div id="daumRoughmapContainer1782706995444" class="root_daum_roughmap root_daum_roughmap_landing"></div>';
+        function renderKookyhonKakaoMapStable() {
+            const mapNode = document.getElementById('daumRoughmapContainer1782706995444');
+            if (!mapNode || mapNode.dataset.rendered === '1') return;
+            if (typeof daum === 'undefined' || !daum.roughmap) {
+                setTimeout(renderKookyhonKakaoMapStable, 300);
+                return;
+            }
 
             new daum.roughmap.Lander({
                 "timestamp": "1782706995444",
@@ -1950,8 +1971,15 @@
                 "mapHeight": "360"
             }).render();
 
-            kookyhonKakaoMapRendered = true;
+            mapNode.dataset.rendered = '1';
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(renderKookyhonKakaoMapStable, 500);
+        });
+        window.addEventListener('load', function () {
+            setTimeout(renderKookyhonKakaoMapStable, 500);
+        });
     </script>
 
 </body>
