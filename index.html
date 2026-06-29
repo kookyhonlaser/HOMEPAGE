@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v41 customized vision marking inspection -->
     <!-- kookyhon v40 customized no auto scroll -->
     <!-- kookyhon v39 customized 3d laser marking -->
     <!-- kookyhon v38 customized dual panel nesting fix -->
@@ -1076,6 +1077,7 @@
                                 <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
                                 <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
                                 <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d')">K-3D LASER MARKING SYSTEM</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision_marking')">K-VISION MARKING INSPECTION SYSTEM</button>
                             </div>
                         </div>
 
@@ -1365,6 +1367,104 @@
                                     <div class="kh-card-soft p-5 rounded-sm">
                                         <h4 class="text-xl font-black">자동화 공정 대응</h4>
                                         <p class="mt-3 text-slate-600 leading-7">이송, 클램프, 센서, I/O 연동 등 생산 공정에 맞춘 자동화 구성이 가능합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="custom_model_vision_marking" class="custom-model-panel">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px]">
+                                    <img src="customized_vision_marking_inspection_system.png" alt="K-VISION MARKING INSPECTION SYSTEM" class="w-full h-full object-cover">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Vision Marking Inspection System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-VISION MARKING INSPECTION SYSTEM</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-VISION MARKING INSPECTION SYSTEM은 제품 위치와 형상을 먼저 비전으로 인식한 뒤,
+                                        정밀 레이저 마킹을 수행하고, 마킹 완료 후 다시 비전 검사로 결과를 판정하는
+                                        일체형 Customized 자동화 장비입니다. 비전 촬영 → 레이저 마킹 → 마킹 후 비전 검사 흐름을
+                                        하나의 시스템 안에서 연동하여 품질 안정화와 공정 자동화를 동시에 지원합니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Vision Capture</span>
+                                        <span class="product-badge">Laser Marking</span>
+                                        <span class="product-badge">Vision Inspection</span>
+                                        <span class="product-badge">Custom Automation</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            제품 투입 후 비전 카메라가 위치와 방향을 확인하고, 정밀 레이저 마킹을 수행한 다음,
+                                            마킹 결과를 다시 촬영하여 문자, 로고, 코드, 품질 상태를 검사하는 공정 통합형 시스템입니다.
+                                            작업물, 검사 기준, 치구, 조명, 카메라 배치, 자동 이송 구조까지 고객 공정에 맞추어 설계할 수 있습니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-4 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">비전 선행 인식</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">제품 위치, 방향, 기준점을 촬영하여 마킹 전 정렬 조건을 확인합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">정밀 레이저 마킹</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">인식된 기준을 바탕으로 문자, 코드, 로고를 정밀하게 마킹합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">마킹 후 비전 검사</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">마킹 결과를 다시 촬영하여 판독, 누락, 위치, 품질 상태를 자동 판정합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">맞춤 자동화 연계</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">치구, 조명, 센서, 소프트웨어, 이송 구조를 공정에 맞추어 일체형으로 설계합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">System Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-VISION MARKING INSPECTION SYSTEM 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 비전 촬영 + 레이저 마킹 + 비전 검사 시스템</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-VISION MARKING INSPECTION SYSTEM</td></tr>
+                                                <tr><th>공정 흐름</th><td>비전 촬영 → 기준 위치 인식 → 레이저 마킹 → 마킹 후 비전 검사 → 양품/불량 판정</td></tr>
+                                                <tr><th>주요 구성</th><td>비전 카메라, 렌즈, 조명 모듈, 레이저 마킹 헤드, 검사 스테이지, 제어 소프트웨어, 자동화 구조</td></tr>
+                                                <tr><th>주요 기능</th><td>위치 보정, 정밀 마킹, 코드/문자 판독, 마킹 품질 확인, 누락/오마킹 검사</td></tr>
+                                                <tr><th>적용 대상</th><td>자동차 부품, 전장 부품, 금속/플라스틱 제품, 개별 식별이 필요한 산업 부품</td></tr>
+                                                <tr><th>맞춤 구성</th><td>전용 지그, 제품별 스테이지, 조명 방식, 카메라 배치, 검사 알고리즘, I/O 연동, 이력 관리</td></tr>
+                                                <tr><th>기대 효과</th><td>마킹 정밀도 향상, 검사 자동화, 불량 유출 방지, 공정 일체화, 품질 데이터 확보</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Application</div>
+                                <h3 class="text-3xl font-black product-section-title">적용하기 좋은 공정</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">식별 마킹 공정</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">시리얼, 로트, QR/Data Matrix, 로고 등 식별 정보가 필요한 제품에 적합합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">검사 일체형 생산라인</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">마킹 직후 검사까지 같은 장비에서 수행해야 하는 자동화 라인에 적합합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">품질 추적 관리</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">비전 판독과 검사 결과를 연계해 품질 이력과 생산 데이터를 관리할 수 있습니다.</p>
                                     </div>
                                 </div>
                             </div>
