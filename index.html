@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v43 product category no auto scroll -->
     <!-- kookyhon v41 customized vision marking inspection -->
     <!-- kookyhon v40 customized no auto scroll -->
     <!-- kookyhon v39 customized 3d laser marking -->
@@ -1696,7 +1697,7 @@
 
             if (id === 'products') {
                 setTimeout(() => {
-                    if (typeof showProductCategory === 'function') showProductCategory('fiber', false);
+                    if (typeof showProductCategory === 'function') showProductCategory('fiber');
                 }, 0);
             }
 
@@ -1826,7 +1827,7 @@
         }
 
     
-        function showProductCategory(key, doScroll = true) {
+        function showProductCategory(key) {
             document.querySelectorAll('.product-category-btn').forEach(btn => btn.classList.remove('active'));
 
             const categoryOrder = ['fiber', 'uv', 'co2', 'custom'];
@@ -1846,11 +1847,6 @@
 
             if (key === 'custom') {
                 showCustomModel('vision');
-            }
-
-            if (doScroll) {
-                const section = document.getElementById('products');
-                if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
