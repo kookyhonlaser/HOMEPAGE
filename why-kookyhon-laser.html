@@ -17,6 +17,36 @@
         .section-kicker::before { content:""; width:34px; height:2px; background:var(--kh-blue); display:block; }
         .table th { background:#f1f5f9; text-align:left; font-weight:900; }
         .table th,.table td { border:1px solid #e2e8f0; padding:14px 16px; vertical-align:top; }
+    
+        /* kookyhon v60 font system */
+        body {
+            font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+            word-break: keep-all;
+        }
+        h1, h2, h3, h4,
+        .font-black {
+            font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+        }
+        .tech-en,
+        .section-kicker,
+        .nav-link,
+        .product-category-btn,
+        .model-tab,
+        .custom-model-tab {
+            font-family: "Montserrat", "Pretendard", sans-serif;
+            letter-spacing: .02em;
+        }
+        .logo-tech,
+        .hero-tech-title,
+        .product-hero-title,
+        .en-product-title {
+            font-family: "Exo 2", "Montserrat", "Pretendard", sans-serif;
+            letter-spacing: -.02em;
+        }
+        .section-kicker {
+            letter-spacing: .14em;
+        }
+
     </style>
     <script type="application/ld+json">
     {
@@ -67,6 +97,13 @@
       ]
     }
     </script>
+
+    <!-- kookyhon v60 font style: Pretendard + Montserrat + Exo 2 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -74,7 +111,7 @@
             <a href="index.html" class="flex items-center gap-3">
                 <div class="w-11 h-11 rounded-lg kh-bg text-white flex items-center justify-center font-black">KH</div>
                 <div>
-                    <div class="font-black text-xl">KOOKYHON LASER</div>
+                    <div class="font-black text-xl logo-tech">KOOKYHON LASER</div>
                     <div class="text-xs tracking-[.25em] text-slate-500">PROCESS PROVEN LASER TECHNOLOGY</div>
                 </div>
             </a>
@@ -93,7 +130,7 @@
             <div class="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <div class="section-kicker">WHY KOOKYHON LASER</div>
-                    <h1 class="mt-8 text-4xl md:text-6xl font-black tracking-[-0.06em] leading-tight">
+                    <h1 class="mt-8 text-4xl md:text-6xl font-black tracking-[-0.06em] leading-tight hero-tech-title">
                         쿠키혼레이저가<br>산업용 레이저 마킹<br>전문업체인 이유
                     </h1>
                     <p class="mt-8 text-xl text-slate-300 leading-9">

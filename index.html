@@ -278,6 +278,36 @@
         .desktop-nav button, .mobile-nav button { cursor: pointer; position: relative; z-index: 10000; }
         .hero-video, .hero-video video, .hero-overlay { pointer-events: none; }
 
+    
+        /* kookyhon v60 font system */
+        body {
+            font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+            word-break: keep-all;
+        }
+        h1, h2, h3, h4,
+        .font-black {
+            font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+        }
+        .tech-en,
+        .section-kicker,
+        .nav-link,
+        .product-category-btn,
+        .model-tab,
+        .custom-model-tab {
+            font-family: "Montserrat", "Pretendard", sans-serif;
+            letter-spacing: .02em;
+        }
+        .logo-tech,
+        .hero-tech-title,
+        .product-hero-title,
+        .en-product-title {
+            font-family: "Exo 2", "Montserrat", "Pretendard", sans-serif;
+            letter-spacing: -.02em;
+        }
+        .section-kicker {
+            letter-spacing: .14em;
+        }
+
     </style>
 
     <script type="application/ld+json">
@@ -341,6 +371,13 @@
     }
     </script>
 
+
+    <!-- kookyhon v60 font style: Pretendard + Montserrat + Exo 2 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header class="fixed top-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur top-shadow">
@@ -391,7 +428,7 @@
                 <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-[1fr_420px] gap-12 items-end w-full">
                     <div>
                         <div class="section-kicker mb-8">Kookyhon Laser</div>
-                        <h1 class="text-5xl md:text-7xl font-black leading-[1.05] tracking-[-0.06em] max-w-4xl">
+                        <h1 class="text-5xl md:text-7xl font-black leading-[1.05] tracking-[-0.06em] max-w-4xl hero-tech-title">
                             레이저 마킹기와 자동화로 완성하는<br>
                             산업용 레이저 공정 솔루션
                         </h1>
@@ -408,7 +445,7 @@
                         <div class="text-sm font-black text-[var(--kh-blue)] tracking-[0.12em] uppercase mb-4">Core Capability</div>
                         <div class="space-y-5">
                             <div class="border-b border-slate-100 pb-5">
-                                <div class="font-black text-xl">마킹 품질</div>
+                                <div class="font-black text-xl logo-tech">마킹 품질</div>
                                 <p class="mt-2 text-slate-600 leading-7">금속, 플라스틱, 필름, 유리 등 소재별 조건에 맞춘 선명한 마킹 품질 구현</p>
                             </div>
                             <div class="border-b border-slate-100 pb-5">
