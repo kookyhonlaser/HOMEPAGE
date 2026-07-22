@@ -2,57 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kooky.co.kr/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/laser-marking-machine.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/fiber-laser-marking-machine.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/uv-laser-marking-machine.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/co2-laser-marking-machine.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/laser-marking-automation.html</loc>
-    <lastmod>2026-06-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
-  </url>
-  <url>
-    <loc>https://www.kooky.co.kr/sic-laser-marking.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/qr-datamatrix-laser-marking.html</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
-
+  <url>
+    <loc>https://www.kooky.co.kr/sic-laser-marking.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
   <url>
     <loc>https://www.kooky.co.kr/why-kookyhon-laser.html</loc>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
-
 </urlset>
