@@ -48,4 +48,11 @@
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
+
+  <url>
+    <loc>https://www.kooky.co.kr/why-kookyhon-laser.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>
