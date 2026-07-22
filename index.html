@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v56 product category urls -->
     <!-- kookyhon v57 product landing links -->
     <!-- kookyhon v55 no browser back external -->
     <!-- kookyhon v54 application hero safe map -->
@@ -2069,38 +2070,160 @@
 </script>
 
     <script>
-        // Kookyhon v55: 내부 메뉴 이동은 브라우저 방문기록을 만들지 않고,
-        // 브라우저 뒤로가기를 눌러도 홈페이지 홈 화면에 머무르게 합니다.
+        // Kookyhon v56: 제품군/주요 메뉴별 고유 주소를 부여합니다.
+        // 예) ?section=products&category=fiber / uv / co2 / custom
         (function () {
-            if (window.__kookyhonBackGuardInstalled) return;
-            window.__kookyhonBackGuardInstalled = true;
+            const validSections = ['home', 'company', 'products', 'applications', 'inquiry_board'];
+            const validCategories = ['fiber', 'uv', 'co2', 'custom'];
+            const categoryNames = {
+                fiber: 'Fiber Laser',
+                uv: 'UV Laser',
+                co2: 'CO2 Laser',
+                custom: 'Customized'
+            };
 
-            function keepHomeUrl() {
+            function currentUrlFor(sectionId, categoryKey) {
+                const url = new URL(window.location.href);
+                url.searchParams.delete('page');
+                url.searchParams.set('section', sectionId);
+
+                if (sectionId === 'products') {
+                    url.searchParams.set('category', validCategories.includes(categoryKey) ? categoryKey : 'fiber');
+                } else {
+                    url.searchParams.delete('category');
+                }
+
+                url.hash = '';
+                return url.pathname + url.search;
+            }
+
+            function updateAddress(sectionId, categoryKey, replace) {
+                const nextUrl = currentUrlFor(sectionId, categoryKey);
+                const state = {
+                    kookyhon: true,
+                    section: sectionId,
+                    category: categoryKey || null
+                };
+
                 try {
-                    history.replaceState({ kookyhonHome: true }, document.title, location.pathname + location.search);
-                    history.pushState({ kookyhonGuard: true }, document.title, location.pathname + location.search);
+                    if (replace) {
+                        history.replaceState(state, document.title, nextUrl);
+                    } else if ((location.pathname + location.search) !== nextUrl) {
+                        history.pushState(state, document.title, nextUrl);
+                    }
                 } catch (e) {}
             }
 
-            const initialSection = (new URLSearchParams(location.search).get('section') || (location.hash ? location.hash.slice(1) : '')).trim();
-            if (initialSection && document.getElementById(initialSection) && typeof showSection === 'function') {
-                showSection(initialSection);
-                try { window.scrollTo({ top: 0, behavior: 'instant' }); } catch (e) { window.scrollTo(0, 0); }
-            }
+            function activateSectionOnly(sectionId) {
+                document.querySelectorAll('.page-section').forEach(section => section.classList.remove('active'));
 
-            keepHomeUrl();
-
-            window.addEventListener('popstate', function () {
-                keepHomeUrl();
-
-                if (typeof showSection === 'function') {
-                    showSection('home');
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.classList.add('active');
                 }
 
-                try {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.toggle('active', link.dataset.section === sectionId);
+                });
+
+                if (sectionId === 'inquiry_board' && typeof loadIndexPublicInquiries === 'function') {
+                    loadIndexPublicInquiries();
+                }
+            }
+
+            function activateProductCategoryOnly(key) {
+                const categoryKey = validCategories.includes(key) ? key : 'fiber';
+
+                document.querySelectorAll('.product-category-btn').forEach(btn => btn.classList.remove('active'));
+
+                const index = validCategories.indexOf(categoryKey);
+                if (index >= 0) {
+                    const btn = document.querySelectorAll('.product-category-btn')[index];
+                    if (btn) btn.classList.add('active');
+                }
+
+                document.querySelectorAll('.product-panel').forEach(panel => panel.classList.remove('active'));
+                const panel = document.getElementById('product_panel_' + categoryKey);
+                if (panel) panel.classList.add('active');
+
+                if (categoryKey === 'fiber' && typeof showFiberModel === 'function') {
+                    showFiberModel('prisa');
+                }
+
+                if (categoryKey === 'custom' && typeof showCustomModel === 'function') {
+                    showCustomModel('vision');
+                }
+
+                document.title = categoryNames[categoryKey] + ' | KOOKYHON LASER';
+            }
+
+            window.showSection = function (sectionId, options) {
+                const opts = options || {};
+                const id = validSections.includes(sectionId) ? sectionId : 'home';
+
+                activateSectionOnly(id);
+
+                if (id === 'products') {
+                    const requestedCategory = opts.category || new URLSearchParams(location.search).get('category') || 'fiber';
+                    activateProductCategoryOnly(validCategories.includes(requestedCategory) ? requestedCategory : 'fiber');
+                } else {
+                    document.title = 'KOOKYHON LASER';
+                }
+
+                if (!opts.skipUrl) {
+                    updateAddress(id, opts.category, !!opts.replace);
+                }
+
+                if (!opts.keepScroll) {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                } catch (e) {
-                    window.scrollTo(0, 0);
+                }
+            };
+
+            window.showProductCategory = function (key, options) {
+                const opts = options || {};
+                const categoryKey = validCategories.includes(key) ? key : 'fiber';
+
+                activateSectionOnly('products');
+                activateProductCategoryOnly(categoryKey);
+
+                if (!opts.skipUrl) {
+                    updateAddress('products', categoryKey, !!opts.replace);
+                }
+
+                // 제품군 카드 클릭 시 현재 위치가 튀지 않도록 스크롤은 유지합니다.
+            };
+
+            function applyAddressRoute(keepScroll) {
+                const params = new URLSearchParams(location.search);
+                let sectionId = params.get('section') || 'home';
+                let categoryKey = params.get('category') || 'fiber';
+
+                if (!validSections.includes(sectionId)) sectionId = 'home';
+                if (!validCategories.includes(categoryKey)) categoryKey = 'fiber';
+
+                if (sectionId === 'products') {
+                    window.showSection('products', {
+                        category: categoryKey,
+                        skipUrl: true,
+                        keepScroll: !!keepScroll
+                    });
+                } else {
+                    window.showSection(sectionId, {
+                        skipUrl: true,
+                        keepScroll: !!keepScroll
+                    });
+                }
+            }
+
+            window.addEventListener('popstate', function () {
+                applyAddressRoute(false);
+            });
+
+            document.addEventListener('DOMContentLoaded', function () {
+                applyAddressRoute(true);
+                const params = new URLSearchParams(location.search);
+                if (!params.get('section')) {
+                    updateAddress('home', null, true);
                 }
             });
         })();
