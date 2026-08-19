@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v63 customized lineup balanced grid -->
     <!-- kookyhon v62 data matrix standard two-column showcase -->
     <!-- kookyhon v59 ai trust page -->
     <!-- kookyhon v58 seo plus product urls restore -->
@@ -255,6 +256,31 @@
             background: #0f172a;
             color: #fff;
             border-color: #0f172a;
+        }
+        .custom-model-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        .custom-model-grid .custom-model-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 62px;
+            padding: 14px 18px;
+            text-align: center;
+            line-height: 1.35;
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .custom-model-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .custom-model-grid .custom-model-btn:nth-child(5) { grid-column: 1 / -1; }
+        }
+        @media (min-width: 1024px) {
+            .custom-model-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+            .custom-model-grid .custom-model-btn:nth-child(-n+3) { grid-column: span 2; }
+            .custom-model-grid .custom-model-btn:nth-child(n+4) { grid-column: span 3; }
         }
         .custom-model-panel { display: none; }
         .custom-model-panel.active { display: block; }
@@ -1551,21 +1577,21 @@
 
                     
                     
-                    <div id="product_panel_custom" class="product-panel">
-                        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-8">
-                            <div>
+                    <div id="product_panel_custom" class="product-panel max-w-7xl mx-auto px-6">
+                        <div class="mb-10">
+                            <div class="max-w-4xl">
                                 <div class="section-kicker mb-5">Customized Line-up</div>
                                 <h3 class="text-4xl font-black tracking-[-0.05em]">Customized 맞춤형 장비군</h3>
                                 <p class="mt-4 text-slate-600 leading-8">
                                     정규 제품군이 아닌 고객 공정 맞춤형 장비입니다. 아래 장비명을 클릭하면 선택한 장비의 상세 내용만 바로 표시됩니다.
                                 </p>
                             </div>
-                            <div class="flex flex-wrap gap-3">
-                                <button class="custom-model-btn active px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
-                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
-                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d')">K-3D LASER MARKING SYSTEM</button>
-                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision_marking')">K-VISION MARKING INSPECTION SYSTEM</button>
-                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('datamatrix_read')">K-DATA MATRIX MARK &amp; READ SYSTEM</button>
+                            <div class="custom-model-grid" aria-label="Customized 장비 선택">
+                                <button class="custom-model-btn active rounded-sm kh-btn-line" onclick="showCustomModel('vision')">K-VISION CHECK CELL</button>
+                                <button class="custom-model-btn rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
+                                <button class="custom-model-btn rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d')">K-3D LASER MARKING SYSTEM</button>
+                                <button class="custom-model-btn rounded-sm kh-btn-line" onclick="showCustomModel('vision_marking')">K-VISION MARKING INSPECTION SYSTEM</button>
+                                <button class="custom-model-btn rounded-sm kh-btn-line" onclick="showCustomModel('datamatrix_read')">K-DATA MATRIX MARK &amp; READ SYSTEM</button>
                             </div>
                         </div>
 
