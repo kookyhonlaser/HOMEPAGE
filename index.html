@@ -3,6 +3,7 @@
 <head>
     <!-- kookyhon v59 ai trust page -->
     <!-- kookyhon v58 seo plus product urls restore -->
+    <!-- kookyhon v60 customized data matrix mark and read system -->
     <!-- kookyhon v56 product category urls -->
     <!-- kookyhon v57 product landing links -->
     <!-- kookyhon v55 no browser back external -->
@@ -721,7 +722,7 @@
                         <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('custom')">
                             <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
                             <h4 class="mt-4 text-2xl font-black">Customized</h4>
-                            <p class="product-category-desc mt-3 text-slate-500 leading-7">자동화 레이저 마킹기, 비전검사, 3D 곡면 마킹 등 맞춤형 레이저 장비 제작</p>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">자동화 레이저 마킹기, 비전검사, Data Matrix 마킹·리딩, 3D 곡면 마킹 등 맞춤형 레이저 장비 제작</p>
                         </button>
                     </div>
                 </div>
@@ -1337,6 +1338,7 @@
                                 <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('dual_laser')">K-DUAL LASER WORKSTATION</button>
                                 <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('laser_3d')">K-3D LASER MARKING SYSTEM</button>
                                 <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('vision_marking')">K-VISION MARKING INSPECTION SYSTEM</button>
+                                <button class="custom-model-btn px-7 py-4 rounded-sm kh-btn-line" onclick="showCustomModel('datamatrix_read')">K-DATA MATRIX MARK &amp; READ SYSTEM</button>
                             </div>
                         </div>
 
@@ -1724,6 +1726,104 @@
                                     <div class="kh-card-soft p-5 rounded-sm">
                                         <h4 class="text-xl font-black">품질 추적 관리</h4>
                                         <p class="mt-3 text-slate-600 leading-7">비전 판독과 검사 결과를 연계해 품질 이력과 생산 데이터를 관리할 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="custom_model_datamatrix_read" class="custom-model-panel">
+                            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-stretch">
+                                <div class="product-media-box min-h-[420px] bg-slate-100">
+                                    <img src="customized_datamatrix_mark_read_system.png" alt="Data Matrix 레이저 마킹 후 자동 리딩 장비 K-DATA MATRIX MARK AND READ SYSTEM" class="w-full h-full object-contain" loading="lazy">
+                                </div>
+
+                                <div class="kh-card p-8 md:p-10 rounded-sm">
+                                    <div class="section-kicker mb-5">Customized Data Matrix Marking &amp; Reading System</div>
+                                    <h3 class="text-4xl md:text-5xl font-black product-section-title">K-DATA MATRIX MARK &amp; READ SYSTEM</h3>
+                                    <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                        K-DATA MATRIX MARK &amp; READ SYSTEM은 제품에 Data Matrix 코드를 레이저로 마킹한 뒤,
+                                        전용 카메라와 적색 조명으로 코드를 자동 리딩하는 일체형 맞춤 장비입니다.
+                                        마킹과 판독을 하나의 장비에서 연속 수행하여 코드 누락과 판독 불량을 즉시 확인하고,
+                                        생산 이력 추적에 필요한 코드 신뢰성을 높입니다.
+                                    </p>
+
+                                    <div class="mt-8 flex flex-wrap gap-3">
+                                        <span class="product-badge">Data Matrix Marking</span>
+                                        <span class="product-badge">Automatic Code Reading</span>
+                                        <span class="product-badge">Red Vision Lighting</span>
+                                        <span class="product-badge">OK / NG Judgment</span>
+                                    </div>
+
+                                    <div class="mt-8 kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)] mb-3">장비 컨셉</div>
+                                        <p class="text-slate-600 leading-7">
+                                            전용 지그에 제품을 고정하면 이송 스테이지가 레이저 마킹 위치와 코드 리딩 위치를 순차 이동합니다.
+                                            Data Matrix 마킹 후 적색 확산 조명과 카메라로 코드를 판독하고, 판독 결과에 따라 OK/NG를 표시합니다.
+                                            제품 형상, 코드 크기, 생산 방식에 맞춰 지그와 이송 거리, 조명, 판독 조건을 맞춤 설계합니다.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 grid md:grid-cols-4 gap-5">
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
+                                    <h4 class="mt-3 text-xl font-black">Data Matrix 레이저 마킹</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">제품 표면에 로트, 시리얼 등 추적 정보를 포함한 Data Matrix 코드를 정밀하게 마킹합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
+                                    <h4 class="mt-3 text-xl font-black">자동 위치 이송</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">정밀 스테이지가 제품을 레이저 위치에서 리딩 위치로 자동 이송합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
+                                    <h4 class="mt-3 text-xl font-black">적색 조명 코드 리딩</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">적색 확산 조명으로 표면 대비를 확보하고 카메라가 마킹된 코드를 판독합니다.</p>
+                                </div>
+                                <div class="kh-card-soft p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                                    <h4 class="mt-3 text-xl font-black">OK / NG 자동 판정</h4>
+                                    <p class="mt-3 text-slate-600 leading-7">코드 판독 여부와 데이터 일치 상태를 확인하여 결과를 즉시 판정합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-16">
+                                <div class="section-kicker mb-5">System Concept</div>
+                                <h3 class="text-4xl font-black product-section-title mb-8">K-DATA MATRIX MARK &amp; READ SYSTEM 구성 설명</h3>
+                                <div class="kh-card rounded-sm overflow-hidden">
+                                    <div class="overflow-x-auto">
+                                        <table class="w-full spec-table min-w-[820px]">
+                                            <tbody>
+                                                <tr><th>장비 구분</th><td>Customized 맞춤형 Data Matrix 레이저 마킹·리딩 장비</td></tr>
+                                                <tr><th>장비 명칭</th><td>K-DATA MATRIX MARK &amp; READ SYSTEM</td></tr>
+                                                <tr><th>공정 흐름</th><td>제품 투입 → 전용 지그 고정 → Data Matrix 레이저 마킹 → 스테이지 이동 → 적색 조명 코드 리딩 → OK/NG 판정</td></tr>
+                                                <tr><th>주요 구성</th><td>레이저 마킹 헤드, 정밀 이송 스테이지, Data Matrix 리더/카메라, 적색 조명, 전용 지그, 제어 PC, 듀얼 모니터, 청색 안전 커버</td></tr>
+                                                <tr><th>리딩 항목</th><td>코드 판독 여부, 데이터 내용 확인, 코드 누락, 판독 불량 및 데이터 일치 확인</td></tr>
+                                                <tr><th>적용 대상</th><td>자동차·전장·전자 부품, 금속 및 플라스틱 부품, 개별 생산 이력 추적이 필요한 제품</td></tr>
+                                                <tr><th>맞춤 구성</th><td>제품 전용 지그, 코드 크기, 마킹 영역, 이송 거리, 조명 조건, 판독 기준, I/O 및 생산 이력 연동</td></tr>
+                                                <tr><th>기대 효과</th><td>마킹과 판독 공정 일체화, 코드 판독 신뢰성 향상, 불량 유출 방지, 생산 이력 관리 지원</td></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-16 kh-card p-7 rounded-sm">
+                                <div class="section-kicker mb-4">Application</div>
+                                <h3 class="text-3xl font-black product-section-title">적용하기 좋은 공정</h3>
+                                <div class="mt-6 grid md:grid-cols-3 gap-5">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">부품 이력 추적</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">개별 제품에 Data Matrix를 마킹하고 즉시 판독하여 생산 이력을 관리하는 공정.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">마킹 후 전수 판독</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">출하 전 모든 제품의 코드가 정상적으로 읽히는지 확인해야 하는 품질 공정.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <h4 class="text-xl font-black">공정 데이터 연계</h4>
+                                        <p class="mt-3 text-slate-600 leading-7">마킹 데이터와 판독 결과를 생산 설비 또는 이력 관리 시스템과 연계하는 공정.</p>
                                     </div>
                                 </div>
                             </div>
@@ -2176,7 +2276,7 @@
         function showCustomModel(key) {
             document.querySelectorAll('.custom-model-btn').forEach(btn => btn.classList.remove('active'));
 
-            const modelOrder = ['vision', 'dual_laser', 'laser_3d'];
+            const modelOrder = ['vision', 'dual_laser', 'laser_3d', 'vision_marking', 'datamatrix_read'];
             const index = modelOrder.indexOf(key);
             if (index >= 0) {
                 const btn = document.querySelectorAll('.custom-model-btn')[index];
