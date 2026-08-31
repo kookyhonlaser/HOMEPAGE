@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v66 consultation form field guidance -->
     <!-- kookyhon v65 consultation form route fix -->
     <!-- kookyhon v64 customized lineup wider container -->
     <!-- kookyhon v63 customized lineup balanced grid -->
@@ -2306,12 +2307,41 @@
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
                         <form id="inquiryForm" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
-                            <input id="customerNickname" name="customerNickname" type="text" placeholder="닉네임 / 목록 표시명" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input id="companyName" name="companyName" type="text" placeholder="업체명" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input id="customerName" name="customerName" type="text" placeholder="성함" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input id="customerPhone" name="customerPhone" type="tel" placeholder="연락처" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input id="customerEmail" name="customerEmail" type="email" placeholder="이메일" class="p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                            <input id="customerPassword" name="customerPassword" type="password" placeholder="문의 확인용 비밀번호" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                            <label class="md:col-span-2 block" for="customerNickname">
+                                <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="customerNickname" name="customerNickname" type="text" placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담문의 목록에 표시되는 이름입니다. 실명 대신 사용할 수 있습니다.</span>
+                            </label>
+
+                            <label class="block" for="companyName">
+                                <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="companyName" name="companyName" type="text" placeholder="예: ㈜한국산업" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">소속 회사 또는 업체명을 입력해 주세요.</span>
+                            </label>
+
+                            <label class="block" for="customerName">
+                                <span class="block mb-2 text-sm font-black text-slate-700">성함 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="customerName" name="customerName" type="text" placeholder="예: 홍길동" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담을 요청하는 담당자 성함을 입력해 주세요.</span>
+                            </label>
+
+                            <label class="block" for="customerPhone">
+                                <span class="block mb-2 text-sm font-black text-slate-700">연락처 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="customerPhone" name="customerPhone" type="tel" placeholder="예: 010-1234-5678" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담 회신을 받을 휴대전화 또는 전화번호를 입력해 주세요.</span>
+                            </label>
+
+                            <label class="block" for="customerEmail">
+                                <span class="block mb-2 text-sm font-black text-slate-700">이메일 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
+                                <input id="customerEmail" name="customerEmail" type="email" placeholder="예: name@company.com" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">답변이나 자료를 받을 이메일 주소가 있으면 입력해 주세요.</span>
+                            </label>
+
+                            <label class="md:col-span-2 block" for="customerPassword">
+                                <span class="block mb-2 text-sm font-black text-slate-700">문의 확인용 비밀번호 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="customerPassword" name="customerPassword" type="password" placeholder="답변 확인에 사용할 비밀번호" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">접수번호로 문의 내용과 답변을 확인할 때 필요하므로 기억해 주세요.</span>
+                            </label>
 
                             <div class="md:col-span-2 border border-slate-300 rounded-sm p-5 bg-slate-50">
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
@@ -2335,7 +2365,11 @@
                                 </p>
                             </div>
 
-                            <textarea id="inquiryMessage" name="inquiryMessage" placeholder="문의내용" rows="7" class="md:col-span-2 p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
+                            <label class="md:col-span-2 block" for="inquiryMessage">
+                                <span class="block mb-2 text-sm font-black text-slate-700">문의내용 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <textarea id="inquiryMessage" name="inquiryMessage" placeholder="문의하실 내용을 입력해 주세요." rows="7" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">장비 종류, 제품 소재와 크기, 원하는 마킹 내용, 생산 수량·속도, 자동화 필요 여부를 알려주시면 상담이 빨라집니다.</span>
+                            </label>
                             <button type="submit" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">문의 등록하기</button>
                             <button type="button" onclick="showSection('inquiry_board')" class="md:col-span-2 py-4 kh-btn-line rounded-sm">상담문의 리스트로 돌아가기</button>
                             <div id="inquiryResult" class="md:col-span-2 hidden p-5 bg-blue-50 border border-blue-100 rounded-sm text-slate-700 leading-7"></div>
