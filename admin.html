@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- kookyhon v68 password-only admin login -->
 <!-- kookyhon v67 admin login account ui -->
 <html lang="ko">
 <head>
@@ -101,8 +102,7 @@
         <section id="loginBox" class="kh-card p-8 md:p-10 rounded-sm max-w-xl">
             <h1 class="text-3xl font-black tracking-[-0.04em]">관리자 로그인</h1>
             <form onsubmit="login(); return false;" class="mt-8 space-y-4">
-                <input id="adminEmail" name="adminEmail" type="email" value="owen@kooky.co.kr" placeholder="관리자 이메일" autocomplete="username" class="w-full p-4 border border-slate-300 rounded-sm">
-                <input id="adminPassword" name="adminPassword" type="password" placeholder="관리자 비밀번호" autocomplete="current-password" class="w-full p-4 border border-slate-300 rounded-sm">
+                <input id="adminPassword" name="adminPassword" type="password" placeholder="관리자 비밀번호" autocomplete="current-password" autofocus class="w-full p-4 border border-slate-300 rounded-sm">
                 <button type="submit" class="w-full py-4 kh-btn-primary rounded-sm">로그인</button>
             </form>
         </section>
@@ -156,6 +156,7 @@
     </main>
 
 <script>
+const ADMIN_EMAIL = 'owen@kooky.co.kr';
 let currentFilter = 'all';
 let allItems = [];
 
@@ -170,8 +171,12 @@ async function checkSession() {
 }
 
 async function login() {
-    const email = document.getElementById('adminEmail').value.trim();
+    const email = ADMIN_EMAIL;
     const password = document.getElementById('adminPassword').value;
+    if (!password) {
+        alert('관리자 비밀번호를 입력해 주세요.');
+        return;
+    }
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) {
         alert(error.message || '로그인에 실패했습니다.');
