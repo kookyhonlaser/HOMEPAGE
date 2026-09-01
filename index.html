@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <!-- kookyhon v70 inquiry email example and autofill prevention -->
     <!-- kookyhon v66 consultation form field guidance -->
     <!-- kookyhon v65 consultation form route fix -->
     <!-- kookyhon v64 customized lineup wider container -->
@@ -2306,7 +2307,7 @@
             <section class="py-24 bg-[var(--kh-bg)]">
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
-                        <form id="inquiryForm" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
+                        <form id="inquiryForm" autocomplete="off" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
                             <label class="md:col-span-2 block" for="customerNickname">
                                 <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
                                 <input id="customerNickname" name="customerNickname" type="text" placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
@@ -2333,13 +2334,13 @@
 
                             <label class="block" for="customerEmail">
                                 <span class="block mb-2 text-sm font-black text-slate-700">이메일 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
-                                <input id="customerEmail" name="customerEmail" type="email" placeholder="예: name@company.com" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">답변이나 자료를 받을 이메일 주소가 있으면 입력해 주세요.</span>
+                                <input id="customerEmail" name="customerEmail" type="email" inputmode="email" autocomplete="off" placeholder="예: name@company.co.kr" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">예: name@company.co.kr · 답변이나 자료를 받을 이메일 주소가 있으면 입력해 주세요.</span>
                             </label>
 
                             <label class="md:col-span-2 block" for="customerPassword">
                                 <span class="block mb-2 text-sm font-black text-slate-700">문의 확인용 비밀번호 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="customerPassword" name="customerPassword" type="password" placeholder="답변 확인에 사용할 비밀번호" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <input id="customerPassword" name="customerPassword" type="password" autocomplete="new-password" placeholder="답변 확인에 사용할 비밀번호" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">접수번호로 문의 내용과 답변을 확인할 때 필요하므로 기억해 주세요.</span>
                             </label>
 
