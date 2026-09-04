@@ -2641,12 +2641,58 @@
         (function () {
             const validSections = ['home', 'company', 'products', 'applications', 'inquiry_board', 'contact'];
             const validCategories = ['fiber', 'uv', 'co2', 'custom'];
-            const categoryNames = {
-                fiber: 'Fiber Laser',
-                uv: 'UV Laser',
-                co2: 'CO2 Laser',
-                custom: 'Customized'
+            const sectionMetadata = {
+                home: {
+                    title: '산업용 레이저 마킹기·레이저 각인 자동화 | 쿠키혼레이저',
+                    description: '파이버·UV·CO2 레이저 마킹기와 금속·플라스틱 레이저 각인, QR·Data Matrix 마킹, 비전검사 자동화 솔루션을 제공합니다.'
+                },
+                company: {
+                    title: '레이저 마킹기 전문기업·회사소개 | 쿠키혼레이저',
+                    description: '산업용 레이저 마킹기, 레이저 각인기, 자동화 및 비전검사 시스템을 설계·제작하는 쿠키혼레이저를 소개합니다.'
+                },
+                applications: {
+                    title: '금속·플라스틱 레이저 각인 및 마킹 적용사례 | 쿠키혼레이저',
+                    description: '금속·플라스틱·유리 레이저 마킹, QR·Data Matrix 코드 각인, 시리얼 마킹과 생산라인 자동화 적용 분야를 확인하세요.'
+                },
+                inquiry_board: {
+                    title: '레이저 마킹기 가격·샘플 테스트·견적 문의 | 쿠키혼레이저',
+                    description: '파이버·UV·CO2 레이저 마킹기 가격, 소재별 각인 샘플 테스트, 자동화 설비와 비전검사 시스템 견적을 상담합니다.'
+                },
+                contact: {
+                    title: '레이저 마킹기 상담·오시는 길 | 쿠키혼레이저',
+                    description: '레이저 마킹기와 레이저 각인 자동화 상담을 위한 쿠키혼레이저 연락처와 오시는 길을 안내합니다.'
+                }
             };
+            const categoryMetadata = {
+                fiber: {
+                    title: '파이버 레이저 마킹기·금속 레이저 각인기 | 쿠키혼레이저',
+                    description: '스테인리스·알루미늄 등 금속 각인과 QR·Data Matrix, 시리얼 마킹에 적합한 산업용 파이버 레이저 마킹기를 소개합니다.'
+                },
+                uv: {
+                    title: 'UV 레이저 마킹기·플라스틱 정밀 각인 | 쿠키혼레이저',
+                    description: '플라스틱·유리·전자부품의 열 손상을 줄이는 UV 레이저 마킹기와 고정밀 레이저 각인 솔루션을 소개합니다.'
+                },
+                co2: {
+                    title: 'CO2 레이저 마킹기·비금속 레이저 각인기 | 쿠키혼레이저',
+                    description: '목재·아크릴·유리·포장재 등 비금속 소재의 각인과 생산라인 마킹을 위한 CO2 레이저 마킹기를 소개합니다.'
+                },
+                custom: {
+                    title: '레이저 마킹 자동화·비전검사 맞춤 제작 | 쿠키혼레이저',
+                    description: '레이저 마킹 자동화, 비전 위치보정·검사, QR·Data Matrix 판독과 생산라인 연동 시스템을 맞춤 제작합니다.'
+                }
+            };
+
+            function setPageMetadata(metadata) {
+                if (!metadata) return;
+                document.title = metadata.title;
+
+                const description = document.querySelector('meta[name="description"]');
+                const ogTitle = document.querySelector('meta[property="og:title"]');
+                const ogDescription = document.querySelector('meta[property="og:description"]');
+                if (description) description.setAttribute('content', metadata.description);
+                if (ogTitle) ogTitle.setAttribute('content', metadata.title);
+                if (ogDescription) ogDescription.setAttribute('content', metadata.description);
+            }
 
             function currentUrlFor(sectionId, categoryKey) {
                 const url = new URL(window.location.href);
@@ -2720,7 +2766,7 @@
                     showCustomModel('vision');
                 }
 
-                document.title = categoryNames[categoryKey] + ' | KOOKYHON LASER';
+                setPageMetadata(categoryMetadata[categoryKey]);
             }
 
             window.showSection = function (sectionId, options) {
@@ -2733,7 +2779,7 @@
                     const requestedCategory = opts.category || new URLSearchParams(location.search).get('category') || 'fiber';
                     activateProductCategoryOnly(validCategories.includes(requestedCategory) ? requestedCategory : 'fiber');
                 } else {
-                    document.title = 'KOOKYHON LASER';
+                    setPageMetadata(sectionMetadata[id]);
                 }
 
                 if (!opts.skipUrl) {
