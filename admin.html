@@ -115,6 +115,7 @@
                 </div>
                 <div class="flex flex-wrap gap-3">
                     <a href="index.html" class="px-5 py-3 kh-btn-primary rounded-sm inline-flex items-center gap-2" title="홈페이지로 이동">⌂ 홈페이지</a>
+                    <a href="accessories-preview.html" class="px-5 py-3 kh-btn-line rounded-sm inline-flex items-center gap-2">악세사리 페이지 미리보기</a>
                     <button onclick="loadInquiries('all')" id="btn-all" class="px-5 py-3 kh-btn-line rounded-sm">전체</button>
                     <button onclick="loadInquiries('private')" id="btn-private" class="px-5 py-3 kh-btn-line rounded-sm">비공개</button>
                     <button onclick="loadInquiries('public')" id="btn-public" class="px-5 py-3 kh-btn-line rounded-sm">공개</button>
@@ -157,16 +158,19 @@
 
 <script>
 const ADMIN_EMAIL = 'owen@kooky.co.kr';
+const ADMIN_ID = '3be6094d-994e-4f8a-95db-7eb0cf602e32';
 let currentFilter = 'all';
 let allItems = [];
 
 async function checkSession() {
     const { data } = await supabaseClient.auth.getSession();
-    if (data.session) {
+    if (data.session?.user?.id === ADMIN_ID) {
         document.getElementById('loginBox').classList.add('hidden');
         document.getElementById('panel').classList.remove('hidden');
         document.getElementById('loginInfo').innerText = `${data.session.user.email} 계정으로 로그인 중`;
         await loadInquiries('all');
+    } else if (data.session) {
+        await supabaseClient.auth.signOut();
     }
 }
 
@@ -180,6 +184,11 @@ async function login() {
     const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
     if (error) {
         alert(error.message || '로그인에 실패했습니다.');
+        return;
+    }
+    if (data.user?.id !== ADMIN_ID) {
+        await supabaseClient.auth.signOut();
+        alert('관리자 계정만 접속할 수 있습니다.');
         return;
     }
     document.getElementById('loginBox').classList.add('hidden');
