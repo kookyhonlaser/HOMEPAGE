@@ -4,9 +4,23 @@
   if (!['www.kooky.co.kr', 'kooky.co.kr'].includes(location.hostname)) return;
   const endpoint = 'https://kzbchskpscdyzwqqcqhk.supabase.co/rest/v1/rpc/record_page_view';
   const apiKey = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
+  const adminId = '3be6094d-994e-4f8a-95db-7eb0cf602e32';
+  const authStorageKey = 'sb-kzbchskpscdyzwqqcqhk-auth-token';
+  const botPattern = /bot|crawler|spider|slurp|bingpreview|headless|lighthouse|pagespeed|facebookexternalhit|whatsapp|telegrambot|kakaotalk-scrap|naverbot|yeti|daum|zumBot/i;
   let lastPage = '';
   let memoryVisitor;
   const excluded = ['admin.html','inquiry-detail.html','inquiry-check.html'];
+  function isAutomatedVisitor() {
+    return navigator.webdriver === true || botPattern.test(navigator.userAgent || '');
+  }
+  function isAdminViewer() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(authStorageKey) || 'null');
+      return saved?.user?.id === adminId;
+    } catch (_) {
+      return false;
+    }
+  }
   const day = () => new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
   function visitor() {
     const today = day();
@@ -36,6 +50,7 @@
   }
   function record() {
     if (document.visibilityState !== 'visible') return;
+    if (isAutomatedVisitor() || isAdminViewer()) return;
     try {
       const current = page();
       if (!current || current === lastPage) return;

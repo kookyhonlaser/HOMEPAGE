@@ -15,7 +15,7 @@
     </form>
     <p id="stats-status" role="status" aria-live="polite"></p>
     <div id="stats-results"></div>
-    <p class="mt-5 text-sm text-slate-500">방문자 수는 하루 동안 같은 브라우저의 중복을 제외한 추정치입니다. 기기 변경·저장소 차단에 따라 달라질 수 있습니다. 조회수는 페이지 열기·메뉴 이동·새로고침을 포함합니다. 자동 방문이나 차단된 기록 때문에 실제 사람 수와 다를 수 있습니다. 기록 시작 전 날짜는 집계 대상이 아닙니다.</p>`;
+    <p class="mt-5 text-sm text-slate-500">방문자 수는 하루 동안 같은 브라우저의 중복을 제외한 추정치입니다. 기기 변경·저장소 차단에 따라 달라질 수 있습니다. 조회수는 페이지 열기·메뉴 이동·새로고침을 포함합니다. 관리자 로그인 상태의 브라우저와 식별 가능한 검색로봇·자동화 브라우저는 집계에서 제외합니다. 일부 자동 방문은 식별되지 않을 수 있으며, 기록 시작 전 날짜는 집계 대상이 아닙니다.</p>`;
   document.getElementById('panel').prepend(section);
   const start = section.querySelector('#stats-start'), end = section.querySelector('#stats-end');
   const status = section.querySelector('#stats-status'), results = section.querySelector('#stats-results');
