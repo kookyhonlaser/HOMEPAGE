@@ -71,8 +71,8 @@
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 미완성 사례 페이지는 실제 자료가 준비될 때까지 공개 목록에서 숨깁니다. */
-        #case_pages { display: none !important; }
+        /* 홈의 이전 사례 미리보기는 전용 적용사례 탭으로 대체합니다. */
+        #home_case_preview { display: none !important; }
         :root {
             --kh-blue: #005bac;
             --kh-blue-dark: #003f7a;
@@ -117,6 +117,11 @@
             transition: transform .2s ease;
         }
         .nav-link:hover::after { transform: scaleX(1); }
+        .case-filter-btn.active {
+            color: #ffffff;
+            background: var(--kh-blue);
+            border-color: var(--kh-blue);
+        }
         .top-shadow { box-shadow: 0 1px 0 rgba(17,24,39,.08); }
         .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
         .hero-overlay {
@@ -660,17 +665,20 @@
                 </span>
             </button>
 
-            <nav class="desktop-nav flex items-center gap-9 text-[15px] font-bold">
+            <nav class="desktop-nav flex items-center gap-7 text-[15px] font-bold">
                 <button type="button" class="nav-link active" data-section="home" onclick="showSection('home')">홈</button>
                 <button type="button" class="nav-link" data-section="company" onclick="showSection('company')">회사소개</button>
                 <button type="button" class="nav-link" data-section="products" onclick="showSection('products')">제품소개</button>
                 <button type="button" class="nav-link" data-section="applications" onclick="showSection('applications')">레이저 응용</button>
+                <button type="button" class="nav-link" data-section="cases" onclick="showSection('cases')">적용사례</button>
                 <button type="button" class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('inquiry_board')">상담문의</button>
             </nav>
         </div>
-        <nav class="mobile-nav grid-cols-4 border-t border-slate-100 text-sm font-bold text-center bg-white">
+        <nav class="mobile-nav grid-cols-3 sm:grid-cols-6 border-t border-slate-100 text-sm font-bold text-center bg-white">
             <button type="button" class="py-3" onclick="showSection('company')">회사소개</button>
+            <button type="button" class="py-3" onclick="showSection('products')">제품</button>
             <button type="button" class="py-3" onclick="showSection('applications')">응용</button>
+            <button type="button" class="py-3" onclick="showSection('cases')">사례</button>
             <button type="button" class="py-3 text-[var(--kh-blue)]" onclick="showSection('inquiry_board')">문의</button>
             <a class="py-3 border-t border-slate-100" href="admin.html">관리자</a>
         </nav>
@@ -847,7 +855,7 @@
 </div></div></section>
 
 
-<section class="py-20 bg-slate-50" id="case_pages"><div class="max-w-7xl mx-auto px-6"><div class="section-kicker">Application Cases</div><h2 class="mt-5 text-4xl font-black tracking-[-0.05em]">레이저 마킹 실제 사례</h2><p class="mt-5 text-slate-600 leading-8 max-w-4xl">쿠키혼레이저는 제품 소재, 마킹 품질, 판독 조건, 비전 검사, 생산라인 연동까지 공정 단위로 검토합니다. 아래 사례 페이지는 실제 사진과 측정값을 계속 보강하여 고객이 장비 선정 기준을 확인할 수 있도록 운영합니다.</p><div class="mt-10 grid md:grid-cols-3 gap-6"><a class="kh-card p-7 rounded-sm" href="case-automotive-dpm-grade-b.html"><h3 class="text-xl font-black">자동차 부품 DPM 코드 Grade B</h3><p class="mt-4 text-slate-600 leading-7">QR·Data Matrix 직접부품마킹의 판독 품질 확보 사례</p></a><a class="kh-card p-7 rounded-sm" href="case-vision-position-inspection.html"><h3 class="text-xl font-black">비전 위치 보정 및 마킹 후 검사</h3><p class="mt-4 text-slate-600 leading-7">위치 편차 보정, 마킹 결과 검사, OK/NG 판정 자동화 사례</p></a><a class="kh-card p-7 rounded-sm" href="case-uv-plastic-marking.html"><h3 class="text-xl font-black">UV 레이저 플라스틱 마킹</h3><p class="mt-4 text-slate-600 leading-7">열 영향, 부풀음, 변색 차이를 비교하는 플라스틱 마킹 사례</p></a></div></div></section>
+<section class="py-20 bg-slate-50" id="home_case_preview"><div class="max-w-7xl mx-auto px-6"><div class="section-kicker">Application Cases</div><h2 class="mt-5 text-4xl font-black tracking-[-0.05em]">레이저 마킹 실제 사례</h2></div></section>
         </section>
 
         <section id="company" class="page-section">
@@ -2226,7 +2234,83 @@
             </section>
         </section>
 
+        <section id="cases" class="page-section">
+            <section class="bg-slate-950 text-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="section-kicker mb-6">Application Cases</div>
+                    <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">적용사례</h2>
+                    <p class="mt-6 max-w-4xl text-slate-300 leading-8 text-lg">
+                        실제 샘플 테스트와 장비 적용 내용을 소재, 레이저 종류, 마킹 결과와 검사 방식에 따라 정리합니다. 고객 제품의 형상과 생산 조건에 따라 결과가 달라질 수 있으므로 양산 전 샘플 테스트를 권장합니다.
+                    </p>
+                </div>
+            </section>
 
+            <section class="py-20 bg-[var(--kh-bg)] min-h-[560px]">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                        <div>
+                            <div class="section-kicker mb-5">Sample Test Archive</div>
+                            <h3 class="text-4xl md:text-5xl font-black tracking-[-0.05em]">샘플 진행 결과</h3>
+                            <p class="mt-5 text-slate-600 leading-8 max-w-3xl">공개 가능한 사진과 검사 결과가 정리된 사례부터 순차적으로 등록합니다.</p>
+                        </div>
+                        <button type="button" onclick="showSection('contact')" class="px-6 py-4 rounded-sm kh-btn-primary">샘플 테스트 문의</button>
+                    </div>
+
+                    <div class="mt-10 flex flex-wrap gap-2" role="group" aria-label="적용사례 분류">
+                        <button type="button" class="case-filter-btn active px-5 py-3 border border-slate-300 bg-white rounded-sm font-black" data-case-filter="all" onclick="filterCaseCards('all')">전체</button>
+                        <button type="button" class="case-filter-btn px-5 py-3 border border-slate-300 bg-white rounded-sm font-black" data-case-filter="metal" onclick="filterCaseCards('metal')">금속 마킹</button>
+                        <button type="button" class="case-filter-btn px-5 py-3 border border-slate-300 bg-white rounded-sm font-black" data-case-filter="plastic" onclick="filterCaseCards('plastic')">플라스틱·유리</button>
+                        <button type="button" class="case-filter-btn px-5 py-3 border border-slate-300 bg-white rounded-sm font-black" data-case-filter="code" onclick="filterCaseCards('code')">QR·Data Matrix</button>
+                        <button type="button" class="case-filter-btn px-5 py-3 border border-slate-300 bg-white rounded-sm font-black" data-case-filter="vision" onclick="filterCaseCards('vision')">비전 검사</button>
+                        <button type="button" class="case-filter-btn px-5 py-3 border border-slate-300 bg-white rounded-sm font-black" data-case-filter="automation" onclick="filterCaseCards('automation')">자동화 시스템</button>
+                    </div>
+
+                    <div id="caseCardGrid" class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <article class="case-card kh-card rounded-sm overflow-hidden" data-case-categories="metal code">
+                            <img src="dpm_case_grade_b_result.png" alt="자동차 부품 Data Matrix DPM 코드 Grade B 검사 결과" class="w-full aspect-[16/10] object-cover border-b border-slate-200">
+                            <div class="p-7">
+                                <div class="flex flex-wrap items-center gap-2 text-xs font-black">
+                                    <span class="px-3 py-1 bg-blue-50 text-[var(--kh-blue)] rounded-full">금속 마킹</span>
+                                    <span class="px-3 py-1 bg-blue-50 text-[var(--kh-blue)] rounded-full">DPM 코드</span>
+                                </div>
+                                <h4 class="mt-5 text-2xl font-black tracking-[-0.04em]">자동차 부품 DPM 코드 Grade B</h4>
+                                <p class="mt-4 text-slate-600 leading-7">알루미늄 다이캐스팅 부품의 Data Matrix 마킹 전후 상태와 판독 등급을 확인한 샘플 사례입니다.</p>
+                                <a href="case-automotive-dpm-grade-b.html" class="inline-block mt-6 font-black text-[var(--kh-blue)] hover:underline">상세 결과 보기 →</a>
+                            </div>
+                        </article>
+
+                        <article class="case-card kh-card rounded-sm overflow-hidden" data-case-categories="vision automation code">
+                            <img src="vision_case_inspection_result.png" alt="비전 위치 보정과 레이저 마킹 후 검사 결과" class="w-full aspect-[16/10] object-cover border-b border-slate-200">
+                            <div class="p-7">
+                                <div class="flex flex-wrap items-center gap-2 text-xs font-black">
+                                    <span class="px-3 py-1 bg-blue-50 text-[var(--kh-blue)] rounded-full">비전 검사</span>
+                                    <span class="px-3 py-1 bg-blue-50 text-[var(--kh-blue)] rounded-full">자동화</span>
+                                </div>
+                                <h4 class="mt-5 text-2xl font-black tracking-[-0.04em]">비전 위치 보정 및 마킹 후 검사</h4>
+                                <p class="mt-4 text-slate-600 leading-7">제품 위치와 각도를 보정해 마킹하고, 결과를 카메라로 판정하는 자동화 샘플 사례입니다.</p>
+                                <a href="case-vision-position-inspection.html" class="inline-block mt-6 font-black text-[var(--kh-blue)] hover:underline">상세 결과 보기 →</a>
+                            </div>
+                        </article>
+
+                        <article class="case-card admin-only-case hidden kh-card rounded-sm overflow-hidden border-2 border-dashed border-amber-300" data-case-categories="plastic">
+                            <div class="aspect-[16/10] bg-amber-50 flex items-center justify-center text-center p-8">
+                                <div><div class="text-xs font-black text-amber-700 tracking-[0.12em]">ADMIN DRAFT</div><div class="mt-3 text-2xl font-black">작성 중인 사례</div></div>
+                            </div>
+                            <div class="p-7">
+                                <div class="text-xs font-black text-amber-700">관리자에게만 표시됩니다</div>
+                                <h4 class="mt-4 text-2xl font-black tracking-[-0.04em]">UV 레이저 플라스틱 마킹</h4>
+                                <p class="mt-4 text-slate-600 leading-7">실제 소재 정보, 마킹 전후 사진과 조건을 보강한 뒤 공개할 예정입니다.</p>
+                                <a href="case-uv-plastic-marking.html" class="inline-block mt-6 font-black text-[var(--kh-blue)] hover:underline">작성 중 페이지 확인 →</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div id="caseEmptyState" class="hidden mt-8 bg-white border border-slate-200 p-8 text-center text-slate-600">
+                        선택한 분류에 공개된 사례가 아직 없습니다. 자료가 정리되는 대로 순차적으로 등록하겠습니다.
+                    </div>
+                </div>
+            </section>
+        </section>
 
         <section id="inquiry_board" class="page-section">
             <section class="bg-slate-950 text-white py-24">
@@ -2427,6 +2511,7 @@
                     <a class="footer-link" href="sic-laser-marking.html">SiC 마킹</a>
                     <a class="footer-link" href="qr-datamatrix-laser-marking.html">QR·Data Matrix</a>
                     <button type="button" class="footer-link" onclick="showSection('applications')">레이저 응용</button>
+                    <button type="button" class="footer-link" onclick="showSection('cases')">적용사례</button>
                     <button type="button" class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
                 </div>
             </div>
@@ -2463,6 +2548,42 @@
         const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
         const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+        const CASE_ADMIN_ID = '3be6094d-994e-4f8a-95db-7eb0cf602e32';
+
+        function filterCaseCards(filter) {
+            const selectedFilter = filter || 'all';
+            let visibleCount = 0;
+
+            document.querySelectorAll('.case-filter-btn').forEach(button => {
+                button.classList.toggle('active', button.dataset.caseFilter === selectedFilter);
+            });
+
+            document.querySelectorAll('.case-card').forEach(card => {
+                const categories = (card.dataset.caseCategories || '').split(' ');
+                const allowedForVisitor = !card.classList.contains('admin-only-case') || card.classList.contains('admin-case-visible');
+                const matchesFilter = selectedFilter === 'all' || categories.includes(selectedFilter);
+                const shouldShow = allowedForVisitor && matchesFilter;
+                card.classList.toggle('hidden', !shouldShow);
+                if (shouldShow) visibleCount += 1;
+            });
+
+            const emptyState = document.getElementById('caseEmptyState');
+            if (emptyState) emptyState.classList.toggle('hidden', visibleCount !== 0);
+        }
+
+        async function updateAdminCaseDraftVisibility() {
+            const { data, error } = await supabaseClient.auth.getSession();
+            const isAdmin = !error && data.session?.user?.id === CASE_ADMIN_ID;
+
+            document.querySelectorAll('.admin-only-case').forEach(card => {
+                card.classList.toggle('admin-case-visible', isAdmin);
+            });
+
+            const activeFilter = document.querySelector('.case-filter-btn.active')?.dataset.caseFilter || 'all';
+            filterCaseCards(activeFilter);
+        }
+
+        updateAdminCaseDraftVisibility();
 
         async function submitInquiry() {
             const nickname = document.getElementById('customerNickname').value.trim();
@@ -2641,7 +2762,7 @@
         // Kookyhon v56: 제품군/주요 메뉴별 고유 주소를 부여합니다.
         // 예) ?section=products&category=fiber / uv / co2 / custom
         (function () {
-            const validSections = ['home', 'company', 'products', 'applications', 'inquiry_board', 'contact'];
+            const validSections = ['home', 'company', 'products', 'applications', 'cases', 'inquiry_board', 'contact'];
             const validCategories = ['fiber', 'uv', 'co2', 'custom'];
             const sectionMetadata = {
                 home: {
@@ -2655,6 +2776,10 @@
                 applications: {
                     title: '금속·플라스틱 레이저 각인 및 마킹 적용사례 | 쿠키혼레이저',
                     description: '금속·플라스틱·유리 레이저 마킹, QR·Data Matrix 코드 각인, 시리얼 마킹과 생산라인 자동화 적용 분야를 확인하세요.'
+                },
+                cases: {
+                    title: '레이저 마킹 샘플·적용사례 | 쿠키혼레이저',
+                    description: '자동차 부품 DPM 코드, 비전 위치 보정과 마킹 후 검사 등 쿠키혼레이저의 레이저 마킹 샘플 테스트와 적용 결과를 확인하세요.'
                 },
                 inquiry_board: {
                     title: '레이저 마킹기 가격·샘플 테스트·견적 문의 | 쿠키혼레이저',
