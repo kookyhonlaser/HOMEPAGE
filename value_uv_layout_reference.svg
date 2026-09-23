@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" role="img" aria-labelledby="title desc">
+<title id="title">실속형 UV Laser 참고 배치도</title>
+<desc id="desc">유사 장비 공개 치수 300×550×800mm를 참고한 개념도. 실제 제품 실측값이 아니며 제어함 치수와 설치 여유 공간은 별도 확인해야 합니다.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#1263a6"/></marker></defs>
+<rect width="900" height="650" fill="white"/>
+<g font-family="Arial, Malgun Gothic, sans-serif" fill="#142337">
+<text x="40" y="45" font-size="24" font-weight="700">Layout / 참고 배치 개념도</text>
+<rect x="40" y="65" width="820" height="48" rx="5" fill="#fff4d6"/>
+<text x="58" y="95" font-size="18" font-weight="700">유사 장비 기준 · 실측값 아님 · 제작/설치용 도면 사용 불가</text>
+<g stroke="#34465a" stroke-width="3" fill="#f2f5f8">
+<rect x="115" y="410" width="210" height="18"/><rect x="248" y="185" width="42" height="225"/>
+<rect x="254" y="158" width="30" height="15"/><path d="M269 173V185"/>
+<rect x="157" y="275" width="91" height="42"/><rect x="121" y="281" width="36" height="42"/><rect x="126" y="323" width="26" height="20"/>
+<rect x="422" y="185" width="170" height="210"/><rect x="515" y="210" width="30" height="130"/><rect x="449" y="242" width="66" height="40"/>
+<rect x="675" y="242" width="140" height="186"/><rect x="702" y="225" width="85" height="17"/>
+<circle cx="705" cy="277" r="9"/><circle cx="745" cy="277" r="9"/><circle cx="785" cy="277" r="9"/>
+<path d="M712 336H780M712 352H780M712 368H780"/>
+</g>
+<g stroke="#1263a6" stroke-width="1.5" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)">
+<path d="M78 158V428"/><path d="M115 460H325"/><path d="M422 428H592"/><path d="M618 185V395"/>
+</g>
+<g font-size="18" fill="#1263a6" text-anchor="middle">
+<text x="55" y="294" transform="rotate(-90 55 294)">약 H 800 mm</text>
+<text x="220" y="487">약 W 300 mm</text><text x="507" y="457">약 W 300 mm</text>
+<text x="644" y="290" transform="rotate(-90 644 290)">약 D 550 mm</text>
+</g>
+<g font-size="18" text-anchor="middle"><text x="220" y="525">스탠드 정면 개념</text><text x="507" y="497">스탠드 평면 개념</text><text x="745" y="462">제어함</text><text x="745" y="491" fill="#64748b">치수 별도 확인</text></g>
+<g font-size="16" fill="#64748b"><text x="40" y="570">참고: ZS Machinery Desktop UV · 공개 크기 약 300×550×800mm</text>
+<text x="40" y="598">폭·깊이·높이 방향은 개념도 작성 시 가정. 참고 모델은 수냉식입니다.</text>
+<text x="40" y="626">실제 공급 장비 크기·배치 간격·케이블 공간은 주문 전 확인해 주세요.</text></g>
+</g></svg>
