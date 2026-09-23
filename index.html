@@ -963,7 +963,7 @@
                     <div class="section-kicker mb-6">Products</div>
                     <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">제품소개</h2>
                     <p class="mt-6 max-w-4xl text-slate-300 leading-8 text-lg">
-                        쿠키혼레이저의 주요 장비를 Fiber Laser, UV Laser, CO2 Laser, 맞춤형 장비로 구분해 소개합니다.
+                        쿠키혼레이저의 주요 장비를 Fiber Laser, UV Laser, CO2 Laser, PRISA-3D, 맞춤형 장비로 구분해 소개합니다.
                         제품명을 선택하면 특징, 사양, 도면, 영상 자료를 함께 살펴보실 수 있습니다.
                     </p>
                 </div>
@@ -977,7 +977,7 @@
                         소재, 생산 속도, 마킹 품질과 자동화 방식에 따라 적합한 레이저 종류가 달라집니다. 고객 제품의 가공 테스트를 통해 적합한 레이저 소스, 출력, 렌즈 및 자동화 구성을 제안합니다.
                     </p>
 
-                    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
                         <button class="product-category-btn active kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('fiber')">
                             <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
                             <h4 class="mt-4 text-2xl font-black">Fiber Laser</h4>
@@ -993,8 +993,13 @@
                             <h4 class="mt-4 text-2xl font-black">CO2 Laser</h4>
                             <p class="product-category-desc mt-3 text-slate-500 leading-7">아크릴·목재·고무·포장재 등 비금속 소재용 CO2 레이저 마킹기</p>
                         </button>
-                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('custom')">
+                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('prisa3d')">
                             <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
+                            <h4 class="mt-4 text-2xl font-black">PRISA-3D</h4>
+                            <p class="product-category-desc mt-3 text-slate-500 leading-7">곡면·단차·경사면 정밀 마킹을 위한 MOPA 방식 3D Fiber Laser 시스템</p>
+                        </button>
+                        <button class="product-category-btn kh-card-soft p-7 rounded-sm text-left border hover:border-[var(--kh-blue)]" onclick="showProductCategory('custom')">
+                            <div class="text-sm font-black text-[var(--kh-blue)]">05</div>
                             <h4 class="mt-4 text-2xl font-black">Customized</h4>
                             <p class="product-category-desc mt-3 text-slate-500 leading-7">자동화 레이저 마킹기, 비전검사, Data Matrix 마킹·리딩, 3D 곡면 마킹 등 맞춤형 레이저 장비 제작</p>
                         </button>
@@ -1727,6 +1732,110 @@
                                     <p class="mt-3 text-slate-600 leading-7">양산 설비와 자동화 라인에 유연하게 대응할 수 있도록 운용성과 설치 편의성을 함께 고려하였습니다.</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <div id="product_panel_prisa3d" class="product-panel">
+                        <div class="product-hero-grid items-stretch">
+                            <div class="kh-card p-8 md:p-10 rounded-sm">
+                                <div class="section-kicker mb-5">PRISA-3D SERIES</div>
+                                <h3 class="text-4xl md:text-5xl font-black product-section-title">PRISA-3D Laser Marker</h3>
+                                <p class="mt-5 text-slate-600 leading-8 text-lg">
+                                    PRISA-3D는 MOPA Fiber Laser와 3D Dynamic Focusing을 결합해 평면뿐 아니라
+                                    곡면, 단차 및 경사면에도 초점을 정밀하게 보정하는 산업용 레이저 마킹 시스템입니다.
+                                </p>
+
+                                <div class="mt-8 flex flex-wrap gap-3">
+                                    <span class="product-badge">MOPA Variable Pulse</span>
+                                    <span class="product-badge">3D Dynamic Focusing</span>
+                                    <span class="product-badge">20W</span>
+                                    <span class="product-badge">180 × 180mm</span>
+                                </div>
+
+                                <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">MOPA Variable Pulse</div>
+                                        <p class="mt-3 text-slate-600 leading-7">2~500ns 가변 펄스폭과 JPT M7 MOPA Laser를 적용해 소재와 가공 목적에 맞춘 정밀 마킹이 가능합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">3D Dynamic Focusing</div>
+                                        <p class="mt-3 text-slate-600 leading-7">높이 차가 있는 제품과 곡면·경사면에서도 초점 위치를 동적으로 보정해 균일한 마킹 품질을 구현합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Precision Marking</div>
+                                        <p class="mt-3 text-slate-600 leading-7">우수한 빔 품질과 폭넓은 주파수·펄스 조절로 금속과 플라스틱 등 다양한 소재에 대응합니다.</p>
+                                    </div>
+                                    <div class="kh-card-soft p-5 rounded-sm">
+                                        <div class="text-sm font-black text-[var(--kh-blue)]">Automation Ready</div>
+                                        <p class="mt-3 text-slate-600 leading-7">로고, 사진, 바코드와 Data Matrix 마킹부터 자동화 생산라인 연동까지 확장할 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-6">
+                                <div class="product-media-box bg-white">
+                                    <img src="prisa_3d_main.png" alt="PRISA-3D 레이저 마킹 시스템 전체 구성" class="w-full h-full object-contain">
+                                </div>
+                                <div class="kh-card p-5 rounded-sm">
+                                    <div class="text-sm font-black text-[var(--kh-blue)] mb-3">Layout / Product View</div>
+                                    <img src="prisa_3d_layout.jpg" alt="PRISA-3D 장비 외형도 W1200 D690 H835mm" class="w-full rounded-sm border border-slate-200 bg-white">
+                                    <p class="mini-note mt-3">장비 외형 치수: W1200 × D690 × H835mm (카탈로그 기준)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-16">
+                            <div class="section-kicker mb-5">Specification</div>
+                            <h3 class="text-4xl font-black product-section-title mb-8">PRISA-3D 제품 사양</h3>
+                            <div class="kh-card rounded-sm overflow-hidden">
+                                <div class="overflow-x-auto">
+                                    <table class="w-full spec-table min-w-[720px]">
+                                        <tbody>
+                                            <tr><th>모델</th><td>Prisa-3D</td></tr>
+                                            <tr><th>레이저 매질</th><td>MOPA Fiber Laser</td></tr>
+                                            <tr><th>레이저 헤드</th><td>Single 헤드 구조</td></tr>
+                                            <tr><th>파장</th><td>1064nm</td></tr>
+                                            <tr><th>최대 평균 출력</th><td>20W</td></tr>
+                                            <tr><th>최대 펄스 에너지</th><td>0.8mJ</td></tr>
+                                            <tr><th>빔 품질(M²)</th><td>&lt;1.4</td></tr>
+                                            <tr><th>주파수</th><td>1~4000kHz</td></tr>
+                                            <tr><th>Pulse duration</th><td>2~500ns 가변 (MOPA)</td></tr>
+                                            <tr><th>안정성</th><td>2% (long term 8 hours, rms), 최대 5%</td></tr>
+                                            <tr><th>Working Distance</th><td>289~296mm</td></tr>
+                                            <tr><th>마킹 영역(표준)</th><td>180mm × 180mm</td></tr>
+                                            <tr><th>마킹 선폭</th><td>70~90μm</td></tr>
+                                            <tr><th>마킹 속도(CPS)</th><td>최대 3000mm/s (640 CPS)</td></tr>
+                                            <tr><th>냉각 방식</th><td>Air Cooling</td></tr>
+                                            <tr><th>Warm-up time</th><td>3분 (Min)</td></tr>
+                                            <tr><th>가동 환경</th><td>온도 0~40℃, 습도 10~95% (결로가 없을 시)</td></tr>
+                                            <tr><th>공급 전원</th><td>단상 220VAC, 60Hz, 2KVA, 최대 1KW</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-16 grid lg:grid-cols-2 gap-6">
+                            <div class="kh-card p-6 rounded-sm">
+                                <div class="section-kicker mb-4">3D Marking Head</div>
+                                <h3 class="text-3xl font-black product-section-title">곡면 마킹 핵심 구성</h3>
+                                <img src="prisa_3d_head.png" alt="PRISA-3D Dynamic Focusing 레이저 헤드와 작업부" class="mt-6 w-full rounded-sm border border-slate-200 bg-white">
+                                <p class="mt-4 text-slate-600 leading-7">3D Scanner Dynamic Focusing으로 제품의 단차와 형상에 맞춰 초점을 보정합니다.</p>
+                            </div>
+                            <div class="kh-card p-6 rounded-sm">
+                                <div class="section-kicker mb-4">Head Layout</div>
+                                <h3 class="text-3xl font-black product-section-title">레이저 헤드 외형 치수</h3>
+                                <img src="prisa_3d_head_layout.png" alt="PRISA-3D 레이저 헤드 외형도 L690 W125 H138mm" class="mt-6 w-full rounded-sm border border-slate-200 bg-white">
+                                <p class="mt-4 text-slate-600 leading-7">레이저 헤드 치수: L690 × W125 × H138mm (카탈로그 기준)</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-12 kh-card-soft p-7 rounded-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                            <div>
+                                <h3 class="text-2xl font-black">곡면·단차 제품의 마킹 가능 여부가 궁금하신가요?</h3>
+                                <p class="mt-3 text-slate-600 leading-7">제품 형상과 소재를 확인한 뒤 샘플 테스트와 적합한 마킹 조건을 안내해 드립니다.</p>
+                            </div>
+                            <button onclick="showSection('contact')" class="kh-btn-primary px-7 py-4 rounded-sm whitespace-nowrap">PRISA-3D 상담문의</button>
                         </div>
                     </div>
                     </div>
@@ -2871,7 +2980,7 @@
         function showProductCategory(key) {
             document.querySelectorAll('.product-category-btn').forEach(btn => btn.classList.remove('active'));
 
-            const categoryOrder = ['fiber', 'uv', 'co2', 'custom'];
+            const categoryOrder = ['fiber', 'uv', 'co2', 'prisa3d', 'custom'];
             const index = categoryOrder.indexOf(key);
             if (index >= 0) {
                 const btn = document.querySelectorAll('.product-category-btn')[index];
@@ -2947,10 +3056,10 @@
 
     <script>
         // Kookyhon v56: 제품군/주요 메뉴별 고유 주소를 부여합니다.
-        // 예) ?section=products&category=fiber / uv / co2 / custom
+        // 예) ?section=products&category=fiber / uv / co2 / prisa3d / custom
         (function () {
             const validSections = ['home', 'company', 'products', 'applications', 'cases', 'inquiry_board', 'contact'];
-            const validCategories = ['fiber', 'uv', 'co2', 'custom'];
+            const validCategories = ['fiber', 'uv', 'co2', 'prisa3d', 'custom'];
             const sectionMetadata = {
                 home: {
                     title: '산업용 레이저 마킹기·레이저 각인 자동화 | 쿠키혼레이저',
@@ -2989,6 +3098,10 @@
                 co2: {
                     title: 'CO2 레이저 마킹기·비금속 레이저 각인기 | 쿠키혼레이저',
                     description: '목재·아크릴·유리·포장재 등 비금속 소재의 각인과 생산라인 마킹을 위한 CO2 레이저 마킹기를 소개합니다.'
+                },
+                prisa3d: {
+                    title: 'PRISA-3D 곡면·단차 3D 레이저 마킹기 | 쿠키혼레이저',
+                    description: 'MOPA 가변 펄스와 3D Dynamic Focusing으로 곡면, 단차와 경사면을 정밀 마킹하는 PRISA-3D Fiber Laser 시스템입니다.'
                 },
                 custom: {
                     title: '레이저 마킹 자동화·비전검사 맞춤 제작 | 쿠키혼레이저',
