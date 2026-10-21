@@ -126,9 +126,13 @@
         .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
         .hero-overlay {
             background:
-                linear-gradient(90deg, rgba(255,255,255,.78) 0%, rgba(255,255,255,.58) 43%, rgba(255,255,255,.18) 100%),
-                linear-gradient(180deg, rgba(0,91,172,.04), rgba(255,255,255,.00));
+                linear-gradient(90deg, rgba(2,8,23,.92) 0%, rgba(2,12,29,.72) 45%, rgba(2,12,29,.16) 100%),
+                linear-gradient(180deg, rgba(0,91,172,.08), rgba(2,8,23,.22));
         }
+        .hero-kicker { color: #7dd3fc; }
+        .hero-tech-title { color: #ffffff; text-shadow: 0 10px 36px rgba(0,0,0,.34); }
+        .hero-copy { color: rgba(255,255,255,.84); text-shadow: 0 3px 18px rgba(0,0,0,.35); }
+        .hero-secondary-btn { background: rgba(255,255,255,.92); border-color: rgba(255,255,255,.82); }
         .section-kicker {
             display: inline-flex;
             align-items: center;
@@ -696,6 +700,7 @@
             <div class="relative min-h-[680px] flex items-center overflow-hidden bg-slate-100">
                 <div class="hero-video absolute inset-0">
                     <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <source src="hero_kookyhon_dynamic_v3.mp4" type="video/mp4">
                         <source src="hero_kookyhon_v2.mp4" type="video/mp4">
                         <source src="hero.mp4" type="video/mp4">
                     </video>
@@ -703,18 +708,18 @@
                 </div>
                 <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-[1fr_420px] gap-12 items-end w-full">
                     <div>
-                        <div class="section-kicker mb-8">Kookyhon Laser</div>
+                        <div class="section-kicker hero-kicker mb-8">Kookyhon Laser</div>
                         <h1 class="text-5xl md:text-7xl font-black leading-[1.05] tracking-[-0.06em] max-w-4xl hero-tech-title">
                             레이저 마킹기와 자동화로 완성하는<br>
                             산업용 레이저 공정 솔루션
                         </h1>
-                        <p class="mt-8 text-lg md:text-xl leading-8 text-slate-700 max-w-2xl">
+                        <p class="hero-copy mt-8 text-lg md:text-xl leading-8 max-w-2xl">
                             쿠키혼레이저는 유리·금속·스테인리스·알루미늄·플라스틱 소재의 레이저 마킹부터 바코드 레이저 마킹, DPM 코드 마킹, 비전 검사와 자동화 장비까지 공정에 맞춰 설계합니다.
                         </p>
                         <div class="mt-10 flex flex-wrap gap-3">
                             <a href="laser-marking-machine.html" class="px-7 py-4 rounded-sm kh-btn-primary">레이저 마킹기 보기</a>
-                            <button type="button" onclick="showSection('applications')" class="px-7 py-4 rounded-sm kh-btn-line">응용 분야 보기</button>
-                            <button type="button" onclick="showSection('company')" class="px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
+                            <button type="button" onclick="showSection('applications')" class="hero-secondary-btn px-7 py-4 rounded-sm kh-btn-line">응용 분야 보기</button>
+                            <button type="button" onclick="showSection('company')" class="hero-secondary-btn px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
                         </div>
                     </div>
                     <div class="kh-card p-7 rounded-sm bg-white/70 backdrop-blur-md border border-white/60 shadow-xl">
