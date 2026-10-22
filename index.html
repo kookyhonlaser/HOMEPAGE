@@ -124,6 +124,12 @@
         }
         .top-shadow { box-shadow: 0 1px 0 rgba(17,24,39,.08); }
         .hero-video video { filter: saturate(1.05) contrast(1.08); opacity: .92; }
+        .hero-video-desktop { display: block; }
+        .hero-video-mobile { display: none; }
+        @media (max-width: 767px) {
+            .hero-video-desktop { display: none; }
+            .hero-video-mobile { display: block; }
+        }
         .hero-overlay {
             background:
                 linear-gradient(90deg, rgba(2,8,23,.92) 0%, rgba(2,12,29,.72) 45%, rgba(2,12,29,.16) 100%),
@@ -699,9 +705,12 @@
         <section id="home" class="page-section active">
             <div class="relative min-h-[680px] flex items-center overflow-hidden bg-slate-100">
                 <div class="hero-video absolute inset-0">
-                    <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                        <source src="hero_kookyhon_mobile_v10.mp4" type="video/mp4" media="(max-width: 767px)">
+                    <video autoplay muted loop playsinline preload="metadata" class="hero-video-desktop w-full h-full object-cover">
                         <source src="hero_kookyhon_dynamic_v10.mp4" type="video/mp4">
+                        <source src="hero.mp4" type="video/mp4">
+                    </video>
+                    <video autoplay muted loop playsinline preload="metadata" class="hero-video-mobile w-full h-full object-cover">
+                        <source src="hero_kookyhon_mobile_v10.mp4" type="video/mp4">
                         <source src="hero.mp4" type="video/mp4">
                     </video>
                     <div class="absolute inset-0 hero-overlay"></div>
