@@ -67,7 +67,7 @@
     <meta property="og:image" content="https://www.kooky.co.kr/prisa_e_main_visual.png">
     <meta name="twitter:card" content="summary_large_image">
     <script type="application/ld+json">
-[{"@context":"https://schema.org","@type":"LocalBusiness","name":"쿠키혼레이저㈜","alternateName":["Kookyhon Laser","Kooky Hon Laser"],"url":"https://www.kooky.co.kr/","logo":"https://www.kooky.co.kr/prisa_e_main_visual.png","image":"https://www.kooky.co.kr/prisa_e_main_visual.png","description":"산업용 레이저 마킹기, 파이버·UV·CO2 레이저 마킹기, 비전 검사 및 자동화 마킹 시스템 전문 기업","telephone":"+82-31-355-3164","faxNumber":"+82-31-355-3129","email":"owen@kooky.co.kr","address":{"@type":"PostalAddress","streetAddress":"송산면 화성로 316-42","addressLocality":"화성시","addressRegion":"경기도","postalCode":"18552","addressCountry":"KR"},"areaServed":"KR","sameAs":["https://blog.naver.com/kookyhonlaser"],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Product","name":"파이버 레이저 마킹기"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"UV 레이저 마킹기"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"CO2 레이저 마킹기"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"레이저 마킹 자동화 시스템"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"SiC 레이저 마킹 테스트"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"QR·Data Matrix 레이저 마킹"}}]},{"@context":"https://schema.org","@type":"Organization","name":"쿠키혼레이저㈜","url":"https://www.kooky.co.kr/","contactPoint":[{"@type":"ContactPoint","telephone":"+82-31-355-3164","contactType":"sales","areaServed":"KR","availableLanguage":["ko"]}]}]
+[{"@context":"https://schema.org","@type":"LocalBusiness","name":"쿠키혼레이저㈜","alternateName":["Kookyhon Laser","Kooky Hon Laser"],"url":"https://www.kooky.co.kr/","logo":"https://www.kooky.co.kr/prisa_e_main_visual.png","image":"https://www.kooky.co.kr/prisa_e_main_visual.png","description":"산업용 레이저 마킹기, 파이버·UV·CO2 레이저 마킹기, 비전 검사 및 자동화 마킹 시스템 전문 기업","telephone":"+82-31-355-3164","faxNumber":"+82-31-355-3129","email":"owen@kooky.co.kr","address":{"@type":"PostalAddress","streetAddress":"송산면 화성로 316-42","addressLocality":"화성시","addressRegion":"경기도","postalCode":"18552","addressCountry":"KR"},"areaServed":"KR","sameAs":["https://blog.naver.com/kookyhonlaser"],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Product","name":"파이버 레이저 마킹기"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"UV 레이저 마킹기"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"CO2 레이저 마킹기"}},{"@type":"Offer","itemOffered":{"@type":"Product","name":"레이저 마킹 자동화 시스템"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"레이저 마킹 임가공·각인 대행"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"SiC 레이저 마킹 테스트"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"QR·Data Matrix 레이저 마킹"}}]},{"@context":"https://schema.org","@type":"Organization","name":"쿠키혼레이저㈜","url":"https://www.kooky.co.kr/","contactPoint":[{"@type":"ContactPoint","telephone":"+82-31-355-3164","contactType":"sales","areaServed":"KR","availableLanguage":["ko"]}]}]
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -233,12 +233,12 @@
         .timeline-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid #e5e7eb; }
         .footer-link:hover { color: #fff; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        @media (max-width: 900px) {
+        @media (max-width: 1180px) {
             .desktop-nav { display: none; }
             .mobile-nav { display: grid; }
             .timeline-row { grid-template-columns: 84px 1fr; gap: 14px; }
         }
-        @media (min-width: 901px) {
+        @media (min-width: 1181px) {
             .mobile-nav { display: none; }
         }
     
@@ -682,20 +682,22 @@
                 </span>
             </button>
 
-            <nav class="desktop-nav flex items-center gap-7 text-[15px] font-bold">
+            <nav class="desktop-nav flex items-center gap-5 text-[14px] font-bold">
                 <button type="button" class="nav-link active" data-section="home" onclick="showSection('home')">홈</button>
                 <button type="button" class="nav-link" data-section="company" onclick="showSection('company')">회사소개</button>
                 <button type="button" class="nav-link" data-section="products" onclick="showSection('products')">제품소개</button>
                 <button type="button" class="nav-link" data-section="applications" onclick="showSection('applications')">레이저 응용</button>
                 <button type="button" class="nav-link" data-section="cases" onclick="showSection('cases')">적용사례</button>
+                <button type="button" class="nav-link" data-section="marking_service" onclick="showSection('marking_service')">레이저 임가공</button>
                 <button type="button" class="px-5 py-3 rounded-sm kh-btn-primary" onclick="showSection('inquiry_board')">상담문의</button>
             </nav>
         </div>
-        <nav class="mobile-nav grid-cols-3 sm:grid-cols-6 border-t border-slate-100 text-sm font-bold text-center bg-white">
+        <nav class="mobile-nav grid-cols-3 sm:grid-cols-4 border-t border-slate-100 text-sm font-bold text-center bg-white">
             <button type="button" class="py-3" onclick="showSection('company')">회사소개</button>
             <button type="button" class="py-3" onclick="showSection('products')">제품</button>
             <button type="button" class="py-3" onclick="showSection('applications')">응용</button>
             <button type="button" class="py-3" onclick="showSection('cases')">사례</button>
+            <button type="button" class="py-3" onclick="showSection('marking_service')">임가공</button>
             <button type="button" class="py-3 text-[var(--kh-blue)]" onclick="showSection('inquiry_board')">문의</button>
             <a class="py-3 border-t border-slate-100" href="admin.html">관리자</a>
         </nav>
@@ -761,6 +763,27 @@
                             <p class="mt-3 text-blue-100 leading-7">소재, 제품, 생산 조건을 알려주시면 적합한 구성을 검토합니다.</p>
                             <span class="inline-block mt-5 font-bold text-white group-hover:text-blue-50">문의하기 →</span>
                         </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-slate-950 text-white border-y border-slate-800">
+                <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+                    <div>
+                        <div class="section-kicker mb-5">Laser Marking Service</div>
+                        <h2 class="text-4xl md:text-5xl font-black tracking-[-0.05em] leading-tight">장비 구매 전에도,<br>필요한 만큼 레이저 마킹</h2>
+                        <p class="mt-6 text-slate-300 leading-8 max-w-2xl">시제품 한 개의 샘플 확인부터 반복 생산이 필요한 부품까지, 제품을 보내주시면 소재와 원하는 결과에 맞춰 레이저 마킹 조건을 검토합니다.</p>
+                        <div class="mt-7 inline-flex items-center gap-3 px-4 py-3 border border-blue-400/30 bg-blue-400/10 text-blue-100 font-bold rounded-sm">
+                            레이저 절단·용접이 아닌 마킹·각인 전문 임가공입니다.
+                        </div>
+                        <div class="mt-8 flex flex-wrap gap-3">
+                            <button type="button" onclick="showSection('marking_service')" class="px-7 py-4 rounded-sm kh-btn-primary">임가공 안내 보기</button>
+                            <button type="button" onclick="showSection('contact')" class="px-7 py-4 rounded-sm border border-white/30 bg-white/10 font-black hover:bg-white/20">사진·도면으로 문의</button>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="dpm_case_grade_b_result.png" alt="금속 부품 Data Matrix 레이저 마킹 임가공 결과" class="w-full aspect-square object-cover rounded-sm border border-white/10">
+                        <img src="case-plastic-cap-qr-laser-marking.png" alt="플라스틱 부품 QR코드 레이저 마킹 임가공 결과" class="w-full aspect-square object-cover rounded-sm border border-white/10 mt-8">
                     </div>
                 </div>
             </section>
@@ -2483,6 +2506,81 @@
             </section>
         </section>
 
+        <section id="marking_service" class="page-section">
+            <section class="bg-slate-950 text-white py-24">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="section-kicker mb-6">Laser Marking Service</div>
+                    <h2 class="text-5xl md:text-6xl font-black tracking-[-0.06em]">레이저 마킹 임가공</h2>
+                    <p class="mt-6 max-w-4xl text-slate-300 leading-8 text-lg">장비 도입 전 결과를 확인하고 싶거나, 자체 마킹 설비 없이 시제품·소량·반복 생산이 필요하신가요? 제품과 마킹 데이터를 보내주시면 소재와 표면 상태를 확인한 뒤 적합한 레이저와 조건을 검토해 드립니다.</p>
+                    <div class="mt-8 inline-flex px-5 py-3 border border-amber-300/30 bg-amber-300/10 text-amber-100 font-black rounded-sm">서비스 범위: 레이저 마킹·각인 · 절단 및 용접은 진행하지 않습니다.</div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-[.82fr_1.18fr] gap-14 items-start">
+                        <div>
+                            <div class="section-kicker mb-5">What We Mark</div>
+                            <h3 class="text-4xl md:text-5xl font-black tracking-[-0.05em] leading-tight">제품에 필요한 정보를<br>선명하고 오래 남도록</h3>
+                            <p class="mt-6 text-slate-600 leading-8">마킹 크기와 색상, 깊이, 판독성은 같은 소재라도 표면처리와 형상에 따라 달라질 수 있습니다. 양산 전 실제 제품으로 샘플 테스트를 권장합니다.</p>
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-5">
+                            <div class="kh-card p-7 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">01</div><h4 class="mt-3 text-xl font-black">로고·상호·명판</h4><p class="mt-3 text-slate-600 leading-7">회사 로고, 제품명, 모델명, 아이콘과 안내 문구를 제품 표면에 마킹합니다.</p></div>
+                            <div class="kh-card p-7 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">02</div><h4 class="mt-3 text-xl font-black">시리얼·LOT·날짜</h4><p class="mt-3 text-slate-600 leading-7">제품별 일련번호, 생산일, LOT 등 가변 데이터를 순차적으로 적용합니다.</p></div>
+                            <div class="kh-card p-7 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">03</div><h4 class="mt-3 text-xl font-black">QR·Data Matrix</h4><p class="mt-3 text-slate-600 leading-7">제품 추적용 2D 코드를 마킹하고 필요 시 카메라 판독 조건도 함께 검토합니다.</p></div>
+                            <div class="kh-card p-7 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">04</div><h4 class="mt-3 text-xl font-black">눈금·기호·미세 문자</h4><p class="mt-3 text-slate-600 leading-7">계측 눈금, 방향 표시, 작은 문자와 정밀 패턴의 표현 가능성을 테스트합니다.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-[var(--kh-bg)] border-y border-slate-200">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="section-kicker mb-5">Material & Laser</div>
+                    <h3 class="text-4xl md:text-5xl font-black tracking-[-0.05em]">소재에 맞는 레이저로 테스트합니다</h3>
+                    <div class="mt-10 grid md:grid-cols-3 gap-6">
+                        <div class="bg-white border border-slate-200 p-8 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">FIBER LASER</div><h4 class="mt-4 text-2xl font-black">금속·일부 플라스틱</h4><p class="mt-4 text-slate-600 leading-7">SUS, Steel, Aluminum, 아노다이징 부품의 문자·로고·시리얼·DPM 코드 마킹을 검토합니다.</p></div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">UV LASER</div><h4 class="mt-4 text-2xl font-black">유리·열 민감 소재</h4><p class="mt-4 text-slate-600 leading-7">유리, 필름, 플라스틱 등 열 영향을 줄여야 하는 소재의 정밀 마킹을 검토합니다.</p></div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-sm"><div class="text-sm font-black text-[var(--kh-blue)]">CO₂ LASER</div><h4 class="mt-4 text-2xl font-black">비금속 소재</h4><p class="mt-4 text-slate-600 leading-7">포장재, 고무, 목재와 일부 비금속 소재의 문자·로고 마킹 가능성을 확인합니다.</p></div>
+                    </div>
+                    <p class="mt-6 text-sm text-slate-500 leading-7">※ 소재의 첨가제, 코팅, 색상과 표면 상태에 따라 결과가 달라질 수 있으므로 실제 제품 테스트 후 가능 여부와 품질을 안내합니다.</p>
+                </div>
+            </section>
+
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-14">
+                        <div>
+                            <div class="section-kicker mb-5">Work Process</div>
+                            <h3 class="text-4xl font-black tracking-[-0.05em]">상담부터 납품까지</h3>
+                            <div class="mt-8 divide-y divide-slate-200 border-y border-slate-200">
+                                <div class="grid grid-cols-[64px_1fr] gap-4 py-6"><div class="text-2xl font-black text-[var(--kh-blue)]">01</div><div><h4 class="text-xl font-black">사진·도면·요구사항 접수</h4><p class="mt-2 text-slate-600 leading-7">소재, 크기, 마킹 위치와 내용, 수량 및 희망 일정을 알려주세요.</p></div></div>
+                                <div class="grid grid-cols-[64px_1fr] gap-4 py-6"><div class="text-2xl font-black text-[var(--kh-blue)]">02</div><div><h4 class="text-xl font-black">샘플 확인 및 조건 설정</h4><p class="mt-2 text-slate-600 leading-7">실제 제품을 확인하고 적합한 레이저와 마킹 조건을 선정합니다.</p></div></div>
+                                <div class="grid grid-cols-[64px_1fr] gap-4 py-6"><div class="text-2xl font-black text-[var(--kh-blue)]">03</div><div><h4 class="text-xl font-black">견적·납기 협의</h4><p class="mt-2 text-slate-600 leading-7">작업 시간, 지그 필요 여부, 수량과 검사 범위를 반영해 안내합니다.</p></div></div>
+                                <div class="grid grid-cols-[64px_1fr] gap-4 py-6"><div class="text-2xl font-black text-[var(--kh-blue)]">04</div><div><h4 class="text-xl font-black">임가공·확인·납품</h4><p class="mt-2 text-slate-600 leading-7">확정된 조건으로 작업하고 외관 또는 요청된 코드 판독을 확인한 뒤 납품합니다.</p></div></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-950 text-white p-8 md:p-10 rounded-sm self-start">
+                            <div class="text-sm font-black text-blue-300 tracking-[0.14em]">QUOTATION CHECKLIST</div>
+                            <h3 class="mt-4 text-3xl font-black tracking-[-0.04em]">빠른 상담을 위해 알려주세요</h3>
+                            <ul class="mt-7 space-y-4 text-slate-300 leading-7">
+                                <li>• 제품 소재와 표면처리·색상</li>
+                                <li>• 제품 전체 크기와 마킹 위치</li>
+                                <li>• 로고·문자·QR 등 마킹 데이터</li>
+                                <li>• 샘플/초도/월 예상 수량</li>
+                                <li>• 희망 일정과 필요한 판독·검사 기준</li>
+                            </ul>
+                            <div class="mt-8 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+                                <button type="button" onclick="showSection('contact')" class="px-6 py-4 rounded-sm kh-btn-primary">레이저 임가공 문의</button>
+                                <button type="button" onclick="showSection('cases')" class="px-6 py-4 rounded-sm border border-white/30 font-black hover:bg-white/10">마킹 사례 확인</button>
+                            </div>
+                            <p class="mt-6 text-sm text-slate-400 leading-6">도면이 없어도 제품 사진과 원하는 마킹 내용을 보내주시면 확인 가능한 범위부터 안내해 드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
         <section id="cases" class="page-section">
             <section class="bg-slate-950 text-white py-24">
                 <div class="max-w-7xl mx-auto px-6">
@@ -2787,6 +2885,7 @@
                     <a class="footer-link" href="qr-datamatrix-laser-marking.html">QR·Data Matrix</a>
                     <button type="button" class="footer-link" onclick="showSection('applications')">레이저 응용</button>
                     <button type="button" class="footer-link" onclick="showSection('cases')">적용사례</button>
+                    <button type="button" class="footer-link" onclick="showSection('marking_service')">레이저 임가공</button>
                     <button type="button" class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
                 </div>
             </div>
@@ -3056,7 +3155,7 @@
         // Kookyhon v56: 제품군/주요 메뉴별 고유 주소를 부여합니다.
         // 예) ?section=products&category=fiber / uv / co2 / prisa3d / custom
         (function () {
-            const validSections = ['home', 'company', 'products', 'applications', 'cases', 'inquiry_board', 'contact'];
+            const validSections = ['home', 'company', 'products', 'applications', 'cases', 'marking_service', 'inquiry_board', 'contact'];
             const validCategories = ['fiber', 'uv', 'co2', 'prisa3d', 'custom'];
             const sectionMetadata = {
                 home: {
@@ -3074,6 +3173,10 @@
                 cases: {
                     title: '레이저 마킹 샘플·적용사례 | 쿠키혼레이저',
                     description: '자동차 부품 DPM 코드, 비전 위치 보정과 마킹 후 검사 등 쿠키혼레이저의 레이저 마킹 샘플 테스트와 적용 결과를 확인하세요.'
+                },
+                marking_service: {
+                    title: '레이저 마킹 임가공·각인 대행 | 쿠키혼레이저',
+                    description: '금속·플라스틱·유리 제품의 로고, 시리얼, LOT, QR·Data Matrix 레이저 마킹 임가공을 샘플부터 반복 생산까지 상담합니다.'
                 },
                 inquiry_board: {
                     title: '레이저 마킹기 가격·샘플 테스트·견적 문의 | 쿠키혼레이저',
