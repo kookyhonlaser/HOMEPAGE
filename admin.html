@@ -217,7 +217,7 @@ async function loadInquiries(filter = currentFilter) {
 
     const { data, error } = await supabaseClient
         .from('inquiries')
-        .select('id, public_code, company, name, phone, email, visibility, status, is_public_approved, created_at')
+        .select('id, public_code, company, name, phone, email, visibility, status, created_at')
         .order('created_at', { ascending: false })
         .limit(500);
 

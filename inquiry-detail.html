@@ -106,7 +106,7 @@
             <div class="mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
                 <div>
                     <h1 class="text-4xl font-black tracking-[-0.05em]">상담문의 상세</h1>
-                    <p class="mt-3 text-slate-600">구체적인 상담내용 확인, 답글 저장, 공개승인을 이 화면에서 처리합니다.</p>
+                    <p class="mt-3 text-slate-600">구체적인 상담내용 확인과 답글 저장을 처리합니다. 공개 여부는 문의 작성 시 고객이 선택한 설정을 따릅니다.</p>
                 </div>
                 <a href="admin.html" class="px-5 py-3 kh-btn-line rounded-sm">← 목록으로 돌아가기</a>
             </div>
@@ -142,7 +142,7 @@ async function loadDetail() {
 
     const { data, error } = await supabaseClient
         .from('inquiries')
-        .select('id, public_code, company, name, phone, email, visibility, message, admin_reply, status, is_public_approved, created_at, replied_at')
+        .select('id, public_code, company, name, phone, email, visibility, message, admin_reply, status, created_at, replied_at')
         .eq('id', inquiryId)
         .single();
 
@@ -167,9 +167,6 @@ function renderDetail(item) {
                 <h2 class="text-3xl font-black tracking-[-0.04em]">${esc(item.company)} / ${esc(item.name)}</h2>
             </div>
             <div class="flex flex-wrap gap-3">
-                <button onclick="toggleApprove(${item.id}, ${item.is_public_approved ? 'false' : 'true'})" class="px-5 py-3 kh-btn-line rounded-sm">
-                    ${item.is_public_approved ? '공개승인 해제' : '공개승인'}
-                </button>
                 <button onclick="deleteInquiry(${item.id})" class="px-5 py-3 text-red-600 font-bold rounded-sm border border-red-200">삭제</button>
             </div>
         </div>
@@ -177,7 +174,7 @@ function renderDetail(item) {
         <div class="mt-8 grid md:grid-cols-3 gap-5">
             <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>연락처</b><br>${esc(item.phone || '')}</div>
             <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>이메일</b><br>${esc(item.email || '미입력')}</div>
-            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>공개승인</b><br>${item.is_public_approved ? '승인됨' : '미승인'}</div>
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm"><b>공개 설정</b><br>${item.visibility === 'public' ? '작성자가 공개를 선택함' : '비공개 (관리자 전용)'}</div>
         </div>
 
         <div class="mt-8">
@@ -213,12 +210,6 @@ async function saveReply(id) {
 
 async function updateStatus(id, status) {
     const { error } = await supabaseClient.from('inquiries').update({ status }).eq('id', id);
-    if (error) return alert(error.message);
-    loadDetail();
-}
-
-async function toggleApprove(id, approved) {
-    const { error } = await supabaseClient.from('inquiries').update({ is_public_approved: approved }).eq('id', id);
     if (error) return alert(error.message);
     loadDetail();
 }
