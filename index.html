@@ -2709,7 +2709,7 @@
                             <div class="section-kicker mb-5">Consultation List</div>
                             <h3 class="text-4xl font-black tracking-[-0.05em]">상담문의 리스트</h3>
                             <p class="mt-3 text-slate-600 leading-7">
-                                공개를 선택한 문의만 목록에 표시됩니다. 비공개 문의와 개인정보는 공개되지 않으며 관리자 화면에서만 확인할 수 있습니다.
+                                전체 상담 접수 건수를 날짜별로 보여드립니다. 이름, 연락처, 업체명, 문의 내용은 공개하지 않습니다.
                             </p>
                         </div>
                         <div class="flex flex-wrap gap-3">
@@ -2721,31 +2721,33 @@
 
                     <div class="kh-card rounded-sm overflow-hidden">
                         <div class="px-6 py-4 border-b border-slate-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                            <div class="font-black">상담문의 목록</div>
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                                <div class="font-black">날짜별 접수 현황</div>
+                                <div id="inquiryActivityTotal" class="text-sm text-slate-500">전체 접수 건수를 불러오는 중입니다.</div>
+                            </div>
                             <button onclick="loadIndexPublicInquiries(true)" class="text-sm font-black text-[var(--kh-blue)] hover:underline">새로고침</button>
                         </div>
                         <div class="overflow-x-auto">
-                            <table class="w-full min-w-[760px] text-left">
+                            <table class="w-full min-w-[420px] text-left">
                                 <thead class="bg-slate-50 text-xs text-slate-500 uppercase tracking-wider">
                                     <tr>
                                         <th class="px-5 py-4">접수일</th>
-                                        <th class="px-5 py-4">닉네임</th>
-                                        <th class="px-5 py-4">문의 제목 · 내용</th>
-                                        <th class="px-5 py-4">진행 상태</th>
+                                        <th class="px-5 py-4">접수 건수</th>
                                     </tr>
                                 </thead>
                                 <tbody id="indexPublicInquiryList" class="divide-y divide-slate-200">
-                                    <tr><td colspan="4" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>
+                                    <tr><td colspan="2" class="px-5 py-8 text-slate-500">상담 접수 현황을 불러오는 중입니다.</td></tr>
                                 </tbody>
                             </table>
                         </div>
+                        <p class="px-6 py-3 border-t border-slate-200 text-xs text-slate-500">비공개 문의도 날짜별 건수에만 합산하며, 개인을 식별할 수 있는 정보나 문의 내용은 표시하지 않습니다.</p>
                     </div>
 
                     <div class="mt-8 bg-white border border-slate-200 p-7 rounded-sm">
                         <h4 class="text-xl font-black tracking-[-0.03em]">새 상담문의 작성</h4>
                         <p class="mt-3 text-slate-600 leading-7">
                             장비, 소재, 마킹 내용, 생산 조건을 남겨주시면 담당자가 확인 후 답변드립니다.
-                            공개를 선택한 문의만 접수일, 닉네임, 문의 제목·요약과 진행 상태가 목록에 표시됩니다. 비공개 문의는 작성자와 관리자만 확인할 수 있습니다.
+                            자세한 문의와 답변은 접수번호 및 비밀번호로 본인만 확인할 수 있습니다. 공개 여부와 관계없이 이 현황에는 날짜별 접수 건수만 표시됩니다.
                         </p>
                         <button type="button" onclick="showSection('contact')" class="mt-5 px-7 py-4 rounded-sm kh-btn-primary">내용입력으로 이동</button>
                     </div>
@@ -2777,14 +2779,14 @@
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">목적을 선택하면 담당자가 문의 내용을 더 빠르게 확인할 수 있습니다.</span>
                             </label>
                             <label class="md:col-span-2 block" for="customerNickname">
-                                <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
-                                <input id="customerNickname" name="customerNickname" type="text" placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">공개 문의 목록에 사용할 이름입니다. 미입력 시 ‘문의고객’으로 표시됩니다.</span>
+                                <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="customerNickname" name="customerNickname" type="text" required placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담 접수 내역을 구분하고 담당자가 확인하는 데 사용합니다.</span>
                             </label>
 
                             <label class="block" for="companyName">
-                                <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
-                                <input id="companyName" name="companyName" type="text" placeholder="예: ㈜한국산업" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="companyName" name="companyName" type="text" required placeholder="예: ㈜한국산업 (개인 고객은 개인 또는 해당 없음)" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">사업자 상담인 경우 소속 회사 또는 업체명을 입력해 주세요.</span>
                             </label>
 
@@ -2801,8 +2803,8 @@
                             </label>
 
                             <label class="block" for="customerEmail">
-                                <span class="block mb-2 text-sm font-black text-slate-700">이메일 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
-                                <input id="customerEmail" name="customerEmail" type="email" inputmode="email" autocomplete="off" placeholder="예: name@company.co.kr" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <span class="block mb-2 text-sm font-black text-slate-700">이메일 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <input id="customerEmail" name="customerEmail" type="email" required inputmode="email" autocomplete="email" placeholder="예: name@company.co.kr" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">예: name@company.co.kr · 답변이나 자료를 받을 이메일 주소가 있으면 입력해 주세요.</span>
                             </label>
 
@@ -2843,7 +2845,7 @@
                             <div class="md:col-span-2 border border-slate-300 rounded-sm p-5 bg-slate-50">
                                 <p class="font-black text-slate-900">개인정보 수집·이용 안내</p>
                                 <ul class="mt-3 space-y-1 text-xs text-slate-600 leading-6">
-                                    <li>수집 항목: 성함, 연락처, 문의내용, 확인용 비밀번호 / 선택: 닉네임, 업체명, 이메일</li>
+                                    <li>수집 항목: 닉네임, 업체명, 성함, 연락처, 이메일, 문의내용, 확인용 비밀번호</li>
                                     <li>이용 목적: 상담 접수, 견적 검토, 답변 확인 및 상담 이력 관리</li>
                                     <li>보유 기간: 문의 처리 완료 후 1년. 단, 계약 체결 또는 관계 법령상 보관 의무가 있는 경우 해당 기간까지 보관</li>
                                     <li>동의를 거부할 수 있으나, 필수 정보 수집에 동의하지 않으면 온라인 문의 접수가 어렵습니다.</li>
@@ -2992,8 +2994,8 @@
             const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
             const resultBox = document.getElementById('inquiryResult');
 
-            if (!inquiryType || !name || !phone || !password || !message || !privacyConsent) {
-                alert('상담 유형, 성함, 연락처, 문의 확인용 비밀번호, 문의내용과 개인정보 수집·이용 동의는 필수입니다.');
+            if (!inquiryType || !nickname || !company || !name || !phone || !email || !password || !message || !privacyConsent) {
+                alert('상담 유형, 닉네임, 업체명, 성함, 연락처, 이메일, 문의 확인용 비밀번호, 문의내용과 개인정보 수집·이용 동의는 필수입니다.');
                 return;
             }
 
@@ -3060,47 +3062,45 @@
         async function loadIndexPublicInquiries(forceReload = false) {
             const list = document.getElementById('indexPublicInquiryList');
             if (!list) return;
+            const total = document.getElementById('inquiryActivityTotal');
 
-            list.innerHTML = '<tr><td colspan="4" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>';
+            list.innerHTML = '<tr><td colspan="2" class="px-5 py-8 text-slate-500">상담 접수 현황을 불러오는 중입니다.</td></tr>';
+            if (total) total.textContent = '전체 접수 건수를 불러오는 중입니다.';
 
-            // Public pages call an RPC that filters to inquiries the customer marked public.
-            const { data, error } = await supabaseClient.rpc('get_public_inquiries');
+            // This RPC returns only date-level aggregates; it never returns inquiry or customer fields.
+            const { data, error } = await supabaseClient.rpc('get_inquiry_activity_by_date');
 
             if (error) {
-                list.innerHTML = `<tr><td colspan="4" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담문의 목록을 불러오지 못했습니다.')}</td></tr>`;
+                list.innerHTML = `<tr><td colspan="2" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담 접수 현황을 불러오지 못했습니다.')}</td></tr>`;
+                if (total) total.textContent = '통계 연결을 확인해 주세요.';
                 return;
             }
 
             if (!data || !data.length) {
                 list.innerHTML = `
                     <tr>
-                        <td colspan="4" class="px-5 py-10 text-center text-slate-500">
-                            공개로 등록된 상담문의가 아직 없습니다.<br>
+                        <td colspan="2" class="px-5 py-10 text-center text-slate-500">
+                            아직 등록된 상담문의가 없습니다.<br>
                             <button type="button" onclick="showSection('contact')" class="mt-5 px-6 py-3 rounded-sm kh-btn-primary">상담 문의 남기기</button>
                         </td>
                     </tr>
                 `;
+                if (total) total.textContent = '전체 접수 0건';
                 return;
             }
 
+            const totalCount = data.reduce((sum, item) => sum + Math.max(0, Number(item.inquiry_count) || 0), 0);
+            if (total) total.textContent = `전체 접수 ${totalCount.toLocaleString('ko-KR')}건`;
             list.innerHTML = data.map((item) => {
-                const nickname = item.nickname || item.company || '문의고객';
-                const messageText = String(item.message || '');
-                const titleMatch = messageText.match(/^\[상담 유형\]\s*([^\r\n]+)/);
-                const rawMessage = messageText
-                    .replace(/^\[상담 유형\][^\n]*(?:\n\[개인정보 수집·이용 동의\][^\n]*)?\s*/, '')
-                    .replace(/\s+/g, ' ')
-                    .trim();
-                const title = titleMatch?.[1]?.trim() || rawMessage.slice(0, 56).trim() || '상담 문의';
-                const summary = rawMessage.length > 100 ? `${rawMessage.slice(0, 100)}…` : rawMessage;
-                const status = item.status === 'answered' ? '답변 완료' : item.status === 'closed' ? '종결' : '접수 완료';
-
+                const date = String(item.inquiry_date || '');
+                const dateLabel = /^\d{4}-\d{2}-\d{2}$/.test(date)
+                    ? new Date(`${date}T00:00:00+09:00`).toLocaleDateString('ko-KR')
+                    : '날짜 확인 필요';
+                const count = Math.max(0, Number(item.inquiry_count) || 0);
                 return `
                     <tr class="hover:bg-slate-50">
-                        <td class="px-5 py-4 whitespace-nowrap">${item.created_at ? new Date(item.created_at).toLocaleDateString('ko-KR') : ''}</td>
-                        <td class="px-5 py-4 font-bold">${escapeHtml(nickname)}</td>
-                        <td class="px-5 py-4 text-slate-700"><span class="font-bold text-slate-900">${escapeHtml(title)}</span>${summary ? `<span class="mt-1 block text-sm">${escapeHtml(summary)}</span>` : ''}</td>
-                        <td class="px-5 py-4 whitespace-nowrap">${escapeHtml(status)}</td>
+                        <td class="px-5 py-4 whitespace-nowrap">${escapeHtml(dateLabel)}</td>
+                        <td class="px-5 py-4 font-bold">${count.toLocaleString('ko-KR')}건</td>
                     </tr>
                 `;
             }).join('');
