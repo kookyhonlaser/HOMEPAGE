@@ -727,7 +727,17 @@
                         <p class="hero-copy mt-8 text-lg md:text-xl leading-8 max-w-2xl">
                             쿠키혼레이저는 유리·금속·스테인리스·알루미늄·플라스틱 소재의 레이저 마킹부터 바코드 레이저 마킹, DPM 코드 마킹, 비전 검사와 자동화 장비까지 공정에 맞춰 설계합니다.
                         </p>
-                        <div class="mt-10 flex flex-wrap gap-3">
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl" aria-label="빠른 상담문의">
+                            <button type="button" onclick="openInquiry('sample')" class="min-h-[64px] px-6 py-4 rounded-sm kh-btn-primary text-left sm:text-center">
+                                <span class="block text-base font-black">샘플 테스트 문의</span>
+                                <span class="block mt-1 text-xs font-medium opacity-80">소재와 마킹 가능성을 먼저 확인해 보세요</span>
+                            </button>
+                            <button type="button" onclick="openInquiry('equipment')" class="min-h-[64px] px-6 py-4 rounded-sm border border-white/50 bg-white/95 text-slate-950 hover:bg-blue-50 text-left sm:text-center transition-colors">
+                                <span class="block text-base font-black">장비 견적 요청</span>
+                                <span class="block mt-1 text-xs font-medium text-slate-600">제품·수량·자동화 조건에 맞춰 검토합니다</span>
+                            </button>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-3">
                             <a href="laser-marking-machine.html" class="px-7 py-4 rounded-sm kh-btn-primary">레이저 마킹기 보기</a>
                             <button type="button" onclick="showSection('applications')" class="hero-secondary-btn px-7 py-4 rounded-sm kh-btn-line">응용 분야 보기</button>
                             <button type="button" onclick="showSection('company')" class="hero-secondary-btn px-7 py-4 rounded-sm kh-btn-line">회사 소개</button>
@@ -2665,17 +2675,6 @@
                             </div>
                         </article>
 
-                        <article class="case-card admin-only-case hidden kh-card rounded-sm overflow-hidden border-2 border-dashed border-amber-300" data-case-categories="plastic">
-                            <div class="aspect-[16/10] bg-amber-50 flex items-center justify-center text-center p-8">
-                                <div><div class="text-xs font-black text-amber-700 tracking-[0.12em]">ADMIN DRAFT</div><div class="mt-3 text-2xl font-black">작성 중인 사례</div></div>
-                            </div>
-                            <div class="p-7">
-                                <div class="text-xs font-black text-amber-700">관리자에게만 표시됩니다</div>
-                                <h4 class="mt-4 text-2xl font-black tracking-[-0.04em]">UV 레이저 플라스틱 마킹</h4>
-                                <p class="mt-4 text-slate-600 leading-7">실제 소재 정보, 마킹 전후 사진과 조건을 보강한 뒤 공개할 예정입니다.</p>
-                                <a href="case-uv-plastic-marking.html" class="inline-block mt-6 font-black text-[var(--kh-blue)] hover:underline">작성 중 페이지 확인 →</a>
-                            </div>
-                        </article>
                     </div>
 
                     <div id="caseEmptyState" class="hidden mt-8 bg-white border border-slate-200 p-8 text-center text-slate-600">
@@ -2769,7 +2768,7 @@
                         <form id="inquiryForm" autocomplete="off" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
                             <label class="md:col-span-2 block" for="inquiryType">
                                 <span class="block mb-2 text-sm font-black text-slate-700">상담 유형 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <select id="inquiryType" name="inquiryType" class="w-full p-4 border border-slate-300 rounded-sm bg-white focus:outline-none focus:border-[var(--kh-blue)]">
+                                <select id="inquiryType" name="inquiryType" required class="w-full p-4 border border-slate-300 rounded-sm bg-white focus:outline-none focus:border-[var(--kh-blue)]">
                                     <option value="">상담 목적을 선택해 주세요</option>
                                     <option value="sample">샘플 테스트 문의</option>
                                     <option value="equipment">레이저 장비 견적 문의</option>
@@ -2779,26 +2778,26 @@
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">목적을 선택하면 담당자가 문의 내용을 더 빠르게 확인할 수 있습니다.</span>
                             </label>
                             <label class="md:col-span-2 block" for="customerNickname">
-                                <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
                                 <input id="customerNickname" name="customerNickname" type="text" placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담문의 목록에 표시되는 이름입니다. 실명 대신 사용할 수 있습니다.</span>
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">공개 문의 목록에 사용할 이름입니다. 미입력 시 ‘문의고객’으로 표시됩니다.</span>
                             </label>
 
                             <label class="block" for="companyName">
-                                <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-slate-400">선택</span></span>
                                 <input id="companyName" name="companyName" type="text" placeholder="예: ㈜한국산업" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">소속 회사 또는 업체명을 입력해 주세요.</span>
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">사업자 상담인 경우 소속 회사 또는 업체명을 입력해 주세요.</span>
                             </label>
 
                             <label class="block" for="customerName">
                                 <span class="block mb-2 text-sm font-black text-slate-700">성함 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="customerName" name="customerName" type="text" placeholder="예: 홍길동" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <input id="customerName" name="customerName" type="text" required autocomplete="name" placeholder="예: 홍길동" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">상담을 요청하는 담당자 성함을 입력해 주세요.</span>
                             </label>
 
                             <label class="block" for="customerPhone">
                                 <span class="block mb-2 text-sm font-black text-slate-700">연락처 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="customerPhone" name="customerPhone" type="tel" placeholder="예: 010-1234-5678" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <input id="customerPhone" name="customerPhone" type="tel" required autocomplete="tel" placeholder="예: 010-1234-5678" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">상담 회신을 받을 휴대전화 또는 전화번호를 입력해 주세요.</span>
                             </label>
 
@@ -2810,7 +2809,7 @@
 
                             <label class="md:col-span-2 block" for="customerPassword">
                                 <span class="block mb-2 text-sm font-black text-slate-700">문의 확인용 비밀번호 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="customerPassword" name="customerPassword" type="password" autocomplete="new-password" placeholder="답변 확인에 사용할 비밀번호" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                <input id="customerPassword" name="customerPassword" type="password" required autocomplete="new-password" placeholder="답변 확인에 사용할 비밀번호" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">접수번호로 문의 내용과 답변을 확인할 때 필요하므로 기억해 주세요.</span>
                             </label>
 
@@ -2838,9 +2837,23 @@
 
                             <label class="md:col-span-2 block" for="inquiryMessage">
                                 <span class="block mb-2 text-sm font-black text-slate-700">문의내용 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <textarea id="inquiryMessage" name="inquiryMessage" placeholder="문의하실 내용을 입력해 주세요." rows="7" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
+                                <textarea id="inquiryMessage" name="inquiryMessage" required placeholder="문의하실 내용을 입력해 주세요." rows="7" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]"></textarea>
                                 <span class="block mt-2 text-xs text-slate-500 leading-5">장비 종류, 제품 소재와 크기, 원하는 마킹 내용, 생산 수량·속도, 자동화 필요 여부를 알려주시면 상담이 빨라집니다.</span>
                             </label>
+
+                            <div class="md:col-span-2 border border-slate-300 rounded-sm p-5 bg-slate-50">
+                                <p class="font-black text-slate-900">개인정보 수집·이용 안내</p>
+                                <ul class="mt-3 space-y-1 text-xs text-slate-600 leading-6">
+                                    <li>수집 항목: 성함, 연락처, 문의내용, 확인용 비밀번호 / 선택: 닉네임, 업체명, 이메일</li>
+                                    <li>이용 목적: 상담 접수, 견적 검토, 답변 확인 및 상담 이력 관리</li>
+                                    <li>보유 기간: 문의 처리 완료 후 1년. 단, 계약 체결 또는 관계 법령상 보관 의무가 있는 경우 해당 기간까지 보관</li>
+                                    <li>동의를 거부할 수 있으나, 필수 정보 수집에 동의하지 않으면 온라인 문의 접수가 어렵습니다.</li>
+                                </ul>
+                                <label class="mt-4 flex items-start gap-3 cursor-pointer" for="privacyConsent">
+                                    <input id="privacyConsent" name="privacyConsent" type="checkbox" required class="mt-1 h-4 w-4 accent-[var(--kh-blue)]">
+                                    <span class="text-sm font-bold text-slate-800">위 개인정보 수집·이용 안내를 확인했으며 이에 동의합니다. <span class="text-red-600">(필수)</span></span>
+                                </label>
+                            </div>
                             <button type="submit" class="md:col-span-2 py-4 kh-btn-primary rounded-sm">문의 등록하기</button>
                             <button type="button" onclick="showSection('inquiry_board')" class="md:col-span-2 py-4 kh-btn-line rounded-sm">상담문의 리스트로 돌아가기</button>
                             <div id="inquiryResult" class="md:col-span-2 hidden p-5 bg-blue-50 border border-blue-100 rounded-sm text-slate-700 leading-7"></div>
@@ -2933,8 +2946,6 @@
         const SUPABASE_URL = 'https://kzbchskpscdyzwqqcqhk.supabase.co';
         const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_WBqZIpbSfr1_J1xieoIzzA_R9AWhzJu';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-        const CASE_ADMIN_ID = '3be6094d-994e-4f8a-95db-7eb0cf602e32';
-
         function filterCaseCards(filter) {
             const selectedFilter = filter || 'all';
             let visibleCount = 0;
@@ -2945,9 +2956,8 @@
 
             document.querySelectorAll('.case-card').forEach(card => {
                 const categories = (card.dataset.caseCategories || '').split(' ');
-                const allowedForVisitor = !card.classList.contains('admin-only-case') || card.classList.contains('admin-case-visible');
                 const matchesFilter = selectedFilter === 'all' || categories.includes(selectedFilter);
-                const shouldShow = allowedForVisitor && matchesFilter;
+                const shouldShow = matchesFilter;
                 card.classList.toggle('hidden', !shouldShow);
                 if (shouldShow) visibleCount += 1;
             });
@@ -2955,20 +2965,6 @@
             const emptyState = document.getElementById('caseEmptyState');
             if (emptyState) emptyState.classList.toggle('hidden', visibleCount !== 0);
         }
-
-        async function updateAdminCaseDraftVisibility() {
-            const { data, error } = await supabaseClient.auth.getSession();
-            const isAdmin = !error && data.session?.user?.id === CASE_ADMIN_ID;
-
-            document.querySelectorAll('.admin-only-case').forEach(card => {
-                card.classList.toggle('admin-case-visible', isAdmin);
-            });
-
-            const activeFilter = document.querySelector('.case-filter-btn.active')?.dataset.caseFilter || 'all';
-            filterCaseCards(activeFilter);
-        }
-
-        updateAdminCaseDraftVisibility();
 
         function openInquiry(type) {
             const allowedTypes = ['sample', 'equipment', 'processing', 'other'];
@@ -2993,11 +2989,12 @@
             const email = document.getElementById('customerEmail').value.trim();
             const password = document.getElementById('customerPassword').value.trim();
             const message = document.getElementById('inquiryMessage').value.trim();
+            const privacyConsent = document.getElementById('privacyConsent').checked;
             const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
             const resultBox = document.getElementById('inquiryResult');
 
-            if (!inquiryType || !nickname || !company || !name || !phone || !password || !message) {
-                alert('상담 유형, 닉네임, 업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
+            if (!inquiryType || !name || !phone || !password || !message || !privacyConsent) {
+                alert('상담 유형, 성함, 연락처, 문의 확인용 비밀번호, 문의내용과 개인정보 수집·이용 동의는 필수입니다.');
                 return;
             }
 
@@ -3007,11 +3004,11 @@
                 processing: '레이저 마킹 임가공 문의',
                 other: '기타 기술 문의'
             };
-            const messageWithType = `[상담 유형] ${inquiryTypeNames[inquiryType] || '기타 기술 문의'}\n\n${message}`;
+            const messageWithType = `[상담 유형] ${inquiryTypeNames[inquiryType] || '기타 기술 문의'}\n[개인정보 수집·이용 동의] 동의\n\n${message}`;
 
             const { data, error } = await supabaseClient.rpc('submit_inquiry', {
-                p_nickname: nickname,
-                p_company: company,
+                p_nickname: nickname || '문의고객',
+                p_company: company || '',
                 p_name: name,
                 p_phone: phone,
                 p_email: email,
