@@ -1,13 +1,16 @@
 -- Run this in the Supabase SQL Editor before publishing the matching index.html.
 -- The public board receives only these fields. Private rows are anonymized on the
--- database side; names, company, contact details, receipt codes and message bodies
--- are never returned for private inquiries.
+-- database side; only customer-approved public rows return a nickname, receipt code
+-- and message summary source. Company and contact details are never returned.
 
-CREATE OR REPLACE FUNCTION public.get_inquiry_board_summaries()
+DROP FUNCTION IF EXISTS public.get_inquiry_board_summaries();
+
+CREATE FUNCTION public.get_inquiry_board_summaries()
 RETURNS TABLE (
     created_at timestamptz,
     visibility text,
     nickname text,
+    public_code text,
     message text,
     status text
 )
@@ -24,6 +27,11 @@ AS $function$
                 THEN NULLIF(i.nickname, '')
             ELSE NULL
         END AS nickname,
+        CASE
+            WHEN i.visibility = 'public' AND i.is_public_approved IS TRUE
+                THEN i.public_code
+            ELSE NULL
+        END AS public_code,
         CASE
             WHEN i.visibility = 'public' AND i.is_public_approved IS TRUE
                 THEN i.message

@@ -2730,12 +2730,13 @@
                                     <tr>
                                         <th class="px-5 py-4">접수일</th>
                                         <th class="px-5 py-4">닉네임</th>
+                                        <th class="px-5 py-4">접수번호</th>
                                         <th class="px-5 py-4">문의 제목 · 내용</th>
                                         <th class="px-5 py-4">진행 상태</th>
                                     </tr>
                                 </thead>
                                 <tbody id="indexPublicInquiryList" class="divide-y divide-slate-200">
-                                    <tr><td colspan="4" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>
+                                    <tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -3079,20 +3080,20 @@
             const list = document.getElementById('indexPublicInquiryList');
             if (!list) return;
 
-            list.innerHTML = '<tr><td colspan="4" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>';
+            list.innerHTML = '<tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>';
 
             // This RPC exposes only safe board fields. Private inquiries are anonymized server-side.
             const { data, error } = await supabaseClient.rpc('get_inquiry_board_summaries');
 
             if (error) {
-                list.innerHTML = `<tr><td colspan="4" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담문의 목록을 불러오지 못했습니다.')}</td></tr>`;
+                list.innerHTML = `<tr><td colspan="5" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담문의 목록을 불러오지 못했습니다.')}</td></tr>`;
                 return;
             }
 
             if (!data || !data.length) {
                 list.innerHTML = `
                     <tr>
-                        <td colspan="4" class="px-5 py-10 text-center text-slate-500">
+                        <td colspan="5" class="px-5 py-10 text-center text-slate-500">
                             등록된 상담문의가 아직 없습니다.<br>
                             <button type="button" onclick="showSection('contact')" class="mt-5 px-6 py-3 rounded-sm kh-btn-primary">상담 문의 남기기</button>
                         </td>
@@ -3118,6 +3119,7 @@
                     <tr class="hover:bg-slate-50">
                         <td class="px-5 py-4 whitespace-nowrap">${item.created_at ? new Date(item.created_at).toLocaleDateString('ko-KR') : ''}</td>
                         <td class="px-5 py-4 font-bold">${escapeHtml(nickname)}${isPrivate ? '<span class="ml-2 inline-block rounded-sm bg-slate-100 px-2 py-1 text-xs text-slate-600">비공개</span>' : ''}</td>
+                        <td class="px-5 py-4 whitespace-nowrap font-semibold">${isPrivate ? '<span class="text-slate-400">비공개</span>' : escapeHtml(item.public_code || '—')}</td>
                         <td class="px-5 py-4 text-slate-700"><span class="font-bold text-slate-900">${escapeHtml(title)}</span>${summary ? `<span class="mt-1 block text-sm">${escapeHtml(summary)}</span>` : ''}</td>
                         <td class="px-5 py-4 whitespace-nowrap">${escapeHtml(status)}</td>
                     </tr>
