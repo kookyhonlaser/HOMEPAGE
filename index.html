@@ -2766,34 +2766,70 @@
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
                         <form id="inquiryForm" autocomplete="off" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
-                            <label class="md:col-span-2 block" for="inquiryType">
-                                <span class="block mb-2 text-sm font-black text-slate-700">상담 유형 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <select id="inquiryType" name="inquiryType" required class="w-full p-4 border border-slate-300 rounded-sm bg-white focus:outline-none focus:border-[var(--kh-blue)]">
-                                    <option value="">상담 목적을 선택해 주세요</option>
-                                    <option value="sample">샘플 테스트 문의</option>
-                                    <option value="equipment">레이저 장비 견적 문의</option>
-                                    <option value="processing">레이저 마킹 임가공 문의</option>
-                                    <option value="other">기타 기술 문의</option>
-                                </select>
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">목적을 선택하면 담당자가 문의 내용을 더 빠르게 확인할 수 있습니다.</span>
-                            </label>
-                            <label class="md:col-span-2 block" for="customerNickname">
-                                <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="customerNickname" name="customerNickname" type="text" required placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담 접수 내역을 구분하고 담당자가 확인하는 데 사용합니다.</span>
-                            </label>
+                            <div class="md:col-span-2">
+                                <label class="block" for="inquiryType">
+                                    <span class="block mb-2 text-sm font-black text-slate-700">상담 유형 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                    <select id="inquiryType" name="inquiryType" required class="w-full p-4 border border-slate-300 rounded-sm bg-white focus:outline-none focus:border-[var(--kh-blue)]">
+                                        <option value="">상담 목적을 선택해 주세요</option>
+                                        <option value="sample">샘플 테스트 문의</option>
+                                        <option value="equipment">레이저 장비 견적 문의</option>
+                                        <option value="processing">레이저 마킹 임가공 문의</option>
+                                        <option value="other">기타 기술 문의</option>
+                                    </select>
+                                    <span class="block mt-2 text-xs text-slate-500 leading-5">목적을 선택하면 담당자가 문의 내용을 더 빠르게 확인할 수 있습니다.</span>
+                                </label>
+                                <label class="mt-3 flex items-center justify-between gap-4 text-sm" for="publicInquiryType">
+                                    <span class="font-bold text-slate-700">상담 유형 공개 여부</span>
+                                    <select id="publicInquiryType" name="publicInquiryType" class="p-2 border border-slate-300 rounded-sm bg-white">
+                                        <option value="private" selected>비공개</option>
+                                        <option value="public">공개</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block" for="customerNickname">
+                                    <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                    <input id="customerNickname" name="customerNickname" type="text" required placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                    <span class="block mt-2 text-xs text-slate-500 leading-5">상담 접수 내역을 구분하고 담당자가 확인하는 데 사용합니다.</span>
+                                </label>
+                                <label class="mt-3 flex items-center justify-between gap-4 text-sm" for="publicNickname">
+                                    <span class="font-bold text-slate-700">닉네임 공개 여부</span>
+                                    <select id="publicNickname" name="publicNickname" class="p-2 border border-slate-300 rounded-sm bg-white">
+                                        <option value="private" selected>비공개</option>
+                                        <option value="public">공개</option>
+                                    </select>
+                                </label>
+                            </div>
 
-                            <label class="block" for="companyName">
-                                <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="companyName" name="companyName" type="text" required placeholder="예: ㈜한국산업 (개인 고객은 개인 또는 해당 없음)" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">사업자 상담인 경우 소속 회사 또는 업체명을 입력해 주세요.</span>
-                            </label>
+                            <div>
+                                <label class="block" for="companyName">
+                                    <span class="block mb-2 text-sm font-black text-slate-700">업체명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                    <input id="companyName" name="companyName" type="text" required placeholder="예: ㈜한국산업 (개인 고객은 개인 또는 해당 없음)" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                    <span class="block mt-2 text-xs text-slate-500 leading-5">사업자 상담인 경우 소속 회사 또는 업체명을 입력해 주세요.</span>
+                                </label>
+                                <label class="mt-3 flex items-center justify-between gap-4 text-sm" for="publicCompany">
+                                    <span class="font-bold text-slate-700">업체명 공개 여부</span>
+                                    <select id="publicCompany" name="publicCompany" class="p-2 border border-slate-300 rounded-sm bg-white">
+                                        <option value="private" selected>비공개</option>
+                                        <option value="public">공개</option>
+                                    </select>
+                                </label>
+                            </div>
 
-                            <label class="block" for="customerName">
-                                <span class="block mb-2 text-sm font-black text-slate-700">성함 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
-                                <input id="customerName" name="customerName" type="text" required autocomplete="name" placeholder="예: 홍길동" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
-                                <span class="block mt-2 text-xs text-slate-500 leading-5">상담을 요청하는 담당자 성함을 입력해 주세요.</span>
-                            </label>
+                            <div>
+                                <label class="block" for="customerName">
+                                    <span class="block mb-2 text-sm font-black text-slate-700">성함 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                    <input id="customerName" name="customerName" type="text" required autocomplete="name" placeholder="예: 홍길동" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
+                                    <span class="block mt-2 text-xs text-slate-500 leading-5">상담을 요청하는 담당자 성함을 입력해 주세요.</span>
+                                </label>
+                                <label class="mt-3 flex items-center justify-between gap-4 text-sm" for="publicName">
+                                    <span class="font-bold text-slate-700">성함 공개 여부</span>
+                                    <select id="publicName" name="publicName" class="p-2 border border-slate-300 rounded-sm bg-white">
+                                        <option value="private" selected>비공개</option>
+                                        <option value="public">공개</option>
+                                    </select>
+                                </label>
+                            </div>
 
                             <label class="block" for="customerPhone">
                                 <span class="block mb-2 text-sm font-black text-slate-700">연락처 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
@@ -2816,8 +2852,8 @@
                             <div class="md:col-span-2 border border-slate-300 rounded-sm p-5 bg-slate-50">
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                                     <div>
-                                        <p class="font-black text-slate-900">문의 공개 여부</p>
-                                        <p class="mt-1 text-sm text-slate-500 leading-6">문의 작성 시 공개/비공개를 선택할 수 있으며, 관리자는 접수된 문의를 확인하고 답변을 등록할 수 있습니다.</p>
+                                        <p class="font-black text-slate-900">문의 글·내용 공개 여부</p>
+                                        <p class="mt-1 text-sm text-slate-500 leading-6">문의 글 공개 여부와 별도로 상담 유형, 닉네임, 업체명, 성함을 각각 공개 또는 비공개로 선택할 수 있습니다. 전체 문의 글을 비공개로 선택하면 항목별 공개 설정과 관계없이 목록에는 나오지 않습니다.</p>
                                     </div>
                                     <div class="flex gap-3">
                                         <label class="flex items-center gap-2 px-4 py-3 bg-white border border-slate-300 rounded-sm cursor-pointer hover:border-[var(--kh-blue)]">
@@ -2831,7 +2867,7 @@
                                     </div>
                                 </div>
                                 <p class="mt-3 text-xs text-slate-500 leading-5">
-                                    ※ 공개 문의도 개인정보와 민감한 내용은 관리자 확인 후 노출하는 방식이 안전합니다.
+                                    ※ 공개 문의는 공개 승인 후 표시됩니다. 연락처·이메일은 공개되지 않으며, 위 항목별 설정에서 공개를 선택한 정보만 목록에 표시됩니다.
                                 </p>
                             </div>
 
@@ -2991,6 +3027,12 @@
             const message = document.getElementById('inquiryMessage').value.trim();
             const privacyConsent = document.getElementById('privacyConsent').checked;
             const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
+            const fieldVisibility = {
+                inquiryType: document.getElementById('publicInquiryType').value,
+                nickname: document.getElementById('publicNickname').value,
+                company: document.getElementById('publicCompany').value,
+                name: document.getElementById('publicName').value
+            };
             const resultBox = document.getElementById('inquiryResult');
 
             if (!inquiryType || !nickname || !company || !name || !phone || !email || !password || !message || !privacyConsent) {
@@ -3004,7 +3046,8 @@
                 processing: '레이저 마킹 임가공 문의',
                 other: '기타 기술 문의'
             };
-            const messageWithType = `[상담 유형] ${inquiryTypeNames[inquiryType] || '기타 기술 문의'}\n[개인정보 수집·이용 동의] 동의\n\n${message}`;
+            const visibilityMetadata = `[공개항목] 상담유형=${fieldVisibility.inquiryType};닉네임=${fieldVisibility.nickname};업체명=${fieldVisibility.company};성함=${fieldVisibility.name}`;
+            const messageWithType = `${visibilityMetadata}\n[상담 유형] ${inquiryTypeNames[inquiryType] || '기타 기술 문의'}\n[개인정보 수집·이용 동의] 동의\n\n${message}`;
 
             const { data, error } = await supabaseClient.rpc('submit_inquiry', {
                 p_nickname: nickname || '문의고객',
@@ -3042,6 +3085,7 @@
                     닉네임: ${escapeHtml(nickname)}<br>
                     업체명: ${escapeHtml(company)}<br>
                     공개 설정: ${escapeHtml(visibilityLabel)}<br>
+                    항목별 공개: 상담 유형 ${escapeHtml(fieldVisibility.inquiryType)}, 닉네임 ${escapeHtml(fieldVisibility.nickname)}, 업체명 ${escapeHtml(fieldVisibility.company)}, 성함 ${escapeHtml(fieldVisibility.name)}<br>
                     <div class="mt-2 rounded-sm bg-white/70 p-3 whitespace-pre-wrap break-words">${escapeHtml(message)}</div>
                     ${visibility === 'private' ? '<p class="mt-2 text-sm">비공개 문의는 공개 목록에 접수일과 진행 상태만 익명으로 표시됩니다. 문의 내용과 개인정보는 위 접수번호와 설정한 비밀번호로 본인 확인 후 열람할 수 있습니다.</p>' : '<p class="mt-2 text-sm">공개 문의는 공개 목록에 닉네임, 요약과 진행 상태가 표시됩니다.</p>'}
                 </div>
@@ -3104,15 +3148,17 @@
 
             list.innerHTML = data.map((item) => {
                 const isPrivate = item.visibility !== 'public';
-                const nickname = isPrivate ? '비공개 고객' : (item.nickname || '문의고객');
+                const nickname = isPrivate ? '비공개 고객' : (item.nickname || '닉네임 비공개');
                 const messageText = String(item.message || '');
-                const titleMatch = messageText.match(/^\[상담 유형\]\s*([^\r\n]+)/);
                 const rawMessage = messageText
                     .replace(/^\[상담 유형\][^\n]*(?:\n\[개인정보 수집·이용 동의\][^\n]*)?\s*/, '')
                     .replace(/\s+/g, ' ')
                     .trim();
-                const title = isPrivate ? '비공개 문의' : (titleMatch?.[1]?.trim() || rawMessage.slice(0, 56).trim() || '상담 문의');
+                const title = isPrivate ? '비공개 문의' : (item.inquiry_type || rawMessage.slice(0, 56).trim() || '상담 문의');
                 const summary = isPrivate ? '' : (rawMessage.length > 100 ? `${rawMessage.slice(0, 100)}…` : rawMessage);
+                const publicIdentity = !isPrivate
+                    ? [item.company && `업체명: ${item.company}`, item.name && `성함: ${item.name}`].filter(Boolean).join(' · ')
+                    : '';
                 const status = item.status === 'answered' ? '답변 완료' : item.status === 'closed' ? '종결' : '접수 완료';
 
                 return `
@@ -3120,7 +3166,7 @@
                         <td class="px-5 py-4 whitespace-nowrap">${item.created_at ? new Date(item.created_at).toLocaleDateString('ko-KR') : ''}</td>
                         <td class="px-5 py-4 font-bold">${escapeHtml(nickname)}${isPrivate ? '<span class="ml-2 inline-block rounded-sm bg-slate-100 px-2 py-1 text-xs text-slate-600">비공개</span>' : ''}</td>
                         <td class="px-5 py-4 whitespace-nowrap font-semibold">${isPrivate ? '<span class="text-slate-400">비공개</span>' : escapeHtml(item.public_code || '—')}</td>
-                        <td class="px-5 py-4 text-slate-700"><span class="font-bold text-slate-900">${escapeHtml(title)}</span>${summary ? `<span class="mt-1 block text-sm">${escapeHtml(summary)}</span>` : ''}</td>
+                        <td class="px-5 py-4 text-slate-700"><span class="font-bold text-slate-900">${escapeHtml(title)}</span>${publicIdentity ? `<span class="mt-1 block text-xs text-slate-500">${escapeHtml(publicIdentity)}</span>` : ''}${summary ? `<span class="mt-1 block text-sm">${escapeHtml(summary)}</span>` : ''}</td>
                         <td class="px-5 py-4 whitespace-nowrap">${escapeHtml(status)}</td>
                     </tr>
                 `;

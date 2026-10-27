@@ -2459,7 +2459,7 @@
             try {
                 // 기존 공개 RPC를 1건만 조회하여 DB/API 활동을 발생시키되 트래픽을 최소화합니다.
                 const { error } = await supabaseClient
-                    .rpc('get_public_inquiries')
+                    .rpc('get_inquiry_board_summaries')
                     .limit(1);
 
                 if (!error) {
@@ -2545,14 +2545,15 @@
 
             list.innerHTML = '<tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>';
 
-            const { data, error } = await supabaseClient.rpc('get_public_inquiries');
+            const { data, error } = await supabaseClient.rpc('get_inquiry_board_summaries');
 
             if (error) {
                 list.innerHTML = `<tr><td colspan="5" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담문의 목록을 불러오지 못했습니다.')}</td></tr>`;
                 return;
             }
 
-            if (!data || !data.length) {
+            const publicItems = (data || []).filter(item => item.visibility === 'public');
+            if (!publicItems.length) {
                 list.innerHTML = `
                     <tr>
                         <td colspan="5" class="px-5 py-10 text-center text-slate-500">
@@ -2564,8 +2565,8 @@
                 return;
             }
 
-            list.innerHTML = data.map((item, index) => {
-                const companyText = item.company || '공개 문의';
+            list.innerHTML = publicItems.map((item, index) => {
+                const companyText = item.nickname || item.company || item.inquiry_type || '공개 문의';
                 const messageText = item.message || '';
                 const replyText = item.admin_reply ? '<div class="mt-2 text-sm text-[var(--kh-blue)] font-bold">답변 등록됨</div>' : '<div class="mt-2 text-sm text-slate-400 font-bold">답변 준비 중</div>';
 

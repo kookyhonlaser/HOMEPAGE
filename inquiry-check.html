@@ -115,6 +115,7 @@ async function checkInquiry() {
         return;
     }
 
+    const displayMessage = String(item.message || '').replace(/^\[공개항목\][^\r\n]*\r?\n/, '');
     box.classList.remove('hidden');
     box.innerHTML = `
         <div class="flex flex-wrap gap-2 mb-4 text-xs font-black">
@@ -127,7 +128,7 @@ async function checkInquiry() {
 
         <div class="mt-6">
             <h3 class="font-black mb-2">문의내용</h3>
-            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm whitespace-pre-wrap leading-7">${esc(item.message)}</div>
+            <div class="bg-slate-50 border border-slate-200 p-5 rounded-sm whitespace-pre-wrap leading-7">${esc(displayMessage)}</div>
         </div>
 
         <div class="mt-6">
