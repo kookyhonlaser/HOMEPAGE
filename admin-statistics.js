@@ -21,8 +21,9 @@
   const status = section.querySelector('#stats-status'), results = section.querySelector('#stats-results');
   let version = 0;
   let authorized = false;
-  const names = {home:'홈',company:'회사소개',applications:'레이저 응용',inquiry_board:'상담문의',contact:'문의 작성',
-    'products/fiber':'제품 · 파이버','products/uv':'제품 · UV','products/co2':'제품 · CO2','products/custom':'맞춤형 장비'};
+  const names = {home:'홈',company:'회사소개',applications:'레이저 응용',cases:'적용사례',marking_service:'레이저 임가공',inquiry_board:'상담문의',contact:'문의 작성',
+    'products/fiber':'제품 · 파이버','products/uv':'제품 · UV','products/co2':'제품 · CO2','products/prisa3d':'제품 · PRISA-3D','products/custom':'맞춤형 장비',
+    'laser-marking-service.html':'레이저 마킹 임가공 상세'};
   const escape = v => String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function range(days) {
     end.value = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());

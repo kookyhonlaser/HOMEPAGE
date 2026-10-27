@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kooky.co.kr/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://www.kooky.co.kr/laser-marking-service.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
   <url>
     <loc>https://www.kooky.co.kr/laser-marking-machine.html</loc>

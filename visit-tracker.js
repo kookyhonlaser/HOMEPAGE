@@ -42,9 +42,9 @@
       const section = params.get('section') || 'home';
       if (section === 'products') {
         const category = params.get('category') || 'fiber';
-        return 'products/' + (['fiber','uv','co2','custom'].includes(category) ? category : 'fiber');
+        return 'products/' + (['fiber','uv','co2','prisa3d','custom'].includes(category) ? category : 'fiber');
       }
-      return ['home','company','applications','inquiry_board','contact'].includes(section) ? section : 'home';
+      return ['home','company','applications','cases','marking_service','inquiry_board','contact'].includes(section) ? section : 'home';
     }
     return file;
   }

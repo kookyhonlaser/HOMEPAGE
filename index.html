@@ -777,8 +777,8 @@
                             레이저 절단·용접이 아닌 마킹·각인 전문 임가공입니다.
                         </div>
                         <div class="mt-8 flex flex-wrap gap-3">
-                            <button type="button" onclick="showSection('marking_service')" class="px-7 py-4 rounded-sm kh-btn-primary">임가공 안내 보기</button>
-                            <button type="button" onclick="showSection('contact')" class="px-7 py-4 rounded-sm border border-white/30 bg-white/10 font-black hover:bg-white/20">사진·도면으로 문의</button>
+                            <a href="laser-marking-service.html" class="px-7 py-4 rounded-sm kh-btn-primary">임가공 상세 안내</a>
+                            <button type="button" onclick="openInquiry('processing')" class="px-7 py-4 rounded-sm border border-white/30 bg-white/10 font-black hover:bg-white/20">사진·도면으로 문의</button>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
@@ -1189,7 +1189,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="button" onclick="showSection('contact')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">PRISA-E 견적·납기 문의</button>
+                                    <button type="button" onclick="openInquiry('equipment')" class="mt-8 px-7 py-4 rounded-sm kh-btn-primary">PRISA-E 견적·납기 문의</button>
                                 </div>
 
                                 <div class="flex flex-col gap-6">
@@ -1582,7 +1582,7 @@
                                 </div>
 
                                 <div class="mt-8 flex flex-wrap gap-3">
-                                    <button type="button" onclick="showSection('contact')" class="px-7 py-4 rounded-sm kh-btn-primary">실속형 UV 견적·납기 문의</button>
+                                    <button type="button" onclick="openInquiry('equipment')" class="px-7 py-4 rounded-sm kh-btn-primary">실속형 UV 견적·납기 문의</button>
                                     <a href="https://blog.naver.com/kookyhonlaser/223110656395" target="_blank" rel="noopener noreferrer" class="px-7 py-4 rounded-sm kh-btn-line">블로그 제품 소개 보기</a>
                                 </div>
                             </div>
@@ -1856,7 +1856,7 @@
                                 <h3 class="text-2xl font-black">곡면·단차 제품의 마킹 가능 여부가 궁금하신가요?</h3>
                                 <p class="mt-3 text-slate-600 leading-7">제품 형상과 소재를 확인한 뒤 샘플 테스트와 적합한 마킹 조건을 안내해 드립니다.</p>
                             </div>
-                            <button onclick="showSection('contact')" class="kh-btn-primary px-7 py-4 rounded-sm whitespace-nowrap">PRISA-3D 상담문의</button>
+                            <button onclick="openInquiry('equipment')" class="kh-btn-primary px-7 py-4 rounded-sm whitespace-nowrap">PRISA-3D 상담문의</button>
                         </div>
                     </div>
                     </div>
@@ -2571,7 +2571,7 @@
                                 <li>• 희망 일정과 필요한 판독·검사 기준</li>
                             </ul>
                             <div class="mt-8 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
-                                <button type="button" onclick="showSection('contact')" class="px-6 py-4 rounded-sm kh-btn-primary">레이저 임가공 문의</button>
+                                <button type="button" onclick="openInquiry('processing')" class="px-6 py-4 rounded-sm kh-btn-primary">레이저 임가공 문의</button>
                                 <button type="button" onclick="showSection('cases')" class="px-6 py-4 rounded-sm border border-white/30 font-black hover:bg-white/10">마킹 사례 확인</button>
                             </div>
                             <p class="mt-6 text-sm text-slate-400 leading-6">도면이 없어도 제품 사진과 원하는 마킹 내용을 보내주시면 확인 가능한 범위부터 안내해 드립니다.</p>
@@ -2600,7 +2600,7 @@
                             <h3 class="text-4xl md:text-5xl font-black tracking-[-0.05em]">직접 테스트한 결과를 확인해 보세요</h3>
                             <p class="mt-5 text-slate-600 leading-8 max-w-3xl">소재별 마킹 과정과 검사 결과를 알기 쉽게 정리했습니다. 새로운 사례도 준비되는 대로 꾸준히 소개하겠습니다.</p>
                         </div>
-                        <button type="button" onclick="showSection('contact')" class="px-6 py-4 rounded-sm kh-btn-primary">샘플 테스트 문의</button>
+                        <button type="button" onclick="openInquiry('sample')" class="px-6 py-4 rounded-sm kh-btn-primary">샘플 테스트 문의</button>
                     </div>
 
                     <div class="mt-10 flex flex-wrap gap-2" role="group" aria-label="적용사례 분류">
@@ -2767,6 +2767,17 @@
                 <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_420px] gap-8">
                     <div class="kh-card p-8 md:p-10 rounded-sm">
                         <form id="inquiryForm" autocomplete="off" class="grid md:grid-cols-2 gap-5" onsubmit="submitInquiry(); return false;">
+                            <label class="md:col-span-2 block" for="inquiryType">
+                                <span class="block mb-2 text-sm font-black text-slate-700">상담 유형 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
+                                <select id="inquiryType" name="inquiryType" class="w-full p-4 border border-slate-300 rounded-sm bg-white focus:outline-none focus:border-[var(--kh-blue)]">
+                                    <option value="">상담 목적을 선택해 주세요</option>
+                                    <option value="sample">샘플 테스트 문의</option>
+                                    <option value="equipment">레이저 장비 견적 문의</option>
+                                    <option value="processing">레이저 마킹 임가공 문의</option>
+                                    <option value="other">기타 기술 문의</option>
+                                </select>
+                                <span class="block mt-2 text-xs text-slate-500 leading-5">목적을 선택하면 담당자가 문의 내용을 더 빠르게 확인할 수 있습니다.</span>
+                            </label>
                             <label class="md:col-span-2 block" for="customerNickname">
                                 <span class="block mb-2 text-sm font-black text-slate-700">닉네임 / 목록 표시명 <span class="ml-1 text-[11px] text-red-600">필수</span></span>
                                 <input id="customerNickname" name="customerNickname" type="text" placeholder="예: 쿠키혼고객" class="w-full p-4 border border-slate-300 rounded-sm focus:outline-none focus:border-[var(--kh-blue)]">
@@ -2851,8 +2862,8 @@
                             <p class="mt-3 text-xs text-slate-400 leading-5">상담문의 전체 목록과 비공개 문의는 관리자 권한으로만 열람할 수 있습니다.</p>
                         </div>
                         <div class="mt-8 pt-6 border-t border-white/10 text-sm text-slate-400 leading-6">
-                            <p class="font-bold text-white mb-2">관리자 확인 기준</p>
-                            <p>문의하기를 누르면 메일 프로그램이 열리고, 공개/비공개 선택값이 메일 제목과 본문에 함께 들어갑니다. 추후 관리자 페이지를 구축하면 모든 문의를 별도 관리할 수 있습니다.</p>
+                            <p class="font-bold text-white mb-2">문의 접수 방식</p>
+                            <p>등록한 문의는 보안 연결을 통해 상담문의 DB에 저장되며 접수번호가 발급됩니다. 관리자가 내용을 확인하고 답변을 등록하면 접수번호와 확인용 비밀번호로 답변을 확인할 수 있습니다.</p>
                         </div>
                     </aside>
                 </div>
@@ -2885,7 +2896,7 @@
                     <a class="footer-link" href="qr-datamatrix-laser-marking.html">QR·Data Matrix</a>
                     <button type="button" class="footer-link" onclick="showSection('applications')">레이저 응용</button>
                     <button type="button" class="footer-link" onclick="showSection('cases')">적용사례</button>
-                    <button type="button" class="footer-link" onclick="showSection('marking_service')">레이저 임가공</button>
+                    <a class="footer-link" href="laser-marking-service.html">레이저 임가공</a>
                     <button type="button" class="footer-link" onclick="showSection('inquiry_board')">상담문의</button>
                 </div>
             </div>
@@ -2959,7 +2970,22 @@
 
         updateAdminCaseDraftVisibility();
 
+        function openInquiry(type) {
+            const allowedTypes = ['sample', 'equipment', 'processing', 'other'];
+            showSection('contact');
+            const selectedType = allowedTypes.includes(type) ? type : '';
+            const typeField = document.getElementById('inquiryType');
+            if (typeField) typeField.value = selectedType;
+
+            try {
+                const url = new URL(window.location.href);
+                if (selectedType) url.searchParams.set('inquiry', selectedType);
+                history.replaceState(history.state, document.title, url.pathname + url.search);
+            } catch (e) {}
+        }
+
         async function submitInquiry() {
+            const inquiryType = document.getElementById('inquiryType').value;
             const nickname = document.getElementById('customerNickname').value.trim();
             const company = document.getElementById('companyName').value.trim();
             const name = document.getElementById('customerName').value.trim();
@@ -2970,10 +2996,18 @@
             const visibility = document.querySelector('input[name="visibility"]:checked')?.value || 'private';
             const resultBox = document.getElementById('inquiryResult');
 
-            if (!nickname || !company || !name || !phone || !password || !message) {
-                alert('닉네임, 업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
+            if (!inquiryType || !nickname || !company || !name || !phone || !password || !message) {
+                alert('상담 유형, 닉네임, 업체명, 성함, 연락처, 문의 확인용 비밀번호, 문의내용은 필수 입력 항목입니다.');
                 return;
             }
+
+            const inquiryTypeNames = {
+                sample: '샘플 테스트 문의',
+                equipment: '레이저 장비 견적 문의',
+                processing: '레이저 마킹 임가공 문의',
+                other: '기타 기술 문의'
+            };
+            const messageWithType = `[상담 유형] ${inquiryTypeNames[inquiryType] || '기타 기술 문의'}\n\n${message}`;
 
             const { data, error } = await supabaseClient.rpc('submit_inquiry', {
                 p_nickname: nickname,
@@ -2983,7 +3017,7 @@
                 p_email: email,
                 p_visibility: visibility,
                 p_customer_password: password,
-                p_message: message
+                p_message: messageWithType
             });
 
             if (error) {
@@ -3233,6 +3267,10 @@
                     url.searchParams.delete('category');
                 }
 
+                if (sectionId !== 'contact') {
+                    url.searchParams.delete('inquiry');
+                }
+
                 url.hash = '';
                 return url.pathname + url.search;
             }
@@ -3366,6 +3404,11 @@
             document.addEventListener('DOMContentLoaded', function () {
                 applyAddressRoute(true);
                 const params = new URLSearchParams(location.search);
+                const requestedInquiryType = params.get('inquiry');
+                const typeField = document.getElementById('inquiryType');
+                if (typeField && ['sample', 'equipment', 'processing', 'other'].includes(requestedInquiryType)) {
+                    typeField.value = requestedInquiryType;
+                }
                 if (!params.get('section')) {
                     updateAddress('home', null, true);
                 }
