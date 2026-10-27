@@ -3053,7 +3053,8 @@
 
             list.innerHTML = '<tr><td colspan="5" class="px-5 py-8 text-slate-500">상담문의 목록을 불러오는 중입니다.</td></tr>';
 
-            const { data, error } = await supabaseClient.rpc('get_inquiry_board_items');
+            // Public pages must call only the RPC that filters to admin-approved public inquiries.
+            const { data, error } = await supabaseClient.rpc('get_public_inquiries');
 
             if (error) {
                 list.innerHTML = `<tr><td colspan="5" class="px-5 py-8 text-red-600">${escapeHtml(error.message || '상담문의 목록을 불러오지 못했습니다.')}</td></tr>`;
@@ -3073,31 +3074,24 @@
             }
 
             list.innerHTML = data.map((item, index) => {
-                const isPrivate = item.visibility === 'private';
-                const messageText = isPrivate ? '비공개 문의입니다. 질문내용은 비밀번호 확인 후 본인과 관리자만 볼 수 있습니다.' : (item.message || '');
-                const nicknameText = item.nickname || '문의자';
-                const replyText = item.has_reply ? '<div class="mt-2 text-sm text-[var(--kh-blue)] font-bold">답변 등록됨</div>' : '<div class="mt-2 text-sm text-slate-400 font-bold">답변 대기</div>';
-                const checkUrl = `inquiry-check.html?code=${encodeURIComponent(item.public_code || '')}`;
+                const companyText = item.company || '공개 문의';
+                const messageText = item.message || '';
+                const replyText = item.admin_reply ? '<div class="mt-2 text-sm text-[var(--kh-blue)] font-bold">답변 등록됨</div>' : '<div class="mt-2 text-sm text-slate-400 font-bold">답변 준비 중</div>';
 
                 return `
-                    <tr class="hover:bg-slate-50 cursor-pointer" onclick="location.href='${checkUrl}'">
+                    <tr class="hover:bg-slate-50">
                         <td class="px-5 py-4 font-black">${index + 1}</td>
                         <td class="px-5 py-4 whitespace-nowrap">${item.created_at ? new Date(item.created_at).toLocaleDateString('ko-KR') : ''}</td>
                         <td class="px-5 py-4 font-bold">
-                            <div>${escapeHtml(nicknameText)}</div>
-                            <span class="inline-block mt-2 px-2 py-1 text-xs font-black rounded-sm ${isPrivate ? 'bg-slate-900 text-white' : 'bg-blue-100 text-[var(--kh-blue)]'}">
-                                ${isPrivate ? '비공개' : '공개'}
-                            </span>
+                            <div>${escapeHtml(companyText)}</div>
+                            <span class="inline-block mt-2 px-2 py-1 text-xs font-black rounded-sm bg-blue-100 text-[var(--kh-blue)]">공개 승인</span>
                         </td>
                         <td class="px-5 py-4">
-                            <div class="line-clamp-2 ${isPrivate ? 'text-slate-400' : 'text-slate-700'}">${escapeHtml(messageText)}</div>
+                            <div class="line-clamp-2 text-slate-700">${escapeHtml(messageText)}</div>
                             ${replyText}
-                            <div class="mt-2 text-xs text-slate-400">클릭하면 비밀번호 확인 후 상세내용을 볼 수 있습니다.</div>
                         </td>
                         <td class="px-5 py-4 whitespace-nowrap">
-                            <span class="px-3 py-1 text-xs font-black rounded-sm bg-slate-100 text-slate-700">
-                                ${item.status === 'answered' ? '답변완료' : '접수'}
-                            </span>
+                            <span class="px-3 py-1 text-xs font-black rounded-sm bg-slate-100 text-slate-700">공개 문의</span>
                         </td>
                     </tr>
                 `;
