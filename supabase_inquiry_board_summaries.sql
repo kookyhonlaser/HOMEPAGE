@@ -57,12 +57,11 @@ AS $function$
         END AS public_code,
         CASE
             WHEN i.visibility = 'public' AND i.is_public_approved IS TRUE
-                THEN CASE
-                    WHEN left(COALESCE(i.message, ''), length('[공개항목]')) = '[공개항목]'
-                        AND position(E'\n' in i.message) > 0
-                        THEN substring(i.message from position(E'\n' in i.message) + 1)
-                    ELSE i.message
-                END
+                AND left(COALESCE(i.message, ''), length('[공개항목]')) = '[공개항목]'
+                AND position(E'\n' in i.message) > 0
+                THEN substring(i.message from position(E'\n' in i.message) + 1)
+            WHEN i.visibility = 'public' AND i.is_public_approved IS TRUE
+                THEN i.message
             ELSE NULL
         END AS message,
         CASE
