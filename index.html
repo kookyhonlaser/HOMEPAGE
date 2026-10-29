@@ -599,6 +599,82 @@
             letter-spacing: .14em;
         }
 
+        /* Home refresh: restrained, catalog-style industrial presentation */
+        .home-wrap { width: min(calc(100% - 48px), 1240px); margin-inline: auto; }
+        .home-section { padding-block: 76px; border-top: 1px solid #e2e5e8; }
+        .home-label { margin: 0 0 14px; color: var(--kh-blue); font-size: 13px; font-weight: 600; letter-spacing: .015em; }
+        .home-heading { margin: 0; color: #20262d; font-size: clamp(29px, 3.1vw, 43px); line-height: 1.25; font-weight: 650; letter-spacing: -.04em; }
+        .home-copy { color: #59616b; font-size: 16px; line-height: 1.8; }
+        .home-hero { padding-block: 58px 68px; }
+        .home-hero-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 58px; align-items: center; }
+        .home-hero-title { max-width: 620px; margin: 0; color: #20262d; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.18; font-weight: 650; letter-spacing: -.055em; }
+        .home-hero-copy { max-width: 570px; margin: 22px 0 0; color: #59616b; font-size: 17px; line-height: 1.8; }
+        .home-hero-media { min-width: 0; background: #f2f4f5; border: 1px solid #e0e3e6; }
+        .home-hero-media video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+        .home-hero-mobile { display: none !important; }
+        .home-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+        .home-action { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: 0 20px; border: 1px solid var(--kh-blue); color: var(--kh-blue); font-size: 15px; font-weight: 600; text-decoration: none; transition: background .18s ease, color .18s ease; }
+        .home-action-primary { background: var(--kh-blue); color: #fff; }
+        .home-action-primary:hover { background: var(--kh-blue-dark); color: #fff; }
+        .home-action:not(.home-action-primary):hover { background: #f0f6fb; }
+        .home-section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+        .home-section-head .home-copy { max-width: 620px; margin: 12px 0 0; }
+        .home-text-link { flex: none; color: var(--kh-blue); font-size: 15px; font-weight: 600; text-decoration: none; }
+        .home-text-link:hover { text-decoration: underline; }
+        .home-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #d9dde1; border-bottom: 1px solid #d9dde1; }
+        .home-product { min-width: 0; padding: 18px 18px 22px; color: inherit; text-decoration: none; border-right: 1px solid #e2e5e8; }
+        .home-product:last-child { border-right: 0; }
+        .home-product-image { display: block; width: 100%; height: 190px; object-fit: contain; background: #fff; }
+        .home-product-name { margin: 18px 0 5px; color: #222831; font-size: 19px; line-height: 1.35; font-weight: 650; }
+        .home-product-meta { margin: 0; color: #69717b; font-size: 14px; line-height: 1.6; }
+        .home-product-more { display: inline-block; margin-top: 14px; color: var(--kh-blue); font-size: 14px; font-weight: 600; }
+        .home-case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+        .home-case { min-width: 0; border-bottom: 1px solid #d9dde1; padding-bottom: 20px; }
+        .home-case img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #f2f4f5; }
+        .home-case h3 { margin: 18px 0 8px; color: #222831; font-size: 20px; line-height: 1.4; font-weight: 650; }
+        .home-case p { margin: 0; color: #59616b; font-size: 15px; line-height: 1.75; }
+        .home-automation-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 54px; align-items: center; }
+        .home-automation-image { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #f2f4f5; }
+        .home-points { margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid #d9dde1; }
+        .home-points li { padding: 13px 0; color: #4d5660; border-bottom: 1px solid #e2e5e8; font-size: 15px; line-height: 1.65; }
+        .home-points strong { color: #252b33; font-weight: 650; }
+        .home-company { display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: center; }
+        .home-company-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #d9dde1; }
+        .home-company-fact { padding: 16px 14px 16px 0; border-bottom: 1px solid #e2e5e8; }
+        .home-company-fact dt { color: #727b85; font-size: 13px; }
+        .home-company-fact dd { margin: 5px 0 0; color: #252b33; font-size: 15px; line-height: 1.55; font-weight: 550; }
+        .home-contact { padding-block: 42px; background: #f5f7f8; border-top: 1px solid #e2e5e8; }
+        .home-contact .home-actions { margin-top: 0; }
+        @media (max-width: 900px) {
+            .home-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
+            .home-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .home-product:nth-child(2) { border-right: 0; }
+            .home-product:nth-child(-n+2) { border-bottom: 1px solid #e2e5e8; }
+            .home-case-grid { gap: 18px; }
+        }
+        @media (max-width: 640px) {
+            .home-wrap { width: min(calc(100% - 36px), 1240px); }
+            .home-section { padding-block: 52px; }
+            .home-hero { padding-block: 36px 48px; }
+            .home-hero-grid, .home-automation-grid, .home-company { grid-template-columns: 1fr; gap: 26px; }
+            .home-hero-title { font-size: clamp(32px, 9vw, 42px); }
+            .home-hero-copy { margin-top: 16px; font-size: 16px; }
+            .home-video-desktop { display: none !important; }
+            .home-hero-mobile { display: block !important; }
+            .home-hero-media { order: -1; }
+            .home-actions { display: grid; grid-template-columns: 1fr 1fr; }
+            .home-action { padding-inline: 10px; font-size: 14px; }
+            .home-section-head { display: block; margin-bottom: 22px; }
+            .home-section-head .home-text-link { display: inline-block; margin-top: 14px; }
+            .home-product { padding: 12px 10px 18px; }
+            .home-product-image { height: 145px; }
+            .home-product-name { margin-top: 12px; font-size: 17px; }
+            .home-product-meta { font-size: 13px; }
+            .home-case-grid { grid-template-columns: 1fr; gap: 24px; }
+            .home-case img { aspect-ratio: 16 / 9; }
+            .home-company-facts { grid-template-columns: 1fr; }
+        }
+
     </style>
 
     <script type="application/ld+json">
@@ -711,169 +787,149 @@
 
     <main class="pt-[112px] lg:pt-[116px]">
         <section id="home" class="page-section active">
-            <div class="relative min-h-[680px] flex items-center overflow-hidden bg-slate-100">
-                <div class="hero-video absolute inset-0">
-                    <video autoplay muted loop playsinline preload="metadata" class="hero-video-desktop w-full h-full object-cover">
-                        <source src="hero_kookyhon_dynamic_v10.mp4" type="video/mp4">
-                        <source src="hero.mp4" type="video/mp4">
-                    </video>
-                    <video autoplay muted loop playsinline preload="metadata" class="hero-video-mobile w-full h-full object-cover">
-                        <source src="hero_kookyhon_mobile_v10.mp4" type="video/mp4">
-                        <source src="hero.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute inset-0 hero-overlay"></div>
-                </div>
-                <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full">
+            <section class="home-hero">
+                <div class="home-wrap home-hero-grid">
                     <div>
-                        <div class="section-kicker hero-kicker mb-8">Kookyhon Laser</div>
-                        <h1 class="text-5xl md:text-7xl font-black leading-[1.05] tracking-[-0.06em] max-w-4xl hero-tech-title">
-                            레이저 마킹기와 자동화로 완성하는<br>
-                            산업용 레이저 공정 솔루션
-                        </h1>
-                        <p class="hero-copy mt-8 text-lg md:text-xl leading-8 max-w-2xl">
-                            쿠키혼레이저는 유리·금속·스테인리스·알루미늄·플라스틱 소재의 레이저 마킹부터 바코드 레이저 마킹, DPM 코드 마킹, 비전 검사와 자동화 장비까지 공정에 맞춰 설계합니다.
-                        </p>
-                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl" aria-label="빠른 상담문의">
-                            <button type="button" onclick="openInquiry('sample')" class="min-h-[64px] px-6 py-4 rounded-sm kh-btn-primary text-left sm:text-center">
-                                <span class="block text-base font-black">샘플 테스트 문의</span>
-                                <span class="block mt-1 text-xs font-medium opacity-80">소재와 마킹 가능성을 먼저 확인해 보세요</span>
-                            </button>
-                            <button type="button" onclick="openInquiry('equipment')" class="min-h-[64px] px-6 py-4 rounded-sm border border-white/50 bg-white/95 text-slate-950 hover:bg-blue-50 text-left sm:text-center transition-colors">
-                                <span class="block text-base font-black">장비 견적 요청</span>
-                                <span class="block mt-1 text-xs font-medium text-slate-600">제품·수량·자동화 조건에 맞춰 검토합니다</span>
-                            </button>
+                        <p class="home-label">쿠키혼레이저 · 산업용 레이저 마킹</p>
+                        <h1 class="home-hero-title">소재와 생산 공정에 맞춘<br>레이저 마킹 시스템</h1>
+                        <p class="home-hero-copy">금속·플라스틱·유리 등 대상 소재와 생산 조건을 확인해 적합한 레이저 마킹기와 자동화 구성을 검토합니다.</p>
+                        <div class="home-actions" aria-label="빠른 상담 문의">
+                            <button type="button" onclick="openInquiry('sample')" class="home-action home-action-primary">샘플 테스트 문의</button>
+                            <button type="button" onclick="openInquiry('equipment')" class="home-action">장비 견적 요청</button>
                         </div>
                     </div>
+                    <div class="home-hero-media">
+                        <video autoplay muted loop playsinline preload="metadata" poster="value_uv_stand_clean.png" class="home-video-desktop">
+                            <source src="hero_kookyhon_dynamic_v10.mp4" type="video/mp4">
+                            <source src="hero.mp4" type="video/mp4">
+                        </video>
+                        <video autoplay muted loop playsinline preload="metadata" poster="value_uv_stand_clean.png" class="home-hero-mobile">
+                            <source src="hero_kookyhon_mobile_v10.mp4" type="video/mp4">
+                            <source src="hero.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
-            </div>
+            </section>
 
             <section class="py-20 bg-white">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 border-y border-blue-700">
-                        <button type="button" onclick="showSection('company')" class="group text-left p-8 md:p-10 bg-[var(--kh-blue)] text-white hover:bg-blue-500 transition-colors border-b lg:border-b-0 lg:border-r border-white/20">
-                            <span class="text-sm font-black text-blue-100">01</span>
-                            <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">회사소개</h3>
-                            <p class="mt-3 text-blue-100 leading-7">30년 현장 경험을 바탕으로 한 레이저 장비 개발 이력을 소개합니다.</p>
-                            <span class="inline-block mt-5 font-bold text-white group-hover:text-blue-50">자세히 보기 →</span>
-                        </button>
-                        <button type="button" onclick="showSection('products')" class="group text-left p-8 md:p-10 bg-[var(--kh-blue)] text-white hover:bg-blue-500 transition-colors border-b lg:border-b-0 lg:border-r border-white/20">
-                            <span class="text-sm font-black text-blue-100">02</span>
-                            <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">제품소개</h3>
-                            <p class="mt-3 text-blue-100 leading-7">PRISA, PRISA-E, BPD, PRISA-UV, PRISA-C 제품군을 소개합니다.</p>
-                            <span class="inline-block mt-5 font-bold text-white group-hover:text-blue-50">제품 보기 →</span>
-                        </button>
-                        <button type="button" onclick="showSection('applications')" class="group text-left p-8 md:p-10 bg-[var(--kh-blue)] text-white hover:bg-blue-500 transition-colors border-b md:border-b-0 lg:border-r border-white/20">
-                            <span class="text-sm font-black text-blue-100">03</span>
-                            <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">레이저 응용</h3>
-                            <p class="mt-3 text-blue-100 leading-7">마킹, 각인, 코드 추적, 비전 검사 등 적용 사례 중심으로 안내합니다.</p>
-                            <span class="inline-block mt-5 font-bold text-white group-hover:text-blue-50">응용 보기 →</span>
-                        </button>
-                        <button type="button" onclick="showSection('inquiry_board')" class="group text-left p-8 md:p-10 bg-[var(--kh-blue)] text-white hover:bg-blue-500 transition-colors">
-                            <span class="text-sm font-black text-blue-100">04</span>
-                            <h3 class="mt-4 text-2xl font-black tracking-[-0.03em]">상담문의</h3>
-                            <p class="mt-3 text-blue-100 leading-7">소재, 제품, 생산 조건을 알려주시면 적합한 구성을 검토합니다.</p>
-                            <span class="inline-block mt-5 font-bold text-white group-hover:text-blue-50">문의하기 →</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="py-20 bg-[var(--kh-bg)] border-t border-slate-200">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+                <div class="home-wrap">
+                    <div class="home-section-head">
                         <div>
-                            <div class="section-kicker mb-5">Laser Marking Machine</div>
-                            <h2 class="text-4xl md:text-5xl font-black tracking-[-0.05em] leading-tight">제품별 상세 안내</h2>
-                            <p class="mt-5 text-slate-600 leading-8 max-w-3xl">
-                                레이저 마킹기와 관련 장비 정보를 제품별·용도별로 나누어 필요한 내용을 보다 쉽게 살펴보실 수 있도록 정리했습니다.
-                            </p>
+                            <p class="home-label">제품군</p>
+                            <h2 class="home-heading">공정에 맞춰 선택하는 마킹 장비</h2>
+                            <p class="home-copy">파이버·UV·CO₂ 레이저 제품과 맞춤형 시스템을 살펴보세요. 세부 구성과 사양은 각 제품 안내에서 확인할 수 있습니다.</p>
                         </div>
-                        <a href="laser-marking-machine.html" class="font-black text-[var(--kh-blue)] hover:underline">전체 페이지 보기 →</a>
+                        <button type="button" onclick="showSection('products')" class="home-text-link">전체 제품 보기 →</button>
                     </div>
-                    <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-                        <a href="laser-marking-machine.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">01</div>
-                            <h3 class="mt-3 text-xl font-black">레이저 마킹기</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">금속·플라스틱·QR·Data Matrix 통합 안내</p>
+                    <div class="home-product-grid">
+                        <a href="fiber-laser-marking-machine.html" class="home-product">
+                            <img src="prisa_e_1.png" alt="PRISA-E 파이버 레이저 마킹 장비" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">PRISA-E</h3>
+                            <p class="home-product-meta">파이버 레이저 마킹 시스템</p>
+                            <span class="home-product-more">제품 정보 →</span>
                         </a>
-                        <a href="fiber-laser-marking-machine.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">02</div>
-                            <h3 class="mt-3 text-xl font-black">파이버 레이저</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">SUS, 알루미늄, 스틸 등 금속 마킹</p>
+                        <a href="fiber-laser-marking-machine.html" class="home-product">
+                            <img src="bpd_1.png" alt="BPD 파이버 레이저 마킹 시스템" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">BPD</h3>
+                            <p class="home-product-meta">파이버 레이저 제품군</p>
+                            <span class="home-product-more">제품 정보 →</span>
                         </a>
-                        <a href="uv-laser-marking-machine.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">03</div>
-                            <h3 class="mt-3 text-xl font-black">UV 레이저</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">플라스틱, 필름, 유리 정밀 마킹</p>
+                        <a href="uv-laser-marking-machine.html" class="home-product">
+                            <img src="value_uv_stand_clean.png" alt="UV 레이저 마킹 장비와 스탠드" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">PRISA-UV</h3>
+                            <p class="home-product-meta">UV 레이저 마킹 시스템</p>
+                            <span class="home-product-more">제품 정보 →</span>
                         </a>
-                        <a href="co2-laser-marking-machine.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">04</div>
-                            <h3 class="mt-3 text-xl font-black">CO2 레이저</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">포장재, 고무, 목재 등 비금속 마킹</p>
-                        </a>
-                        <a href="laser-marking-automation.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">05</div>
-                            <h3 class="mt-3 text-xl font-black">마킹 자동화</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">비전 검사, OK/NG, 생산 데이터 연동</p>
-                        </a>
-                        <a href="sic-laser-marking.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">06</div>
-                            <h3 class="mt-3 text-xl font-black">SiC 마킹</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">세라믹·반도체 소재 샘플 테스트</p>
-                        </a>
-                        <a href="qr-datamatrix-laser-marking.html" class="kh-card p-6 rounded-sm hover:-translate-y-1 block">
-                            <div class="text-sm font-black text-[var(--kh-blue)]">07</div>
-                            <h3 class="mt-3 text-xl font-black">QR·Data Matrix</h3>
-                            <p class="mt-3 text-sm text-slate-600 leading-6">시리얼·LOT·추적 코드 마킹</p>
+                        <a href="co2-laser-marking-machine.html" class="home-product">
+                            <img src="prisa_c_1.png" alt="PRISA-C CO₂ 레이저 시스템 외형 도면" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">PRISA-C</h3>
+                            <p class="home-product-meta">CO₂ 레이저 마킹 시스템</p>
+                            <span class="home-product-more">제품 정보 →</span>
                         </a>
                     </div>
                 </div>
             </section>
 
-            <section class="py-24 bg-[var(--kh-bg)]">
-                <div class="max-w-7xl mx-auto px-6">
-                    <div class="grid lg:grid-cols-[420px_1fr] gap-12 items-start">
+            <section class="home-section">
+                <div class="home-wrap">
+                    <div class="home-section-head">
                         <div>
-                            <div class="section-kicker mb-6">Why Kookyhon Laser</div>
-                            <h2 class="text-4xl md:text-5xl font-black tracking-[-0.05em] leading-tight">장비만이 아니라<br>공정을 함께 봅니다.</h2>
-                            <p class="mt-6 text-slate-600 leading-8">
-                                레이저 선정, 광학계 구성, 지그·자동화, 비전 보정, 생산 데이터까지 실제 양산 조건에 맞춰 검토합니다.
-                            </p>
+                            <p class="home-label">샘플 적용 사례</p>
+                            <h2 class="home-heading">소재별 마킹 결과를 확인하세요</h2>
+                            <p class="home-copy">기존 테스트 사례에서 소재와 마킹 내용을 확인할 수 있습니다. 실제 조건은 소재와 생산 환경에 따라 달라집니다.</p>
                         </div>
-                        <div class="grid md:grid-cols-3 gap-5">
-                            <div class="kh-card-soft p-7 rounded-sm">
-                                <div class="text-5xl font-black stat-number">30<span class="text-xl">+</span></div>
-                                <p class="mt-4 font-bold">년 레이저 기술 경험</p>
-                                <p class="mt-3 text-sm text-slate-500 leading-6">모회사 기술 이력 기반의 축적된 현장 대응력</p>
-                            </div>
-                            <div class="kh-card-soft p-7 rounded-sm">
-                                <div class="text-5xl font-black stat-number">1:1</div>
-                                <p class="mt-4 font-bold">공정 맞춤 검토</p>
-                                <p class="mt-3 text-sm text-slate-500 leading-6">소재와 생산 조건에 맞춘 레이저 구성 제안</p>
-                            </div>
-                            <div class="kh-card-soft p-7 rounded-sm">
-                                <div class="text-5xl font-black stat-number">A/S</div>
-                                <p class="mt-4 font-bold">현장 중심 지원</p>
-                                <p class="mt-3 text-sm text-slate-500 leading-6">납품 이후 유지보수와 공정 안정화 지원</p>
-                            </div>
-                        </div>
+                        <button type="button" onclick="showSection('cases')" class="home-text-link">적용사례 전체 보기 →</button>
+                    </div>
+                    <div class="home-case-grid">
+                        <article class="home-case">
+                            <a href="case-automotive-dpm-grade-b.html" aria-label="자동차 부품 DPM 마킹 사례 보기"><img src="dpm_case_grade_b_result.png" alt="자동차 부품 Data Matrix 마킹의 판독 검사 결과" loading="lazy"></a>
+                            <h3>자동차 부품 Data Matrix 마킹</h3>
+                            <p>알루미늄 다이캐스팅 부품의 DPM 코드와 판독 검사 사례입니다.</p>
+                            <a href="case-automotive-dpm-grade-b.html" class="home-text-link">사례 보기 →</a>
+                        </article>
+                        <article class="home-case">
+                            <a href="case-glass-laser-marking.html" aria-label="유리 용기 레이저 마킹 사례 보기"><img src="case-glass-laser-side-marking.png" alt="투명 유리 용기 측면의 문자·날짜 마킹 샘플" loading="lazy"></a>
+                            <h3>유리 용기 문자·문양 마킹</h3>
+                            <p>유리 용기 측면 문자와 바닥면 문양을 마킹한 샘플 사례입니다.</p>
+                            <a href="case-glass-laser-marking.html" class="home-text-link">사례 보기 →</a>
+                        </article>
+                        <article class="home-case">
+                            <a href="case-plastic-cap-qr-laser-marking.html" aria-label="플라스틱 용기 QR 마킹 사례 보기"><img src="case-plastic-cap-qr-laser-marking.png" alt="플라스틱 용기 뚜껑의 QR 코드 마킹 샘플" loading="lazy"></a>
+                            <h3>플라스틱 용기 QR 코드</h3>
+                            <p>플라스틱 뚜껑에 QR 코드를 적용한 기존 마킹 샘플입니다.</p>
+                            <a href="case-plastic-cap-qr-laser-marking.html" class="home-text-link">사례 보기 →</a>
+                        </article>
                     </div>
                 </div>
             </section>
 
-        <section class="py-20 bg-white border-y border-slate-200"><div class="max-w-7xl mx-auto px-6"><div class="section-kicker">MARKING APPLICATIONS</div><h2 class="mt-5 text-4xl md:text-5xl font-black tracking-[-0.05em]">소재별·용도별 레이저 마킹</h2><p class="mt-5 text-slate-600 leading-8 max-w-4xl">소재의 색상, 표면처리, 열 민감도와 요구 판독 품질에 따라 적합한 레이저와 조건이 달라집니다.</p><div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">유리 마킹</h3><p class="mt-3 text-slate-600 leading-7">UV 레이저를 이용한 유리 표면의 미세 문자·로고·코드 마킹 조건을 검토합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">금속 마킹</h3><p class="mt-3 text-slate-600 leading-7">철, 비철금속과 금속 부품의 문자·로고·제품 추적 정보를 선명하게 마킹합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">바코드 레이저 마킹</h3><p class="mt-3 text-slate-600 leading-7">QR, Data Matrix, 1D 바코드와 시리얼·LOT 정보를 제품에 직접 표기합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">플라스틱 레이저 마킹</h3><p class="mt-3 text-slate-600 leading-7">ABS, PC, PP, POM 등 플라스틱 소재별 변색·발포·정밀 마킹을 테스트합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">스테인리스 마킹</h3><p class="mt-3 text-slate-600 leading-7">SUS 부품의 흑색·백색·각인 마킹과 시리얼·코드 적용을 검토합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">알루미늄 마킹</h3><p class="mt-3 text-slate-600 leading-7">알루미늄, 아노다이징, 다이캐스팅 부품의 표면 상태에 맞춰 조건을 선정합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">DPM 코드 마킹</h3><p class="mt-3 text-slate-600 leading-7">자동차·전자 부품에 직접 Data Matrix 코드를 마킹하고 판독 품질을 검증합니다.</p></div>
-<div class="kh-card p-6 rounded-sm"><h3 class="text-xl font-black">레이저 마킹 샘플</h3><p class="mt-3 text-slate-600 leading-7">실제 소재 테스트를 통해 마킹 전후 사진, 조건과 검사 결과를 확인합니다.</p></div>
-</div></div></section>
+            <section class="home-section">
+                <div class="home-wrap home-automation-grid">
+                    <img src="vision_case_inspection_result.png" alt="비전 위치 보정과 레이저 마킹 후 검사 사례" class="home-automation-image" loading="lazy">
+                    <div>
+                        <p class="home-label">자동화 · 비전 검사</p>
+                        <h2 class="home-heading">마킹 이후의 공정까지 고려합니다</h2>
+                        <p class="home-copy">제품 위치를 확인해 마킹 위치를 보정하고, 작업 후 문자·코드와 마킹 상태를 검사하는 구성을 검토합니다. 필요한 장비와 검사 범위는 생산 공정에 따라 달라집니다.</p>
+                        <ul class="home-points">
+                            <li><strong>위치 보정</strong> · 제품의 위치·방향을 확인해 마킹 위치 조정</li>
+                            <li><strong>마킹 후 검사</strong> · 문자, 코드, 위치 등 요청 항목 확인</li>
+                            <li><strong>공정 연동</strong> · 장비·지그·검사 흐름을 공정 조건에 맞춰 검토</li>
+                        </ul>
+                        <a href="case-vision-position-inspection.html" class="home-text-link">비전 검사 사례 보기 →</a>
+                    </div>
+                </div>
+            </section>
 
+            <section class="home-section">
+                <div class="home-wrap home-company">
+                    <div>
+                        <p class="home-label">회사 및 기술 지원</p>
+                        <h2 class="home-heading">제품 선정부터 설치 후 지원까지</h2>
+                        <p class="home-copy">쿠키혼레이저㈜는 고객의 소재와 생산 조건에 맞는 레이저 마킹 장비를 검토하고, 설치와 기술 지원을 제공합니다. 회사 연혁과 상세 정보는 회사소개에서 확인할 수 있습니다.</p>
+                        <button type="button" onclick="showSection('company')" class="home-text-link">회사소개 보기 →</button>
+                    </div>
+                    <dl class="home-company-facts">
+                        <div class="home-company-fact"><dt>회사</dt><dd>쿠키혼레이저㈜</dd></div>
+                        <div class="home-company-fact"><dt>소재지</dt><dd>경기도 화성시 송산면</dd></div>
+                        <div class="home-company-fact"><dt>상담 전화</dt><dd><a href="tel:0313553164">031-355-3164</a></dd></div>
+                        <div class="home-company-fact"><dt>이메일</dt><dd><a href="mailto:owen@kooky.co.kr">owen@kooky.co.kr</a></dd></div>
+                    </dl>
+                </div>
+            </section>
 
-<section class="py-20 bg-slate-50" id="home_case_preview"><div class="max-w-7xl mx-auto px-6"><div class="section-kicker">Application Cases</div><h2 class="mt-5 text-4xl font-black tracking-[-0.05em]">레이저 마킹 실제 사례</h2></div></section>
+            <section class="home-contact">
+                <div class="home-wrap flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+                    <div>
+                        <p class="home-label">상담 문의</p>
+                        <h2 class="text-2xl md:text-3xl font-semibold tracking-[-0.03em] text-slate-800">소재나 장비 구성을 함께 검토해 보세요</h2>
+                        <p class="mt-2 text-slate-600 leading-7">샘플 테스트 또는 장비 견적 상담을 접수하실 수 있습니다.</p>
+                    </div>
+                    <div class="home-actions mt-0">
+                        <button type="button" onclick="openInquiry('sample')" class="home-action home-action-primary">샘플 테스트 문의</button>
+                        <button type="button" onclick="openInquiry('equipment')" class="home-action">장비 견적 요청</button>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <section id="company" class="page-section">
