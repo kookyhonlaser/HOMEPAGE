@@ -95,11 +95,12 @@
         }
         * { box-sizing: border-box; }
         body {
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', 'Segoe UI', Arial, sans-serif;
+            font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
             color: var(--kh-ink);
             background: #ffffff;
             word-break: keep-all;
         }
+        button, input, select, textarea { font-family: inherit; }
         a, button { transition: all .2s ease; }
         .page-section { display: none; }
         .page-section.active { display: block; }
@@ -353,7 +354,7 @@
         .dm-poster-copy { position: relative; z-index: 3; }
         .dm-poster-kicker {
             color: #fff;
-            font-family: "Montserrat", "Pretendard", sans-serif;
+            font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
             font-size: clamp(22px, 2vw, 34px);
             line-height: 1;
             font-weight: 950;
@@ -362,7 +363,7 @@
         .dm-poster-title {
             margin-top: 6px;
             color: var(--dm-accent);
-            font-family: "Montserrat", "Pretendard", sans-serif;
+            font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
             font-size: clamp(24px, 2.15vw, 38px);
             line-height: .98;
             font-weight: 950;
@@ -563,12 +564,22 @@
     
         /* kookyhon v60 font system */
         body {
-            font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+            font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
             word-break: keep-all;
         }
         h1, h2, h3, h4,
-        .font-black {
-            font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+        .font-black,
+        .tech-en,
+        .section-kicker,
+        .nav-link,
+        .product-category-btn,
+        .model-tab,
+        .custom-model-tab,
+        .logo-tech,
+        .hero-tech-title,
+        .product-hero-title,
+        .en-product-title {
+            font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
         }
         .tech-en,
         .section-kicker,
@@ -576,14 +587,12 @@
         .product-category-btn,
         .model-tab,
         .custom-model-tab {
-            font-family: "Montserrat", "Pretendard", sans-serif;
             letter-spacing: .02em;
         }
         .logo-tech,
         .hero-tech-title,
         .product-hero-title,
         .en-product-title {
-            font-family: "Exo 2", "Montserrat", "Pretendard", sans-serif;
             letter-spacing: -.02em;
         }
         .section-kicker {
@@ -654,11 +663,8 @@
     </script>
 
 
-    <!-- kookyhon v60 font style: Pretendard + Montserrat + Exo 2 -->
+    <!-- Site-wide typography: Pretendard -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
 
 </head>
 <body>
