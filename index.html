@@ -822,13 +822,13 @@
                         <button type="button" onclick="showSection('products')" class="home-text-link">전체 제품 보기 →</button>
                     </div>
                     <div class="home-product-grid">
-                        <a href="fiber-laser-marking-machine.html" class="home-product">
+                        <a href="index.html?section=products&amp;category=fiber&amp;model=prisa" class="home-product">
                             <img src="homepage-prisa-fiber.png" alt="PRISA 파이버 레이저 마킹 시스템" class="home-product-image" loading="lazy">
                             <h3 class="home-product-name">PRISA</h3>
                             <p class="home-product-meta">파이버 레이저 마킹 시스템</p>
                             <span class="home-product-more">제품 정보 →</span>
                         </a>
-                        <a href="fiber-laser-marking-machine.html" class="home-product">
+                        <a href="index.html?section=products&amp;category=fiber&amp;model=bpd" class="home-product">
                             <img src="homepage-bpd-v2.png" alt="BPD 파이버 레이저 마킹 시스템" class="home-product-image" loading="lazy">
                             <h3 class="home-product-name">BPD</h3>
                             <p class="home-product-meta">파이버 레이저 제품군</p>
@@ -3358,15 +3358,21 @@
                 if (ogDescription) ogDescription.setAttribute('content', metadata.description);
             }
 
-            function currentUrlFor(sectionId, categoryKey) {
+            function currentUrlFor(sectionId, categoryKey, modelKey) {
                 const url = new URL(window.location.href);
                 url.searchParams.delete('page');
                 url.searchParams.set('section', sectionId);
 
                 if (sectionId === 'products') {
                     url.searchParams.set('category', validCategories.includes(categoryKey) ? categoryKey : 'fiber');
+                    if (categoryKey === 'fiber' && ['prisa', 'prisa_e', 'bpd'].includes(modelKey)) {
+                        url.searchParams.set('model', modelKey);
+                    } else {
+                        url.searchParams.delete('model');
+                    }
                 } else {
                     url.searchParams.delete('category');
+                    url.searchParams.delete('model');
                 }
 
                 if (sectionId !== 'contact') {
@@ -3377,8 +3383,8 @@
                 return url.pathname + url.search;
             }
 
-            function updateAddress(sectionId, categoryKey, replace) {
-                const nextUrl = currentUrlFor(sectionId, categoryKey);
+            function updateAddress(sectionId, categoryKey, replace, modelKey) {
+                const nextUrl = currentUrlFor(sectionId, categoryKey, modelKey);
                 const state = {
                     kookyhon: true,
                     section: sectionId,
@@ -3411,7 +3417,7 @@
                 }
             }
 
-            function activateProductCategoryOnly(key) {
+            function activateProductCategoryOnly(key, modelKey) {
                 const categoryKey = validCategories.includes(key) ? key : 'fiber';
 
                 document.querySelectorAll('.product-category-btn').forEach(btn => btn.classList.remove('active'));
@@ -3427,7 +3433,7 @@
                 if (panel) panel.classList.add('active');
 
                 if (categoryKey === 'fiber' && typeof showFiberModel === 'function') {
-                    showFiberModel('prisa');
+                    showFiberModel(['prisa', 'prisa_e', 'bpd'].includes(modelKey) ? modelKey : 'prisa');
                 }
 
                 if (categoryKey === 'uv' && typeof showUvModel === 'function') {
@@ -3449,13 +3455,14 @@
 
                 if (id === 'products') {
                     const requestedCategory = opts.category || new URLSearchParams(location.search).get('category') || 'fiber';
-                    activateProductCategoryOnly(validCategories.includes(requestedCategory) ? requestedCategory : 'fiber');
+                    const requestedModel = opts.model || new URLSearchParams(location.search).get('model');
+                    activateProductCategoryOnly(validCategories.includes(requestedCategory) ? requestedCategory : 'fiber', requestedModel);
                 } else {
                     setPageMetadata(sectionMetadata[id]);
                 }
 
                 if (!opts.skipUrl) {
-                    updateAddress(id, opts.category, !!opts.replace);
+                    updateAddress(id, opts.category, !!opts.replace, opts.model);
                 }
 
                 if (!opts.keepScroll) {
@@ -3468,10 +3475,10 @@
                 const categoryKey = validCategories.includes(key) ? key : 'fiber';
 
                 activateSectionOnly('products');
-                activateProductCategoryOnly(categoryKey);
+                activateProductCategoryOnly(categoryKey, opts.model);
 
                 if (!opts.skipUrl) {
-                    updateAddress('products', categoryKey, !!opts.replace);
+                    updateAddress('products', categoryKey, !!opts.replace, opts.model);
                 }
 
                 // 제품군 카드 클릭 시 현재 위치가 튀지 않도록 스크롤은 유지합니다.
@@ -3481,6 +3488,7 @@
                 const params = new URLSearchParams(location.search);
                 let sectionId = params.get('section') || 'home';
                 let categoryKey = params.get('category') || 'fiber';
+                const modelKey = params.get('model');
 
                 if (!validSections.includes(sectionId)) sectionId = 'home';
                 if (!validCategories.includes(categoryKey)) categoryKey = 'fiber';
@@ -3488,6 +3496,7 @@
                 if (sectionId === 'products') {
                     window.showSection('products', {
                         category: categoryKey,
+                        model: modelKey,
                         skipUrl: true,
                         keepScroll: !!keepScroll
                     });
