@@ -612,6 +612,7 @@
         .home-hero-media { min-width: 0; background: #f2f4f5; border: 1px solid #e0e3e6; }
         .home-hero-media video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
         .home-hero-mobile { display: none !important; }
+        .product-model-panel { scroll-margin-top: 128px; }
         .home-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
         .home-action { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: 0 20px; border: 1px solid var(--kh-blue); color: var(--kh-blue); font-size: 15px; font-weight: 600; text-decoration: none; transition: background .18s ease, color .18s ease; }
         .home-action-primary { background: var(--kh-blue); color: #fff; }
@@ -3450,6 +3451,7 @@
             window.showSection = function (sectionId, options) {
                 const opts = options || {};
                 const id = validSections.includes(sectionId) ? sectionId : 'home';
+                let targetFiberModel = null;
 
                 activateSectionOnly(id);
 
@@ -3457,6 +3459,9 @@
                     const requestedCategory = opts.category || new URLSearchParams(location.search).get('category') || 'fiber';
                     const requestedModel = opts.model || new URLSearchParams(location.search).get('model');
                     activateProductCategoryOnly(validCategories.includes(requestedCategory) ? requestedCategory : 'fiber', requestedModel);
+                    if (requestedCategory === 'fiber' && ['prisa', 'prisa_e', 'bpd'].includes(requestedModel)) {
+                        targetFiberModel = requestedModel;
+                    }
                 } else {
                     setPageMetadata(sectionMetadata[id]);
                 }
@@ -3465,7 +3470,12 @@
                     updateAddress(id, opts.category, !!opts.replace, opts.model);
                 }
 
-                if (!opts.keepScroll) {
+                if (targetFiberModel) {
+                    requestAnimationFrame(() => {
+                        const modelPanel = document.getElementById('fiber_model_' + targetFiberModel);
+                        if (modelPanel) modelPanel.scrollIntoView({ behavior: 'auto', block: 'start' });
+                    });
+                } else if (!opts.keepScroll) {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             };
