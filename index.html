@@ -612,7 +612,7 @@
         .home-hero-media { min-width: 0; background: #f2f4f5; border: 1px solid #e0e3e6; }
         .home-hero-media video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
         .home-hero-mobile { display: none !important; }
-        .product-panel { scroll-margin-top: 128px; }
+        .product-panel, .product-model-panel, .uv-model-panel { scroll-margin-top: 128px; }
         .home-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
         .home-action { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: 0 20px; border: 1px solid var(--kh-blue); color: var(--kh-blue); font-size: 15px; font-weight: 600; text-decoration: none; transition: background .18s ease, color .18s ease; }
         .home-action-primary { background: var(--kh-blue); color: #fff; }
@@ -625,6 +625,7 @@
         .home-product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #d9dde1; border-bottom: 1px solid #d9dde1; }
         .home-product { min-width: 0; padding: 18px 18px 22px; color: inherit; text-decoration: none; border-right: 1px solid #e2e5e8; }
         .home-product:last-child { border-right: 0; }
+        .home-product:nth-child(-n+4) { border-bottom: 1px solid #e2e5e8; }
         .home-product-image { display: block; width: 100%; height: 190px; object-fit: contain; background: #fff; }
         .home-product-name { margin: 18px 0 5px; color: #222831; font-size: 19px; line-height: 1.35; font-weight: 650; }
         .home-product-meta { margin: 0; color: #69717b; font-size: 14px; line-height: 1.6; }
@@ -649,8 +650,8 @@
         @media (max-width: 900px) {
             .home-hero-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
             .home-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .home-product:nth-child(2) { border-right: 0; }
-            .home-product:nth-child(-n+2) { border-bottom: 1px solid #e2e5e8; }
+            .home-product:nth-child(2n) { border-right: 0; }
+            .home-product:nth-child(-n+6) { border-bottom: 1px solid #e2e5e8; }
             .home-case-grid { gap: 18px; }
         }
         @media (max-width: 640px) {
@@ -829,6 +830,18 @@
                             <p class="home-product-meta">파이버 레이저 마킹 시스템</p>
                             <span class="home-product-more">제품 정보 →</span>
                         </a>
+                        <a href="index.html?section=products&amp;category=fiber&amp;model=prisa_e" class="home-product">
+                            <img src="prisa_e_main_visual.png" alt="PRISA-E 파이버 레이저 마킹 시스템" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">PRISA-E</h3>
+                            <p class="home-product-meta">파이버 레이저 실속형 시스템</p>
+                            <span class="home-product-more">제품 정보 →</span>
+                        </a>
+                        <a href="index.html?section=products&amp;category=fiber&amp;model=prisa" class="home-product">
+                            <img src="homepage-prisa-workstation.png" alt="PRISA 작업대형 레이저 마킹 시스템" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">PRISA 작업대형</h3>
+                            <p class="home-product-meta">작업대·PC 일체형 구성</p>
+                            <span class="home-product-more">제품 정보 →</span>
+                        </a>
                         <a href="index.html?section=products&amp;category=fiber&amp;model=bpd" class="home-product">
                             <img src="homepage-bpd-v2.png" alt="BPD 파이버 레이저 마킹 시스템" class="home-product-image" loading="lazy">
                             <h3 class="home-product-name">BPD</h3>
@@ -839,6 +852,12 @@
                             <img src="homepage-prisa-uv-v2.png" alt="PRISA-UV 레이저 마킹 시스템" class="home-product-image" loading="lazy">
                             <h3 class="home-product-name">PRISA-UV</h3>
                             <p class="home-product-meta">UV 레이저 마킹 시스템</p>
+                            <span class="home-product-more">제품 정보 →</span>
+                        </a>
+                        <a href="index.html?section=products&amp;category=uv&amp;model=value" class="home-product">
+                            <img src="value_uv_complete.png" alt="UV 레이저 스탠드와 제어함 구성" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">UV 스탠드형</h3>
+                            <p class="home-product-meta">실속형 UV Laser · 제어함 포함</p>
                             <span class="home-product-more">제품 정보 →</span>
                         </a>
                         <a href="co2-laser-marking-machine.html" class="home-product">
@@ -3366,7 +3385,10 @@
 
                 if (sectionId === 'products') {
                     url.searchParams.set('category', validCategories.includes(categoryKey) ? categoryKey : 'fiber');
-                    if (categoryKey === 'fiber' && ['prisa', 'prisa_e', 'bpd'].includes(modelKey)) {
+                    const modelIsValid = categoryKey === 'fiber'
+                        ? ['prisa', 'prisa_e', 'bpd'].includes(modelKey)
+                        : categoryKey === 'uv' && ['prisa', 'value'].includes(modelKey);
+                    if (modelIsValid) {
                         url.searchParams.set('model', modelKey);
                     } else {
                         url.searchParams.delete('model');
@@ -3438,7 +3460,7 @@
                 }
 
                 if (categoryKey === 'uv' && typeof showUvModel === 'function') {
-                    showUvModel('prisa');
+                    showUvModel(['prisa', 'value'].includes(modelKey) ? modelKey : 'prisa');
                 }
 
                 if (categoryKey === 'custom' && typeof showCustomModel === 'function') {
@@ -3451,7 +3473,7 @@
             window.showSection = function (sectionId, options) {
                 const opts = options || {};
                 const id = validSections.includes(sectionId) ? sectionId : 'home';
-                let targetFiberModel = null;
+                let targetProductPanel = null;
 
                 activateSectionOnly(id);
 
@@ -3460,7 +3482,9 @@
                     const requestedModel = opts.model || new URLSearchParams(location.search).get('model');
                     activateProductCategoryOnly(validCategories.includes(requestedCategory) ? requestedCategory : 'fiber', requestedModel);
                     if (requestedCategory === 'fiber' && ['prisa', 'prisa_e', 'bpd'].includes(requestedModel)) {
-                        targetFiberModel = requestedModel;
+                        targetProductPanel = 'product_panel_fiber';
+                    } else if (requestedCategory === 'uv' && ['prisa', 'value'].includes(requestedModel)) {
+                        targetProductPanel = 'product_panel_uv';
                     }
                 } else {
                     setPageMetadata(sectionMetadata[id]);
@@ -3470,10 +3494,10 @@
                     updateAddress(id, opts.category, !!opts.replace, opts.model);
                 }
 
-                if (targetFiberModel) {
+                if (targetProductPanel) {
                     requestAnimationFrame(() => {
-                        const fiberPanel = document.getElementById('product_panel_fiber');
-                        if (fiberPanel) fiberPanel.scrollIntoView({ behavior: 'auto', block: 'start' });
+                        const productPanel = document.getElementById(targetProductPanel);
+                        if (productPanel) productPanel.scrollIntoView({ behavior: 'auto', block: 'start' });
                     });
                 } else if (!opts.keepScroll) {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
