@@ -836,10 +836,10 @@
                             <p class="home-product-meta">파이버 레이저 실속형 시스템</p>
                             <span class="home-product-more">제품 정보 →</span>
                         </a>
-                        <a href="index.html?section=products&amp;category=fiber&amp;model=prisa" class="home-product">
-                            <img src="homepage-prisa-workstation.png" alt="PRISA 작업대형 레이저 마킹 시스템" class="home-product-image" loading="lazy">
-                            <h3 class="home-product-name">PRISA 작업대형</h3>
-                            <p class="home-product-meta">작업대·PC 일체형 구성</p>
+                        <a href="index.html?section=products&amp;category=prisa3d" class="home-product">
+                            <img src="homepage-prisa-3d.png" alt="PRISA-3D 레이저 마킹 시스템" class="home-product-image" loading="lazy">
+                            <h3 class="home-product-name">PRISA-3D</h3>
+                            <p class="home-product-meta">3D 파이버 레이저 마킹 시스템</p>
                             <span class="home-product-more">제품 정보 →</span>
                         </a>
                         <a href="index.html?section=products&amp;category=fiber&amp;model=bpd" class="home-product">
@@ -3485,6 +3485,8 @@
                         targetProductPanel = 'product_panel_fiber';
                     } else if (requestedCategory === 'uv' && ['prisa', 'value'].includes(requestedModel)) {
                         targetProductPanel = 'product_panel_uv';
+                    } else if (requestedCategory === 'prisa3d') {
+                        targetProductPanel = 'product_panel_prisa3d';
                     }
                 } else {
                     setPageMetadata(sectionMetadata[id]);
