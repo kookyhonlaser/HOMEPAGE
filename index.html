@@ -630,6 +630,13 @@
         .home-product-name { margin: 18px 0 5px; color: #222831; font-size: 19px; line-height: 1.35; font-weight: 650; }
         .home-product-meta { margin: 0; color: #69717b; font-size: 14px; line-height: 1.6; }
         .home-product-more { display: inline-block; margin-top: 14px; color: var(--kh-blue); font-size: 14px; font-weight: 600; }
+        .home-vision-feature { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 12px; align-items: center; }
+        .home-vision-video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #151a20; }
+        .home-vision-copy .home-product-name { margin: 0 0 7px; font-size: 15px; line-height: 1.35; }
+        .home-vision-copy .home-product-meta { font-size: 12px; line-height: 1.55; }
+        .home-vision-steps { margin-top: 8px; color: #69717b; font-size: 11px; line-height: 1.5; }
+        .home-vision-detail { display: inline-block; margin-top: 8px; color: var(--kh-blue); font-size: 12px; font-weight: 600; text-decoration: none; }
+        .home-vision-detail:hover { text-decoration: underline; }
         .home-case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
         .home-case { min-width: 0; border-bottom: 1px solid #d9dde1; padding-bottom: 20px; }
         .home-case img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: #f2f4f5; }
@@ -652,6 +659,7 @@
             .home-product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .home-product:nth-child(2n) { border-right: 0; }
             .home-product:nth-child(-n+6) { border-bottom: 1px solid #e2e5e8; }
+            .home-vision-feature { gap: 16px; }
             .home-case-grid { gap: 18px; }
         }
         @media (max-width: 640px) {
@@ -672,6 +680,10 @@
             .home-product-image { height: 145px; }
             .home-product-name { margin-top: 12px; font-size: 17px; }
             .home-product-meta { font-size: 13px; }
+            .home-vision-feature { grid-column: 1 / -1; }
+            .home-vision-feature { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 12px; }
+            .home-vision-copy .home-product-name { font-size: 14px; }
+            .home-vision-copy .home-product-meta { font-size: 12px; }
             .home-case-grid { grid-template-columns: 1fr; gap: 24px; }
             .home-case img { aspect-ratio: 16 / 9; }
             .home-company-facts { grid-template-columns: 1fr; }
@@ -866,6 +878,18 @@
                             <p class="home-product-meta">CO₂ 레이저 마킹 시스템</p>
                             <span class="home-product-more">제품 정보 →</span>
                         </a>
+                        <article class="home-product home-vision-feature">
+                            <video class="home-vision-video" controls playsinline preload="none" poster="vision_case_inspection_result.png" aria-label="Vision Align & Inspection Marking Unit 동영상">
+                                <source src="vision-align-inspection-marking-unit.mp4" type="video/mp4">
+                                브라우저가 동영상 재생을 지원하지 않습니다.
+                            </video>
+                            <div class="home-vision-copy">
+                                <h3 class="home-product-name">VISION ALIGN &amp; INSPECTION MARKING UNIT</h3>
+                                <p class="home-product-meta">비전으로 제품 위치를 보정하고 레이저 마킹 후 문자·코드와 마킹 상태를 검사하는 맞춤형 시스템입니다.</p>
+                                <div class="home-vision-steps">위치 확인 → 레이저 마킹 → 결과 검사</div>
+                                <a href="index.html?section=products&amp;category=custom&amp;model=vision_marking" class="home-vision-detail">제품 상세 보기 →</a>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </section>
@@ -3464,7 +3488,8 @@
                 }
 
                 if (categoryKey === 'custom' && typeof showCustomModel === 'function') {
-                    showCustomModel('vision');
+                    const customModels = ['vision', 'dual_laser', 'laser_3d', 'vision_marking', 'datamatrix_read'];
+                    showCustomModel(customModels.includes(modelKey) ? modelKey : 'vision');
                 }
 
                 setPageMetadata(categoryMetadata[categoryKey]);
@@ -3487,6 +3512,8 @@
                         targetProductPanel = 'product_panel_uv';
                     } else if (requestedCategory === 'prisa3d') {
                         targetProductPanel = 'product_panel_prisa3d';
+                    } else if (requestedCategory === 'custom' && ['vision', 'dual_laser', 'laser_3d', 'vision_marking', 'datamatrix_read'].includes(requestedModel)) {
+                        targetProductPanel = 'custom_model_' + requestedModel;
                     }
                 } else {
                     setPageMetadata(sectionMetadata[id]);
